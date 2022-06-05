@@ -1,36 +1,37 @@
 template <typename T>
 struct fenwick_tree {
- public:
-  fenwick_tree(int _n) : n(_n), fw(_n + 1) {}
+  fenwick_tree(int _n) : n(_n), f(_n + 1) {}
 
-  void add(int p, T x) {
-    assert(0 <= p && p < n);
-    ++p;
-    while (p <= n) {
-      fw[p - 1] += x;
-      p += p & -p;
+  // a[u] += val
+  void add(int u, T val) {
+    assert(0 <= u && u < n);
+    ++u;
+    while (u <= n) {
+      f[u] += val;
+      u += u & -u;
     }
   }
 
-  // return sum of [l, r)
-  T sum(int l, int r) {
+  // return the sum of [0, u)
+  T sum(int u) const {
+    assert(0 <= u && u <= n);
+    T res = 0;
+    while (u) {
+      res += f[u];
+      u -= u & -u;
+    }
+    return res;
+  }
+
+  // return the sum of [l, r)
+  T sum(int l, int r) const {
     assert(0 <= l && l <= r && r <= n);
     if (l == r) return 0;
     return sum(r) - sum(l);
   }
 
-  void reset() { fill(begin(fw), end(fw), 0); }
+  void reset() { fill(f.begin(), f.end(), T(0)); }
 
- private:
   int n;
-  vector<T> fw;
-
-  T sum(int r) {
-    T s = 0;
-    while (r > 0) {
-      s += fw[r - 1];
-      r -= r & -r;
-    }
-    return s;
-  }
+  vector<T> f;
 };
