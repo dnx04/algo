@@ -4,7 +4,7 @@
 
 using namespace std;
 
-#include "algo/data-structure/union_find.hpp"
+#include "../union_find.hpp"
 
 signed main() {
   int n, q;
