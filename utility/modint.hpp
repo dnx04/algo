@@ -1,4 +1,4 @@
-typedef uint64_t ull;
+typedef unsigned long long ull;
 
 template <ull mod>
 struct Mod {
