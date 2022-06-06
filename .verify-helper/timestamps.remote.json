@@ -1,5 +1,5 @@
 {
-"data-structure/test/fenwick.test.cpp": "2022-06-05 23:00:55 +0700",
-"data-structure/test/union_find.test.cpp": "2022-06-05 22:18:42 +0700",
-"utility/test/Power.test.cpp": "2022-06-06 10:42:55 +0700"
+"data-structure/test/Point_Add_Range_Sum.test.cpp": "2022-06-06 11:29:09 +0700",
+"data-structure/test/Unionfind.test.cpp": "2022-06-06 21:31:46 +0700",
+"number-theory/test/Power.test.cpp": "2022-06-06 11:29:09 +0700"
 }
