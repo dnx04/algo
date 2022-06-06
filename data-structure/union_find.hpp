@@ -30,6 +30,18 @@ struct uf {
     return -p[head(a)];
   }
 
+  vector<vector<int>> groups() {
+    vector<int> tmp(n), sz(n);
+    for (int i = 0; i < n; ++i) tmp[i] = head(i), ++sz[tmp[i]];
+    vector<vector<int>> gr(n);
+    for (int i = 0; i < n; ++i) gr[i].reserve(sz[i]);
+    for (int i = 0; i < n; ++i) gr[tmp[i]].push_back(i);
+    gr.erase(remove_if(begin(gr), end(gr),
+                       [&](const vector<int>& v) { return v.empty(); }),
+             end(gr));
+    return gr;
+  }
+
  private:
   int n;
   vector<int> p;
