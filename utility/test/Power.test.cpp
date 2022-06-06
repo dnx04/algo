@@ -12,5 +12,5 @@ signed main() {
   Mod<1000000007> m;
   int n;
   cin >> m >> n;
-  cout << (m ^ n);
+  cout << (m ^ n) << '\n';
 }
