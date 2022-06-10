@@ -4,10 +4,6 @@
 
 using namespace std;
 
-#ifdef local
-#include "lib/prettyprint.hpp"
-#endif
-
 #include "../fenwick.hpp"
 
 signed main() {
