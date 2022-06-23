@@ -27,13 +27,7 @@ struct Mod {
     return *this;
   }
   Mod& operator*=(const Mod& that) {
-    long double x;
-    uint64_t c;
-    int64_t r;
-    x = v;
-    c = x * that.v / m;
-    r = (int64_t)(v * that.v - c * m) % (int64_t)m;
-    v = (r < 0 ? r + m : r);
+    v = __uint128_t(v) * that.v % m;
     return *this;
   }
   Mod& operator/=(const Mod& that) { return (*this) *= that.inv(); }
