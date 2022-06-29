@@ -1,7 +1,7 @@
 // works for mod < 2^63
 
 using ull = unsigned long long;
-template <ull m>
+template <const ull m>
 struct Mod {
   ull v;
 
@@ -27,7 +27,7 @@ struct Mod {
     return *this;
   }
   Mod& operator*=(const Mod& that) {
-    v = __uint128_t(v) * that.v % m;
+    v = (__uint128_t)v * that.v % m;
     return *this;
   }
   Mod& operator/=(const Mod& that) { return (*this) *= that.inv(); }
