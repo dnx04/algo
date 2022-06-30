@@ -3,8 +3,8 @@ auto sieve = [](int n) {
   iota(begin(lpf), end(lpf), 0);
   for (int i = 2; i <= n; ++i) {
     if (lpf[i] == i) {
-      for (long long j = 1ll * i * i; j <= n; j += i) {
-        lpf[j] = i;
+      for (int j = 1ll * i * i; j <= n; j += i) {
+        if (lpf[j] == j) lpf[j] = i;
       }
     }
   }
