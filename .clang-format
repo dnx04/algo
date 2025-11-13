@@ -1,0 +1,10 @@
+BasedOnStyle: Google
+UseTab: Never
+AllowShortIfStatementsOnASingleLine: true
+AllowShortLoopsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: All
+AllowShortBlocksOnASingleLine: true
+ColumnLimit: 0
+DerivePointerAlignment: false
+PointerAlignment: Left
+SpaceAfterCStyleCast: true
