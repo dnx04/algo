@@ -18,14 +18,22 @@ jobs:
         with:
           python-version-file: "pyproject.toml"
 
-      # - name: "Setup necessary system dependencies"
-      #   run: sudo apt update -y && sudo apt install libxml2-dev libxslt-dev -y
+      - name: "Setup necessary system dependencies"
+        run: sudo apt update -y && sudo apt install libxml2-dev libxslt-dev -y
 
       - name: Install the latest version of uv
         uses: astral-sh/setup-uv@v7
 
+        # required only if you set `languages.rust.list_dependencies_backend.kind` to `"cargo-udeps"`
+      - name: Install cargo-udeps for Rust
+        uses: baptiste0928/cargo-install@v2
+        with:
+          crate: cargo-udeps
+          version: "0.1.44"
+          args: --debug
+
       - name: Install the project
-        run: uv sync --no-build --locked --all-extras --dev
+        run: uv sync --locked --all-extras --dev
 
       - name: Run tests
         env:
