@@ -2,3 +2,5 @@
 *.gch
 input.txt
 output.txt
+main.cpp
+submit.cpp
