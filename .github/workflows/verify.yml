@@ -21,7 +21,7 @@ jobs:
       - name: Set up Rust (latest)
         run: |
           rustup set profile minimal
-          rustup install --latest
+          rustup install nightly
           rustup override set nightly
 
       - name: "Setup necessary system dependencies"
