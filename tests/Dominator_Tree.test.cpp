@@ -7,7 +7,7 @@ void solve() {
   int n, m, s;
   cin >> n >> m >> s;
   vector<vi> g(n);
-  for (int i = 0; i < n; ++i) {
+  for (int i = 0; i < m; ++i) {
     int u, v;
     cin >> u >> v;
     g[u].pb(v);
