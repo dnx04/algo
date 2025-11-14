@@ -18,11 +18,11 @@ jobs:
         with:
           python-version-file: "pyproject.toml"
 
-      - name: Set up Rust (latest)
-        run: |
-          rustup set profile minimal
-          rustup install nightly
-          rustup override set nightly
+      # - name: Set up Rust (latest)
+      #   run: |
+      #     rustup set profile minimal
+      #     rustup install nightly
+      #     rustup override set nightly
 
       - name: "Setup necessary system dependencies"
         run: sudo apt update -y && sudo apt install libxml2-dev libxslt-dev -y
