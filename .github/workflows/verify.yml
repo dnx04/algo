@@ -27,9 +27,6 @@ jobs:
       - name: "Setup necessary system dependencies"
         run: sudo apt update -y && sudo apt install libxml2-dev libxslt-dev -y
 
-      - name: Install the latest version of uv
-        uses: astral-sh/setup-uv@v7
-
       - name: "Cache uv build output"
         uses: actions/cache@v3
         with:
@@ -39,8 +36,17 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-uv-
 
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v7
+
       - name: Install the project
         run: uv sync --all-extras --dev
+
+      - name: "Cache verify helper output"
+        uses: actions/cache@v3
+        with:
+          path: .verify-helper
+          key: ${{ runner.os }}-verify-helper
 
       - name: Run tests
         env:
@@ -48,9 +54,3 @@ jobs:
           YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
           GH_PAT: ${{ secrets.GH_PAT }}
         run: uv run verify.py
-
-      - name: "Cache verify helper output"
-        uses: actions/cache@v3
-        with:
-          path: .verify-helper
-          key: ${{ runner.os }}-verify-helper
