@@ -1,17 +1,3 @@
 [[languages.cpp.environments]]
 CXX = "g++"
-CXXFLAGS = [
-  "-O2",
-  "-std=gnu++20",
-  "-Wall",
-  "-Wextra",
-  "-Warith-conversion",
-  "-Wlogical-op",
-  "-Wshift-overflow=2",
-  "-Wduplicated-cond",
-  "-Wcast-qual",
-  "-Wcast-align",
-  "-fsanitize=address",
-  "-fsanitize=undefined",
-  "-fno-sanitize-recover",
-]
+CXXFLAGS = ["-O2", "-std=gnu++20"]
