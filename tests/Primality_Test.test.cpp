@@ -1,12 +1,13 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/sum_of_floor_of_linear"
+#define PROBLEM "https://judge.yosupo.jp/problem/primality_test"
 
 #include "../misc/macros.h"
-#include "../math/DivModSum.h"
+#include "../math/ModInt.h"
+#include "../math/MillerRabin.h"
 
 void solve() {
-  ll n, m, a, b;
-  cin >> n >> m >> a >> b;
-  cout << divsum(b, a, m, n) << '\n';
+  ull x;
+  cin >> x;
+  cout << (isPrime(x) ? "Yes\n" : "No\n");
 }
 
 int main() {

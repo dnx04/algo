@@ -1,12 +1,13 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/sum_of_floor_of_linear"
+#define PROBLEM "https://judge.yosupo.jp/problem/sqrt_mod"
 
 #include "../misc/macros.h"
-#include "../math/DivModSum.h"
+#include "../math/ModInt.h"
+#include "../math/ModSQRT.h"
 
 void solve() {
-  ll n, m, a, b;
-  cin >> n >> m >> a >> b;
-  cout << divsum(b, a, m, n) << '\n';
+  int y, p;
+  cin >> y >> p;
+  cout << modsqrt(y, p) << '\n';
 }
 
 int main() {
