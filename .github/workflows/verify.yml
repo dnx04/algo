@@ -30,6 +30,15 @@ jobs:
       - name: Install the latest version of uv
         uses: astral-sh/setup-uv@v7
 
+      - name: "Cache uv build output"
+        uses: actions/cache@v3
+        with:
+          path: |
+            .uv  # uv cache/build folder
+          key: ${{ runner.os }}-uv-${{ hashFiles('**/pyproject.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-uv-
+
       - name: Install the project
         run: uv sync --all-extras --dev
 
@@ -38,4 +47,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
           GH_PAT: ${{ secrets.GH_PAT }}
-        run: uv run oj-verify all
+        run: uv run oj-verify
+
+      - name: "Cache verify helper output"
+        uses: actions/cache@v3
+        with:
+          path: .verify-helper
+          key: ${{ runner.os }}-verify-helper
