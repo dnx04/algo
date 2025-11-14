@@ -1,7 +1,7 @@
 #import "@preview/codly:1.3.0": *
 // #import "@preview/outrageous:0.3.0"
 #import "@preview/cheq:0.3.0": checklist
-#import "icpc.typ": *
+#import "utils/icpc.typ": *
 
 #set outline(indent: auto, depth: 4)
 
