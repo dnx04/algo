@@ -3,7 +3,7 @@ name: verify
 on:
   push:
     branches:
-    - main
+      - main
   pull_request:
 
 jobs:
@@ -11,25 +11,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: "Set up Python"
-      uses: actions/setup-python@v6
-      with:
-        python-version-file: "pyproject.toml"
-    
-    - name: "Setup necessary system dependencies"
-      run: sudo apt update -y && sudo apt install libxml2-dev libxslt-dev -y
+      - name: "Set up Python"
+        uses: actions/setup-python@v6
+        with:
+          python-version-file: "pyproject.toml"
 
-    - name: Install the latest version of uv
-      uses: astral-sh/setup-uv@v7
+      # - name: "Setup necessary system dependencies"
+      #   run: sudo apt update -y && sudo apt install libxml2-dev libxslt-dev -y
 
-    - name: Install the project
-      run: uv sync --locked --all-extras --dev
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v7
 
-    - name: Run tests
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
-        GH_PAT: ${{ secrets.GH_PAT }}
-      run: oj-verify all
+      - name: Install the project
+        run: uv sync --no-build --locked --all-extras --dev
+
+      - name: Run tests
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: oj-verify all
