@@ -19,7 +19,7 @@ def main():
     
     buckets = [[]]
 
-    for testfile in Path('test').glob('**/*.test.cpp'):
+    for testfile in Path('tests').glob('**/*.test.cpp'):
         buckets[-1].append(str(testfile))
         if len(buckets[-1]) == UNIT:
             buckets.append([])
