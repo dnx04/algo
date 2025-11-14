@@ -8,3 +8,4 @@ ColumnLimit: 0
 DerivePointerAlignment: false
 PointerAlignment: Left
 SpaceAfterCStyleCast: true
+SortIncludes: false

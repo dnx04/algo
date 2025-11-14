@@ -1,19 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/assignment"
-#include <bits/extc++.h>
 
-using namespace std;
-using namespace __gnu_pbds;
-using namespace __gnu_cxx;
-
-#define rep(i, a, b) for (int i = a; i < (b); ++i)
-#define all(x) begin(x), end(x)
-#define sz(x) (int)(x).size()
-#define pb push_back
-#define eb emplace_back
-typedef long long ll;
-typedef pair<int, int> pii;
-typedef vector<int> vi;
-
+#include "../misc/macros.h"
 #include "../graph/MinAssignment.h"
 
 void solve() {
@@ -27,7 +14,7 @@ void solve() {
   }
   auto [ret, L] = MinAssignment(W);
   cout << ret << '\n';
-  rep(i, 0, n) cout << L[i] << ' ';
+  for (int i = 0; i < n; ++i) cout << L[i] << ' ';
 }
 
 int main() {

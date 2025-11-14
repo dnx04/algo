@@ -1,36 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/maximum_independent_set"
 
-#include <bits/extc++.h>
-
-#include <tr2/dynamic_bitset>
-
-using namespace std;
-using namespace __gnu_pbds;
-using namespace __gnu_cxx;
-using namespace tr2;
-
-template <typename T>
-using ordered_set =
-    tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
-
-const int RANDOM =
-    chrono::high_resolution_clock::now().time_since_epoch().count();
-struct chash {
-  int operator()(int x) const { return x ^ RANDOM; }
-};
-using fast_map = gp_hash_table<int, int, chash>;
-using bs = dynamic_bitset<u_int64_t>;
-
-#define rep(i, a, b) for (int i = a; i < (b); ++i)
-#define all(x) begin(x), end(x)
-#define sz(x) (int)(x).size()
-#define pb push_back
-#define eb emplace_back
-typedef long long ll;
-typedef unsigned long long ull;
-typedef pair<int, int> pii;
-typedef vector<int> vi;
-
+#include "../misc/macros.h"
 #include "../misc/MaximumClique.h"
 
 signed main() {
@@ -39,12 +9,12 @@ signed main() {
   int n, m;
   cin >> n >> m;
   vector<bs> eds(n, bs(n));
-  rep(i, 0, m) {
+  for (int i = 0; i < m; ++i) {
     int u, v;
     cin >> u >> v;
     eds[u][v] = eds[v][u] = 1;
   }
-  rep(i, 0, n) {
+  for (int i = 0; i < n; ++i) {
     eds[i].flip();
     eds[i][i] = 0;
   }

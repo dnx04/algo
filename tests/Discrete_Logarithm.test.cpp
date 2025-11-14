@@ -1,17 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/discrete_logarithm_mod"
 #define IGNORE
 
-#include <bits/stdc++.h>
-
-using namespace std;
-
-#define rep(i, a, b) for (int i = a; i < (b); ++i)
-#define all(x) begin(x), end(x)
-#define sz(x) (int)(x).size()
-typedef long long ll;
-typedef pair<int, int> pii;
-typedef vector<int> vi;
-
+#include "../misc/macros.h"
 #include "../math/ModLog.h"
 
 void solve() {
@@ -24,7 +14,7 @@ void solve() {
       cout << -1 << '\n';
     return;
   }
-  if(b == 1) {
+  if (b == 1) {
     cout << 0 << '\n';
     return;
   }
