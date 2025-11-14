@@ -9,7 +9,7 @@ void solve() {
   cin >> n >> m;
   vl a(n), b(m);
   for (int i = 0; i < n; ++i) cin >> a[i];
-  for (int i = 0; i < n; ++i)i, 0, m) cin >> b[i];
+  for (int i = 0; i < n; ++i) cin >> b[i];
   auto c = convMod<998244353>(a, b);
   for (ll x : c) cout << x << ' ';
 }
