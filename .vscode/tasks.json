@@ -6,7 +6,7 @@
             "command": "/usr/bin/g++",
             "args": [
                 "-fdiagnostics-color=always",
-                "-std=gnu++23",
+                "-std=gnu++20",
                 "-O2",
                 "-g",
                 "-Wall",
