@@ -14,6 +14,16 @@ matrix operator*(const matrix& a, const matrix& b) {
   return res;
 }
 
+matrix operator^(matrix a, ll k) {
+  matrix res = id;
+  while (k) {
+    if (k & 1) res = res * a;
+    a = a * a;
+    k >>= 1;
+  }
+  return res;
+}
+
 vec operator*(const matrix& a, const vec& b) {
   vec c;
   for (int i = 0; i < 3; ++i) {
