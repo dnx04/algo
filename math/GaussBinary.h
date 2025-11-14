@@ -8,11 +8,12 @@ vector<bs> solve_linear(int n, int m, vector<bs> A, bs b) {
       break;
     }
     if (!A[rk][j]) continue;
-    rep(i, 0, n) if (i != rk) {
-      if (A[i][j]) {
-        b[i] = b[i] ^ b[rk], A[i] = A[i] ^ A[rk];
+    for (int i = 0; i < n; ++i)
+      if (i != rk) {
+        if (A[i][j]) {
+          b[i] = b[i] ^ b[rk], A[i] = A[i] ^ A[rk];
+        }
       }
-    }
     ++rk;
   }
   rep(i, rk, n) if (b[i]) return {};

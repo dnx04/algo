@@ -27,7 +27,7 @@ struct modint {
   Fp operator/(const Fp& p) const { return Fp(*this) /= p; }
   bool operator==(const Fp& p) const { return x == p.x; }
   bool operator!=(const Fp& p) const { return x != p.x; }
-  Fp inv() const { return pow(mod - 2); }
+  Fp inv() const { return *this ^ (mod - 2); }
   Fp operator^(int64_t n) const {
     Fp ret(1), mul(x);
     while (n > 0) {

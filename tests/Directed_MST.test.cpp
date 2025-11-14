@@ -7,7 +7,7 @@ void solve() {
   int n, m, s;
   cin >> n >> m >> s;
   vector<Edge> edges;
-  for(int i = 0; i < m; ++i) {
+  for (int i = 0; i < m; ++i) {
     int a, b;
     ll w;
     cin >> a >> b >> w;
@@ -30,7 +30,7 @@ void solve() {
   //   cout << "NO\n";
   // } else {
   //   cout << "YES\n";
-  //   rep(i, 0, n) {
+  //   for(int i = 0; i < n; ++i) {
   //     if (i == s) continue;
   //     cout << par[i] << '\n';
   //   }

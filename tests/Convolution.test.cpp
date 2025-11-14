@@ -8,7 +8,7 @@ void solve() {
   int n, m;
   cin >> n >> m;
   vl a(n), b(m);
-  rep(i, 0, n) cin >> a[i];
+  for (int i = 0; i < n; ++i) cin >> a[i];
   rep(i, 0, m) cin >> b[i];
   auto c = convMod<998244353>(a, b);
   for (ll x : c) cout << x << ' ';

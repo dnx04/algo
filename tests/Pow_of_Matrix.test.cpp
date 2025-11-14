@@ -12,9 +12,9 @@ void solve() {
   ll k;
   cin >> n >> k;
   Matrix<Fp> A(n);
-  rep(i, 0, n) rep(j, 0, n) cin >> A.d[i][j];
+  for (int i = 0; i < n; ++i) rep(j, 0, n) cin >> A.d[i][j];
   A = A ^ k;
-  rep(i, 0, n) { rep(j, 0, n) cout << A.d[i][j] << " \n"[j == n - 1]; }
+  for (int i = 0; i < n; ++i) { rep(j, 0, n) cout << A.d[i][j] << " \n"[j == n - 1]; }
 }
 
 int main() {

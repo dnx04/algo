@@ -20,6 +20,7 @@ using namespace __gnu_cxx;   // rope, cut and insert subarray in O(logn)
 #define pb push_back
 #define eb emplace_back
 typedef long long ll;
+typedef unsigned long long ull;
 typedef pair<int, int> pii;
 typedef vector<int> vi;
 
