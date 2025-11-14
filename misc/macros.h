@@ -1,12 +1,12 @@
-#ifdef LOCAL
-#define __GLIBCXX_DEBUG 1
-#endif
+// #ifdef LOCAL
+// #define __GLIBCXX_DEBUG 1
+// #endif
 
-#pragma GCC optimize("Ofast,unroll-loops")       // unroll long, simple loops
-#pragma GCC target("avx2,fma")                   // vectorizing code
-#pragma GCC target("lzcnt,popcnt,abm,bmi,bmi2")  // for fast bitset operation
+// #pragma GCC optimize("Ofast,unroll-loops")       // unroll long, simple loops
+// #pragma GCC target("avx2,fma")                   // vectorizing code
+// #pragma GCC target("lzcnt,popcnt,abm,bmi,bmi2")  // for fast bitset operation
 
-#include <bits/extc++.h>  // bits/stdc++.h + extensions
+#include <bits/extc++.h>
 
 #include <tr2/dynamic_bitset>
 
