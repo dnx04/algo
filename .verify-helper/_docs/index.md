@@ -1,0 +1,1 @@
+This documentation contains code snippets that may come in handy in ICPC programming contests. They are compatible with `C++20` standard and above. Fast and handy to use in onsite programming contests.

@@ -14,9 +14,7 @@ struct HLD {
       par[dst] = cur;
       dfs_sz(dst);
       size[cur] += size[dst];
-      if (size[dst] > size[g[cur][0]]) {
-        swap(dst, g[cur][0]);
-      }
+      if (size[dst] > size[g[cur][0]]) swap(dst, g[cur][0]);
     }
   }
 
@@ -33,10 +31,7 @@ struct HLD {
   // [u, v)
   vector<pii> ascend(int u, int v) const {
     vector<pii> res;
-    while (nxt[u] != nxt[v]) {
-      res.eb(down[u], down[nxt[u]]);
-      u = par[nxt[u]];
-    }
+    while (nxt[u] != nxt[v]) res.eb(down[u], down[nxt[u]]), u = par[nxt[u]];
     if (u != v) res.eb(down[u], down[v] + 1);
     return res;
   }
