@@ -4,6 +4,7 @@
     "editor.formatOnSave": true,
     "files.associations": {
         "random": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "iosfwd": "cpp"
     },
 }

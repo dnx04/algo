@@ -7,6 +7,7 @@ struct affine {
   affine operator()(const affine& f) const {
     return f * (*this);
   }
+  // g(f(x))
   affine operator*(const affine& g) const {
     return {a * g.a, b * g.a + g.b};
   }

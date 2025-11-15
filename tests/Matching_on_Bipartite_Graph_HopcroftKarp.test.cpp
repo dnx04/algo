@@ -1,7 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/bipartitematching"
 
 #include "../misc/macros.h"
-
 #include "../graph/HopcroftKarp.h"
 
 void solve() {
