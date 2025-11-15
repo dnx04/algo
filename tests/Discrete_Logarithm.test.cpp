@@ -7,14 +7,7 @@
 void solve() {
   ll a, b, m;
   cin >> a >> b >> m;
-  if (a == 0) {
-    if (b == 0)
-      cout << 1 << '\n';
-    else
-      cout << -1 << '\n';
-    return;
-  }
-  if (b == 1) {
+  if (m == 1 || b == 1) {  // because of the bs nonnegative and 0^0 = 1
     cout << 0 << '\n';
     return;
   }
