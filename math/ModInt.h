@@ -1,9 +1,19 @@
 template <int mod>
 struct modint {
   using Fp = modint;
+  static constexpr ull im = -1ULL / mod + 1;  // Barrett constant
   int x;
   modint() : x(0) {}
-  modint(int64_t y) : x(y >= 0 ? y % mod : (mod - (-y) % mod) % mod) {}
+  modint(ll y) {
+    y %= mod;
+    if (y < 0) y += mod;
+    x = y;
+  }
+  static inline uint32_t reduce(ull z) {
+    ull q = (__uint128_t(z) * im) >> 64;
+    ll r = z - q * mod;
+    return r < mod ? r : r - mod;
+  }
   Fp& operator+=(const Fp& p) {
     if ((x += p.x) >= mod) x -= mod;
     return *this;
@@ -13,13 +23,11 @@ struct modint {
     return *this;
   }
   Fp& operator*=(const Fp& p) {
-    x = (int) (1ll * x * p.x % mod);
+    x = reduce(uint64_t(x) * p.x);
     return *this;
   }
-  Fp& operator/=(const Fp& p) {
-    *this *= p.inv();
-    return *this;
-  }
+  Fp& operator/=(const Fp& p) { return *this *= p.inv(); }
+
   Fp operator-() const { return Fp(-x); }
   Fp operator+(const Fp& p) const { return Fp(*this) += p; }
   Fp operator-(const Fp& p) const { return Fp(*this) -= p; }
@@ -29,30 +37,19 @@ struct modint {
   bool operator!=(const Fp& p) const { return x != p.x; }
   Fp inv() const { return *this ^ (mod - 2); }
   Fp operator^(int64_t n) const {
-    Fp ret(1), mul(x);
-    while (n > 0) {
-      if (n & 1) ret *= mul;
-      mul *= mul;
+    Fp r = 1, a = *this;
+    while (n) {
+      if (n & 1) r *= a;
+      a *= a;
       n >>= 1;
     }
-    return ret;
+    return r;
   }
   friend ostream& operator<<(ostream& os, const Fp& p) { return os << p.x; }
   friend istream& operator>>(istream& is, Fp& a) {
     int64_t t;
     is >> t;
-    a = modint<mod>(t);
-    return (is);
+    a = Fp(t);
+    return is;
   }
 };
-
-ull modmul(ull x, ull y, ull m) { return __uint128_t(x) * y % m; }
-ull modpow(ull x, ull k, ull m) {
-  ull res = 1;
-  while (k) {
-    if (k & 1) res = modmul(res, x, m);
-    x = modmul(x, x, m);
-    k >>= 1;
-  }
-  return res;
-}
