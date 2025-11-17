@@ -65,10 +65,6 @@ void solve() {}
 int main() {
   cin.tie(0)->sync_with_stdio(0);
   cin.exceptions(cin.failbit);
-#ifdef LOCAL
-  freopen("input.txt", "r", stdin);
-  freopen("output.txt", "w", stdout);
-#endif
   int tc = 1;
   // cin >> tc;
   for (int i = 1; i <= tc; ++i) {
