@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/EnumTriangles.h
     title: graph/EnumTriangles.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/ModInt.h
     title: math/ModInt.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/enumerate_triangles
@@ -47,40 +47,38 @@ data:
     \    ++__db_level;\n  }\n  ~debug_block() {\n    --__db_level;\n    clog << \"\
     }\" << endl;\n  }\n};\n#else\n#define clog \\\n  if (0) cerr\n#define DB(...)\n\
     #endif\n#line 1 \"math/ModInt.h\"\ntemplate <int mod>\nstruct modint {\n  using\
-    \ Fp = modint;\n  int x;\n  modint() : x(0) {}\n  modint(int64_t y) : x(y >= 0\
-    \ ? y % mod : (mod - (-y) % mod) % mod) {}\n  Fp& operator+=(const Fp& p) {\n\
-    \    if ((x += p.x) >= mod) x -= mod;\n    return *this;\n  }\n  Fp& operator-=(const\
-    \ Fp& p) {\n    if ((x += mod - p.x) >= mod) x -= mod;\n    return *this;\n  }\n\
-    \  Fp& operator*=(const Fp& p) {\n    x = (int) (1ll * x * p.x % mod);\n    return\
-    \ *this;\n  }\n  Fp& operator/=(const Fp& p) {\n    *this *= p.inv();\n    return\
-    \ *this;\n  }\n  Fp operator-() const { return Fp(-x); }\n  Fp operator+(const\
-    \ Fp& p) const { return Fp(*this) += p; }\n  Fp operator-(const Fp& p) const {\
-    \ return Fp(*this) -= p; }\n  Fp operator*(const Fp& p) const { return Fp(*this)\
-    \ *= p; }\n  Fp operator/(const Fp& p) const { return Fp(*this) /= p; }\n  bool\
-    \ operator==(const Fp& p) const { return x == p.x; }\n  bool operator!=(const\
-    \ Fp& p) const { return x != p.x; }\n  Fp inv() const { return *this ^ (mod -\
-    \ 2); }\n  Fp operator^(int64_t n) const {\n    Fp ret(1), mul(x);\n    while\
-    \ (n > 0) {\n      if (n & 1) ret *= mul;\n      mul *= mul;\n      n >>= 1;\n\
-    \    }\n    return ret;\n  }\n  friend ostream& operator<<(ostream& os, const\
-    \ Fp& p) { return os << p.x; }\n  friend istream& operator>>(istream& is, Fp&\
-    \ a) {\n    int64_t t;\n    is >> t;\n    a = modint<mod>(t);\n    return (is);\n\
-    \  }\n};\n\null modmul(ull x, ull y, ull m) { return __uint128_t(x) * y % m; }\n\
-    ull modpow(ull x, ull k, ull m) {\n  ull res = 1;\n  while (k) {\n    if (k &\
-    \ 1) res = modmul(res, x, m);\n    x = modmul(x, x, m);\n    k >>= 1;\n  }\n \
-    \ return res;\n}\n#line 1 \"graph/EnumTriangles.h\"\ntemplate <typename F>\nvoid\
-    \ EnumTriangles(int n, const vector<pii>& ed, F f) {  // 0-indexed graph\n  vi\
-    \ deg(n);\n  for (auto [u, v] : ed) ++deg[u], ++deg[v];\n  vector<vi> g(n);  //\
-    \ directed\n  for (auto& e : ed) {\n    auto [u, v] = e;\n    if (tie(deg[u],\
-    \ u) > tie(deg[v], v)) swap(u, v);\n    g[u].eb(v);\n  }\n  vector<bool> adj(n);\n\
-    \  for (auto& [u, v] : ed) {\n    for (auto nu : g[u]) adj[nu] = true;\n    for\
-    \ (auto nv : g[v]) {\n      if (adj[nv]) f(u, v, nv);\n    }\n    for (auto nu\
-    \ : g[u]) adj[nu] = false;\n  }\n}\n#line 6 \"tests/Enumerate_Triangles.test.cpp\"\
-    \n\nusing Fp = modint<998244353>;\n\nsigned main() {\n  ios::sync_with_stdio(false);\n\
-    \  cin.tie(0);\n  int n, m;\n  cin >> n >> m;\n  Fp x[n];\n  for (int i = 0; i\
-    \ < n; ++i) cin >> x[i];\n  vector<pii> ed;\n  for (int i = 0; i < m; ++i) {\n\
-    \    int u, v;\n    cin >> u >> v;\n    ed.eb(u, v);\n  }\n  Fp res = 0;\n  EnumTriangles(n,\
-    \ ed, [&](int a, int b, int c) {\n    res += x[a] * x[b] * x[c];\n  });\n  cout\
-    \ << res;\n}\n"
+    \ Fp = modint;\n  static constexpr ull im = -1ULL / mod + 1;  // Barrett constant\n\
+    \  int x;\n  modint() : x(0) {}\n  modint(ll y) {\n    y %= mod;\n    if (y <\
+    \ 0) y += mod;\n    x = y;\n  }\n  static inline uint32_t reduce(ull z) {\n  \
+    \  ull q = (__uint128_t(z) * im) >> 64;\n    ll r = z - q * mod;\n    return r\
+    \ < mod ? r : r - mod;\n  }\n  Fp& operator+=(const Fp& p) {\n    if ((x += p.x)\
+    \ >= mod) x -= mod;\n    return *this;\n  }\n  Fp& operator-=(const Fp& p) {\n\
+    \    if ((x += mod - p.x) >= mod) x -= mod;\n    return *this;\n  }\n  Fp& operator*=(const\
+    \ Fp& p) {\n    x = reduce(uint64_t(x) * p.x);\n    return *this;\n  }\n  Fp&\
+    \ operator/=(const Fp& p) { return *this *= p.inv(); }\n\n  Fp operator-() const\
+    \ { return Fp(-x); }\n  Fp operator+(const Fp& p) const { return Fp(*this) +=\
+    \ p; }\n  Fp operator-(const Fp& p) const { return Fp(*this) -= p; }\n  Fp operator*(const\
+    \ Fp& p) const { return Fp(*this) *= p; }\n  Fp operator/(const Fp& p) const {\
+    \ return Fp(*this) /= p; }\n  bool operator==(const Fp& p) const { return x ==\
+    \ p.x; }\n  bool operator!=(const Fp& p) const { return x != p.x; }\n  Fp inv()\
+    \ const { return *this ^ (mod - 2); }\n  Fp operator^(int64_t n) const {\n   \
+    \ Fp r = 1, a = *this;\n    while (n) {\n      if (n & 1) r *= a;\n      a *=\
+    \ a;\n      n >>= 1;\n    }\n    return r;\n  }\n  friend ostream& operator<<(ostream&\
+    \ os, const Fp& p) { return os << p.x; }\n  friend istream& operator>>(istream&\
+    \ is, Fp& a) {\n    int64_t t;\n    is >> t;\n    a = Fp(t);\n    return is;\n\
+    \  }\n};\n#line 1 \"graph/EnumTriangles.h\"\ntemplate <typename F>\nvoid EnumTriangles(int\
+    \ n, const vector<pii>& ed, F f) {  // 0-indexed graph\n  vi deg(n);\n  for (auto\
+    \ [u, v] : ed) ++deg[u], ++deg[v];\n  vector<vi> g(n);  // directed\n  for (auto&\
+    \ e : ed) {\n    auto [u, v] = e;\n    if (tie(deg[u], u) > tie(deg[v], v)) swap(u,\
+    \ v);\n    g[u].eb(v);\n  }\n  vector<bool> adj(n);\n  for (auto& [u, v] : ed)\
+    \ {\n    for (auto nu : g[u]) adj[nu] = true;\n    for (auto nv : g[v]) {\n  \
+    \    if (adj[nv]) f(u, v, nv);\n    }\n    for (auto nu : g[u]) adj[nu] = false;\n\
+    \  }\n}\n#line 6 \"tests/Enumerate_Triangles.test.cpp\"\n\nusing Fp = modint<998244353>;\n\
+    \nsigned main() {\n  ios::sync_with_stdio(false);\n  cin.tie(0);\n  int n, m;\n\
+    \  cin >> n >> m;\n  Fp x[n];\n  for (int i = 0; i < n; ++i) cin >> x[i];\n  vector<pii>\
+    \ ed;\n  for (int i = 0; i < m; ++i) {\n    int u, v;\n    cin >> u >> v;\n  \
+    \  ed.eb(u, v);\n  }\n  Fp res = 0;\n  EnumTriangles(n, ed, [&](int a, int b,\
+    \ int c) {\n    res += x[a] * x[b] * x[c];\n  });\n  cout << res;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/enumerate_triangles\"\n\
     \n#include \"../misc/macros.h\"\n#include \"../math/ModInt.h\"\n#include \"../graph/EnumTriangles.h\"\
     \n\nusing Fp = modint<998244353>;\n\nsigned main() {\n  ios::sync_with_stdio(false);\n\
@@ -96,8 +94,8 @@ data:
   isVerificationFile: true
   path: tests/Enumerate_Triangles.test.cpp
   requiredBy: []
-  timestamp: '2025-11-16 01:14:31+07:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-11-17 23:51:26+07:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: tests/Enumerate_Triangles.test.cpp
 layout: document

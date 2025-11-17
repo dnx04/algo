@@ -12,10 +12,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Assignment_Problem.test.cpp
     title: tests/Assignment_Problem.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Bitwise_And_Convolution.test.cpp
     title: tests/Bitwise_And_Convolution.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Bitwise_Xor_Convolution.test.cpp
     title: tests/Bitwise_Xor_Convolution.test.cpp
   - icon: ':heavy_check_mark:'
@@ -30,7 +30,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Deque.test.cpp
     title: tests/Deque.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Deque_Operate_All_Composite.test.cpp
     title: tests/Deque_Operate_All_Composite.test.cpp
   - icon: ':heavy_check_mark:'
@@ -42,16 +42,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Dominator_Tree.test.cpp
     title: tests/Dominator_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Enumerate_Cliques.test.cpp
     title: tests/Enumerate_Cliques.test.cpp
   - icon: ':heavy_check_mark:'
     path: tests/Enumerate_Quotients.test.cpp
     title: tests/Enumerate_Quotients.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Enumerate_Triangles.test.cpp
     title: tests/Enumerate_Triangles.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Factorize.test.cpp
     title: tests/Factorize.test.cpp
   - icon: ':heavy_check_mark:'
@@ -69,16 +69,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Number_of_Subsequences.test.cpp
     title: tests/Number_of_Subsequences.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Point_Set_Range_Composite.test.cpp
     title: tests/Point_Set_Range_Composite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Primality_Test.test.cpp
     title: tests/Primality_Test.test.cpp
   - icon: ':heavy_check_mark:'
     path: tests/Sort_Points_by_Argument.test.cpp
     title: tests/Sort_Points_by_Argument.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Sqrt_Mod.test.cpp
     title: tests/Sqrt_Mod.test.cpp
   - icon: ':heavy_check_mark:'
@@ -90,9 +90,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Vertex_Add_Path_Sum.test.cpp
     title: tests/Vertex_Add_Path_Sum.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"misc/macros.h\"\n// #ifdef LOCAL\n// #define __GLIBCXX_DEBUG\
@@ -153,7 +153,7 @@ data:
   requiredBy:
   - includes.h
   timestamp: '2025-11-14 12:11:37+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - tests/Bitwise_Xor_Convolution.test.cpp
   - tests/Static_Convex_Hull.test.cpp

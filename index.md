@@ -24,10 +24,10 @@ data:
     - icon: ':warning:'
       path: ds/RMQ.h
       title: ds/RMQ.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: ds/SWAG.h
       title: ds/SWAG.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: ds/SegTree.h
       title: ds/SegTree.h
     - icon: ':warning:'
@@ -142,7 +142,7 @@ data:
     - icon: ':warning:'
       path: graph/EdmondsKarp.h
       title: graph/EdmondsKarp.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: graph/EnumTriangles.h
       title: graph/EnumTriangles.h
     - icon: ':warning:'
@@ -160,6 +160,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/HopcroftKarp.h
       title: graph/HopcroftKarp.h
+    - icon: ':warning:'
+      path: graph/LowLink.h
+      title: graph/LowLink.h
     - icon: ':heavy_check_mark:'
       path: graph/MinAssignment.h
       title: graph/MinAssignment.h
@@ -176,7 +179,7 @@ data:
       title: template.h
   - name: math
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/Affine.h
       title: math/Affine.h
     - icon: ':warning:'
@@ -194,10 +197,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/FFT.h
       title: math/FFT.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/FST.h
       title: math/FST.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/Factor.h
       title: math/Factor.h
     - icon: ':warning:'
@@ -209,16 +212,16 @@ data:
     - icon: ':warning:'
       path: math/Matrix.h
       title: math/Matrix.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/MillerRabin.h
       title: math/MillerRabin.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/ModInt.h
       title: math/ModInt.h
     - icon: ':heavy_check_mark:'
       path: math/ModLog.h
       title: math/ModLog.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/ModSQRT.h
       title: math/ModSQRT.h
     - icon: ':heavy_check_mark:'
@@ -256,7 +259,7 @@ data:
     - icon: ':warning:'
       path: misc/Knuth.h
       title: misc/Knuth.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: misc/MaximalCliques.h
       title: misc/MaximalCliques.h
     - icon: ':heavy_check_mark:'
@@ -265,7 +268,7 @@ data:
     - icon: ':warning:'
       path: misc/SOSDP.cpp
       title: misc/SOSDP.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: misc/macros.h
       title: misc/macros.h
     - icon: ':warning:'
@@ -305,10 +308,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Assignment_Problem.test.cpp
       title: tests/Assignment_Problem.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Bitwise_And_Convolution.test.cpp
       title: tests/Bitwise_And_Convolution.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Bitwise_Xor_Convolution.test.cpp
       title: tests/Bitwise_Xor_Convolution.test.cpp
     - icon: ':heavy_check_mark:'
@@ -323,7 +326,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Deque.test.cpp
       title: tests/Deque.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Deque_Operate_All_Composite.test.cpp
       title: tests/Deque_Operate_All_Composite.test.cpp
     - icon: ':heavy_check_mark:'
@@ -335,16 +338,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Dominator_Tree.test.cpp
       title: tests/Dominator_Tree.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Enumerate_Cliques.test.cpp
       title: tests/Enumerate_Cliques.test.cpp
     - icon: ':heavy_check_mark:'
       path: tests/Enumerate_Quotients.test.cpp
       title: tests/Enumerate_Quotients.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Enumerate_Triangles.test.cpp
       title: tests/Enumerate_Triangles.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Factorize.test.cpp
       title: tests/Factorize.test.cpp
     - icon: ':heavy_check_mark:'
@@ -362,16 +365,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Number_of_Subsequences.test.cpp
       title: tests/Number_of_Subsequences.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Point_Set_Range_Composite.test.cpp
       title: tests/Point_Set_Range_Composite.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Primality_Test.test.cpp
       title: tests/Primality_Test.test.cpp
     - icon: ':heavy_check_mark:'
       path: tests/Sort_Points_by_Argument.test.cpp
       title: tests/Sort_Points_by_Argument.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Sqrt_Mod.test.cpp
       title: tests/Sqrt_Mod.test.cpp
     - icon: ':heavy_check_mark:'

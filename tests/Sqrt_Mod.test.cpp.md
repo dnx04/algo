@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/ModInt.h
     title: math/ModInt.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/ModSQRT.h
     title: math/ModSQRT.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/sqrt_mod
@@ -47,31 +47,30 @@ data:
     \    ++__db_level;\n  }\n  ~debug_block() {\n    --__db_level;\n    clog << \"\
     }\" << endl;\n  }\n};\n#else\n#define clog \\\n  if (0) cerr\n#define DB(...)\n\
     #endif\n#line 1 \"math/ModInt.h\"\ntemplate <int mod>\nstruct modint {\n  using\
-    \ Fp = modint;\n  int x;\n  modint() : x(0) {}\n  modint(int64_t y) : x(y >= 0\
-    \ ? y % mod : (mod - (-y) % mod) % mod) {}\n  Fp& operator+=(const Fp& p) {\n\
-    \    if ((x += p.x) >= mod) x -= mod;\n    return *this;\n  }\n  Fp& operator-=(const\
-    \ Fp& p) {\n    if ((x += mod - p.x) >= mod) x -= mod;\n    return *this;\n  }\n\
-    \  Fp& operator*=(const Fp& p) {\n    x = (int) (1ll * x * p.x % mod);\n    return\
-    \ *this;\n  }\n  Fp& operator/=(const Fp& p) {\n    *this *= p.inv();\n    return\
-    \ *this;\n  }\n  Fp operator-() const { return Fp(-x); }\n  Fp operator+(const\
-    \ Fp& p) const { return Fp(*this) += p; }\n  Fp operator-(const Fp& p) const {\
-    \ return Fp(*this) -= p; }\n  Fp operator*(const Fp& p) const { return Fp(*this)\
-    \ *= p; }\n  Fp operator/(const Fp& p) const { return Fp(*this) /= p; }\n  bool\
-    \ operator==(const Fp& p) const { return x == p.x; }\n  bool operator!=(const\
-    \ Fp& p) const { return x != p.x; }\n  Fp inv() const { return *this ^ (mod -\
-    \ 2); }\n  Fp operator^(int64_t n) const {\n    Fp ret(1), mul(x);\n    while\
-    \ (n > 0) {\n      if (n & 1) ret *= mul;\n      mul *= mul;\n      n >>= 1;\n\
-    \    }\n    return ret;\n  }\n  friend ostream& operator<<(ostream& os, const\
-    \ Fp& p) { return os << p.x; }\n  friend istream& operator>>(istream& is, Fp&\
-    \ a) {\n    int64_t t;\n    is >> t;\n    a = modint<mod>(t);\n    return (is);\n\
-    \  }\n};\n\null modmul(ull x, ull y, ull m) { return __uint128_t(x) * y % m; }\n\
-    ull modpow(ull x, ull k, ull m) {\n  ull res = 1;\n  while (k) {\n    if (k &\
-    \ 1) res = modmul(res, x, m);\n    x = modmul(x, x, m);\n    k >>= 1;\n  }\n \
-    \ return res;\n}\n#line 1 \"math/ModSQRT.h\"\nll modsqrt(ll a, ll p) {\n  a %=\
-    \ p;\n  if (a < 0) a += p;\n  if (a == 0) return 0;\n\n  if (modpow(a, (p - 1)\
-    \ / 2, p) != 1) return -1;\n  if (p % 4 == 3) return modpow(a, (p + 1) / 4, p);\n\
-    \  // a^(n+3)/8 or 2^(n+3)/8 * 2^(n-1)/4 works if p % 8 == 5\n  ll s = p - 1,\
-    \ n = 2;\n  int r = 0, m;\n  while (s % 2 == 0) ++r, s /= 2;\n  /// find a non-square\
+    \ Fp = modint;\n  static constexpr ull im = -1ULL / mod + 1;  // Barrett constant\n\
+    \  int x;\n  modint() : x(0) {}\n  modint(ll y) {\n    y %= mod;\n    if (y <\
+    \ 0) y += mod;\n    x = y;\n  }\n  static inline uint32_t reduce(ull z) {\n  \
+    \  ull q = (__uint128_t(z) * im) >> 64;\n    ll r = z - q * mod;\n    return r\
+    \ < mod ? r : r - mod;\n  }\n  Fp& operator+=(const Fp& p) {\n    if ((x += p.x)\
+    \ >= mod) x -= mod;\n    return *this;\n  }\n  Fp& operator-=(const Fp& p) {\n\
+    \    if ((x += mod - p.x) >= mod) x -= mod;\n    return *this;\n  }\n  Fp& operator*=(const\
+    \ Fp& p) {\n    x = reduce(uint64_t(x) * p.x);\n    return *this;\n  }\n  Fp&\
+    \ operator/=(const Fp& p) { return *this *= p.inv(); }\n\n  Fp operator-() const\
+    \ { return Fp(-x); }\n  Fp operator+(const Fp& p) const { return Fp(*this) +=\
+    \ p; }\n  Fp operator-(const Fp& p) const { return Fp(*this) -= p; }\n  Fp operator*(const\
+    \ Fp& p) const { return Fp(*this) *= p; }\n  Fp operator/(const Fp& p) const {\
+    \ return Fp(*this) /= p; }\n  bool operator==(const Fp& p) const { return x ==\
+    \ p.x; }\n  bool operator!=(const Fp& p) const { return x != p.x; }\n  Fp inv()\
+    \ const { return *this ^ (mod - 2); }\n  Fp operator^(int64_t n) const {\n   \
+    \ Fp r = 1, a = *this;\n    while (n) {\n      if (n & 1) r *= a;\n      a *=\
+    \ a;\n      n >>= 1;\n    }\n    return r;\n  }\n  friend ostream& operator<<(ostream&\
+    \ os, const Fp& p) { return os << p.x; }\n  friend istream& operator>>(istream&\
+    \ is, Fp& a) {\n    int64_t t;\n    is >> t;\n    a = Fp(t);\n    return is;\n\
+    \  }\n};\n#line 1 \"math/ModSQRT.h\"\nll modsqrt(ll a, ll p) {\n  a %= p;\n  if\
+    \ (a < 0) a += p;\n  if (a == 0) return 0;\n\n  if (modpow(a, (p - 1) / 2, p)\
+    \ != 1) return -1;\n  if (p % 4 == 3) return modpow(a, (p + 1) / 4, p);\n  //\
+    \ a^(n+3)/8 or 2^(n+3)/8 * 2^(n-1)/4 works if p % 8 == 5\n  ll s = p - 1, n =\
+    \ 2;\n  int r = 0, m;\n  while (s % 2 == 0) ++r, s /= 2;\n  /// find a non-square\
     \ mod p\n  while (modpow(n, (p - 1) / 2, p) != p - 1) ++n;\n  ll x = modpow(a,\
     \ (s + 1) / 2, p);\n  ll b = modpow(a, s, p), g = modpow(n, s, p);\n  for (;;\
     \ r = m) {\n    ll t = b;\n    for (m = 0; m < r && t != 1; ++m) t = t * t % p;\n\
@@ -94,8 +93,8 @@ data:
   isVerificationFile: true
   path: tests/Sqrt_Mod.test.cpp
   requiredBy: []
-  timestamp: '2025-11-15 00:07:38+07:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-11-17 23:51:26+07:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: tests/Sqrt_Mod.test.cpp
 layout: document

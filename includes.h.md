@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/ModInt.h
     title: math/ModInt.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
@@ -40,27 +40,26 @@ data:
     \    ++__db_level;\n  }\n  ~debug_block() {\n    --__db_level;\n    clog << \"\
     }\" << endl;\n  }\n};\n#else\n#define clog \\\n  if (0) cerr\n#define DB(...)\n\
     #endif\n#line 1 \"math/ModInt.h\"\ntemplate <int mod>\nstruct modint {\n  using\
-    \ Fp = modint;\n  int x;\n  modint() : x(0) {}\n  modint(int64_t y) : x(y >= 0\
-    \ ? y % mod : (mod - (-y) % mod) % mod) {}\n  Fp& operator+=(const Fp& p) {\n\
-    \    if ((x += p.x) >= mod) x -= mod;\n    return *this;\n  }\n  Fp& operator-=(const\
-    \ Fp& p) {\n    if ((x += mod - p.x) >= mod) x -= mod;\n    return *this;\n  }\n\
-    \  Fp& operator*=(const Fp& p) {\n    x = (int) (1ll * x * p.x % mod);\n    return\
-    \ *this;\n  }\n  Fp& operator/=(const Fp& p) {\n    *this *= p.inv();\n    return\
-    \ *this;\n  }\n  Fp operator-() const { return Fp(-x); }\n  Fp operator+(const\
-    \ Fp& p) const { return Fp(*this) += p; }\n  Fp operator-(const Fp& p) const {\
-    \ return Fp(*this) -= p; }\n  Fp operator*(const Fp& p) const { return Fp(*this)\
-    \ *= p; }\n  Fp operator/(const Fp& p) const { return Fp(*this) /= p; }\n  bool\
-    \ operator==(const Fp& p) const { return x == p.x; }\n  bool operator!=(const\
-    \ Fp& p) const { return x != p.x; }\n  Fp inv() const { return *this ^ (mod -\
-    \ 2); }\n  Fp operator^(int64_t n) const {\n    Fp ret(1), mul(x);\n    while\
-    \ (n > 0) {\n      if (n & 1) ret *= mul;\n      mul *= mul;\n      n >>= 1;\n\
-    \    }\n    return ret;\n  }\n  friend ostream& operator<<(ostream& os, const\
-    \ Fp& p) { return os << p.x; }\n  friend istream& operator>>(istream& is, Fp&\
-    \ a) {\n    int64_t t;\n    is >> t;\n    a = modint<mod>(t);\n    return (is);\n\
-    \  }\n};\n\null modmul(ull x, ull y, ull m) { return __uint128_t(x) * y % m; }\n\
-    ull modpow(ull x, ull k, ull m) {\n  ull res = 1;\n  while (k) {\n    if (k &\
-    \ 1) res = modmul(res, x, m);\n    x = modmul(x, x, m);\n    k >>= 1;\n  }\n \
-    \ return res;\n}\n#line 3 \"includes.h\"\n"
+    \ Fp = modint;\n  static constexpr ull im = -1ULL / mod + 1;  // Barrett constant\n\
+    \  int x;\n  modint() : x(0) {}\n  modint(ll y) {\n    y %= mod;\n    if (y <\
+    \ 0) y += mod;\n    x = y;\n  }\n  static inline uint32_t reduce(ull z) {\n  \
+    \  ull q = (__uint128_t(z) * im) >> 64;\n    ll r = z - q * mod;\n    return r\
+    \ < mod ? r : r - mod;\n  }\n  Fp& operator+=(const Fp& p) {\n    if ((x += p.x)\
+    \ >= mod) x -= mod;\n    return *this;\n  }\n  Fp& operator-=(const Fp& p) {\n\
+    \    if ((x += mod - p.x) >= mod) x -= mod;\n    return *this;\n  }\n  Fp& operator*=(const\
+    \ Fp& p) {\n    x = reduce(uint64_t(x) * p.x);\n    return *this;\n  }\n  Fp&\
+    \ operator/=(const Fp& p) { return *this *= p.inv(); }\n\n  Fp operator-() const\
+    \ { return Fp(-x); }\n  Fp operator+(const Fp& p) const { return Fp(*this) +=\
+    \ p; }\n  Fp operator-(const Fp& p) const { return Fp(*this) -= p; }\n  Fp operator*(const\
+    \ Fp& p) const { return Fp(*this) *= p; }\n  Fp operator/(const Fp& p) const {\
+    \ return Fp(*this) /= p; }\n  bool operator==(const Fp& p) const { return x ==\
+    \ p.x; }\n  bool operator!=(const Fp& p) const { return x != p.x; }\n  Fp inv()\
+    \ const { return *this ^ (mod - 2); }\n  Fp operator^(int64_t n) const {\n   \
+    \ Fp r = 1, a = *this;\n    while (n) {\n      if (n & 1) r *= a;\n      a *=\
+    \ a;\n      n >>= 1;\n    }\n    return r;\n  }\n  friend ostream& operator<<(ostream&\
+    \ os, const Fp& p) { return os << p.x; }\n  friend istream& operator>>(istream&\
+    \ is, Fp& a) {\n    int64_t t;\n    is >> t;\n    a = Fp(t);\n    return is;\n\
+    \  }\n};\n#line 3 \"includes.h\"\n"
   code: '#include "./misc/macros.h"
 
     #include "./math/ModInt.h"'
@@ -70,7 +69,7 @@ data:
   isVerificationFile: false
   path: includes.h
   requiredBy: []
-  timestamp: '2025-11-14 12:11:37+07:00'
+  timestamp: '2025-11-17 23:51:26+07:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: includes.h

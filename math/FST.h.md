@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Bitwise_And_Convolution.test.cpp
     title: tests/Bitwise_And_Convolution.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Bitwise_Xor_Convolution.test.cpp
     title: tests/Bitwise_Xor_Convolution.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"math/FST.h\"\ntemplate <typename T>\nvoid FST(vector<T>&\
@@ -41,7 +41,7 @@ data:
   path: math/FST.h
   requiredBy: []
   timestamp: '2025-11-14 00:13:37+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - tests/Bitwise_Xor_Convolution.test.cpp
   - tests/Bitwise_And_Convolution.test.cpp

@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: ds/SegTree.h
     title: ds/SegTree.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/Affine.h
     title: math/Affine.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/ModInt.h
     title: math/ModInt.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/point_set_range_composite
@@ -56,26 +56,25 @@ data:
     \ affine& f) const {\n    return f * (*this);\n  }\n  // g(f(x))\n  affine operator*(const\
     \ affine& g) const {\n    return {a * g.a, b * g.a + g.b};\n  }\n};\n#line 1 \"\
     math/ModInt.h\"\ntemplate <int mod>\nstruct modint {\n  using Fp = modint;\n \
-    \ int x;\n  modint() : x(0) {}\n  modint(int64_t y) : x(y >= 0 ? y % mod : (mod\
-    \ - (-y) % mod) % mod) {}\n  Fp& operator+=(const Fp& p) {\n    if ((x += p.x)\
-    \ >= mod) x -= mod;\n    return *this;\n  }\n  Fp& operator-=(const Fp& p) {\n\
-    \    if ((x += mod - p.x) >= mod) x -= mod;\n    return *this;\n  }\n  Fp& operator*=(const\
-    \ Fp& p) {\n    x = (int) (1ll * x * p.x % mod);\n    return *this;\n  }\n  Fp&\
-    \ operator/=(const Fp& p) {\n    *this *= p.inv();\n    return *this;\n  }\n \
-    \ Fp operator-() const { return Fp(-x); }\n  Fp operator+(const Fp& p) const {\
-    \ return Fp(*this) += p; }\n  Fp operator-(const Fp& p) const { return Fp(*this)\
-    \ -= p; }\n  Fp operator*(const Fp& p) const { return Fp(*this) *= p; }\n  Fp\
-    \ operator/(const Fp& p) const { return Fp(*this) /= p; }\n  bool operator==(const\
-    \ Fp& p) const { return x == p.x; }\n  bool operator!=(const Fp& p) const { return\
-    \ x != p.x; }\n  Fp inv() const { return *this ^ (mod - 2); }\n  Fp operator^(int64_t\
-    \ n) const {\n    Fp ret(1), mul(x);\n    while (n > 0) {\n      if (n & 1) ret\
-    \ *= mul;\n      mul *= mul;\n      n >>= 1;\n    }\n    return ret;\n  }\n  friend\
-    \ ostream& operator<<(ostream& os, const Fp& p) { return os << p.x; }\n  friend\
-    \ istream& operator>>(istream& is, Fp& a) {\n    int64_t t;\n    is >> t;\n  \
-    \  a = modint<mod>(t);\n    return (is);\n  }\n};\n\null modmul(ull x, ull y,\
-    \ ull m) { return __uint128_t(x) * y % m; }\null modpow(ull x, ull k, ull m) {\n\
-    \  ull res = 1;\n  while (k) {\n    if (k & 1) res = modmul(res, x, m);\n    x\
-    \ = modmul(x, x, m);\n    k >>= 1;\n  }\n  return res;\n}\n#line 1 \"ds/SegTree.h\"\
+    \ static constexpr ull im = -1ULL / mod + 1;  // Barrett constant\n  int x;\n\
+    \  modint() : x(0) {}\n  modint(ll y) {\n    y %= mod;\n    if (y < 0) y += mod;\n\
+    \    x = y;\n  }\n  static inline uint32_t reduce(ull z) {\n    ull q = (__uint128_t(z)\
+    \ * im) >> 64;\n    ll r = z - q * mod;\n    return r < mod ? r : r - mod;\n \
+    \ }\n  Fp& operator+=(const Fp& p) {\n    if ((x += p.x) >= mod) x -= mod;\n \
+    \   return *this;\n  }\n  Fp& operator-=(const Fp& p) {\n    if ((x += mod - p.x)\
+    \ >= mod) x -= mod;\n    return *this;\n  }\n  Fp& operator*=(const Fp& p) {\n\
+    \    x = reduce(uint64_t(x) * p.x);\n    return *this;\n  }\n  Fp& operator/=(const\
+    \ Fp& p) { return *this *= p.inv(); }\n\n  Fp operator-() const { return Fp(-x);\
+    \ }\n  Fp operator+(const Fp& p) const { return Fp(*this) += p; }\n  Fp operator-(const\
+    \ Fp& p) const { return Fp(*this) -= p; }\n  Fp operator*(const Fp& p) const {\
+    \ return Fp(*this) *= p; }\n  Fp operator/(const Fp& p) const { return Fp(*this)\
+    \ /= p; }\n  bool operator==(const Fp& p) const { return x == p.x; }\n  bool operator!=(const\
+    \ Fp& p) const { return x != p.x; }\n  Fp inv() const { return *this ^ (mod -\
+    \ 2); }\n  Fp operator^(int64_t n) const {\n    Fp r = 1, a = *this;\n    while\
+    \ (n) {\n      if (n & 1) r *= a;\n      a *= a;\n      n >>= 1;\n    }\n    return\
+    \ r;\n  }\n  friend ostream& operator<<(ostream& os, const Fp& p) { return os\
+    \ << p.x; }\n  friend istream& operator>>(istream& is, Fp& a) {\n    int64_t t;\n\
+    \    is >> t;\n    a = Fp(t);\n    return is;\n  }\n};\n#line 1 \"ds/SegTree.h\"\
     \ntemplate <typename T, typename F>\nstruct SegTree {  // 1-indexed\n  int n;\n\
     \  vector<T> seg;\n  const F f;\n  const T I;\n  SegTree(int n, F f, const T&\
     \ I) : n(n), seg(2 * n + 1), f(f), I(I) {}\n  void set(int k, T x) { seg[k + n]\
@@ -116,8 +115,8 @@ data:
   isVerificationFile: true
   path: tests/Point_Set_Range_Composite.test.cpp
   requiredBy: []
-  timestamp: '2025-11-15 16:38:53+07:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-11-17 23:51:26+07:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: tests/Point_Set_Range_Composite.test.cpp
 layout: document

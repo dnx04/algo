@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Point_Set_Range_Composite.test.cpp
     title: tests/Point_Set_Range_Composite.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"ds/SegTree.h\"\ntemplate <typename T, typename F>\nstruct\
@@ -34,7 +34,7 @@ data:
   path: ds/SegTree.h
   requiredBy: []
   timestamp: '2025-11-15 15:31:54+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - tests/Point_Set_Range_Composite.test.cpp
 documentation_of: ds/SegTree.h

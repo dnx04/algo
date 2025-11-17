@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/Point.h
     title: geometry/Point.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
@@ -66,15 +66,15 @@ data:
     \  }\n  friend ostream& operator<<(ostream& os, P p) {\n    return os << \"(\"\
     \ << p.x << \",\" << p.y << \")\";\n  }\n};\n#line 2 \"geometry/ConvexHull.h\"\
     \n\ntypedef Point<ll> P;\nvector<P> convexHull(vector<P> pts) {\n  if (sz(pts)\
-    \ <= 1) return pts;\n  sort(all(pts));\n  vector<P> h(sz(pts) + 1);\n  int s =\
-    \ 0, t = 0;\n  for (int it = 2; it--; s = --t, reverse(all(pts)))\n    for (P\
-    \ p : pts) {\n      while (t >= s + 2 && h[t - 2].cross(h[t - 1], p) <= 0) t--;\n\
-    \      h[t++] = p;\n    }\n  return {h.begin(), h.begin() + t - (t == 2 && h[0]\
-    \ == h[1])};\n}\n#line 6 \"tests/Static_Convex_Hull.test.cpp\"\n\nvoid solve()\
-    \ {\n  int n;\n  cin >> n;\n  vector<Point<ll>> pts(n);\n  for (int i = 0; i <\
-    \ n; ++i) cin >> pts[i].x >> pts[i].y;\n  auto hull = convexHull(pts);\n  cout\
-    \ << sz(hull) << '\\n';\n  for (auto p : hull) cout << p.x << ' ' << p.y << '\\\
-    n';\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
+    \ <= 1) return pts;\n  sort(all(pts));\n  vector<P> h(2 * sz(pts) + 2);\n  int\
+    \ s = 0, t = 0;\n  for (int it = 2; it--; s = --t, reverse(all(pts)))\n    for\
+    \ (P p : pts) {\n      while (t >= s + 2 && h[t - 2].cross(h[t - 1], p) <= 0)\
+    \ t--;\n      h[t++] = p;\n    }\n  return {h.begin(), h.begin() + t - (t == 2\
+    \ && h[0] == h[1])};\n}\n#line 6 \"tests/Static_Convex_Hull.test.cpp\"\n\nvoid\
+    \ solve() {\n  int n;\n  cin >> n;\n  vector<Point<ll>> pts(n);\n  for (int i\
+    \ = 0; i < n; ++i) cin >> pts[i].x >> pts[i].y;\n  auto hull = convexHull(pts);\n\
+    \  cout << sz(hull) << '\\n';\n  for (auto p : hull) cout << p.x << ' ' << p.y\
+    \ << '\\n';\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
     \  int tc = 1;\n  cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n\
     \  }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_convex_hull\"\n\n\
@@ -92,7 +92,7 @@ data:
   isVerificationFile: true
   path: tests/Static_Convex_Hull.test.cpp
   requiredBy: []
-  timestamp: '2025-11-14 12:11:37+07:00'
+  timestamp: '2025-11-17 23:51:26+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Static_Convex_Hull.test.cpp

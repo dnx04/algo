@@ -33,14 +33,14 @@ data:
     \ * cos(a) - y * sin(a), x * sin(a) + y * cos(a));\n  }\n  friend ostream& operator<<(ostream&\
     \ os, P p) {\n    return os << \"(\" << p.x << \",\" << p.y << \")\";\n  }\n};\n\
     #line 2 \"geometry/ConvexHull.h\"\n\ntypedef Point<ll> P;\nvector<P> convexHull(vector<P>\
-    \ pts) {\n  if (sz(pts) <= 1) return pts;\n  sort(all(pts));\n  vector<P> h(sz(pts)\
-    \ + 1);\n  int s = 0, t = 0;\n  for (int it = 2; it--; s = --t, reverse(all(pts)))\n\
+    \ pts) {\n  if (sz(pts) <= 1) return pts;\n  sort(all(pts));\n  vector<P> h(2\
+    \ * sz(pts) + 2);\n  int s = 0, t = 0;\n  for (int it = 2; it--; s = --t, reverse(all(pts)))\n\
     \    for (P p : pts) {\n      while (t >= s + 2 && h[t - 2].cross(h[t - 1], p)\
     \ <= 0) t--;\n      h[t++] = p;\n    }\n  return {h.begin(), h.begin() + t - (t\
     \ == 2 && h[0] == h[1])};\n}\n"
   code: "#include \"Point.h\"\n\ntypedef Point<ll> P;\nvector<P> convexHull(vector<P>\
-    \ pts) {\n  if (sz(pts) <= 1) return pts;\n  sort(all(pts));\n  vector<P> h(sz(pts)\
-    \ + 1);\n  int s = 0, t = 0;\n  for (int it = 2; it--; s = --t, reverse(all(pts)))\n\
+    \ pts) {\n  if (sz(pts) <= 1) return pts;\n  sort(all(pts));\n  vector<P> h(2\
+    \ * sz(pts) + 2);\n  int s = 0, t = 0;\n  for (int it = 2; it--; s = --t, reverse(all(pts)))\n\
     \    for (P p : pts) {\n      while (t >= s + 2 && h[t - 2].cross(h[t - 1], p)\
     \ <= 0) t--;\n      h[t++] = p;\n    }\n  return {h.begin(), h.begin() + t - (t\
     \ == 2 && h[0] == h[1])};\n}"
@@ -49,7 +49,7 @@ data:
   isVerificationFile: false
   path: geometry/ConvexHull.h
   requiredBy: []
-  timestamp: '2025-11-14 00:13:37+07:00'
+  timestamp: '2025-11-17 23:51:26+07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - tests/Static_Convex_Hull.test.cpp

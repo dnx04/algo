@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Sqrt_Mod.test.cpp
     title: tests/Sqrt_Mod.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"math/ModSQRT.h\"\nll modsqrt(ll a, ll p) {\n  a %= p;\n\
@@ -36,7 +36,7 @@ data:
   path: math/ModSQRT.h
   requiredBy: []
   timestamp: '2025-11-14 00:13:37+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - tests/Sqrt_Mod.test.cpp
 documentation_of: math/ModSQRT.h
