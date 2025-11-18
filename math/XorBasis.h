@@ -1,34 +1,34 @@
 struct XorBasis {
-  vector<ll> b;
+  vector<i64> b;
   XorBasis() {}
   void add(int x) {
     x = this->sift(x);
     if (x != 0) this->b.pb(x);
   }
-  ll sift(ll x) const {
-    for (ll b : this->b) {
+  i64 sift(i64 x) const {
+    for (i64 b : this->b) {
       x = min(x, x ^ b);
       if (x == 0) return 0;
     }
     return x;
   }
-  bool is_indep(ll x) const {
+  bool is_indep(i64 x) const {
     return this->sift(x) != 0;
   }
-  vector<ll> basis() const {
+  vector<i64> basis() const {
     return this->b;
   }
 };
 
-vector<ll> XorInter(const vector<ll>& u, const vector<ll>& v) {
+vector<i64> XorInter(const vector<i64>& u, const vector<i64>& v) {
   XorBasis X;
   for (auto x : u) X.add(x);
-  vector<pair<ll, ll>> basis;
+  vector<pair<i64, i64>> basis;
   XorBasis inter;
   for (auto x : v) {
     auto y = X.sift(x), pu = y ^ x, sy = y;
     for (auto v : basis) {
-      ll tmp = sy ^ v.second;
+      i64 tmp = sy ^ v.second;
       if (tmp < sy) {
         sy = tmp;
         pu ^= v.first;

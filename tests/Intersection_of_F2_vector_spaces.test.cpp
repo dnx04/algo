@@ -9,7 +9,7 @@ signed main() {
   int tc;
   cin >> tc;
   while (tc--) {
-    vector<vector<ll>> basis(2);
+    vector<vector<i64>> basis(2);
     for (int i : {0, 1}) {
       int s;
       cin >> s;

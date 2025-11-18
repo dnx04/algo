@@ -1,5 +1,5 @@
 struct Maxclique {
-  double limit = 0.025, pk = 0;
+  ld limit = 0.025, pk = 0;
   struct Vertex {
     int i, d = 0;
   };

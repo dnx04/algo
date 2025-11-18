@@ -4,7 +4,7 @@
 #include "../math/DivModSum.h"
 
 void solve() {
-  ll n, m, a, b;
+  i64 n, m, a, b;
   cin >> n >> m >> a >> b;
   cout << divsum(b, a, m, n) << '\n';
 }

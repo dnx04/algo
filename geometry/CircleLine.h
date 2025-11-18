@@ -1,7 +1,7 @@
 #include "Point.h"
 
 template <class P>
-vector<P> circleLine(P c, double r, P a, P b) {
+vector<P> circleLine(P c, ld r, P a, P b) {
   P ab = b - a;
   ld s = a.cross(b, c);
 

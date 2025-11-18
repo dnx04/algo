@@ -1,4 +1,4 @@
-using C = complex<double>;
+using C = complex<ld>;
 
 vector<C> PolyRoots(vector<C> p) {
   int n = p.size() - 1;

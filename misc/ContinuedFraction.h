@@ -1,4 +1,4 @@
-typedef double d;  // for N ~ 1e7; long double for N ~ 1e9
+typedef ld d;  // for N ~ 1e7; long ld for N ~ 1e9
 pair<ll, ll> approximate(d x, ll N) {
   ll LP = 0, LQ = 1, P = 1, Q = 0, inf = LLONG_MAX;
   d y = x;

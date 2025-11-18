@@ -1,7 +1,7 @@
 #include "Point.h"
 
-typedef Point<double> P;
-double ccRadius(const P& A, const P& B, const P& C) {
+typedef Point<ld> P;
+ld ccRadius(const P& A, const P& B, const P& C) {
   return (B - A).dist() * (C - B).dist() * (A - C).dist() /
          abs((B - A).cross(C - A)) / 2;
 }

@@ -7,7 +7,7 @@
 void solve() {
   int n;
   cin >> n;
-  vector<Point<ll>> pts(n);
+  vector<Point<i64>> pts(n);
   for (int i = 0; i < n; ++i) cin >> pts[i].x >> pts[i].y;
   auto hull = convexHull(pts);
   cout << sz(hull) << '\n';

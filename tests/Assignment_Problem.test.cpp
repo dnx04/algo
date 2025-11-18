@@ -6,7 +6,7 @@
 void solve() {
   int n;
   cin >> n;
-  vector<vector<ll>> W(n, vector<ll>(n));
+  vector<vector<i64>> W(n, vector<i64>(n));
   for (int i = 0; i < n; ++i) {
     for (int j = 0; j < n; ++j) {
       cin >> W[i][j];
@@ -16,6 +16,7 @@ void solve() {
   cout << ret << '\n';
   for (int i = 0; i < n; ++i) cout << L[i] << ' ';
 }
+
 
 int main() {
   cin.tie(0)->sync_with_stdio(0);

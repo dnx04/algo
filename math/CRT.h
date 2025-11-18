@@ -13,7 +13,7 @@ struct CRT {
   T prd;
   T mul(T a, T b, T p) {
     a %= p, b %= p;
-    T q = (T)((long double)a * b / p);
+    T q = (T) ((long ld) a * b / p);
     T r = a * b - q * p;
     while (r < 0) r += p;
     while (r >= p) r -= p;

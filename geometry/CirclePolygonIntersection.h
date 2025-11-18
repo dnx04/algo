@@ -1,8 +1,8 @@
 #include "Point.h"
 
-typedef Point<double> P;
+typedef Point<ld> P;
 #define arg(p, q) atan2(p.cross(q), p.dot(q))
-double circlePoly(P c, double r, vector<P> ps) {
+ld circlePoly(P c, ld r, vector<P> ps) {
   auto tri = [&](P p, P q) {
     auto r2 = r * r / 2;
     P d = q - p;

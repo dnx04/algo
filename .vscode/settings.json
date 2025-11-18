@@ -5,6 +5,8 @@
     "files.associations": {
         "random": "cpp",
         "iostream": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "dynamic_bitset": "cpp",
+        "valarray": "cpp"
     },
 }

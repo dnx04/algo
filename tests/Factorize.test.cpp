@@ -11,7 +11,7 @@ int main() {
   int q;
   cin >> q;
   while (q--) {
-    ll n;
+    i64 n;
     cin >> n;
     auto f = factor(n);
     cout << sz(f) << ' ';

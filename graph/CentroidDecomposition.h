@@ -1,9 +1,9 @@
 template <typename G>
 struct CentroidDecomposition {
   const G& g;
-  vector<int> sub;
+  vi sub;
   vector<bool> v;
-  vector<vector<int>> tree;
+  vector<vi> tree;
   int root;
 
   CentroidDecomposition(const G& g, int isbuild = true) : g(g) {

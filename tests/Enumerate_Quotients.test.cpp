@@ -4,7 +4,7 @@
 #include "../math/EnumQuotients.h"
 
 void solve() {
-  ll n;
+  i64 n;
   cin >> n;
   auto q = EnumerateQuotients(n);
   cout << sz(q) << '\n';

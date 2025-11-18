@@ -5,7 +5,7 @@
 #include "../math/MillerRabin.h"
 
 void solve() {
-  ull x;
+  u64 x;
   cin >> x;
   cout << (isPrime(x) ? "Yes\n" : "No\n");
 }

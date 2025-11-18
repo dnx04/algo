@@ -1,11 +1,11 @@
-pair<ll, vector<int>> MinAssignment(const vector<vector<ll>>& W) {
+pair<i64, vector<int>> MinAssignment(const vector<vector<i64>>& W) {
   int n = W.size(), m = W[0].size();  // assert(n <= m);
-  vector<ll> v(m), dist(m);           // v: potential
+  vector<i64> v(m), dist(m);           // v: potential
   vector<int> L(n, -1), R(m, -1);     // matching pairs
   vector<int> idx(m), prev(m);
   iota(idx.begin(), idx.end(), 0);
 
-  ll w, h;
+  i64 w, h;
   int j, l, s, t;
   auto reduce = [&]() {
     if (s == t) {
@@ -47,7 +47,7 @@ pair<ll, vector<int>> MinAssignment(const vector<vector<ll>>& W) {
     for (int k = 0; k < l; ++k) v[idx[k]] += dist[idx[k]] - w;
     for (int k = -1; k != i;) R[j] = k = prev[j], swap(j, L[k]);
   }
-  ll ret = 0;
+  i64 ret = 0;
   for (int i = 0; i < n; ++i) ret += W[i][L[i]];  // (i, L[i]) is a solution
   return {ret, L};
 }
