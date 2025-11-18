@@ -17,9 +17,9 @@ struct Point {
   T cross(P p) const { return x * p.y - y * p.x; }
   T cross(P a, P b) const { return (a - *this).cross(b - *this); }
   T dist2() const { return x * x + y * y; }
-  long ld dist() const { return sqrt((long ld) dist2()); }
+  ld dist() const { return sqrt((ld) dist2()); }
   // angle to x-axis in interval [-pi, pi]
-  long ld angle() const { return atan2l(y, x); }
+  ld angle() const { return atan2l(y, x); }
   P unit() const { return *this / dist(); }  // makes dist()=1
   P perp() const { return P(-y, x); }        // rotates +90 degrees
   P normal() const { return perp().unit(); }

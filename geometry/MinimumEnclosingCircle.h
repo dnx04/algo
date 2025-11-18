@@ -1,9 +1,9 @@
 #include "Circumcircle.h"
 
-pair<P, long ld> mec(vector<P> ps) {
+pair<P, ld> mec(vector<P> ps) {
   shuffle(all(ps), mt19937(time(0)));
   P o = ps[0];
-  long ld r = 0, EPS = 1 + 1e-12;
+  ld r = 0, EPS = 1 + 1e-12;
   for (int i = 0; i < sz(ps); ++i) {
     if ((o - ps[i]).dist() > r * EPS) {
       o = ps[i], r = 0;

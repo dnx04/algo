@@ -1,6 +1,6 @@
 #include "FFT.h"
 
-typedef vector<ll> vl;
+typedef vector<i64> vl;
 template <int M>
 vl convMod(const vl& a, const vl& b) {
   if (a.empty() || b.empty()) return {};
