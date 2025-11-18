@@ -1,5 +1,5 @@
 /*
-  Persistent Segment Tree that supports Monoid operation.
+  Persistent + Dynamic Segment Tree that supports Monoid operation.
   Tested on https://cses.fi/problemset/task/1737/
 
   Usage:
@@ -11,44 +11,37 @@
   roots.push_back(pst.build(0, n - 1, a));
 */
 
-
 template <class T, class F>
 struct PST {
-  T v;
+  struct Node {
+    T v;
+    Node *l = nullptr, *r = nullptr;
+    Node(T v) : v(v) {}
+  };
   int n;
   const F f;
   const T I;
-  PST *l = nullptr, *r = nullptr;
   PST(int n, F f, const T& I) : n(n), f(f), I(I) {}
-  PST* build(int L, int R, const vector<T>& a) {
-    PST* u = new PST(n, f, I);
-    if (L == R) {
-      u->v = a[L];
-    } else {
-      int M = (L + R) >> 1;
-      u->l = build(L, M, a);
-      u->r = build(M + 1, R, a);
-      u->v = f(u->l->v, u->r->v);
-    }
-    return u;
-  }
+  T get_val(Node* u) const { return u ? u->v : I; }
 
-  PST* update(PST* prev, int L, int R, int pos, const T& nv) {
-    PST* u = new PST(*prev);
+  Node* update(Node* prev, int L, int R, int pos, const T& nv) {
+    Node* u = new Node(prev ? prev->v : I);
+    if (prev) u->l = prev->l, u->r = prev->r;
     if (L == R) {
       u->v = nv;
-    } else {
-      int M = (L + R) >> 1;
-      if (pos <= M)
-        u->l = update(prev->l, L, M, pos, nv);
-      else
-        u->r = update(prev->r, M + 1, R, pos, nv);
-      u->v = f(u->l->v, u->r->v);
+      return u;
     }
+    int M = (L + R) >> 1;
+    if (pos <= M) {
+      u->l = update(u->l, L, M, pos, nv);
+    } else {
+      u->r = update(u->r, M + 1, R, pos, nv);
+    }
+    u->v = f(get_val(u->l), get_val(u->r));
     return u;
   }
-
-  T query(PST* u, int L, int R, int ql, int qr) const {
+  // [ql, qr] inclusive
+  T query(Node* u, int L, int R, int ql, int qr) const {
     if (!u || qr < L || R < ql) return I;
     if (ql <= L && R <= qr) return u->v;
     int M = (L + R) >> 1;

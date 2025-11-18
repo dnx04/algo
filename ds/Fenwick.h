@@ -11,6 +11,7 @@ struct Fenwick {  // 1-indexed
     while (p) res += t[p], p -= (p & -p);
     return res;
   }
+  // [l, r)
   T sum(int l, int r) {
     if (l > r) return T(0);
     return sum(r) - sum(l - 1);
