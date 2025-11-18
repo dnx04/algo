@@ -3,14 +3,14 @@
 #include "../misc/macros.h"
 #include "../geometry/Point.h"
 
-typedef Point<i64> P;
+typedef Point<ld> P;
 
 void solve() {
   int n;
   cin >> n;
   vector<P> pts(n);
   for(int i = 0; i < n; ++i) cin >> pts[i].x >> pts[i].y;
-  sort(all(pts), [&](P a, P b) { return a.angle() < b.angle(); });
+  stable_sort(all(pts), [&](P a, P b) { return a.angle() < b.angle(); });
   for (auto p : pts)
     cout << fixed << setprecision(0) << p.x << ' ' << p.y << '\n';
 }
