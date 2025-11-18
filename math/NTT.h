@@ -12,13 +12,13 @@ vl convMod(const vl& a, const vl& b) {
   fft(L), fft(R);
   for (int i = 0; i < n; ++i) {
     int j = -i & (n - 1);
-    outl[j] = (L[i] + conj(L[j])) * R[i] / (2.0 * n);
-    outs[j] = (L[i] - conj(L[j])) * R[i] / (2.0 * n) / 1i;
+    outl[j] = (L[i] + conj(L[j])) * R[i] / ld(2.0 * n);
+    outs[j] = (L[i] - conj(L[j])) * R[i] / ld(2.0 * n) / 1i;
   }
   fft(outl), fft(outs);
   for (int i = 0; i < sz(res); ++i) {
-    ll av = ll(real(outl[i]) + .5), cv = ll(imag(outs[i]) + .5);
-    ll bv = ll(imag(outl[i]) + .5) + ll(real(outs[i]) + .5);
+    i64 av = i64(real(outl[i]) + .5), cv = i64(imag(outs[i]) + .5);
+    i64 bv = i64(imag(outl[i]) + .5) + i64(real(outs[i]) + .5);
     res[i] = ((av % M * cut + bv) % M * cut + cv) % M;
   }
   return res;
