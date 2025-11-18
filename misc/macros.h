@@ -22,6 +22,7 @@ using u64 = uint64_t;
 using i128 = __int128_t;
 using u128 = __uint128_t;
 using ld = long double;
+using pii = pair<i32, i32>;
 using vi = vector<i32>;
 
 // fast map
@@ -39,7 +40,7 @@ template <typename T>
 using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 
 // dynamic bitset
-using bs = tr2::dynamic_bitset<u128>;
+using bs = tr2::dynamic_bitset<u64>;
 
 /*  rope
     rope <int> cur = v.substr(l, r - l + 1);
