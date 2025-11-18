@@ -1,23 +1,24 @@
-// Usage: LinearRec({0, 1}, {1, 1}, k) -> k'th Fibonacci number
-template <typename T>
-T LinearRec(const vector<T>& S, const vector<T>& tr, u64 k) {
-  int n = sz(tr);
-  auto combine = [&](vector<T> a, vector<T> b) {
-    vector<T> res(n * 2 + 1);
-    for (int i = 0; i < n; ++i)
-      for (int j = 0; j < n; ++j) res[i + j] = res[i + j] + a[i] * b[j];
-    for (int i = 2 * n; i > n; --i)
-      for (int j = 0; j < n; ++j) res[i - 1 - j] = res[i - 1 - j] + res[i] * tr[j];
-    res.resize(n + 1);
-    return res;
-  };
-  vector<T> pol(n + 1), e(pol);
-  pol[0] = e[1] = 1;
-  for (++k; k; k /= 2) {
-    if (k % 2) pol = combine(pol, e);
-    e = combine(e, e);
+template <class Fp>
+vector<Fp> LinearRec(const vector<Fp>& as) {
+  const int n = as.size();
+  int d = 0, m = 0;
+  vector<Fp> cs(n + 1, 0), bs(n + 1, 0);
+  cs[0] = bs[0] = 1;
+  Fp invBef = 1;
+  for (int i = 0; i < n; ++i) {
+    ++m;
+    Fp dif = as[i];
+    for (int j = 1; j <= d; ++j) dif += cs[j] * as[i - j];
+    if (dif.x != 0) {
+      auto csDup = cs;
+      const Fp r = dif * invBef;
+      for (int j = m; j < n; ++j) cs[j] -= r * bs[j - m];
+      if (2 * d <= i) {
+        d = i + 1 - d, m = 0, bs = csDup, invBef = dif.inv();
+      }
+    }
   }
-  T res = 0;
-  for (int i = 0; i < n; ++i) res += pol[i + 1] * S[i];
-  return res;
+  cs.resize(d + 1);
+  for (auto& c : cs) c = -c;
+  return cs;
 }
