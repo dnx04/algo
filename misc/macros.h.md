@@ -21,7 +21,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Closest_Pair_of_Points.test.cpp
     title: tests/Closest_Pair_of_Points.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Convolution.test.cpp
     title: tests/Convolution.test.cpp
   - icon: ':heavy_check_mark:'
@@ -81,12 +81,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Sum_of_Floor_of_Linear.test.cpp
     title: tests/Sum_of_Floor_of_Linear.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Vertex_Add_Path_Sum.test.cpp
     title: tests/Vertex_Add_Path_Sum.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"misc/macros.h\"\n// #pragma GCC optimize(\"Ofast,unroll-loops\"\
@@ -135,7 +135,7 @@ data:
   requiredBy:
   - includes.h
   timestamp: '2025-11-18 17:12:08+07:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - tests/Bitwise_Xor_Convolution.test.cpp
   - tests/Static_Convex_Hull.test.cpp

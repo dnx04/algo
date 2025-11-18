@@ -9,10 +9,10 @@ data:
     - icon: ':warning:'
       path: ds/DSURollback.h
       title: ds/DSURollback.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: ds/Fenwick.h
       title: ds/Fenwick.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: ds/HLD.h
       title: ds/HLD.h
     - icon: ':warning:'
@@ -179,7 +179,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/EnumQuotients.h
       title: math/EnumQuotients.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/FFT.h
       title: math/FFT.h
     - icon: ':heavy_check_mark:'
@@ -209,7 +209,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/ModSQRT.h
       title: math/ModSQRT.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/NTT.h
       title: math/NTT.h
     - icon: ':warning:'
@@ -250,7 +250,7 @@ data:
     - icon: ':warning:'
       path: misc/SOSDP.cpp
       title: misc/SOSDP.cpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: misc/macros.h
       title: misc/macros.h
     - icon: ':warning:'
@@ -291,7 +291,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Closest_Pair_of_Points.test.cpp
       title: tests/Closest_Pair_of_Points.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Convolution.test.cpp
       title: tests/Convolution.test.cpp
     - icon: ':heavy_check_mark:'
@@ -351,7 +351,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Sum_of_Floor_of_Linear.test.cpp
       title: tests/Sum_of_Floor_of_Linear.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Vertex_Add_Path_Sum.test.cpp
       title: tests/Vertex_Add_Path_Sum.test.cpp
 layout: toppage

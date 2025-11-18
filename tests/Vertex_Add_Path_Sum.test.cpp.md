@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: ds/Fenwick.h
     title: ds/Fenwick.h
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: ds/HLD.h
     title: ds/HLD.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/vertex_add_path_sum
@@ -87,7 +87,7 @@ data:
     \  }\n  auto hld = HLD(g);\n  for (int i = 0; i < n; ++i) fw.add(hld.idx(i).first\
     \ + 1, a[i]);\n  while (q--) {\n    int cmd;\n    cin >> cmd;\n    if (cmd ==\
     \ 0) {\n      int p, x;\n      cin >> p >> x;\n      fw.add(hld.idx(p).first +\
-    \ 1, x);\n    } else {\n      int u, v;\n      cin >> u >> v;\n      ll res =\
+    \ 1, x);\n    } else {\n      int u, v;\n      cin >> u >> v;\n      i64 res =\
     \ 0;\n      hld.path_query(u, v, true, [&](const int& u, const int& v) {\n   \
     \     res += fw.sum(u + 1, v);\n      });\n      cout << res << '\\n';\n    }\n\
     \  }\n}\n"
@@ -100,7 +100,7 @@ data:
     \  }\n  auto hld = HLD(g);\n  for (int i = 0; i < n; ++i) fw.add(hld.idx(i).first\
     \ + 1, a[i]);\n  while (q--) {\n    int cmd;\n    cin >> cmd;\n    if (cmd ==\
     \ 0) {\n      int p, x;\n      cin >> p >> x;\n      fw.add(hld.idx(p).first +\
-    \ 1, x);\n    } else {\n      int u, v;\n      cin >> u >> v;\n      ll res =\
+    \ 1, x);\n    } else {\n      int u, v;\n      cin >> u >> v;\n      i64 res =\
     \ 0;\n      hld.path_query(u, v, true, [&](const int& u, const int& v) {\n   \
     \     res += fw.sum(u + 1, v);\n      });\n      cout << res << '\\n';\n    }\n\
     \  }\n}"
@@ -111,8 +111,8 @@ data:
   isVerificationFile: true
   path: tests/Vertex_Add_Path_Sum.test.cpp
   requiredBy: []
-  timestamp: '2025-11-18 17:42:34+07:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2025-11-18 17:56:48+07:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Vertex_Add_Path_Sum.test.cpp
 layout: document

@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/FFT.h
     title: math/FFT.h
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Convolution.test.cpp
     title: tests/Convolution.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"math/FFT.h\"\ntypedef complex<ld> C;\ntypedef vector<ld>\
@@ -40,7 +40,7 @@ data:
     \  for (int i = 0; i < sz(b); ++i) R[i] = C((int) b[i] / cut, (int) b[i] % cut);\n\
     \  fft(L), fft(R);\n  for (int i = 0; i < n; ++i) {\n    int j = -i & (n - 1);\n\
     \    outl[j] = (L[i] + conj(L[j])) * R[i] / ld(2.0 * n);\n    outs[j] = (L[i]\
-    \ - conj(L[j])) * R[i] / ld(2.0 * n) / 1i;\n  }\n  fft(outl), fft(outs);\n  for\
+    \ - conj(L[j])) * R[i] / ld(2.0 * n) / 1il;\n  }\n  fft(outl), fft(outs);\n  for\
     \ (int i = 0; i < sz(res); ++i) {\n    i64 av = i64(real(outl[i]) + .5), cv =\
     \ i64(imag(outs[i]) + .5);\n    i64 bv = i64(imag(outl[i]) + .5) + i64(real(outs[i])\
     \ + .5);\n    res[i] = ((av % M * cut + bv) % M * cut + cv) % M;\n  }\n  return\
@@ -53,7 +53,7 @@ data:
     \ ++i) R[i] = C((int) b[i] / cut, (int) b[i] % cut);\n  fft(L), fft(R);\n  for\
     \ (int i = 0; i < n; ++i) {\n    int j = -i & (n - 1);\n    outl[j] = (L[i] +\
     \ conj(L[j])) * R[i] / ld(2.0 * n);\n    outs[j] = (L[i] - conj(L[j])) * R[i]\
-    \ / ld(2.0 * n) / 1i;\n  }\n  fft(outl), fft(outs);\n  for (int i = 0; i < sz(res);\
+    \ / ld(2.0 * n) / 1il;\n  }\n  fft(outl), fft(outs);\n  for (int i = 0; i < sz(res);\
     \ ++i) {\n    i64 av = i64(real(outl[i]) + .5), cv = i64(imag(outs[i]) + .5);\n\
     \    i64 bv = i64(imag(outl[i]) + .5) + i64(real(outs[i]) + .5);\n    res[i] =\
     \ ((av % M * cut + bv) % M * cut + cv) % M;\n  }\n  return res;\n}"
@@ -62,8 +62,8 @@ data:
   isVerificationFile: false
   path: math/NTT.h
   requiredBy: []
-  timestamp: '2025-11-18 17:26:35+07:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2025-11-18 17:56:48+07:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - tests/Convolution.test.cpp
 documentation_of: math/NTT.h

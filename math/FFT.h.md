@@ -2,16 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/NTT.h
     title: math/NTT.h
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Convolution.test.cpp
     title: tests/Convolution.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"math/FFT.h\"\ntypedef complex<ld> C;\ntypedef vector<ld>\
@@ -57,7 +57,7 @@ data:
   requiredBy:
   - math/NTT.h
   timestamp: '2025-11-18 17:04:42+07:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - tests/Convolution.test.cpp
 documentation_of: math/FFT.h
