@@ -7,7 +7,7 @@ data:
   - icon: ':warning:'
     path: geometry/LineIntersection.h
     title: geometry/LineIntersection.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/Point.h
     title: geometry/Point.h
   _extendedRequiredBy: []
