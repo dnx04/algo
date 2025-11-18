@@ -12,25 +12,25 @@ data:
     \  CRT() { res = 0, prd = 1; }\n  // Add condition: res % p == r\n  void add(T\
     \ p, T r) {\n    res += mul(r - res % p + p, euclid(prd, p).first + p, p) * prd;\n\
     \    prd *= p;\n    if (res >= prd) res -= prd;\n  }\n\n private:\n  T prd;\n\
-    \  T mul(T a, T b, T p) {\n    a %= p, b %= p;\n    T q = (T)((long double)a *\
-    \ b / p);\n    T r = a * b - q * p;\n    while (r < 0) r += p;\n    while (r >=\
-    \ p) r -= p;\n    return r;\n  }\n  pair<T, T> euclid(T a, T b) {\n    if (!b)\
-    \ return make_pair(1, 0);\n    pair<T, T> r = euclid(b, a % b);\n    return make_pair(r.second,\
+    \  T mul(T a, T b, T p) {\n    a %= p, b %= p;\n    T q = (T) ((ld) a * b / p);\n\
+    \    T r = a * b - q * p;\n    while (r < 0) r += p;\n    while (r >= p) r -=\
+    \ p;\n    return r;\n  }\n  pair<T, T> euclid(T a, T b) {\n    if (!b) return\
+    \ make_pair(1, 0);\n    pair<T, T> r = euclid(b, a % b);\n    return make_pair(r.second,\
     \ r.first - a / b * r.second);\n  }\n};\n"
   code: "template <typename T>\nstruct CRT {\n  T res;\n  CRT() { res = 0, prd = 1;\
     \ }\n  // Add condition: res % p == r\n  void add(T p, T r) {\n    res += mul(r\
     \ - res % p + p, euclid(prd, p).first + p, p) * prd;\n    prd *= p;\n    if (res\
     \ >= prd) res -= prd;\n  }\n\n private:\n  T prd;\n  T mul(T a, T b, T p) {\n\
-    \    a %= p, b %= p;\n    T q = (T)((long double)a * b / p);\n    T r = a * b\
-    \ - q * p;\n    while (r < 0) r += p;\n    while (r >= p) r -= p;\n    return\
-    \ r;\n  }\n  pair<T, T> euclid(T a, T b) {\n    if (!b) return make_pair(1, 0);\n\
-    \    pair<T, T> r = euclid(b, a % b);\n    return make_pair(r.second, r.first\
-    \ - a / b * r.second);\n  }\n};"
+    \    a %= p, b %= p;\n    T q = (T) ((ld) a * b / p);\n    T r = a * b - q * p;\n\
+    \    while (r < 0) r += p;\n    while (r >= p) r -= p;\n    return r;\n  }\n \
+    \ pair<T, T> euclid(T a, T b) {\n    if (!b) return make_pair(1, 0);\n    pair<T,\
+    \ T> r = euclid(b, a % b);\n    return make_pair(r.second, r.first - a / b * r.second);\n\
+    \  }\n};"
   dependsOn: []
   isVerificationFile: false
   path: math/CRT.h
   requiredBy: []
-  timestamp: '2025-11-14 00:13:37+07:00'
+  timestamp: '2025-11-18 17:04:42+07:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: math/CRT.h

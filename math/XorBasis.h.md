@@ -11,35 +11,35 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"math/XorBasis.h\"\nstruct XorBasis {\n  vector<ll> b;\n\
+  bundledCode: "#line 1 \"math/XorBasis.h\"\nstruct XorBasis {\n  vector<i64> b;\n\
     \  XorBasis() {}\n  void add(int x) {\n    x = this->sift(x);\n    if (x != 0)\
-    \ this->b.pb(x);\n  }\n  ll sift(ll x) const {\n    for (ll b : this->b) {\n \
-    \     x = min(x, x ^ b);\n      if (x == 0) return 0;\n    }\n    return x;\n\
-    \  }\n  bool is_indep(ll x) const {\n    return this->sift(x) != 0;\n  }\n  vector<ll>\
-    \ basis() const {\n    return this->b;\n  }\n};\n\nvector<ll> XorInter(const vector<ll>&\
-    \ u, const vector<ll>& v) {\n  XorBasis X;\n  for (auto x : u) X.add(x);\n  vector<pair<ll,\
-    \ ll>> basis;\n  XorBasis inter;\n  for (auto x : v) {\n    auto y = X.sift(x),\
-    \ pu = y ^ x, sy = y;\n    for (auto v : basis) {\n      ll tmp = sy ^ v.second;\n\
+    \ this->b.pb(x);\n  }\n  i64 sift(i64 x) const {\n    for (i64 b : this->b) {\n\
+    \      x = min(x, x ^ b);\n      if (x == 0) return 0;\n    }\n    return x;\n\
+    \  }\n  bool is_indep(i64 x) const {\n    return this->sift(x) != 0;\n  }\n  vector<i64>\
+    \ basis() const {\n    return this->b;\n  }\n};\n\nvector<i64> XorInter(const\
+    \ vector<i64>& u, const vector<i64>& v) {\n  XorBasis X;\n  for (auto x : u) X.add(x);\n\
+    \  vector<pair<i64, i64>> basis;\n  XorBasis inter;\n  for (auto x : v) {\n  \
+    \  auto y = X.sift(x), pu = y ^ x, sy = y;\n    for (auto v : basis) {\n     \
+    \ i64 tmp = sy ^ v.second;\n      if (tmp < sy) {\n        sy = tmp;\n       \
+    \ pu ^= v.first;\n      }\n    }\n    if (sy != 0) {\n      basis.pb({pu, sy});\n\
+    \    } else {\n      inter.add(pu);\n    }\n  }\n  return inter.basis();\n}\n"
+  code: "struct XorBasis {\n  vector<i64> b;\n  XorBasis() {}\n  void add(int x) {\n\
+    \    x = this->sift(x);\n    if (x != 0) this->b.pb(x);\n  }\n  i64 sift(i64 x)\
+    \ const {\n    for (i64 b : this->b) {\n      x = min(x, x ^ b);\n      if (x\
+    \ == 0) return 0;\n    }\n    return x;\n  }\n  bool is_indep(i64 x) const {\n\
+    \    return this->sift(x) != 0;\n  }\n  vector<i64> basis() const {\n    return\
+    \ this->b;\n  }\n};\n\nvector<i64> XorInter(const vector<i64>& u, const vector<i64>&\
+    \ v) {\n  XorBasis X;\n  for (auto x : u) X.add(x);\n  vector<pair<i64, i64>>\
+    \ basis;\n  XorBasis inter;\n  for (auto x : v) {\n    auto y = X.sift(x), pu\
+    \ = y ^ x, sy = y;\n    for (auto v : basis) {\n      i64 tmp = sy ^ v.second;\n\
     \      if (tmp < sy) {\n        sy = tmp;\n        pu ^= v.first;\n      }\n \
     \   }\n    if (sy != 0) {\n      basis.pb({pu, sy});\n    } else {\n      inter.add(pu);\n\
-    \    }\n  }\n  return inter.basis();\n}\n"
-  code: "struct XorBasis {\n  vector<ll> b;\n  XorBasis() {}\n  void add(int x) {\n\
-    \    x = this->sift(x);\n    if (x != 0) this->b.pb(x);\n  }\n  ll sift(ll x)\
-    \ const {\n    for (ll b : this->b) {\n      x = min(x, x ^ b);\n      if (x ==\
-    \ 0) return 0;\n    }\n    return x;\n  }\n  bool is_indep(ll x) const {\n   \
-    \ return this->sift(x) != 0;\n  }\n  vector<ll> basis() const {\n    return this->b;\n\
-    \  }\n};\n\nvector<ll> XorInter(const vector<ll>& u, const vector<ll>& v) {\n\
-    \  XorBasis X;\n  for (auto x : u) X.add(x);\n  vector<pair<ll, ll>> basis;\n\
-    \  XorBasis inter;\n  for (auto x : v) {\n    auto y = X.sift(x), pu = y ^ x,\
-    \ sy = y;\n    for (auto v : basis) {\n      ll tmp = sy ^ v.second;\n      if\
-    \ (tmp < sy) {\n        sy = tmp;\n        pu ^= v.first;\n      }\n    }\n  \
-    \  if (sy != 0) {\n      basis.pb({pu, sy});\n    } else {\n      inter.add(pu);\n\
     \    }\n  }\n  return inter.basis();\n}"
   dependsOn: []
   isVerificationFile: false
   path: math/XorBasis.h
   requiredBy: []
-  timestamp: '2025-11-15 15:31:54+07:00'
+  timestamp: '2025-11-18 16:58:39+07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - tests/Intersection_of_F2_vector_spaces.test.cpp

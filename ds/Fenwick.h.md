@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Vertex_Add_Path_Sum.test.cpp
     title: tests/Vertex_Add_Path_Sum.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"ds/Fenwick.h\"\ntemplate <typename T>\nstruct Fenwick {\
@@ -28,7 +28,7 @@ data:
   path: ds/Fenwick.h
   requiredBy: []
   timestamp: '2025-11-15 15:31:54+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - tests/Vertex_Add_Path_Sum.test.cpp
 documentation_of: ds/Fenwick.h

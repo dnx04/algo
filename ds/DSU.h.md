@@ -8,25 +8,23 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"ds/DSU.h\"\nstruct DSU {\n public:\n  DSU(int _n) : n(_n),\
-    \ p(_n, -1) {}\n\n  int merge(int a, int b) {\n    int x = head(a), y = head(b);\n\
-    \    if (x == y) return x;\n    if (-p[x] < -p[y]) swap(x, y);\n    p[x] += p[y];\n\
-    \    p[y] = x;\n    return x;\n  }\n\n  bool same(int a, int b) { return head(a)\
-    \ == head(b); }\n\n  int head(int a) {\n    if (p[a] < 0) return a;\n    return\
-    \ p[a] = head(p[a]);\n  }\n\n  int size(int a) { return -p[head(a)]; }\n\n private:\n\
-    \  int n;\n  vector<int> p;\n};\n"
-  code: "struct DSU {\n public:\n  DSU(int _n) : n(_n), p(_n, -1) {}\n\n  int merge(int\
-    \ a, int b) {\n    int x = head(a), y = head(b);\n    if (x == y) return x;\n\
-    \    if (-p[x] < -p[y]) swap(x, y);\n    p[x] += p[y];\n    p[y] = x;\n    return\
-    \ x;\n  }\n\n  bool same(int a, int b) { return head(a) == head(b); }\n\n  int\
-    \ head(int a) {\n    if (p[a] < 0) return a;\n    return p[a] = head(p[a]);\n\
-    \  }\n\n  int size(int a) { return -p[head(a)]; }\n\n private:\n  int n;\n  vector<int>\
-    \ p;\n};"
+  bundledCode: "#line 1 \"ds/DSU.h\"\nstruct DSU {\n  int n;\n  vi p;\n  DSU(int n)\
+    \ : n(n), p(n, -1) {}\n  int merge(int a, int b) {\n    int x = head(a), y = head(b);\n\
+    \    if (x == y) return x;\n    if (-p[x] < -p[y]) swap(x, y);\n    p[x] += p[y],\
+    \ p[y] = x;\n    return x;\n  }\n  bool same(int a, int b) { return head(a) ==\
+    \ head(b); }\n  int head(int a) {\n    if (p[a] < 0) return a;\n    return p[a]\
+    \ = head(p[a]);\n  }\n  int size(int a) { return -p[head(a)]; }\n};\n"
+  code: "struct DSU {\n  int n;\n  vi p;\n  DSU(int n) : n(n), p(n, -1) {}\n  int\
+    \ merge(int a, int b) {\n    int x = head(a), y = head(b);\n    if (x == y) return\
+    \ x;\n    if (-p[x] < -p[y]) swap(x, y);\n    p[x] += p[y], p[y] = x;\n    return\
+    \ x;\n  }\n  bool same(int a, int b) { return head(a) == head(b); }\n  int head(int\
+    \ a) {\n    if (p[a] < 0) return a;\n    return p[a] = head(p[a]);\n  }\n  int\
+    \ size(int a) { return -p[head(a)]; }\n};"
   dependsOn: []
   isVerificationFile: false
   path: ds/DSU.h
   requiredBy: []
-  timestamp: '2025-11-14 00:13:37+07:00'
+  timestamp: '2025-11-18 16:58:39+07:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: ds/DSU.h

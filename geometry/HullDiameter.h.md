@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/Point.h
     title: geometry/Point.h
   _extendedRequiredBy: []
@@ -21,32 +21,32 @@ data:
     \ d) const { return P(x / d, y / d); }\n  T dot(P p) const { return x * p.x +\
     \ y * p.y; }\n  T cross(P p) const { return x * p.y - y * p.x; }\n  T cross(P\
     \ a, P b) const { return (a - *this).cross(b - *this); }\n  T dist2() const {\
-    \ return x * x + y * y; }\n  long double dist() const { return sqrt((long double)dist2());\
-    \ }\n  // angle to x-axis in interval [-pi, pi]\n  long double angle() const {\
-    \ return atan2l(y, x); }\n  P unit() const { return *this / dist(); }  // makes\
-    \ dist()=1\n  P perp() const { return P(-y, x); }        // rotates +90 degrees\n\
-    \  P normal() const { return perp().unit(); }\n  // returns point rotated 'a'\
-    \ radians ccw around the origin\n  P rotate(double a) const {\n    return P(x\
-    \ * cos(a) - y * sin(a), x * sin(a) + y * cos(a));\n  }\n  friend ostream& operator<<(ostream&\
-    \ os, P p) {\n    return os << \"(\" << p.x << \",\" << p.y << \")\";\n  }\n};\n\
-    #line 2 \"geometry/HullDiameter.h\"\n\ntypedef Point<ll> P;\narray<P, 2> hullDiameter(vector<P>\
-    \ S) {\n  int n = sz(S), j = n < 2 ? 0 : 1;\n  pair<ll, array<P, 2>> res({0, {S[0],\
-    \ S[0]}});\n  for (int i = 0; i < n; ++i)i, 0, j) for (;; j = (j + 1) % n) {\n\
-    \      res = max(res, {(S[i] - S[j]).dist2(), {S[i], S[j]}});\n      if ((S[(j\
-    \ + 1) % n] - S[j]).cross(S[i + 1] - S[i]) >= 0) break;\n    }\n  return res.second;\n\
-    }\n"
-  code: "#include \"Point.h\"\n\ntypedef Point<ll> P;\narray<P, 2> hullDiameter(vector<P>\
-    \ S) {\n  int n = sz(S), j = n < 2 ? 0 : 1;\n  pair<ll, array<P, 2>> res({0, {S[0],\
-    \ S[0]}});\n  for (int i = 0; i < n; ++i)i, 0, j) for (;; j = (j + 1) % n) {\n\
-    \      res = max(res, {(S[i] - S[j]).dist2(), {S[i], S[j]}});\n      if ((S[(j\
-    \ + 1) % n] - S[j]).cross(S[i + 1] - S[i]) >= 0) break;\n    }\n  return res.second;\n\
-    }"
+    \ return x * x + y * y; }\n  ld dist() const { return sqrt((ld) dist2()); }\n\
+    \  // angle to x-axis in interval [-pi, pi]\n  ld angle() const { return atan2l(y,\
+    \ x); }\n  P unit() const { return *this / dist(); }  // makes dist()=1\n  P perp()\
+    \ const { return P(-y, x); }        // rotates +90 degrees\n  P normal() const\
+    \ { return perp().unit(); }\n  // returns point rotated 'a' radians ccw around\
+    \ the origin\n  P rotate(ld a) const {\n    return P(x * cos(a) - y * sin(a),\
+    \ x * sin(a) + y * cos(a));\n  }\n  friend ostream& operator<<(ostream& os, P\
+    \ p) {\n    return os << \"(\" << p.x << \",\" << p.y << \")\";\n  }\n};\n#line\
+    \ 2 \"geometry/HullDiameter.h\"\n\ntypedef Point<i64> P;\narray<P, 2> hullDiameter(vector<P>\
+    \ S) {\n  int n = sz(S), j = n < 2 ? 0 : 1;\n  pair<i64, array<P, 2>> res({0,\
+    \ {S[0], S[0]}});\n  for (int i = 0; i < j; ++i) {\n    for (;; j = (j + 1) %\
+    \ n) {\n      res = max(res, {(S[i] - S[j]).dist2(), {S[i], S[j]}});\n      if\
+    \ ((S[(j + 1) % n] - S[j]).cross(S[i + 1] - S[i]) >= 0) break;\n    }\n  }\n \
+    \ return res.second;\n}\n"
+  code: "#include \"Point.h\"\n\ntypedef Point<i64> P;\narray<P, 2> hullDiameter(vector<P>\
+    \ S) {\n  int n = sz(S), j = n < 2 ? 0 : 1;\n  pair<i64, array<P, 2>> res({0,\
+    \ {S[0], S[0]}});\n  for (int i = 0; i < j; ++i) {\n    for (;; j = (j + 1) %\
+    \ n) {\n      res = max(res, {(S[i] - S[j]).dist2(), {S[i], S[j]}});\n      if\
+    \ ((S[(j + 1) % n] - S[j]).cross(S[i + 1] - S[i]) >= 0) break;\n    }\n  }\n \
+    \ return res.second;\n}"
   dependsOn:
   - geometry/Point.h
   isVerificationFile: false
   path: geometry/HullDiameter.h
   requiredBy: []
-  timestamp: '2025-11-14 12:46:04+07:00'
+  timestamp: '2025-11-18 17:04:42+07:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/HullDiameter.h

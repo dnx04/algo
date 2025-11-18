@@ -11,13 +11,13 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"math/EnumQuotients.h\"\nvector<ll> EnumerateQuotients(ll\
-    \ N) {\n  vector<ll> res;\n  ll f = 1;\n  for (; f * f < N; f++) res.push_back(f);\n\
-    \  int qp1 = res.size();\n  for (ll k = 1; k * f <= N; k++) {\n    res.push_back((k\
+  bundledCode: "#line 1 \"math/EnumQuotients.h\"\nvector<i64> EnumerateQuotients(i64\
+    \ N) {\n  vector<i64> res;\n  i64 f = 1;\n  for (; f * f < N; f++) res.push_back(f);\n\
+    \  int qp1 = res.size();\n  for (i64 k = 1; k * f <= N; k++) {\n    res.push_back((k\
     \ & 1) ? (N / k) : (res[qp1 + k / 2 - 1] / 2));\n  }\n  reverse(res.begin() +\
     \ qp1, res.end());\n  return res;\n}\n"
-  code: "vector<ll> EnumerateQuotients(ll N) {\n  vector<ll> res;\n  ll f = 1;\n \
-    \ for (; f * f < N; f++) res.push_back(f);\n  int qp1 = res.size();\n  for (ll\
+  code: "vector<i64> EnumerateQuotients(i64 N) {\n  vector<i64> res;\n  i64 f = 1;\n\
+    \  for (; f * f < N; f++) res.push_back(f);\n  int qp1 = res.size();\n  for (i64\
     \ k = 1; k * f <= N; k++) {\n    res.push_back((k & 1) ? (N / k) : (res[qp1 +\
     \ k / 2 - 1] / 2));\n  }\n  reverse(res.begin() + qp1, res.end());\n  return res;\n\
     }"
@@ -25,7 +25,7 @@ data:
   isVerificationFile: false
   path: math/EnumQuotients.h
   requiredBy: []
-  timestamp: '2025-11-15 15:31:54+07:00'
+  timestamp: '2025-11-18 17:31:30+07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - tests/Enumerate_Quotients.test.cpp

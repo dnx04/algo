@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/Point.h
     title: geometry/Point.h
   _extendedRequiredBy: []
@@ -21,20 +21,20 @@ data:
     \ d) const { return P(x / d, y / d); }\n  T dot(P p) const { return x * p.x +\
     \ y * p.y; }\n  T cross(P p) const { return x * p.y - y * p.x; }\n  T cross(P\
     \ a, P b) const { return (a - *this).cross(b - *this); }\n  T dist2() const {\
-    \ return x * x + y * y; }\n  long double dist() const { return sqrt((long double)dist2());\
-    \ }\n  // angle to x-axis in interval [-pi, pi]\n  long double angle() const {\
-    \ return atan2l(y, x); }\n  P unit() const { return *this / dist(); }  // makes\
-    \ dist()=1\n  P perp() const { return P(-y, x); }        // rotates +90 degrees\n\
-    \  P normal() const { return perp().unit(); }\n  // returns point rotated 'a'\
-    \ radians ccw around the origin\n  P rotate(double a) const {\n    return P(x\
-    \ * cos(a) - y * sin(a), x * sin(a) + y * cos(a));\n  }\n  friend ostream& operator<<(ostream&\
-    \ os, P p) {\n    return os << \"(\" << p.x << \",\" << p.y << \")\";\n  }\n};\n\
-    #line 2 \"geometry/Minkowski.h\"\n\nvector<Point> MinkowskiSum(vector<Point> P,\
-    \ vector<Point> Q) {\n  int n = P.size(), m = Q.size();\n  vector<Point> R = {P[0]\
-    \ + Q[0]};\n  for (int i = 1, j = 1; i < n || j < m; ) {\n    if (i < n && (j\
-    \ == m || cross(P[i] - P[i - 1], Q[j] - Q[j - 1]) > 0)) {\n      R.push_back(R.back()\
-    \ + P[i] - P[i - 1]);\n      ++i;\n    } else {\n      R.push_back(R.back() +\
-    \ Q[j] - Q[j - 1]);\n      ++j;\n    }\n  }\n  return R;\n}\n"
+    \ return x * x + y * y; }\n  ld dist() const { return sqrt((ld) dist2()); }\n\
+    \  // angle to x-axis in interval [-pi, pi]\n  ld angle() const { return atan2l(y,\
+    \ x); }\n  P unit() const { return *this / dist(); }  // makes dist()=1\n  P perp()\
+    \ const { return P(-y, x); }        // rotates +90 degrees\n  P normal() const\
+    \ { return perp().unit(); }\n  // returns point rotated 'a' radians ccw around\
+    \ the origin\n  P rotate(ld a) const {\n    return P(x * cos(a) - y * sin(a),\
+    \ x * sin(a) + y * cos(a));\n  }\n  friend ostream& operator<<(ostream& os, P\
+    \ p) {\n    return os << \"(\" << p.x << \",\" << p.y << \")\";\n  }\n};\n#line\
+    \ 2 \"geometry/Minkowski.h\"\n\nvector<Point> MinkowskiSum(vector<Point> P, vector<Point>\
+    \ Q) {\n  int n = P.size(), m = Q.size();\n  vector<Point> R = {P[0] + Q[0]};\n\
+    \  for (int i = 1, j = 1; i < n || j < m; ) {\n    if (i < n && (j == m || cross(P[i]\
+    \ - P[i - 1], Q[j] - Q[j - 1]) > 0)) {\n      R.push_back(R.back() + P[i] - P[i\
+    \ - 1]);\n      ++i;\n    } else {\n      R.push_back(R.back() + Q[j] - Q[j -\
+    \ 1]);\n      ++j;\n    }\n  }\n  return R;\n}\n"
   code: "#include \"Point.h\"\n\nvector<Point> MinkowskiSum(vector<Point> P, vector<Point>\
     \ Q) {\n  int n = P.size(), m = Q.size();\n  vector<Point> R = {P[0] + Q[0]};\n\
     \  for (int i = 1, j = 1; i < n || j < m; ) {\n    if (i < n && (j == m || cross(P[i]\
@@ -46,7 +46,7 @@ data:
   isVerificationFile: false
   path: geometry/Minkowski.h
   requiredBy: []
-  timestamp: '2025-11-14 00:13:37+07:00'
+  timestamp: '2025-11-18 17:04:42+07:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/Minkowski.h

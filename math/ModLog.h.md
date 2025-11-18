@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Discrete_Logarithm.test.cpp
     title: tests/Discrete_Logarithm.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"math/ModLog.h\"\nll modLog(ll a, ll b, ll m) {\n  ll n =\
@@ -27,7 +27,7 @@ data:
   path: math/ModLog.h
   requiredBy: []
   timestamp: '2025-11-14 00:13:37+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - tests/Discrete_Logarithm.test.cpp
 documentation_of: math/ModLog.h
