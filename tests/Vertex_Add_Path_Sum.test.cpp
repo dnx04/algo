@@ -10,8 +10,8 @@ signed main() {
 
   int n, q;
   cin >> n >> q;
-  Fenwick<ll> fw(n);
-  vector<ll> a(n);
+  Fenwick<i64> fw(n);
+  vector<i64> a(n);
   vector<vi> g(n);
   for (int i = 0; i < n; ++i) cin >> a[i];
   for (int i = 0; i < n - 1; ++i) {

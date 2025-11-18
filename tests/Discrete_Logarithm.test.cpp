@@ -4,7 +4,7 @@
 #include "../math/ModLog.h"
 
 void solve() {
-  ll a, b, m;
+  i64 a, b, m;
   cin >> a >> b >> m;
   if (m == 1 || b == 1) {  // because of the bs nonnegative and 0^0 = 1
     cout << 0 << '\n';

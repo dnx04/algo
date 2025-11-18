@@ -1,6 +1,6 @@
-ll modLog(ll a, ll b, ll m) {
-  ll n = (ll) sqrt(m) + 1, e = 1, f = 1, j = 1;
-  unordered_map<ll, ll> A;
+i64 modLog(i64 a, i64 b, i64 m) {
+  i64 n = (i64) sqrt(m) + 1, e = 1, f = 1, j = 1;
+  unordered_map<i64, i64> A;
   while (j <= n && (e = f = e * a % m) != b % m) A[e * b % m] = j++;
   if (e == b % m) return j;
   if (gcd(m, e) == gcd(m, b)) {

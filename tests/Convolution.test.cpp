@@ -11,7 +11,7 @@ void solve() {
   for (int i = 0; i < n; ++i) cin >> a[i];
   for (int i = 0; i < m; ++i) cin >> b[i];
   auto c = convMod<998244353>(a, b);
-  for (ll x : c) cout << x << ' ';
+  for (auto x : c) cout << x << ' ';
 }
 
 int main() {

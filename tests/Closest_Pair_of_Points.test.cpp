@@ -6,7 +6,7 @@
 void solve() {
   int n;
   cin >> n;
-  vector<Point<ll>> p(n);
+  vector<Point<i64>> p(n);
   for (int i = 0; i < n; ++i) cin >> p[i].x >> p[i].y;
   auto ans = closest(p);
   int p1, p2;

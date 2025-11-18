@@ -3,7 +3,7 @@
 #include "../misc/macros.h"
 #include "../geometry/Point.h"
 
-typedef Point<ll> P;
+typedef Point<i64> P;
 
 void solve() {
   int n;
