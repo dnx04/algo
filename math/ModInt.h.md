@@ -25,6 +25,9 @@ data:
     path: tests/Factorize.test.cpp
     title: tests/Factorize.test.cpp
   - icon: ':heavy_check_mark:'
+    path: tests/Find_Linear_Recurrence.test.cpp
+    title: tests/Find_Linear_Recurrence.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/Number_of_Subsequences.test.cpp
     title: tests/Number_of_Subsequences.test.cpp
   - icon: ':heavy_check_mark:'
@@ -95,6 +98,7 @@ data:
   - tests/Enumerate_Triangles.test.cpp
   - tests/Deque_Operate_All_Composite.test.cpp
   - tests/Factorize.test.cpp
+  - tests/Find_Linear_Recurrence.test.cpp
   - tests/Primality_Test.test.cpp
   - tests/Sqrt_Mod.test.cpp
   - tests/Enumerate_Cliques.test.cpp

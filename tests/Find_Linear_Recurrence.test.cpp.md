@@ -2,14 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: math/LinearRec.h
+    title: math/LinearRec.h
+  - icon: ':heavy_check_mark:'
     path: math/ModInt.h
     title: math/ModInt.h
-  - icon: ':heavy_check_mark:'
-    path: misc/Compressor.h
-    title: misc/Compressor.h
-  - icon: ':heavy_check_mark:'
-    path: misc/CountSubseq.h
-    title: misc/CountSubseq.h
   - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
@@ -20,11 +17,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/number_of_subsequences
+    PROBLEM: https://judge.yosupo.jp/problem/find_linear_recurrence
     links:
-    - https://judge.yosupo.jp/problem/number_of_subsequences
-  bundledCode: "#line 1 \"tests/Number_of_Subsequences.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/problem/number_of_subsequences\"\n\n#line 1 \"misc/macros.h\"\
+    - https://judge.yosupo.jp/problem/find_linear_recurrence
+  bundledCode: "#line 1 \"tests/Find_Linear_Recurrence.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/find_linear_recurrence\"\n\n#line 1 \"misc/macros.h\"\
     \n// #pragma GCC optimize(\"Ofast,unroll-loops\")       // unroll long, simple\
     \ loops\n// #pragma GCC target(\"avx2,fma\")                   // vectorizing\
     \ code\n// #pragma GCC target(\"lzcnt,popcnt,abm,bmi,bmi2\")  // for fast bitset\
@@ -65,37 +62,43 @@ data:
     \nu64 modmul(u64 x, u64 y, u64 m) { return u128(x) * y % m; }\nu64 modpow(u64\
     \ x, u64 k, u64 m) {\n  u64 res = 1;\n  while (k) {\n    if (k & 1) res = modmul(res,\
     \ x, m);\n    x = modmul(x, x, m);\n    k >>= 1;\n  }\n  return res;\n}\n#line\
-    \ 1 \"misc/Compressor.h\"\ntemplate <typename T>\nvi compressor(vector<T>& v)\
-    \ {\n  auto cv = v;\n  sort(all(cv));\n  cv.erase(unique(all(cv)), cv.end());\n\
-    \  for (auto& e : v) e = lower_bound(all(cv), e) - cv.begin();\n  return v;\n\
-    }\n#line 2 \"misc/CountSubseq.h\"\n\ntemplate <typename T, typename Fp>\nFp CountSubseq(vector<T>\
-    \ a) {\n  a = compressor<T>(a);\n  vi last(sz(a) + 1, -1);\n  vector<Fp> f(sz(a)\
-    \ + 1);\n  f[0] = 1;\n  for (int i = 0; i < sz(a); ++i) {\n    f[i + 1] = f[i]\
-    \ * 2;\n    if (last[a[i]] >= 0) f[i + 1] -= f[last[a[i]]];\n    last[a[i]] =\
-    \ i;\n  }\n  return f.back() - 1;\n}\n#line 6 \"tests/Number_of_Subsequences.test.cpp\"\
-    \n\nusing Fp = modint<998244353>;\n\nsigned main() {\n  ios::sync_with_stdio(false);\n\
-    \  cin.tie(0);\n  int n;\n  cin >> n;\n  vector<int> a(n);\n  for (auto& x : a)\
-    \ cin >> x;\n  cout << CountSubseq<int, Fp>(a);\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/number_of_subsequences\"\
+    \ 1 \"math/LinearRec.h\"\ntemplate <class Fp>\nvector<Fp> LinearRec(const vector<Fp>&\
+    \ as) {\n  const int n = as.size();\n  int d = 0, m = 0;\n  vector<Fp> cs(n +\
+    \ 1, 0), bs(n + 1, 0);\n  cs[0] = bs[0] = 1;\n  Fp invBef = 1;\n  for (int i =\
+    \ 0; i < n; ++i) {\n    ++m;\n    Fp dif = as[i];\n    for (int j = 1; j <= d;\
+    \ ++j) dif += cs[j] * as[i - j];\n    if (dif.x != 0) {\n      auto csDup = cs;\n\
+    \      const Fp r = dif * invBef;\n      for (int j = m; j < n; ++j) cs[j] -=\
+    \ r * bs[j - m];\n      if (2 * d <= i) {\n        d = i + 1 - d, m = 0, bs =\
+    \ csDup, invBef = dif.inv();\n      }\n    }\n  }\n  cs.resize(d + 1);\n  for\
+    \ (auto& c : cs) c = -c;\n  return cs;\n}\n#line 6 \"tests/Find_Linear_Recurrence.test.cpp\"\
+    \n\nusing Fp = modint<998244353>;\n\nvoid solve() {\n  int d;\n  cin >> d;\n \
+    \ vector<Fp> a(d);\n  for (int i = 0; i < d; ++i) cin >> a[i];\n  auto cs = LinearRec(a);\n\
+    \  cout << sz(cs) - 1 << '\\n';\n  for (int i = 1; i < sz(cs); ++i) cout << cs[i]\
+    \ << ' ';\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
+    \  int tc = 1;\n  // cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n\
+    \  }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/find_linear_recurrence\"\
     \n\n#include \"../misc/macros.h\"\n#include \"../math/ModInt.h\"\n#include \"\
-    ../misc/CountSubseq.h\"\n\nusing Fp = modint<998244353>;\n\nsigned main() {\n\
-    \  ios::sync_with_stdio(false);\n  cin.tie(0);\n  int n;\n  cin >> n;\n  vector<int>\
-    \ a(n);\n  for (auto& x : a) cin >> x;\n  cout << CountSubseq<int, Fp>(a);\n}"
+    ../math/LinearRec.h\"\n\nusing Fp = modint<998244353>;\n\nvoid solve() {\n  int\
+    \ d;\n  cin >> d;\n  vector<Fp> a(d);\n  for (int i = 0; i < d; ++i) cin >> a[i];\n\
+    \  auto cs = LinearRec(a);\n  cout << sz(cs) - 1 << '\\n';\n  for (int i = 1;\
+    \ i < sz(cs); ++i) cout << cs[i] << ' ';\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n\
+    \  cin.exceptions(cin.failbit);\n  int tc = 1;\n  // cin >> tc;\n  for (int i\
+    \ = 1; i <= tc; ++i) {\n    solve();\n  }\n}\n"
   dependsOn:
   - misc/macros.h
   - math/ModInt.h
-  - misc/CountSubseq.h
-  - misc/Compressor.h
+  - math/LinearRec.h
   isVerificationFile: true
-  path: tests/Number_of_Subsequences.test.cpp
+  path: tests/Find_Linear_Recurrence.test.cpp
   requiredBy: []
-  timestamp: '2025-11-18 17:12:08+07:00'
+  timestamp: '2025-11-18 18:21:29+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: tests/Number_of_Subsequences.test.cpp
+documentation_of: tests/Find_Linear_Recurrence.test.cpp
 layout: document
 redirect_from:
-- /verify/tests/Number_of_Subsequences.test.cpp
-- /verify/tests/Number_of_Subsequences.test.cpp.html
-title: tests/Number_of_Subsequences.test.cpp
+- /verify/tests/Find_Linear_Recurrence.test.cpp
+- /verify/tests/Find_Linear_Recurrence.test.cpp.html
+title: tests/Find_Linear_Recurrence.test.cpp
 ---

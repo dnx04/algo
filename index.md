@@ -50,7 +50,7 @@ data:
     - icon: ':warning:'
       path: geometry/CircleTangents.h
       title: geometry/CircleTangents.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: geometry/Circumcircle.h
       title: geometry/Circumcircle.h
     - icon: ':heavy_check_mark:'
@@ -83,7 +83,7 @@ data:
     - icon: ':warning:'
       path: geometry/LinearTransformation.h
       title: geometry/LinearTransformation.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: geometry/MinimumEnclosingCircle.h
       title: geometry/MinimumEnclosingCircle.h
     - icon: ':warning:'
@@ -92,7 +92,7 @@ data:
     - icon: ':warning:'
       path: geometry/OnSegment.h
       title: geometry/OnSegment.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: geometry/Point.h
       title: geometry/Point.h
     - icon: ':warning:'
@@ -191,7 +191,7 @@ data:
     - icon: ':warning:'
       path: math/Lagrange.h
       title: math/Lagrange.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: math/LinearRec.h
       title: math/LinearRec.h
     - icon: ':warning:'
@@ -250,7 +250,7 @@ data:
     - icon: ':warning:'
       path: misc/SOSDP.cpp
       title: misc/SOSDP.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: misc/macros.h
       title: misc/macros.h
     - icon: ':warning:'
@@ -319,6 +319,9 @@ data:
       path: tests/Factorize.test.cpp
       title: tests/Factorize.test.cpp
     - icon: ':heavy_check_mark:'
+      path: tests/Find_Linear_Recurrence.test.cpp
+      title: tests/Find_Linear_Recurrence.test.cpp
+    - icon: ':heavy_check_mark:'
       path: tests/General_Matching.test.cpp
       title: tests/General_Matching.test.cpp
     - icon: ':heavy_check_mark:'
@@ -331,6 +334,9 @@ data:
       path: tests/Maximum_Independent_Set.test.cpp
       title: tests/Maximum_Independent_Set.test.cpp
     - icon: ':heavy_check_mark:'
+      path: tests/Minimum_Enclosing_Circle.test.cpp
+      title: tests/Minimum_Enclosing_Circle.test.cpp
+    - icon: ':heavy_check_mark:'
       path: tests/Number_of_Subsequences.test.cpp
       title: tests/Number_of_Subsequences.test.cpp
     - icon: ':heavy_check_mark:'
@@ -339,7 +345,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Primality_Test.test.cpp
       title: tests/Primality_Test.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Sort_Points_by_Argument.test.cpp
       title: tests/Sort_Points_by_Argument.test.cpp
     - icon: ':heavy_check_mark:'

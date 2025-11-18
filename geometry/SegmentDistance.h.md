@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/Point.h
     title: geometry/Point.h
   _extendedRequiredBy: []
@@ -21,18 +21,17 @@ data:
     \ d) const { return P(x / d, y / d); }\n  T dot(P p) const { return x * p.x +\
     \ y * p.y; }\n  T cross(P p) const { return x * p.y - y * p.x; }\n  T cross(P\
     \ a, P b) const { return (a - *this).cross(b - *this); }\n  T dist2() const {\
-    \ return x * x + y * y; }\n  ld dist() const { return sqrt((ld) dist2()); }\n\
-    \  // angle to x-axis in interval [-pi, pi]\n  ld angle() const { return atan2l(y,\
-    \ x); }\n  P unit() const { return *this / dist(); }  // makes dist()=1\n  P perp()\
-    \ const { return P(-y, x); }        // rotates +90 degrees\n  P normal() const\
-    \ { return perp().unit(); }\n  // returns point rotated 'a' radians ccw around\
-    \ the origin\n  P rotate(ld a) const {\n    return P(x * cos(a) - y * sin(a),\
-    \ x * sin(a) + y * cos(a));\n  }\n  friend ostream& operator<<(ostream& os, P\
-    \ p) {\n    return os << \"(\" << p.x << \",\" << p.y << \")\";\n  }\n};\n#line\
-    \ 2 \"geometry/SegmentDistance.h\"\n\ntypedef Point<ld> P;\nld segDist(P& s, P&\
-    \ e, P& p) {\n  if (s == e) return (p - s).dist();\n  auto d = (e - s).dist2(),\
-    \ t = min(d, max(.0, (p - s).dot(e - s)));\n  return ((p - s) * d - (e - s) *\
-    \ t).dist() / d;\n}\n"
+    \ return x * x + y * y; }\n  T dist() const { return sqrt(dist2()); }\n  // angle\
+    \ to x-axis in interval [-pi, pi]\n  T angle() const { return atan2l(y, x); }\n\
+    \  P unit() const { return *this / dist(); }  // makes dist()=1\n  P perp() const\
+    \ { return P(-y, x); }        // rotates +90 degrees\n  P normal() const { return\
+    \ perp().unit(); }\n  // returns point rotated 'a' radians ccw around the origin\n\
+    \  P rotate(ld a) const {\n    return P(x * cos(a) - y * sin(a), x * sin(a) +\
+    \ y * cos(a));\n  }\n  friend ostream& operator<<(ostream& os, P p) {\n    return\
+    \ os << \"(\" << p.x << \",\" << p.y << \")\";\n  }\n};\n#line 2 \"geometry/SegmentDistance.h\"\
+    \n\ntypedef Point<ld> P;\nld segDist(P& s, P& e, P& p) {\n  if (s == e) return\
+    \ (p - s).dist();\n  auto d = (e - s).dist2(), t = min(d, max(.0, (p - s).dot(e\
+    \ - s)));\n  return ((p - s) * d - (e - s) * t).dist() / d;\n}\n"
   code: "#include \"Point.h\"\n\ntypedef Point<ld> P;\nld segDist(P& s, P& e, P& p)\
     \ {\n  if (s == e) return (p - s).dist();\n  auto d = (e - s).dist2(), t = min(d,\
     \ max(.0, (p - s).dot(e - s)));\n  return ((p - s) * d - (e - s) * t).dist() /\
@@ -42,7 +41,7 @@ data:
   isVerificationFile: false
   path: geometry/SegmentDistance.h
   requiredBy: []
-  timestamp: '2025-11-18 17:04:42+07:00'
+  timestamp: '2025-11-18 18:21:29+07:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/SegmentDistance.h

@@ -14,7 +14,7 @@ data:
   - icon: ':warning:'
     path: geometry/CircleTangents.h
     title: geometry/CircleTangents.h
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: geometry/Circumcircle.h
     title: geometry/Circumcircle.h
   - icon: ':heavy_check_mark:'
@@ -44,7 +44,7 @@ data:
   - icon: ':warning:'
     path: geometry/LinearTransformation.h
     title: geometry/LinearTransformation.h
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: geometry/MinimumEnclosingCircle.h
     title: geometry/MinimumEnclosingCircle.h
   - icon: ':warning:'
@@ -76,14 +76,17 @@ data:
     path: tests/Closest_Pair_of_Points.test.cpp
     title: tests/Closest_Pair_of_Points.test.cpp
   - icon: ':heavy_check_mark:'
+    path: tests/Minimum_Enclosing_Circle.test.cpp
+    title: tests/Minimum_Enclosing_Circle.test.cpp
+  - icon: ':x:'
     path: tests/Sort_Points_by_Argument.test.cpp
     title: tests/Sort_Points_by_Argument.test.cpp
   - icon: ':heavy_check_mark:'
     path: tests/Static_Convex_Hull.test.cpp
     title: tests/Static_Convex_Hull.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"geometry/Point.h\"\ntemplate <class T>\nint sgn(T x) {\n\
@@ -96,14 +99,14 @@ data:
     \ d) const { return P(x / d, y / d); }\n  T dot(P p) const { return x * p.x +\
     \ y * p.y; }\n  T cross(P p) const { return x * p.y - y * p.x; }\n  T cross(P\
     \ a, P b) const { return (a - *this).cross(b - *this); }\n  T dist2() const {\
-    \ return x * x + y * y; }\n  ld dist() const { return sqrt((ld) dist2()); }\n\
-    \  // angle to x-axis in interval [-pi, pi]\n  ld angle() const { return atan2l(y,\
-    \ x); }\n  P unit() const { return *this / dist(); }  // makes dist()=1\n  P perp()\
-    \ const { return P(-y, x); }        // rotates +90 degrees\n  P normal() const\
-    \ { return perp().unit(); }\n  // returns point rotated 'a' radians ccw around\
-    \ the origin\n  P rotate(ld a) const {\n    return P(x * cos(a) - y * sin(a),\
-    \ x * sin(a) + y * cos(a));\n  }\n  friend ostream& operator<<(ostream& os, P\
-    \ p) {\n    return os << \"(\" << p.x << \",\" << p.y << \")\";\n  }\n};\n"
+    \ return x * x + y * y; }\n  T dist() const { return sqrt(dist2()); }\n  // angle\
+    \ to x-axis in interval [-pi, pi]\n  T angle() const { return atan2l(y, x); }\n\
+    \  P unit() const { return *this / dist(); }  // makes dist()=1\n  P perp() const\
+    \ { return P(-y, x); }        // rotates +90 degrees\n  P normal() const { return\
+    \ perp().unit(); }\n  // returns point rotated 'a' radians ccw around the origin\n\
+    \  P rotate(ld a) const {\n    return P(x * cos(a) - y * sin(a), x * sin(a) +\
+    \ y * cos(a));\n  }\n  friend ostream& operator<<(ostream& os, P p) {\n    return\
+    \ os << \"(\" << p.x << \",\" << p.y << \")\";\n  }\n};\n"
   code: "template <class T>\nint sgn(T x) {\n  return (x > 0) - (x < 0);\n}\ntemplate\
     \ <class T>\nstruct Point {\n  typedef Point P;\n  T x, y;\n  explicit Point(T\
     \ x = 0, T y = 0) : x(x), y(y) {}\n  bool operator<(P p) const { return tie(x,\
@@ -113,15 +116,15 @@ data:
     \ P(x * d, y * d); }\n  P operator/(T d) const { return P(x / d, y / d); }\n \
     \ T dot(P p) const { return x * p.x + y * p.y; }\n  T cross(P p) const { return\
     \ x * p.y - y * p.x; }\n  T cross(P a, P b) const { return (a - *this).cross(b\
-    \ - *this); }\n  T dist2() const { return x * x + y * y; }\n  ld dist() const\
-    \ { return sqrt((ld) dist2()); }\n  // angle to x-axis in interval [-pi, pi]\n\
-    \  ld angle() const { return atan2l(y, x); }\n  P unit() const { return *this\
-    \ / dist(); }  // makes dist()=1\n  P perp() const { return P(-y, x); }      \
-    \  // rotates +90 degrees\n  P normal() const { return perp().unit(); }\n  //\
-    \ returns point rotated 'a' radians ccw around the origin\n  P rotate(ld a) const\
-    \ {\n    return P(x * cos(a) - y * sin(a), x * sin(a) + y * cos(a));\n  }\n  friend\
-    \ ostream& operator<<(ostream& os, P p) {\n    return os << \"(\" << p.x << \"\
-    ,\" << p.y << \")\";\n  }\n};"
+    \ - *this); }\n  T dist2() const { return x * x + y * y; }\n  T dist() const {\
+    \ return sqrt(dist2()); }\n  // angle to x-axis in interval [-pi, pi]\n  T angle()\
+    \ const { return atan2l(y, x); }\n  P unit() const { return *this / dist(); }\
+    \  // makes dist()=1\n  P perp() const { return P(-y, x); }        // rotates\
+    \ +90 degrees\n  P normal() const { return perp().unit(); }\n  // returns point\
+    \ rotated 'a' radians ccw around the origin\n  P rotate(ld a) const {\n    return\
+    \ P(x * cos(a) - y * sin(a), x * sin(a) + y * cos(a));\n  }\n  friend ostream&\
+    \ operator<<(ostream& os, P p) {\n    return os << \"(\" << p.x << \",\" << p.y\
+    \ << \")\";\n  }\n};"
   dependsOn: []
   isVerificationFile: false
   path: geometry/Point.h
@@ -149,10 +152,11 @@ data:
   - geometry/MinimumEnclosingCircle.h
   - geometry/LineDistance.h
   - geometry/LinearTransformation.h
-  timestamp: '2025-11-18 17:04:42+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2025-11-18 18:21:29+07:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - tests/Static_Convex_Hull.test.cpp
+  - tests/Minimum_Enclosing_Circle.test.cpp
   - tests/Closest_Pair_of_Points.test.cpp
   - tests/Sort_Points_by_Argument.test.cpp
 documentation_of: geometry/Point.h

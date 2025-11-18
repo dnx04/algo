@@ -49,6 +49,9 @@ data:
     path: tests/Factorize.test.cpp
     title: tests/Factorize.test.cpp
   - icon: ':heavy_check_mark:'
+    path: tests/Find_Linear_Recurrence.test.cpp
+    title: tests/Find_Linear_Recurrence.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/General_Matching.test.cpp
     title: tests/General_Matching.test.cpp
   - icon: ':heavy_check_mark:'
@@ -61,6 +64,9 @@ data:
     path: tests/Maximum_Independent_Set.test.cpp
     title: tests/Maximum_Independent_Set.test.cpp
   - icon: ':heavy_check_mark:'
+    path: tests/Minimum_Enclosing_Circle.test.cpp
+    title: tests/Minimum_Enclosing_Circle.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/Number_of_Subsequences.test.cpp
     title: tests/Number_of_Subsequences.test.cpp
   - icon: ':heavy_check_mark:'
@@ -69,7 +75,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Primality_Test.test.cpp
     title: tests/Primality_Test.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Sort_Points_by_Argument.test.cpp
     title: tests/Sort_Points_by_Argument.test.cpp
   - icon: ':heavy_check_mark:'
@@ -84,9 +90,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Vertex_Add_Path_Sum.test.cpp
     title: tests/Vertex_Add_Path_Sum.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"misc/macros.h\"\n// #pragma GCC optimize(\"Ofast,unroll-loops\"\
@@ -135,7 +141,7 @@ data:
   requiredBy:
   - includes.h
   timestamp: '2025-11-18 17:12:08+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - tests/Bitwise_Xor_Convolution.test.cpp
   - tests/Static_Convex_Hull.test.cpp
@@ -143,6 +149,7 @@ data:
   - tests/Enumerate_Triangles.test.cpp
   - tests/Deque_Operate_All_Composite.test.cpp
   - tests/Deque.test.cpp
+  - tests/Minimum_Enclosing_Circle.test.cpp
   - tests/Factorize.test.cpp
   - tests/General_Matching.test.cpp
   - tests/Maximum_Independent_Set.test.cpp
@@ -150,6 +157,7 @@ data:
   - tests/Enumerate_Quotients.test.cpp
   - tests/Matching_on_Bipartite_Graph_HopcroftKarp.test.cpp
   - tests/Closest_Pair_of_Points.test.cpp
+  - tests/Find_Linear_Recurrence.test.cpp
   - tests/Primality_Test.test.cpp
   - tests/Sqrt_Mod.test.cpp
   - tests/Vertex_Add_Path_Sum.test.cpp
