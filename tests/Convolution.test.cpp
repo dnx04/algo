@@ -1,7 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/convolution_mod"
 
 #include "../misc/macros.h"
-
 #include "../math/NTT.h"
 
 void solve() {

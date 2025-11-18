@@ -31,7 +31,7 @@ signed main() {
     } else {
       int u, v;
       cin >> u >> v;
-      ll res = 0;
+      i64 res = 0;
       hld.path_query(u, v, true, [&](const int& u, const int& v) {
         res += fw.sum(u + 1, v);
       });

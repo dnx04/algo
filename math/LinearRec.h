@@ -2,8 +2,8 @@
 template <typename T>
 T LinearRec(const vector<T>& S, const vector<T>& tr, u64 k) {
   int n = sz(tr);
-  auto combine = [&](Poly a, Poly b) {
-    Poly res(n * 2 + 1);
+  auto combine = [&](vector<T> a, vector<T> b) {
+    vector<T> res(n * 2 + 1);
     for (int i = 0; i < n; ++i)
       for (int j = 0; j < n; ++j) res[i + j] = res[i + j] + a[i] * b[j];
     for (int i = 2 * n; i > n; --i)
@@ -11,7 +11,7 @@ T LinearRec(const vector<T>& S, const vector<T>& tr, u64 k) {
     res.resize(n + 1);
     return res;
   };
-  Poly pol(n + 1), e(pol);
+  vector<T> pol(n + 1), e(pol);
   pol[0] = e[1] = 1;
   for (++k; k; k /= 2) {
     if (k % 2) pol = combine(pol, e);

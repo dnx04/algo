@@ -13,7 +13,7 @@ vl convMod(const vl& a, const vl& b) {
   for (int i = 0; i < n; ++i) {
     int j = -i & (n - 1);
     outl[j] = (L[i] + conj(L[j])) * R[i] / ld(2.0 * n);
-    outs[j] = (L[i] - conj(L[j])) * R[i] / ld(2.0 * n) / 1i;
+    outs[j] = (L[i] - conj(L[j])) * R[i] / ld(2.0 * n) / 1il;
   }
   fft(outl), fft(outs);
   for (int i = 0; i < sz(res); ++i) {
