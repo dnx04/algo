@@ -1,10 +1,7 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: includes.h
-    title: includes.h
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: tests/2_Sat.test.cpp
@@ -138,8 +135,7 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: misc/macros.h
-  requiredBy:
-  - includes.h
+  requiredBy: []
   timestamp: '2025-11-18 17:12:08+07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

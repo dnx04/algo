@@ -157,11 +157,6 @@ data:
     - icon: ':warning:'
       path: graph/MinCostMaxFlow.h
       title: graph/MinCostMaxFlow.h
-  - name: .
-    pages:
-    - icon: ':warning:'
-      path: includes.h
-      title: includes.h
   - name: math
     pages:
     - icon: ':heavy_check_mark:'
