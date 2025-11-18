@@ -3,31 +3,31 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Discrete_Logarithm.test.cpp
     title: tests/Discrete_Logarithm.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"math/ModLog.h\"\nll modLog(ll a, ll b, ll m) {\n  ll n =\
-    \ (ll) sqrt(m) + 1, e = 1, f = 1, j = 1;\n  unordered_map<ll, ll> A;\n  while\
-    \ (j <= n && (e = f = e * a % m) != b % m) A[e * b % m] = j++;\n  if (e == b %\
-    \ m) return j;\n  if (gcd(m, e) == gcd(m, b)) {\n    for (int i = 2; i < n + 2;\
-    \ ++i) {\n      if (A.count(e = e * f % m)) return n * i - A[e];\n    }\n  }\n\
-    \  return -1;\n}\n"
-  code: "ll modLog(ll a, ll b, ll m) {\n  ll n = (ll) sqrt(m) + 1, e = 1, f = 1, j\
-    \ = 1;\n  unordered_map<ll, ll> A;\n  while (j <= n && (e = f = e * a % m) !=\
-    \ b % m) A[e * b % m] = j++;\n  if (e == b % m) return j;\n  if (gcd(m, e) ==\
-    \ gcd(m, b)) {\n    for (int i = 2; i < n + 2; ++i) {\n      if (A.count(e = e\
-    \ * f % m)) return n * i - A[e];\n    }\n  }\n  return -1;\n}"
+  bundledCode: "#line 1 \"math/ModLog.h\"\ni64 modLog(i64 a, i64 b, i64 m) {\n  i64\
+    \ n = (i64) sqrt(m) + 1, e = 1, f = 1, j = 1;\n  unordered_map<i64, i64> A;\n\
+    \  while (j <= n && (e = f = e * a % m) != b % m) A[e * b % m] = j++;\n  if (e\
+    \ == b % m) return j;\n  if (gcd(m, e) == gcd(m, b)) {\n    for (int i = 2; i\
+    \ < n + 2; ++i) {\n      if (A.count(e = e * f % m)) return n * i - A[e];\n  \
+    \  }\n  }\n  return -1;\n}\n"
+  code: "i64 modLog(i64 a, i64 b, i64 m) {\n  i64 n = (i64) sqrt(m) + 1, e = 1, f\
+    \ = 1, j = 1;\n  unordered_map<i64, i64> A;\n  while (j <= n && (e = f = e * a\
+    \ % m) != b % m) A[e * b % m] = j++;\n  if (e == b % m) return j;\n  if (gcd(m,\
+    \ e) == gcd(m, b)) {\n    for (int i = 2; i < n + 2; ++i) {\n      if (A.count(e\
+    \ = e * f % m)) return n * i - A[e];\n    }\n  }\n  return -1;\n}"
   dependsOn: []
   isVerificationFile: false
   path: math/ModLog.h
   requiredBy: []
-  timestamp: '2025-11-14 00:13:37+07:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2025-11-18 17:42:34+07:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - tests/Discrete_Logarithm.test.cpp
 documentation_of: math/ModLog.h

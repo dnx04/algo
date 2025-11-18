@@ -73,15 +73,15 @@ data:
     \ + cv) % M;\n  }\n  return res;\n}\n#line 6 \"tests/Convolution.test.cpp\"\n\n\
     void solve() {\n  int n, m;\n  cin >> n >> m;\n  vl a(n), b(m);\n  for (int i\
     \ = 0; i < n; ++i) cin >> a[i];\n  for (int i = 0; i < m; ++i) cin >> b[i];\n\
-    \  auto c = convMod<998244353>(a, b);\n  for (ll x : c) cout << x << ' ';\n}\n\
-    \nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
+    \  auto c = convMod<998244353>(a, b);\n  for (auto x : c) cout << x << ' ';\n\
+    }\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
     \  int tc = 1;\n  //   cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n\
     \  }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod\"\n\n#include\
     \ \"../misc/macros.h\"\n\n#include \"../math/NTT.h\"\n\nvoid solve() {\n  int\
     \ n, m;\n  cin >> n >> m;\n  vl a(n), b(m);\n  for (int i = 0; i < n; ++i) cin\
     \ >> a[i];\n  for (int i = 0; i < m; ++i) cin >> b[i];\n  auto c = convMod<998244353>(a,\
-    \ b);\n  for (ll x : c) cout << x << ' ';\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n\
+    \ b);\n  for (auto x : c) cout << x << ' ';\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n\
     \  cin.exceptions(cin.failbit);\n  int tc = 1;\n  //   cin >> tc;\n  for (int\
     \ i = 1; i <= tc; ++i) {\n    solve();\n  }\n}\n"
   dependsOn:
@@ -91,7 +91,7 @@ data:
   isVerificationFile: true
   path: tests/Convolution.test.cpp
   requiredBy: []
-  timestamp: '2025-11-18 17:26:35+07:00'
+  timestamp: '2025-11-18 17:42:34+07:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: tests/Convolution.test.cpp

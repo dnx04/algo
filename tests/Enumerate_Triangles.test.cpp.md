@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/EnumTriangles.h
     title: graph/EnumTriangles.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/ModInt.h
     title: math/ModInt.h
   - icon: ':question:'

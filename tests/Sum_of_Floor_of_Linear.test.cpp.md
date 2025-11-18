@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/DivModSum.h
     title: math/DivModSum.h
   - icon: ':question:'
@@ -9,9 +9,9 @@ data:
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/sum_of_floor_of_linear
@@ -38,16 +38,16 @@ data:
     \ null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n// dynamic\
     \ bitset\nusing bs = tr2::dynamic_bitset<u64>;\n\n/*  rope\n    rope <int> cur\
     \ = v.substr(l, r - l + 1);\n    v.erase(l, r - l + 1);\n    v.insert(v.mutable_begin(),\
-    \ cur);\n*/\n#line 1 \"math/DivModSum.h\"\nll sumsq(ll to) { return to / 2 * ((to\
-    \ - 1) | 1); }\n\n// sum( (a + d*i) / m ) for i in [0, n-1]\nll divsum(ll a, ll\
-    \ d, ll m, ll n) {\n  ll res = d / m * sumsq(n) + a / m * n;\n  d %= m, a %= m;\n\
-    \  if (!d) return res;\n  ll to = (n * d + a) / m;\n  return res + (n - 1) * to\
-    \ - divsum(m - 1 - a, m, d, to);\n}\n// sum( (a + d*i) % m ) for i in [0, n-1]\n\
-    ll modsum(ll a, ll d, ll m, ll n) {\n  a = ((a % m) + m) % m, d = ((d % m) + m)\
-    \ % m;\n  return n * a + d * sumsq(n) - m * divsum(a, d, m, n);\n}\n#line 5 \"\
-    tests/Sum_of_Floor_of_Linear.test.cpp\"\n\nvoid solve() {\n  i64 n, m, a, b;\n\
-    \  cin >> n >> m >> a >> b;\n  cout << divsum(b, a, m, n) << '\\n';\n}\n\nint\
-    \ main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
+    \ cur);\n*/\n#line 1 \"math/DivModSum.h\"\ni64 sumsq(i64 to) { return to / 2 *\
+    \ ((to - 1) | 1); }\n\n// sum( (a + d*i) / m ) for i in [0, n-1]\ni64 divsum(i64\
+    \ a, i64 d, i64 m, i64 n) {\n  i64 res = d / m * sumsq(n) + a / m * n;\n  d %=\
+    \ m, a %= m;\n  if (!d) return res;\n  i64 to = (n * d + a) / m;\n  return res\
+    \ + (n - 1) * to - divsum(m - 1 - a, m, d, to);\n}\n// sum( (a + d*i) % m ) for\
+    \ i in [0, n-1]\ni64 modsum(i64 a, i64 d, i64 m, i64 n) {\n  a = ((a % m) + m)\
+    \ % m, d = ((d % m) + m) % m;\n  return n * a + d * sumsq(n) - m * divsum(a, d,\
+    \ m, n);\n}\n#line 5 \"tests/Sum_of_Floor_of_Linear.test.cpp\"\n\nvoid solve()\
+    \ {\n  i64 n, m, a, b;\n  cin >> n >> m >> a >> b;\n  cout << divsum(b, a, m,\
+    \ n) << '\\n';\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
     \  int tc = 1;\n  cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n\
     \  }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/sum_of_floor_of_linear\"\
@@ -62,8 +62,8 @@ data:
   isVerificationFile: true
   path: tests/Sum_of_Floor_of_Linear.test.cpp
   requiredBy: []
-  timestamp: '2025-11-18 17:12:08+07:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2025-11-18 17:42:34+07:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Sum_of_Floor_of_Linear.test.cpp
 layout: document

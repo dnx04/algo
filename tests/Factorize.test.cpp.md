@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/Factor.h
     title: math/Factor.h
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/MillerRabin.h
     title: math/MillerRabin.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/ModInt.h
     title: math/ModInt.h
   - icon: ':question:'
@@ -15,9 +15,9 @@ data:
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/factorize
@@ -64,18 +64,18 @@ data:
     \nu64 modmul(u64 x, u64 y, u64 m) { return u128(x) * y % m; }\nu64 modpow(u64\
     \ x, u64 k, u64 m) {\n  u64 res = 1;\n  while (k) {\n    if (k & 1) res = modmul(res,\
     \ x, m);\n    x = modmul(x, x, m);\n    k >>= 1;\n  }\n  return res;\n}\n#line\
-    \ 1 \"math/MillerRabin.h\"\nbool isPrime(ull n) {\n  if (n < 2 || n % 6 % 4 !=\
-    \ 1) return (n | 1) == 3;\n  ull A[] = {2, 325, 9375, 28178, 450775, 9780504,\
-    \ 1795265022},\n      s = __builtin_ctzll(n - 1), d = n >> s;\n  for (ull a :\
-    \ A) {  // ^ count trailing zeroes\n    ull p = modpow(a % n, d, n), i = s;\n\
+    \ 1 \"math/MillerRabin.h\"\nbool isPrime(u64 n) {\n  if (n < 2 || n % 6 % 4 !=\
+    \ 1) return (n | 1) == 3;\n  u64 A[] = {2, 325, 9375, 28178, 450775, 9780504,\
+    \ 1795265022},\n      s = __builtin_ctzll(n - 1), d = n >> s;\n  for (u64 a :\
+    \ A) {  // ^ count trailing zeroes\n    u64 p = modpow(a % n, d, n), i = s;\n\
     \    while (p != 1 && p != n - 1 && a % n && i--) p = modmul(p, p, n);\n    if\
     \ (p != n - 1 && i != s) return 0;\n  }\n  return 1;\n}\n#line 2 \"math/Factor.h\"\
-    \n\null pollard(ull n) {\n  ull x = 0, y = 0, t = 30, prd = 2, i = 1, q;\n  auto\
-    \ f = [&](ull x) { return modmul(x, x, n) + i; };\n  while (t++ % 40 || gcd(prd,\
+    \n\nu64 pollard(u64 n) {\n  u64 x = 0, y = 0, t = 30, prd = 2, i = 1, q;\n  auto\
+    \ f = [&](u64 x) { return modmul(x, x, n) + i; };\n  while (t++ % 40 || gcd(prd,\
     \ n) == 1) {\n    if (x == y) x = ++i, y = f(x);\n    if ((q = modmul(prd, max(x,\
     \ y) - min(x, y), n))) prd = q;\n    x = f(x), y = f(f(y));\n  }\n  return gcd(prd,\
-    \ n);\n}\nvector<ull> factor(ull n) {\n  if (n == 1) return {};\n  if (isPrime(n))\
-    \ return {n};\n  ull x = pollard(n);\n  auto l = factor(x), r = factor(n / x);\n\
+    \ n);\n}\nvector<u64> factor(u64 n) {\n  if (n == 1) return {};\n  if (isPrime(n))\
+    \ return {n};\n  u64 x = pollard(n);\n  auto l = factor(x), r = factor(n / x);\n\
     \  l.insert(l.end(), all(r));\n  return l;\n}\n#line 6 \"tests/Factorize.test.cpp\"\
     \n\nint main() {\n  ios::sync_with_stdio(false);\n  cin.tie(nullptr);\n\n  int\
     \ q;\n  cin >> q;\n  while (q--) {\n    i64 n;\n    cin >> n;\n    auto f = factor(n);\n\
@@ -95,8 +95,8 @@ data:
   isVerificationFile: true
   path: tests/Factorize.test.cpp
   requiredBy: []
-  timestamp: '2025-11-18 17:12:08+07:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2025-11-18 17:42:34+07:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Factorize.test.cpp
 layout: document

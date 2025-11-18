@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/ModLog.h
     title: math/ModLog.h
   - icon: ':question:'
@@ -9,9 +9,9 @@ data:
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/discrete_logarithm_mod
@@ -38,20 +38,20 @@ data:
     \ null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n// dynamic\
     \ bitset\nusing bs = tr2::dynamic_bitset<u64>;\n\n/*  rope\n    rope <int> cur\
     \ = v.substr(l, r - l + 1);\n    v.erase(l, r - l + 1);\n    v.insert(v.mutable_begin(),\
-    \ cur);\n*/\n#line 1 \"math/ModLog.h\"\nll modLog(ll a, ll b, ll m) {\n  ll n\
-    \ = (ll) sqrt(m) + 1, e = 1, f = 1, j = 1;\n  unordered_map<ll, ll> A;\n  while\
-    \ (j <= n && (e = f = e * a % m) != b % m) A[e * b % m] = j++;\n  if (e == b %\
-    \ m) return j;\n  if (gcd(m, e) == gcd(m, b)) {\n    for (int i = 2; i < n + 2;\
-    \ ++i) {\n      if (A.count(e = e * f % m)) return n * i - A[e];\n    }\n  }\n\
-    \  return -1;\n}\n#line 5 \"tests/Discrete_Logarithm.test.cpp\"\n\nvoid solve()\
-    \ {\n  ll a, b, m;\n  cin >> a >> b >> m;\n  if (m == 1 || b == 1) {  // because\
-    \ of the bs nonnegative and 0^0 = 1\n    cout << 0 << '\\n';\n    return;\n  }\n\
-    \  cout << modLog(a, b, m) << '\\n';\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n\
+    \ cur);\n*/\n#line 1 \"math/ModLog.h\"\ni64 modLog(i64 a, i64 b, i64 m) {\n  i64\
+    \ n = (i64) sqrt(m) + 1, e = 1, f = 1, j = 1;\n  unordered_map<i64, i64> A;\n\
+    \  while (j <= n && (e = f = e * a % m) != b % m) A[e * b % m] = j++;\n  if (e\
+    \ == b % m) return j;\n  if (gcd(m, e) == gcd(m, b)) {\n    for (int i = 2; i\
+    \ < n + 2; ++i) {\n      if (A.count(e = e * f % m)) return n * i - A[e];\n  \
+    \  }\n  }\n  return -1;\n}\n#line 5 \"tests/Discrete_Logarithm.test.cpp\"\n\n\
+    void solve() {\n  i64 a, b, m;\n  cin >> a >> b >> m;\n  if (m == 1 || b == 1)\
+    \ {  // because of the bs nonnegative and 0^0 = 1\n    cout << 0 << '\\n';\n \
+    \   return;\n  }\n  cout << modLog(a, b, m) << '\\n';\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n\
     \  cin.exceptions(cin.failbit);\n  int tc = 1;\n  cin >> tc;\n  for (int i = 1;\
     \ i <= tc; ++i) {\n    solve();\n  }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/discrete_logarithm_mod\"\
     \n\n#include \"../misc/macros.h\"\n#include \"../math/ModLog.h\"\n\nvoid solve()\
-    \ {\n  ll a, b, m;\n  cin >> a >> b >> m;\n  if (m == 1 || b == 1) {  // because\
+    \ {\n  i64 a, b, m;\n  cin >> a >> b >> m;\n  if (m == 1 || b == 1) {  // because\
     \ of the bs nonnegative and 0^0 = 1\n    cout << 0 << '\\n';\n    return;\n  }\n\
     \  cout << modLog(a, b, m) << '\\n';\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n\
     \  cin.exceptions(cin.failbit);\n  int tc = 1;\n  cin >> tc;\n  for (int i = 1;\
@@ -62,8 +62,8 @@ data:
   isVerificationFile: true
   path: tests/Discrete_Logarithm.test.cpp
   requiredBy: []
-  timestamp: '2025-11-18 17:12:08+07:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2025-11-18 17:42:34+07:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Discrete_Logarithm.test.cpp
 layout: document

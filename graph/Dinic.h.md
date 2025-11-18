@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: graph/GomoryHu.h
+    title: graph/GomoryHu.h
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: h
@@ -47,7 +50,8 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: graph/Dinic.h
-  requiredBy: []
+  requiredBy:
+  - graph/GomoryHu.h
   timestamp: '2025-11-18 16:58:39+07:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

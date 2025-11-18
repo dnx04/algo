@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/Point.h
     title: geometry/Point.h
   - icon: ':question:'
@@ -9,9 +9,9 @@ data:
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/sort_points_by_argument
@@ -56,7 +56,7 @@ data:
     \ the origin\n  P rotate(ld a) const {\n    return P(x * cos(a) - y * sin(a),\
     \ x * sin(a) + y * cos(a));\n  }\n  friend ostream& operator<<(ostream& os, P\
     \ p) {\n    return os << \"(\" << p.x << \",\" << p.y << \")\";\n  }\n};\n#line\
-    \ 5 \"tests/Sort_Points_by_Argument.test.cpp\"\n\ntypedef Point<ll> P;\n\nvoid\
+    \ 5 \"tests/Sort_Points_by_Argument.test.cpp\"\n\ntypedef Point<i64> P;\n\nvoid\
     \ solve() {\n  int n;\n  cin >> n;\n  vector<P> pts(n);\n  for(int i = 0; i <\
     \ n; ++i) cin >> pts[i].x >> pts[i].y;\n  sort(all(pts), [&](P a, P b) { return\
     \ a.angle() < b.angle(); });\n  for (auto p : pts)\n    cout << fixed << setprecision(0)\
@@ -65,7 +65,7 @@ data:
     \ i = 1; i <= tc; ++i) {\n    solve();\n  }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/sort_points_by_argument\"\
     \n\n#include \"../misc/macros.h\"\n#include \"../geometry/Point.h\"\n\ntypedef\
-    \ Point<ll> P;\n\nvoid solve() {\n  int n;\n  cin >> n;\n  vector<P> pts(n);\n\
+    \ Point<i64> P;\n\nvoid solve() {\n  int n;\n  cin >> n;\n  vector<P> pts(n);\n\
     \  for(int i = 0; i < n; ++i) cin >> pts[i].x >> pts[i].y;\n  sort(all(pts), [&](P\
     \ a, P b) { return a.angle() < b.angle(); });\n  for (auto p : pts)\n    cout\
     \ << fixed << setprecision(0) << p.x << ' ' << p.y << '\\n';\n}\n\nint main()\
@@ -78,8 +78,8 @@ data:
   isVerificationFile: true
   path: tests/Sort_Points_by_Argument.test.cpp
   requiredBy: []
-  timestamp: '2025-11-18 17:12:08+07:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2025-11-18 17:42:34+07:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Sort_Points_by_Argument.test.cpp
 layout: document

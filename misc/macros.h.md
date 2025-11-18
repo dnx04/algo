@@ -18,7 +18,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Bitwise_Xor_Convolution.test.cpp
     title: tests/Bitwise_Xor_Convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Closest_Pair_of_Points.test.cpp
     title: tests/Closest_Pair_of_Points.test.cpp
   - icon: ':x:'
@@ -30,7 +30,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Deque_Operate_All_Composite.test.cpp
     title: tests/Deque_Operate_All_Composite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Discrete_Logarithm.test.cpp
     title: tests/Discrete_Logarithm.test.cpp
   - icon: ':heavy_check_mark:'
@@ -45,7 +45,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Enumerate_Triangles.test.cpp
     title: tests/Enumerate_Triangles.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Factorize.test.cpp
     title: tests/Factorize.test.cpp
   - icon: ':heavy_check_mark:'
@@ -66,19 +66,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Point_Set_Range_Composite.test.cpp
     title: tests/Point_Set_Range_Composite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Primality_Test.test.cpp
     title: tests/Primality_Test.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Sort_Points_by_Argument.test.cpp
     title: tests/Sort_Points_by_Argument.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Sqrt_Mod.test.cpp
     title: tests/Sqrt_Mod.test.cpp
   - icon: ':heavy_check_mark:'
     path: tests/Static_Convex_Hull.test.cpp
     title: tests/Static_Convex_Hull.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Sum_of_Floor_of_Linear.test.cpp
     title: tests/Sum_of_Floor_of_Linear.test.cpp
   - icon: ':x:'

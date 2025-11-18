@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/ClosestPair.h
     title: geometry/ClosestPair.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/Point.h
     title: geometry/Point.h
   - icon: ':question:'
@@ -12,9 +12,9 @@ data:
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/closest_pair
@@ -66,7 +66,7 @@ data:
     \ <= p.y - d.x) S.erase(v[j++]);\n    auto lo = S.lower_bound(p - d), hi = S.upper_bound(p\
     \ + d);\n    for (; lo != hi; ++lo) ret = min(ret, {(*lo - p).dist2(), {*lo, p}});\n\
     \    S.insert(p);\n  }\n  return ret.second;\n}\n#line 5 \"tests/Closest_Pair_of_Points.test.cpp\"\
-    \n\nvoid solve() {\n  int n;\n  cin >> n;\n  vector<Point<ll>> p(n);\n  for (int\
+    \n\nvoid solve() {\n  int n;\n  cin >> n;\n  vector<Point<i64>> p(n);\n  for (int\
     \ i = 0; i < n; ++i) cin >> p[i].x >> p[i].y;\n  auto ans = closest(p);\n  int\
     \ p1, p2;\n  for (int i = 0; i < n; ++i) {\n    if (p[i] == ans.first) {\n   \
     \   p1 = i;\n      break;\n    }\n  }\n  for (int i = 0; i < n; ++i) {\n    if\
@@ -76,14 +76,14 @@ data:
     \ i <= tc; ++i) {\n    solve();\n  }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/closest_pair\"\n\n#include\
     \ \"../misc/macros.h\"\n#include \"../geometry/ClosestPair.h\"\n\nvoid solve()\
-    \ {\n  int n;\n  cin >> n;\n  vector<Point<ll>> p(n);\n  for (int i = 0; i < n;\
-    \ ++i) cin >> p[i].x >> p[i].y;\n  auto ans = closest(p);\n  int p1, p2;\n  for\
-    \ (int i = 0; i < n; ++i) {\n    if (p[i] == ans.first) {\n      p1 = i;\n   \
-    \   break;\n    }\n  }\n  for (int i = 0; i < n; ++i) {\n    if (i != p1 && p[i]\
-    \ == ans.second) {\n      p2 = i;\n      break;\n    }\n  }\n  cout << p1 << '\
-    \ ' << p2 << '\\n';\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
-    \  int tc = 1;\n  cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n\
-    \  }\n}\n"
+    \ {\n  int n;\n  cin >> n;\n  vector<Point<i64>> p(n);\n  for (int i = 0; i <\
+    \ n; ++i) cin >> p[i].x >> p[i].y;\n  auto ans = closest(p);\n  int p1, p2;\n\
+    \  for (int i = 0; i < n; ++i) {\n    if (p[i] == ans.first) {\n      p1 = i;\n\
+    \      break;\n    }\n  }\n  for (int i = 0; i < n; ++i) {\n    if (i != p1 &&\
+    \ p[i] == ans.second) {\n      p2 = i;\n      break;\n    }\n  }\n  cout << p1\
+    \ << ' ' << p2 << '\\n';\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n\
+    \  cin.exceptions(cin.failbit);\n  int tc = 1;\n  cin >> tc;\n  for (int i = 1;\
+    \ i <= tc; ++i) {\n    solve();\n  }\n}\n"
   dependsOn:
   - misc/macros.h
   - geometry/ClosestPair.h
@@ -91,8 +91,8 @@ data:
   isVerificationFile: true
   path: tests/Closest_Pair_of_Points.test.cpp
   requiredBy: []
-  timestamp: '2025-11-18 17:12:08+07:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2025-11-18 17:42:34+07:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Closest_Pair_of_Points.test.cpp
 layout: document

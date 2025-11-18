@@ -81,7 +81,7 @@ data:
     \    }\n    return depth[a] < depth[b] ? a : b;\n  }\n\n  int dist(int a, int\
     \ b) { return depth[a] + depth[b] - depth[lca(a, b)] * 2; }\n};\n#line 6 \"tests/Vertex_Add_Path_Sum.test.cpp\"\
     \n\nsigned main() {\n  ios::sync_with_stdio(false);\n  cin.tie(0);\n\n  int n,\
-    \ q;\n  cin >> n >> q;\n  Fenwick<ll> fw(n);\n  vector<ll> a(n);\n  vector<vi>\
+    \ q;\n  cin >> n >> q;\n  Fenwick<i64> fw(n);\n  vector<i64> a(n);\n  vector<vi>\
     \ g(n);\n  for (int i = 0; i < n; ++i) cin >> a[i];\n  for (int i = 0; i < n -\
     \ 1; ++i) {\n    int u, v;\n    cin >> u >> v;\n    g[u].eb(v), g[v].eb(u);\n\
     \  }\n  auto hld = HLD(g);\n  for (int i = 0; i < n; ++i) fw.add(hld.idx(i).first\
@@ -94,7 +94,7 @@ data:
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_path_sum\"\n\
     \n#include \"../misc/macros.h\"\n#include \"../ds/Fenwick.h\"\n#include \"../ds/HLD.h\"\
     \n\nsigned main() {\n  ios::sync_with_stdio(false);\n  cin.tie(0);\n\n  int n,\
-    \ q;\n  cin >> n >> q;\n  Fenwick<ll> fw(n);\n  vector<ll> a(n);\n  vector<vi>\
+    \ q;\n  cin >> n >> q;\n  Fenwick<i64> fw(n);\n  vector<i64> a(n);\n  vector<vi>\
     \ g(n);\n  for (int i = 0; i < n; ++i) cin >> a[i];\n  for (int i = 0; i < n -\
     \ 1; ++i) {\n    int u, v;\n    cin >> u >> v;\n    g[u].eb(v), g[v].eb(u);\n\
     \  }\n  auto hld = HLD(g);\n  for (int i = 0; i < n; ++i) fw.add(hld.idx(i).first\
@@ -111,7 +111,7 @@ data:
   isVerificationFile: true
   path: tests/Vertex_Add_Path_Sum.test.cpp
   requiredBy: []
-  timestamp: '2025-11-18 17:12:08+07:00'
+  timestamp: '2025-11-18 17:42:34+07:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: tests/Vertex_Add_Path_Sum.test.cpp
