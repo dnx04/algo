@@ -67,17 +67,18 @@ data:
     \ x, m);\n    x = modmul(x, x, m);\n    k >>= 1;\n  }\n  return res;\n}\n#line\
     \ 1 \"math/Affine.h\"\ntemplate <typename T>\nstruct affine {\n  T a, b;\n  constexpr\
     \ affine() : a(1), b(0) {}\n  constexpr affine(T a, T b) : a(a), b(b) {}\n  T\
-    \ operator()(T x) { return a * x + b; }\n  affine operator()(const affine& f)\
-    \ const {\n    return f * (*this);\n  }\n  // g(f(x))\n  affine operator*(const\
-    \ affine& g) const {\n    return {a * g.a, b * g.a + g.b};\n  }\n};\n#line 1 \"\
-    ds/SWAG.h\"\ntemplate <typename T, typename F>\nstruct SlideWindowAggregationDeque\
-    \ {\n  vector<T> a0, a1, r0, r1;\n  F f;\n  T I;\n\n  SlideWindowAggregationDeque(F\
-    \ f, T i) : f(f), I(i) {}\n\n private:\n  T get0() const { return r0.empty() ?\
-    \ I : r0.back(); }\n  T get1() const { return r1.empty() ? I : r1.back(); }\n\n\
-    \  void push0(const T& x) {\n    a0.push_back(x);\n    r0.push_back(f(x, get0()));\n\
-    \  }\n  void push1(const T& x) {\n    a1.push_back(x);\n    r1.push_back(f(get1(),\
-    \ x));\n  }\n  void rebalance() {\n    int n = a0.size() + a1.size();\n    int\
-    \ s0 = n / 2 + (a0.empty() ? n % 2 : 0);\n    vector<T> a{a0};\n    reverse(begin(a),\
+    \ operator()(T x) const { return a * x + b; }\n  affine operator()(const affine&\
+    \ f) const {\n    return f * (*this);\n  }\n  affine operator*(const affine& g)\
+    \ const {  // g(f(x))\n    return {a * g.a, b * g.a + g.b};\n  }\n  affine operator!=(const\
+    \ affine& g) const {\n    return a != g.a || b != g.b;\n  }\n};\n#line 1 \"ds/SWAG.h\"\
+    \ntemplate <typename T, typename F>\nstruct SlideWindowAggregationDeque {\n  vector<T>\
+    \ a0, a1, r0, r1;\n  F f;\n  T I;\n\n  SlideWindowAggregationDeque(F f, T i) :\
+    \ f(f), I(i) {}\n\n private:\n  T get0() const { return r0.empty() ? I : r0.back();\
+    \ }\n  T get1() const { return r1.empty() ? I : r1.back(); }\n\n  void push0(const\
+    \ T& x) {\n    a0.push_back(x);\n    r0.push_back(f(x, get0()));\n  }\n  void\
+    \ push1(const T& x) {\n    a1.push_back(x);\n    r1.push_back(f(get1(), x));\n\
+    \  }\n  void rebalance() {\n    int n = a0.size() + a1.size();\n    int s0 = n\
+    \ / 2 + (a0.empty() ? n % 2 : 0);\n    vector<T> a{a0};\n    reverse(begin(a),\
     \ end(a));\n    copy(begin(a1), end(a1), back_inserter(a));\n    a0.clear(), r0.clear();\n\
     \    a1.clear(), r1.clear();\n    for (int i = s0 - 1; i >= 0; i--) push0(a[i]);\n\
     \    for (int i = s0; i < n; i++) push1(a[i]);\n  }\n\n public:\n  void push_front(const\
@@ -119,7 +120,7 @@ data:
   isVerificationFile: true
   path: tests/Deque_Operate_All_Composite.test.cpp
   requiredBy: []
-  timestamp: '2025-11-18 17:12:08+07:00'
+  timestamp: '2025-11-18 22:42:15+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Deque_Operate_All_Composite.test.cpp

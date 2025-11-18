@@ -46,38 +46,39 @@ data:
     \ = v.substr(l, r - l + 1);\n    v.erase(l, r - l + 1);\n    v.insert(v.mutable_begin(),\
     \ cur);\n*/\n#line 1 \"math/Affine.h\"\ntemplate <typename T>\nstruct affine {\n\
     \  T a, b;\n  constexpr affine() : a(1), b(0) {}\n  constexpr affine(T a, T b)\
-    \ : a(a), b(b) {}\n  T operator()(T x) { return a * x + b; }\n  affine operator()(const\
-    \ affine& f) const {\n    return f * (*this);\n  }\n  // g(f(x))\n  affine operator*(const\
-    \ affine& g) const {\n    return {a * g.a, b * g.a + g.b};\n  }\n};\n#line 1 \"\
-    math/ModInt.h\"\ntemplate <int mod>\nstruct modint {\n  using Fp = modint;\n \
-    \ int x;\n  modint() : x(0) {}\n  modint(i64 y) : x(y >= 0 ? y % mod : (mod -\
-    \ (-y) % mod) % mod) {}\n  Fp& operator+=(const Fp& p) {\n    if ((x += p.x) >=\
-    \ mod) x -= mod;\n    return *this;\n  }\n  Fp& operator-=(const Fp& p) {\n  \
-    \  if ((x += mod - p.x) >= mod) x -= mod;\n    return *this;\n  }\n  Fp& operator*=(const\
-    \ Fp& p) {\n    x = (int) (1ll * x * p.x % mod);\n    return *this;\n  }\n  Fp&\
-    \ operator/=(const Fp& p) {\n    *this *= p.inv();\n    return *this;\n  }\n \
-    \ Fp operator-() const { return Fp(-x); }\n  Fp operator+(const Fp& p) const {\
-    \ return Fp(*this) += p; }\n  Fp operator-(const Fp& p) const { return Fp(*this)\
-    \ -= p; }\n  Fp operator*(const Fp& p) const { return Fp(*this) *= p; }\n  Fp\
-    \ operator/(const Fp& p) const { return Fp(*this) /= p; }\n  bool operator==(const\
-    \ Fp& p) const { return x == p.x; }\n  bool operator!=(const Fp& p) const { return\
-    \ x != p.x; }\n  Fp inv() const { return *this ^ (mod - 2); }\n  Fp operator^(i64\
-    \ n) const {\n    Fp ret(1), mul(x);\n    while (n > 0) {\n      if (n & 1) ret\
-    \ *= mul;\n      mul *= mul;\n      n >>= 1;\n    }\n    return ret;\n  }\n  friend\
-    \ ostream& operator<<(ostream& os, const Fp& p) { return os << p.x; }\n  friend\
-    \ istream& operator>>(istream& is, Fp& a) {\n    i64 t;\n    is >> t;\n    a =\
-    \ modint<mod>(t);\n    return (is);\n  }\n};\n\nu64 modmul(u64 x, u64 y, u64 m)\
-    \ { return u128(x) * y % m; }\nu64 modpow(u64 x, u64 k, u64 m) {\n  u64 res =\
-    \ 1;\n  while (k) {\n    if (k & 1) res = modmul(res, x, m);\n    x = modmul(x,\
-    \ x, m);\n    k >>= 1;\n  }\n  return res;\n}\n#line 1 \"ds/SegTree.h\"\ntemplate\
-    \ <typename T, typename F>\nstruct SegTree {  // 1-indexed\n  int n;\n  vector<T>\
-    \ seg;\n  const F f;\n  const T I;\n  SegTree(int n, F f, const T& I) : n(n),\
-    \ seg(2 * n + 1), f(f), I(I) {}\n  void set(int k, T x) { seg[k + n] = x; }\n\
-    \  void upd(int k, T x) {\n    k += n, seg[k] = x;\n    while (k >>= 1) {\n  \
-    \    seg[k] = f(seg[k << 1], seg[k << 1 | 1]);\n    }\n  }\n  // query [l, r)\n\
-    \  T qry(int l, int r) {\n    T L = I, R = I;\n    for (l += n, r += n; l < r;\
-    \ l >>= 1, r >>= 1) {\n      if (l & 1) L = f(L, seg[l++]);\n      if (r & 1)\
-    \ R = f(seg[--r], R);\n    }\n    return f(L, R);\n  }\n  T& operator[](const\
+    \ : a(a), b(b) {}\n  T operator()(T x) const { return a * x + b; }\n  affine operator()(const\
+    \ affine& f) const {\n    return f * (*this);\n  }\n  affine operator*(const affine&\
+    \ g) const {  // g(f(x))\n    return {a * g.a, b * g.a + g.b};\n  }\n  affine\
+    \ operator!=(const affine& g) const {\n    return a != g.a || b != g.b;\n  }\n\
+    };\n#line 1 \"math/ModInt.h\"\ntemplate <int mod>\nstruct modint {\n  using Fp\
+    \ = modint;\n  int x;\n  modint() : x(0) {}\n  modint(i64 y) : x(y >= 0 ? y %\
+    \ mod : (mod - (-y) % mod) % mod) {}\n  Fp& operator+=(const Fp& p) {\n    if\
+    \ ((x += p.x) >= mod) x -= mod;\n    return *this;\n  }\n  Fp& operator-=(const\
+    \ Fp& p) {\n    if ((x += mod - p.x) >= mod) x -= mod;\n    return *this;\n  }\n\
+    \  Fp& operator*=(const Fp& p) {\n    x = (int) (1ll * x * p.x % mod);\n    return\
+    \ *this;\n  }\n  Fp& operator/=(const Fp& p) {\n    *this *= p.inv();\n    return\
+    \ *this;\n  }\n  Fp operator-() const { return Fp(-x); }\n  Fp operator+(const\
+    \ Fp& p) const { return Fp(*this) += p; }\n  Fp operator-(const Fp& p) const {\
+    \ return Fp(*this) -= p; }\n  Fp operator*(const Fp& p) const { return Fp(*this)\
+    \ *= p; }\n  Fp operator/(const Fp& p) const { return Fp(*this) /= p; }\n  bool\
+    \ operator==(const Fp& p) const { return x == p.x; }\n  bool operator!=(const\
+    \ Fp& p) const { return x != p.x; }\n  Fp inv() const { return *this ^ (mod -\
+    \ 2); }\n  Fp operator^(i64 n) const {\n    Fp ret(1), mul(x);\n    while (n >\
+    \ 0) {\n      if (n & 1) ret *= mul;\n      mul *= mul;\n      n >>= 1;\n    }\n\
+    \    return ret;\n  }\n  friend ostream& operator<<(ostream& os, const Fp& p)\
+    \ { return os << p.x; }\n  friend istream& operator>>(istream& is, Fp& a) {\n\
+    \    i64 t;\n    is >> t;\n    a = modint<mod>(t);\n    return (is);\n  }\n};\n\
+    \nu64 modmul(u64 x, u64 y, u64 m) { return u128(x) * y % m; }\nu64 modpow(u64\
+    \ x, u64 k, u64 m) {\n  u64 res = 1;\n  while (k) {\n    if (k & 1) res = modmul(res,\
+    \ x, m);\n    x = modmul(x, x, m);\n    k >>= 1;\n  }\n  return res;\n}\n#line\
+    \ 1 \"ds/SegTree.h\"\ntemplate <typename T, typename F>\nstruct SegTree {  //\
+    \ 1-indexed\n  int n;\n  vector<T> seg;\n  const F f;\n  const T I;\n  SegTree(int\
+    \ n, F f, const T& I) : n(n), seg(2 * n + 1), f(f), I(I) {}\n  void set(int k,\
+    \ T x) { seg[k + n] = x; }\n  void upd(int k, T x) {\n    k += n, seg[k] = x;\n\
+    \    while (k >>= 1) {\n      seg[k] = f(seg[k << 1], seg[k << 1 | 1]);\n    }\n\
+    \  }\n  // query [l, r)\n  T qry(int l, int r) {\n    T L = I, R = I;\n    for\
+    \ (l += n, r += n; l < r; l >>= 1, r >>= 1) {\n      if (l & 1) L = f(L, seg[l++]);\n\
+    \      if (r & 1) R = f(seg[--r], R);\n    }\n    return f(L, R);\n  }\n  T& operator[](const\
     \ int& k) { return seg[k + n]; }\n};\n#line 7 \"tests/Point_Set_Range_Composite.test.cpp\"\
     \n\nusing Fp = modint<998244353>;\nusing A = affine<Fp>;\n\nvoid solve() {\n \
     \ int n, q;\n  cin >> n >> q;\n  SegTree st(n, [&](const A& l, const A& r) { return\
@@ -110,7 +111,7 @@ data:
   isVerificationFile: true
   path: tests/Point_Set_Range_Composite.test.cpp
   requiredBy: []
-  timestamp: '2025-11-18 17:12:08+07:00'
+  timestamp: '2025-11-18 22:42:15+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Point_Set_Range_Composite.test.cpp

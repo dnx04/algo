@@ -45,19 +45,19 @@ data:
     \  // 1-indexed\n  int n;\n  vector<T> t;\n  Fenwick(int n) : n(n), t(n + 1, T(0))\
     \ {}\n  void add(int p, T v) {\n    while (p <= n) t[p] += v, p += (p & -p);\n\
     \  }\n  T sum(int p) {\n    T res = 0;\n    while (p) res += t[p], p -= (p & -p);\n\
-    \    return res;\n  }\n  T sum(int l, int r) {\n    if (l > r) return T(0);\n\
-    \    return sum(r) - sum(l - 1);\n  }\n};\n#line 1 \"ds/HLD.h\"\ntemplate <typename\
-    \ G>\nstruct HLD {\n private:\n  void dfs_sz(int cur) {\n    size[cur] = 1;\n\
-    \    for (auto& dst : g[cur]) {\n      if (dst == par[cur]) {\n        if (g[cur].size()\
-    \ >= 2 && int(dst) == int(g[cur][0]))\n          swap(g[cur][0], g[cur][1]);\n\
-    \        else\n          continue;\n      }\n      depth[dst] = depth[cur] + 1;\n\
-    \      par[dst] = cur;\n      dfs_sz(dst);\n      size[cur] += size[dst];\n  \
-    \    if (size[dst] > size[g[cur][0]]) swap(dst, g[cur][0]);\n    }\n  }\n\n  void\
-    \ dfs_hld(int cur) {\n    down[cur] = id++;\n    for (auto dst : g[cur]) {\n \
-    \     if (dst == par[cur]) continue;\n      nxt[dst] = (int(dst) == int(g[cur][0])\
-    \ ? nxt[cur] : int(dst));\n      dfs_hld(dst);\n    }\n    up[cur] = id;\n  }\n\
-    \n  // [u, v)\n  vector<pii> ascend(int u, int v) const {\n    vector<pii> res;\n\
-    \    while (nxt[u] != nxt[v]) res.eb(down[u], down[nxt[u]]), u = par[nxt[u]];\n\
+    \    return res;\n  }\n  // [l, r)\n  T sum(int l, int r) {\n    if (l > r) return\
+    \ T(0);\n    return sum(r) - sum(l - 1);\n  }\n};\n#line 1 \"ds/HLD.h\"\ntemplate\
+    \ <typename G>\nstruct HLD {\n private:\n  void dfs_sz(int cur) {\n    size[cur]\
+    \ = 1;\n    for (auto& dst : g[cur]) {\n      if (dst == par[cur]) {\n       \
+    \ if (g[cur].size() >= 2 && int(dst) == int(g[cur][0]))\n          swap(g[cur][0],\
+    \ g[cur][1]);\n        else\n          continue;\n      }\n      depth[dst] =\
+    \ depth[cur] + 1;\n      par[dst] = cur;\n      dfs_sz(dst);\n      size[cur]\
+    \ += size[dst];\n      if (size[dst] > size[g[cur][0]]) swap(dst, g[cur][0]);\n\
+    \    }\n  }\n\n  void dfs_hld(int cur) {\n    down[cur] = id++;\n    for (auto\
+    \ dst : g[cur]) {\n      if (dst == par[cur]) continue;\n      nxt[dst] = (int(dst)\
+    \ == int(g[cur][0]) ? nxt[cur] : int(dst));\n      dfs_hld(dst);\n    }\n    up[cur]\
+    \ = id;\n  }\n\n  // [u, v)\n  vector<pii> ascend(int u, int v) const {\n    vector<pii>\
+    \ res;\n    while (nxt[u] != nxt[v]) res.eb(down[u], down[nxt[u]]), u = par[nxt[u]];\n\
     \    if (u != v) res.eb(down[u], down[v] + 1);\n    return res;\n  }\n\n  // (u,\
     \ v]\n  vector<pii> descend(int u, int v) const {\n    if (u == v) return {};\n\
     \    if (nxt[u] == nxt[v]) return {{down[u] + 1, down[v]}};\n    auto res = descend(u,\
@@ -111,7 +111,7 @@ data:
   isVerificationFile: true
   path: tests/Vertex_Add_Path_Sum.test.cpp
   requiredBy: []
-  timestamp: '2025-11-18 17:56:48+07:00'
+  timestamp: '2025-11-18 22:42:15+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Vertex_Add_Path_Sum.test.cpp

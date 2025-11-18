@@ -15,13 +15,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: ds/HLD.h
       title: ds/HLD.h
+    - icon: ':heavy_check_mark:'
+      path: ds/LazySegTree.h
+      title: ds/LazySegTree.h
     - icon: ':warning:'
       path: ds/LineContainer.h
       title: ds/LineContainer.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: ds/PersistentSegTree.h
       title: ds/PersistentSegTree.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: ds/RMQ.h
       title: ds/RMQ.h
     - icon: ':heavy_check_mark:'
@@ -257,15 +260,12 @@ data:
       path: strings/KMP.h
       title: strings/KMP.h
     - icon: ':warning:'
-      path: strings/Manacher.h
-      title: strings/Manacher.h
-    - icon: ':warning:'
       path: strings/MinRotation.h
       title: strings/MinRotation.h
     - icon: ':warning:'
       path: strings/PalindromeTree.h
       title: strings/PalindromeTree.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: strings/Z.h
       title: strings/Z.h
   verificationCategories:
@@ -335,11 +335,23 @@ data:
       path: tests/Number_of_Subsequences.test.cpp
       title: tests/Number_of_Subsequences.test.cpp
     - icon: ':heavy_check_mark:'
+      path: tests/Point_Add_Range_Sum.test.cpp
+      title: tests/Point_Add_Range_Sum.test.cpp
+    - icon: ':heavy_check_mark:'
       path: tests/Point_Set_Range_Composite.test.cpp
       title: tests/Point_Set_Range_Composite.test.cpp
     - icon: ':heavy_check_mark:'
+      path: tests/Point_Set_Range_Composite_Large.test.cpp
+      title: tests/Point_Set_Range_Composite_Large.test.cpp
+    - icon: ':heavy_check_mark:'
       path: tests/Primality_Test.test.cpp
       title: tests/Primality_Test.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: tests/Range_Affine_Point_Get.test.cpp
+      title: tests/Range_Affine_Point_Get.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: tests/Range_Affine_Range_Sum.test.cpp
+      title: tests/Range_Affine_Range_Sum.test.cpp
     - icon: ':heavy_check_mark:'
       path: tests/Sort_Points_by_Argument.test.cpp
       title: tests/Sort_Points_by_Argument.test.cpp
@@ -350,10 +362,16 @@ data:
       path: tests/Static_Convex_Hull.test.cpp
       title: tests/Static_Convex_Hull.test.cpp
     - icon: ':heavy_check_mark:'
+      path: tests/Static_RMQ.test.cpp
+      title: tests/Static_RMQ.test.cpp
+    - icon: ':heavy_check_mark:'
       path: tests/Sum_of_Floor_of_Linear.test.cpp
       title: tests/Sum_of_Floor_of_Linear.test.cpp
     - icon: ':heavy_check_mark:'
       path: tests/Vertex_Add_Path_Sum.test.cpp
       title: tests/Vertex_Add_Path_Sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: tests/Z_Algorithm.test.cpp
+      title: tests/Z_Algorithm.test.cpp
 layout: toppage
 ---

@@ -31,8 +31,17 @@ data:
     path: tests/Point_Set_Range_Composite.test.cpp
     title: tests/Point_Set_Range_Composite.test.cpp
   - icon: ':heavy_check_mark:'
+    path: tests/Point_Set_Range_Composite_Large.test.cpp
+    title: tests/Point_Set_Range_Composite_Large.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/Primality_Test.test.cpp
     title: tests/Primality_Test.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Range_Affine_Point_Get.test.cpp
+    title: tests/Range_Affine_Point_Get.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Range_Affine_Range_Sum.test.cpp
+    title: tests/Range_Affine_Range_Sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: tests/Sqrt_Mod.test.cpp
     title: tests/Sqrt_Mod.test.cpp
@@ -93,12 +102,15 @@ data:
   - tests/Bitwise_Xor_Convolution.test.cpp
   - tests/Enumerate_Triangles.test.cpp
   - tests/Deque_Operate_All_Composite.test.cpp
+  - tests/Range_Affine_Point_Get.test.cpp
   - tests/Factorize.test.cpp
   - tests/Find_Linear_Recurrence.test.cpp
   - tests/Primality_Test.test.cpp
   - tests/Sqrt_Mod.test.cpp
+  - tests/Range_Affine_Range_Sum.test.cpp
   - tests/Enumerate_Cliques.test.cpp
   - tests/Point_Set_Range_Composite.test.cpp
+  - tests/Point_Set_Range_Composite_Large.test.cpp
   - tests/Bitwise_And_Convolution.test.cpp
   - tests/Number_of_Subsequences.test.cpp
 documentation_of: math/ModInt.h

@@ -67,11 +67,23 @@ data:
     path: tests/Number_of_Subsequences.test.cpp
     title: tests/Number_of_Subsequences.test.cpp
   - icon: ':heavy_check_mark:'
+    path: tests/Point_Add_Range_Sum.test.cpp
+    title: tests/Point_Add_Range_Sum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/Point_Set_Range_Composite.test.cpp
     title: tests/Point_Set_Range_Composite.test.cpp
   - icon: ':heavy_check_mark:'
+    path: tests/Point_Set_Range_Composite_Large.test.cpp
+    title: tests/Point_Set_Range_Composite_Large.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/Primality_Test.test.cpp
     title: tests/Primality_Test.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Range_Affine_Point_Get.test.cpp
+    title: tests/Range_Affine_Point_Get.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Range_Affine_Range_Sum.test.cpp
+    title: tests/Range_Affine_Range_Sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: tests/Sort_Points_by_Argument.test.cpp
     title: tests/Sort_Points_by_Argument.test.cpp
@@ -82,11 +94,17 @@ data:
     path: tests/Static_Convex_Hull.test.cpp
     title: tests/Static_Convex_Hull.test.cpp
   - icon: ':heavy_check_mark:'
+    path: tests/Static_RMQ.test.cpp
+    title: tests/Static_RMQ.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/Sum_of_Floor_of_Linear.test.cpp
     title: tests/Sum_of_Floor_of_Linear.test.cpp
   - icon: ':heavy_check_mark:'
     path: tests/Vertex_Add_Path_Sum.test.cpp
     title: tests/Vertex_Add_Path_Sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Z_Algorithm.test.cpp
+    title: tests/Z_Algorithm.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -143,13 +161,16 @@ data:
   - tests/Static_Convex_Hull.test.cpp
   - tests/2_Sat.test.cpp
   - tests/Enumerate_Triangles.test.cpp
+  - tests/Z_Algorithm.test.cpp
   - tests/Deque_Operate_All_Composite.test.cpp
   - tests/Deque.test.cpp
   - tests/Minimum_Enclosing_Circle.test.cpp
+  - tests/Range_Affine_Point_Get.test.cpp
   - tests/Factorize.test.cpp
   - tests/General_Matching.test.cpp
   - tests/Maximum_Independent_Set.test.cpp
   - tests/Dominator_Tree.test.cpp
+  - tests/Static_RMQ.test.cpp
   - tests/Enumerate_Quotients.test.cpp
   - tests/Matching_on_Bipartite_Graph_HopcroftKarp.test.cpp
   - tests/Closest_Pair_of_Points.test.cpp
@@ -158,13 +179,16 @@ data:
   - tests/Sqrt_Mod.test.cpp
   - tests/Vertex_Add_Path_Sum.test.cpp
   - tests/Discrete_Logarithm.test.cpp
+  - tests/Range_Affine_Range_Sum.test.cpp
   - tests/Intersection_of_F2_vector_spaces.test.cpp
   - tests/Sort_Points_by_Argument.test.cpp
   - tests/Convolution.test.cpp
   - tests/Enumerate_Cliques.test.cpp
   - tests/Point_Set_Range_Composite.test.cpp
   - tests/Assignment_Problem.test.cpp
+  - tests/Point_Set_Range_Composite_Large.test.cpp
   - tests/Bitwise_And_Convolution.test.cpp
+  - tests/Point_Add_Range_Sum.test.cpp
   - tests/Number_of_Subsequences.test.cpp
   - tests/Sum_of_Floor_of_Linear.test.cpp
 documentation_of: misc/macros.h
