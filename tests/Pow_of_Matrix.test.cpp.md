@@ -1,12 +1,9 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
-    path: math/Factor.h
-    title: math/Factor.h
-  - icon: ':x:'
-    path: math/MillerRabin.h
-    title: math/MillerRabin.h
+  - icon: ':heavy_check_mark:'
+    path: math/Matrix.h
+    title: math/Matrix.h
   - icon: ':question:'
     path: math/ModInt.h
     title: math/ModInt.h
@@ -15,15 +12,15 @@ data:
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/factorize
+    PROBLEM: https://judge.yosupo.jp/problem/pow_of_matrix
     links:
-    - https://judge.yosupo.jp/problem/factorize
-  bundledCode: "#line 1 \"tests/Factorize.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/factorize\"\
+    - https://judge.yosupo.jp/problem/pow_of_matrix
+  bundledCode: "#line 1 \"tests/Pow_of_Matrix.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/pow_of_matrix\"\
     \n\n#line 1 \"misc/macros.h\"\n// #pragma GCC optimize(\"Ofast,unroll-loops\"\
     )       // unroll long, simple loops\n// #pragma GCC target(\"avx2,fma\")    \
     \               // vectorizing code\n// #pragma GCC target(\"lzcnt,popcnt,abm,bmi,bmi2\"\
@@ -65,44 +62,48 @@ data:
     \ const { return pow(mod - 2); }\n  friend ostream& operator<<(ostream& os, const\
     \ M& a) {\n    return os << reduce(a.x);\n  }\n  friend istream& operator>>(istream&\
     \ is, M& a) {\n    i64 v;\n    is >> v;\n    a = M(v);\n    return is;\n  }\n\
-    };\n#line 1 \"math/MillerRabin.h\"\nbool isPrime(u64 n) {\n  if (n < 2 || n %\
-    \ 6 % 4 != 1) return (n | 1) == 3;\n  u64 A[] = {2, 325, 9375, 28178, 450775,\
-    \ 9780504, 1795265022},\n      s = __builtin_ctzll(n - 1), d = n >> s;\n  for\
-    \ (u64 a : A) {  // ^ count trailing zeroes\n    u64 p = modpow(a % n, d, n),\
-    \ i = s;\n    while (p != 1 && p != n - 1 && a % n && i--) p = modmul(p, p, n);\n\
-    \    if (p != n - 1 && i != s) return 0;\n  }\n  return 1;\n}\n#line 2 \"math/Factor.h\"\
-    \n\nu64 pollard(u64 n) {\n  u64 x = 0, y = 0, t = 30, prd = 2, i = 1, q;\n  auto\
-    \ f = [&](u64 x) { return modmul(x, x, n) + i; };\n  while (t++ % 40 || gcd(prd,\
-    \ n) == 1) {\n    if (x == y) x = ++i, y = f(x);\n    if ((q = modmul(prd, max(x,\
-    \ y) - min(x, y), n))) prd = q;\n    x = f(x), y = f(f(y));\n  }\n  return gcd(prd,\
-    \ n);\n}\nvector<u64> factor(u64 n) {\n  if (n == 1) return {};\n  if (isPrime(n))\
-    \ return {n};\n  u64 x = pollard(n);\n  auto l = factor(x), r = factor(n / x);\n\
-    \  l.insert(l.end(), all(r));\n  return l;\n}\n#line 6 \"tests/Factorize.test.cpp\"\
-    \n\nint main() {\n  ios::sync_with_stdio(false);\n  cin.tie(nullptr);\n\n  int\
-    \ q;\n  cin >> q;\n  while (q--) {\n    i64 n;\n    cin >> n;\n    auto f = factor(n);\n\
-    \    cout << sz(f) << ' ';\n    sort(all(f));\n    for (auto fac : f) cout <<\
-    \ fac << ' ';\n    cout << '\\n';\n  }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/factorize\"\n\n#include\
-    \ \"../misc/macros.h\"\n#include \"../math/ModInt.h\"\n#include \"../math/Factor.h\"\
-    \n\nint main() {\n  ios::sync_with_stdio(false);\n  cin.tie(nullptr);\n\n  int\
-    \ q;\n  cin >> q;\n  while (q--) {\n    i64 n;\n    cin >> n;\n    auto f = factor(n);\n\
-    \    cout << sz(f) << ' ';\n    sort(all(f));\n    for (auto fac : f) cout <<\
-    \ fac << ' ';\n    cout << '\\n';\n  }\n}\n"
+    };\n#line 1 \"math/Matrix.h\"\ntemplate <typename T>\nstruct Matrix {\n  using\
+    \ vec = vector<T>;\n  int n;\n  vector<vec> a;\n  Matrix(int n = 0) : n(n), a(n,\
+    \ vec(n, 0)) {}\n  Matrix(const vector<vec>& a) : n(sz(a)), a(a) {}\n  vec& operator[](int\
+    \ i) { return a[i]; }\n  const vec& operator[](int i) const { return a[i]; }\n\
+    \  Matrix operator*(const Matrix& b) const {\n    Matrix res(n);\n    for (int\
+    \ i = 0; i < n; ++i)\n      for (int k = 0; k < n; ++k)\n        for (int j =\
+    \ 0; j < n; ++j)\n          res[i][j] += a[i][k] * b[k][j];\n    return res;\n\
+    \  }\n  Matrix operator^(u64 k) const {\n    Matrix res(n), b = *this;\n    for\
+    \ (int i = 0; i < n; ++i) res[i][i] = 1;\n    while (k) {\n      if (k & 1) res\
+    \ = res * b;\n      b = b * b, k >>= 1;\n    }\n    return res;\n  }\n  vec operator*(const\
+    \ vec& v) const {  // b(v)\n    vec c(n);\n    for (int i = 0; i < n; ++i)\n \
+    \     for (int j = 0; j < n; ++j) c[i] += a[i][j] * v[j];\n    return c;\n  }\n\
+    };\n#line 6 \"tests/Pow_of_Matrix.test.cpp\"\n\nusing Fp = modint<998244353>;\n\
+    \nvoid solve() {\n  int n;\n  u64 k;\n  cin >> n >> k;\n  Matrix<Fp> a(n);\n \
+    \ for (int i = 0; i < n; ++i)\n    for (int j = 0; j < n; ++j) cin >> a[i][j];\n\
+    \n  a = a ^ k;\n  for (int i = 0; i < n; ++i)\n    for (int j = 0; j < n; ++j)\
+    \ cout << a[i][j] << \" \\n\"[j + 1 == n];\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n\
+    \  cin.exceptions(cin.failbit);\n  int tc = 1;\n  // cin >> tc;\n  for (int i\
+    \ = 1; i <= tc; ++i) {\n    solve();\n  }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/pow_of_matrix\"\n\n#include\
+    \ \"../misc/macros.h\"\n#include \"../math/ModInt.h\"\n#include \"../math/Matrix.h\"\
+    \n\nusing Fp = modint<998244353>;\n\nvoid solve() {\n  int n;\n  u64 k;\n  cin\
+    \ >> n >> k;\n  Matrix<Fp> a(n);\n  for (int i = 0; i < n; ++i)\n    for (int\
+    \ j = 0; j < n; ++j) cin >> a[i][j];\n\n  a = a ^ k;\n  for (int i = 0; i < n;\
+    \ ++i)\n    for (int j = 0; j < n; ++j) cout << a[i][j] << \" \\n\"[j + 1 == n];\n\
+    }\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
+    \  int tc = 1;\n  // cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n\
+    \  }\n}\n"
   dependsOn:
   - misc/macros.h
   - math/ModInt.h
-  - math/Factor.h
-  - math/MillerRabin.h
+  - math/Matrix.h
   isVerificationFile: true
-  path: tests/Factorize.test.cpp
+  path: tests/Pow_of_Matrix.test.cpp
   requiredBy: []
   timestamp: '2025-11-19 14:43:55+07:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: tests/Factorize.test.cpp
+documentation_of: tests/Pow_of_Matrix.test.cpp
 layout: document
 redirect_from:
-- /verify/tests/Factorize.test.cpp
-- /verify/tests/Factorize.test.cpp.html
-title: tests/Factorize.test.cpp
+- /verify/tests/Pow_of_Matrix.test.cpp
+- /verify/tests/Pow_of_Matrix.test.cpp.html
+title: tests/Pow_of_Matrix.test.cpp
 ---

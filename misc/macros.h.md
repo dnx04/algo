@@ -28,6 +28,9 @@ data:
     path: tests/Deque_Operate_All_Composite.test.cpp
     title: tests/Deque_Operate_All_Composite.test.cpp
   - icon: ':heavy_check_mark:'
+    path: tests/Derangement.test.cpp
+    title: tests/Derangement.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/Discrete_Logarithm.test.cpp
     title: tests/Discrete_Logarithm.test.cpp
   - icon: ':heavy_check_mark:'
@@ -42,10 +45,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Enumerate_Triangles.test.cpp
     title: tests/Enumerate_Triangles.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Factorize.test.cpp
     title: tests/Factorize.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Find_Linear_Recurrence.test.cpp
     title: tests/Find_Linear_Recurrence.test.cpp
   - icon: ':heavy_check_mark:'
@@ -76,6 +79,9 @@ data:
     path: tests/Point_Set_Range_Composite_Large.test.cpp
     title: tests/Point_Set_Range_Composite_Large.test.cpp
   - icon: ':heavy_check_mark:'
+    path: tests/Pow_of_Matrix.test.cpp
+    title: tests/Pow_of_Matrix.test.cpp
+  - icon: ':x:'
     path: tests/Primality_Test.test.cpp
     title: tests/Primality_Test.test.cpp
   - icon: ':heavy_check_mark:'
@@ -87,7 +93,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Sort_Points_by_Argument.test.cpp
     title: tests/Sort_Points_by_Argument.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Sqrt_Mod.test.cpp
     title: tests/Sqrt_Mod.test.cpp
   - icon: ':heavy_check_mark:'
@@ -105,9 +111,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Z_Algorithm.test.cpp
     title: tests/Z_Algorithm.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"misc/macros.h\"\n// #pragma GCC optimize(\"Ofast,unroll-loops\"\
@@ -155,7 +161,7 @@ data:
   path: misc/macros.h
   requiredBy: []
   timestamp: '2025-11-18 17:12:08+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - tests/Bitwise_Xor_Convolution.test.cpp
   - tests/Static_Convex_Hull.test.cpp
@@ -165,6 +171,7 @@ data:
   - tests/Deque_Operate_All_Composite.test.cpp
   - tests/Deque.test.cpp
   - tests/Minimum_Enclosing_Circle.test.cpp
+  - tests/Pow_of_Matrix.test.cpp
   - tests/Range_Affine_Point_Get.test.cpp
   - tests/Factorize.test.cpp
   - tests/General_Matching.test.cpp
@@ -189,6 +196,7 @@ data:
   - tests/Point_Set_Range_Composite_Large.test.cpp
   - tests/Bitwise_And_Convolution.test.cpp
   - tests/Point_Add_Range_Sum.test.cpp
+  - tests/Derangement.test.cpp
   - tests/Number_of_Subsequences.test.cpp
   - tests/Sum_of_Floor_of_Linear.test.cpp
 documentation_of: misc/macros.h

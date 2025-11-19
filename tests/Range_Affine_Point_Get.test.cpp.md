@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: ds/LazySegTree.h
     title: ds/LazySegTree.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/ModInt.h
     title: math/ModInt.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
@@ -42,38 +42,39 @@ data:
     \ bitset\nusing bs = tr2::dynamic_bitset<u64>;\n\n/*  rope\n    rope <int> cur\
     \ = v.substr(l, r - l + 1);\n    v.erase(l, r - l + 1);\n    v.insert(v.mutable_begin(),\
     \ cur);\n*/\n#line 1 \"math/ModInt.h\"\ntemplate <int mod>\nstruct modint {\n\
-    \  using Fp = modint;\n  int x;\n  modint() : x(0) {}\n  modint(i64 y) : x(y >=\
-    \ 0 ? y % mod : (mod - (-y) % mod) % mod) {}\n  Fp& operator+=(const Fp& p) {\n\
-    \    if ((x += p.x) >= mod) x -= mod;\n    return *this;\n  }\n  Fp& operator-=(const\
-    \ Fp& p) {\n    if ((x += mod - p.x) >= mod) x -= mod;\n    return *this;\n  }\n\
-    \  Fp& operator*=(const Fp& p) {\n    x = (int) (1ll * x * p.x % mod);\n    return\
-    \ *this;\n  }\n  Fp& operator/=(const Fp& p) {\n    *this *= p.inv();\n    return\
-    \ *this;\n  }\n  Fp operator-() const { return Fp(-x); }\n  Fp operator+(const\
-    \ Fp& p) const { return Fp(*this) += p; }\n  Fp operator-(const Fp& p) const {\
-    \ return Fp(*this) -= p; }\n  Fp operator*(const Fp& p) const { return Fp(*this)\
-    \ *= p; }\n  Fp operator/(const Fp& p) const { return Fp(*this) /= p; }\n  bool\
-    \ operator==(const Fp& p) const { return x == p.x; }\n  bool operator!=(const\
-    \ Fp& p) const { return x != p.x; }\n  Fp inv() const { return *this ^ (mod -\
-    \ 2); }\n  Fp operator^(i64 n) const {\n    Fp ret(1), mul(x);\n    while (n >\
-    \ 0) {\n      if (n & 1) ret *= mul;\n      mul *= mul;\n      n >>= 1;\n    }\n\
-    \    return ret;\n  }\n  friend ostream& operator<<(ostream& os, const Fp& p)\
-    \ { return os << p.x; }\n  friend istream& operator>>(istream& is, Fp& a) {\n\
-    \    i64 t;\n    is >> t;\n    a = modint<mod>(t);\n    return (is);\n  }\n};\n\
-    \nu64 modmul(u64 x, u64 y, u64 m) { return u128(x) * y % m; }\nu64 modpow(u64\
-    \ x, u64 k, u64 m) {\n  u64 res = 1;\n  while (k) {\n    if (k & 1) res = modmul(res,\
-    \ x, m);\n    x = modmul(x, x, m);\n    k >>= 1;\n  }\n  return res;\n}\n#line\
-    \ 1 \"ds/LazySegTree.h\"\n// 0-indexed\ntemplate <class T, class L, class F, class\
-    \ M, class C>\nstruct LazySegTree {\n  int n, h;\n  vector<T> seg;\n  vector<L>\
-    \ laz;\n  const T I;   // Identity node (e.g., 0 for sum, INF for min)\n  const\
-    \ L L0;  // Identity laz (e.g., 0 for add, -1 for set)\n  const F f;   // f: Merge\
-    \ 2 nodes (T, T) -> T\n  const M m;   // m: Mapping laz to node (T, L) -> T\n\
-    \  const C c;   // c: Composition 2 laz (L prev, L next) -> next(prev): L\n  LazySegTree(int\
-    \ n, T I, L L0, F f, M m, C c) : n(n), h(32 - __builtin_clz(n)), seg(n << 1 |\
-    \ 1, I), laz(n, L0), I(I), L0(L0), f(f), m(m), c(c) {}\n  void apply(int p, L\
-    \ val) {\n    seg[p] = m(seg[p], val);\n    if (p < n) laz[p] = c(laz[p], val);\n\
-    \  }\n  void pull(int p) {\n    while (p > 1) {\n      p >>= 1;\n      seg[p]\
-    \ = m(f(seg[p << 1], seg[p << 1 | 1]), laz[p]);\n    }\n  }\n  void push(int p)\
-    \ {\n    for (int s = h; s > 0; --s) {\n      int i = p >> s;\n      if (laz[i]\
+    \  using M = modint;\n  static_assert(mod > 0 && mod <= 2147483647);\n  static\
+    \ constexpr u32 r1 = []() {\n    u32 r1 = mod;\n    for (int i = 0; i < 5; ++i)\
+    \ r1 *= 2 - mod * r1;\n    return -r1;\n  }();\n  static constexpr u32 r2 = []()\
+    \ {\n    u64 r2 = (u64(1) << 32) % mod;\n    return r2 * r2 % mod;\n  }();\n \
+    \ static u32 reduce(u64 x) {\n    u32 y = u32(x) * r1, r = (x + u64(y) * mod)\
+    \ >> 32;\n    return r >= mod ? r - mod : r;\n  }\n  u32 x;\n  modint() : x(0)\
+    \ {}\n  modint(i64 v) {\n    v %= mod;\n    if (v < 0) v += mod;\n    x = reduce(u64(v)\
+    \ * r2);\n  }\n  M& operator+=(const M& a) {\n    if ((x += a.x) >= mod) x -=\
+    \ mod;\n    return *this;\n  }\n  M& operator-=(const M& a) {\n    if ((x += mod\
+    \ - a.x) >= mod) x -= mod;\n    return *this;\n  }\n  M& operator*=(const M& a)\
+    \ {\n    x = reduce(u64(x) * a.x);\n    return *this;\n  }\n  M& operator/=(const\
+    \ M& a) { return *this *= a.inv(); }\n  M operator+(const M& a) const { return\
+    \ M(*this) += a; }\n  M operator-(const M& a) const { return M(*this) -= a; }\n\
+    \  M operator*(const M& a) const { return M(*this) *= a; }\n  M operator/(const\
+    \ M& a) const { return M(*this) /= a; }\n  bool operator==(const M& a) const {\
+    \ return x == a.x; }\n  bool operator!=(const M& a) const { return x != a.x; }\n\
+    \  M pow(u64 k) const {\n    M res(1), b = *this;\n    while (k) {\n      if (k\
+    \ & 1) res *= b;\n      b *= b, k >>= 1;\n    }\n    return res;\n  }\n  M inv()\
+    \ const { return pow(mod - 2); }\n  friend ostream& operator<<(ostream& os, const\
+    \ M& a) {\n    return os << reduce(a.x);\n  }\n  friend istream& operator>>(istream&\
+    \ is, M& a) {\n    i64 v;\n    is >> v;\n    a = M(v);\n    return is;\n  }\n\
+    };\n#line 1 \"ds/LazySegTree.h\"\n// 0-indexed\ntemplate <class T, class L, class\
+    \ F, class M, class C>\nstruct LazySegTree {\n  int n, h;\n  vector<T> seg;\n\
+    \  vector<L> laz;\n  const T I;   // Identity node (e.g., 0 for sum, INF for min)\n\
+    \  const L L0;  // Identity laz (e.g., 0 for add, -1 for set)\n  const F f;  \
+    \ // f: Merge 2 nodes (T, T) -> T\n  const M m;   // m: Mapping laz to node (T,\
+    \ L) -> T\n  const C c;   // c: Composition 2 laz (L prev, L next) -> next(prev):\
+    \ L\n  LazySegTree(int n, T I, L L0, F f, M m, C c) : n(n), h(32 - __builtin_clz(n)),\
+    \ seg(n << 1 | 1, I), laz(n, L0), I(I), L0(L0), f(f), m(m), c(c) {}\n  void apply(int\
+    \ p, L val) {\n    seg[p] = m(seg[p], val);\n    if (p < n) laz[p] = c(laz[p],\
+    \ val);\n  }\n  void pull(int p) {\n    while (p > 1) {\n      p >>= 1;\n    \
+    \  seg[p] = m(f(seg[p << 1], seg[p << 1 | 1]), laz[p]);\n    }\n  }\n  void push(int\
+    \ p) {\n    for (int s = h; s > 0; --s) {\n      int i = p >> s;\n      if (laz[i]\
     \ != L0) apply(i << 1, laz[i]), apply(i << 1 | 1, laz[i]), laz[i] = L0;\n    }\n\
     \  }\n  void set(int p, T x) {\n    p += n;\n    for (int i = h; i > 0; --i) {\n\
     \      int k = p >> i;\n      if (laz[k] != L0) apply(k << 1, laz[k]), apply(k\
@@ -121,7 +122,7 @@ data:
   isVerificationFile: true
   path: tests/Range_Affine_Point_Get.test.cpp
   requiredBy: []
-  timestamp: '2025-11-19 09:51:05+07:00'
+  timestamp: '2025-11-19 14:43:55+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Range_Affine_Point_Get.test.cpp

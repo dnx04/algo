@@ -21,6 +21,9 @@ data:
     - icon: ':warning:'
       path: ds/LineContainer.h
       title: ds/LineContainer.h
+    - icon: ':warning:'
+      path: ds/Mo.h
+      title: ds/Mo.h
     - icon: ':heavy_check_mark:'
       path: ds/PersistentSegTree.h
       title: ds/PersistentSegTree.h
@@ -183,28 +186,28 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/FST.h
       title: math/FST.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/Factor.h
       title: math/Factor.h
     - icon: ':warning:'
       path: math/Lagrange.h
       title: math/Lagrange.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/LinearRec.h
       title: math/LinearRec.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: math/Matrix.h
       title: math/Matrix.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/MillerRabin.h
       title: math/MillerRabin.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/ModInt.h
       title: math/ModInt.h
     - icon: ':heavy_check_mark:'
       path: math/ModLog.h
       title: math/ModLog.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/ModSQRT.h
       title: math/ModSQRT.h
     - icon: ':heavy_check_mark:'
@@ -248,7 +251,7 @@ data:
     - icon: ':warning:'
       path: misc/SOSDP.cpp
       title: misc/SOSDP.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: misc/macros.h
       title: misc/macros.h
     - icon: ':warning:'
@@ -296,6 +299,9 @@ data:
       path: tests/Deque_Operate_All_Composite.test.cpp
       title: tests/Deque_Operate_All_Composite.test.cpp
     - icon: ':heavy_check_mark:'
+      path: tests/Derangement.test.cpp
+      title: tests/Derangement.test.cpp
+    - icon: ':heavy_check_mark:'
       path: tests/Discrete_Logarithm.test.cpp
       title: tests/Discrete_Logarithm.test.cpp
     - icon: ':heavy_check_mark:'
@@ -310,10 +316,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Enumerate_Triangles.test.cpp
       title: tests/Enumerate_Triangles.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Factorize.test.cpp
       title: tests/Factorize.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Find_Linear_Recurrence.test.cpp
       title: tests/Find_Linear_Recurrence.test.cpp
     - icon: ':heavy_check_mark:'
@@ -344,6 +350,9 @@ data:
       path: tests/Point_Set_Range_Composite_Large.test.cpp
       title: tests/Point_Set_Range_Composite_Large.test.cpp
     - icon: ':heavy_check_mark:'
+      path: tests/Pow_of_Matrix.test.cpp
+      title: tests/Pow_of_Matrix.test.cpp
+    - icon: ':x:'
       path: tests/Primality_Test.test.cpp
       title: tests/Primality_Test.test.cpp
     - icon: ':heavy_check_mark:'
@@ -355,7 +364,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Sort_Points_by_Argument.test.cpp
       title: tests/Sort_Points_by_Argument.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Sqrt_Mod.test.cpp
       title: tests/Sqrt_Mod.test.cpp
     - icon: ':heavy_check_mark:'

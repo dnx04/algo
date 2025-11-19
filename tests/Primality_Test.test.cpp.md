@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/MillerRabin.h
     title: math/MillerRabin.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/ModInt.h
     title: math/ModInt.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/primality_test
@@ -41,32 +41,33 @@ data:
     \ bitset\nusing bs = tr2::dynamic_bitset<u64>;\n\n/*  rope\n    rope <int> cur\
     \ = v.substr(l, r - l + 1);\n    v.erase(l, r - l + 1);\n    v.insert(v.mutable_begin(),\
     \ cur);\n*/\n#line 1 \"math/ModInt.h\"\ntemplate <int mod>\nstruct modint {\n\
-    \  using Fp = modint;\n  int x;\n  modint() : x(0) {}\n  modint(i64 y) : x(y >=\
-    \ 0 ? y % mod : (mod - (-y) % mod) % mod) {}\n  Fp& operator+=(const Fp& p) {\n\
-    \    if ((x += p.x) >= mod) x -= mod;\n    return *this;\n  }\n  Fp& operator-=(const\
-    \ Fp& p) {\n    if ((x += mod - p.x) >= mod) x -= mod;\n    return *this;\n  }\n\
-    \  Fp& operator*=(const Fp& p) {\n    x = (int) (1ll * x * p.x % mod);\n    return\
-    \ *this;\n  }\n  Fp& operator/=(const Fp& p) {\n    *this *= p.inv();\n    return\
-    \ *this;\n  }\n  Fp operator-() const { return Fp(-x); }\n  Fp operator+(const\
-    \ Fp& p) const { return Fp(*this) += p; }\n  Fp operator-(const Fp& p) const {\
-    \ return Fp(*this) -= p; }\n  Fp operator*(const Fp& p) const { return Fp(*this)\
-    \ *= p; }\n  Fp operator/(const Fp& p) const { return Fp(*this) /= p; }\n  bool\
-    \ operator==(const Fp& p) const { return x == p.x; }\n  bool operator!=(const\
-    \ Fp& p) const { return x != p.x; }\n  Fp inv() const { return *this ^ (mod -\
-    \ 2); }\n  Fp operator^(i64 n) const {\n    Fp ret(1), mul(x);\n    while (n >\
-    \ 0) {\n      if (n & 1) ret *= mul;\n      mul *= mul;\n      n >>= 1;\n    }\n\
-    \    return ret;\n  }\n  friend ostream& operator<<(ostream& os, const Fp& p)\
-    \ { return os << p.x; }\n  friend istream& operator>>(istream& is, Fp& a) {\n\
-    \    i64 t;\n    is >> t;\n    a = modint<mod>(t);\n    return (is);\n  }\n};\n\
-    \nu64 modmul(u64 x, u64 y, u64 m) { return u128(x) * y % m; }\nu64 modpow(u64\
-    \ x, u64 k, u64 m) {\n  u64 res = 1;\n  while (k) {\n    if (k & 1) res = modmul(res,\
-    \ x, m);\n    x = modmul(x, x, m);\n    k >>= 1;\n  }\n  return res;\n}\n#line\
-    \ 1 \"math/MillerRabin.h\"\nbool isPrime(u64 n) {\n  if (n < 2 || n % 6 % 4 !=\
-    \ 1) return (n | 1) == 3;\n  u64 A[] = {2, 325, 9375, 28178, 450775, 9780504,\
-    \ 1795265022},\n      s = __builtin_ctzll(n - 1), d = n >> s;\n  for (u64 a :\
-    \ A) {  // ^ count trailing zeroes\n    u64 p = modpow(a % n, d, n), i = s;\n\
-    \    while (p != 1 && p != n - 1 && a % n && i--) p = modmul(p, p, n);\n    if\
-    \ (p != n - 1 && i != s) return 0;\n  }\n  return 1;\n}\n#line 6 \"tests/Primality_Test.test.cpp\"\
+    \  using M = modint;\n  static_assert(mod > 0 && mod <= 2147483647);\n  static\
+    \ constexpr u32 r1 = []() {\n    u32 r1 = mod;\n    for (int i = 0; i < 5; ++i)\
+    \ r1 *= 2 - mod * r1;\n    return -r1;\n  }();\n  static constexpr u32 r2 = []()\
+    \ {\n    u64 r2 = (u64(1) << 32) % mod;\n    return r2 * r2 % mod;\n  }();\n \
+    \ static u32 reduce(u64 x) {\n    u32 y = u32(x) * r1, r = (x + u64(y) * mod)\
+    \ >> 32;\n    return r >= mod ? r - mod : r;\n  }\n  u32 x;\n  modint() : x(0)\
+    \ {}\n  modint(i64 v) {\n    v %= mod;\n    if (v < 0) v += mod;\n    x = reduce(u64(v)\
+    \ * r2);\n  }\n  M& operator+=(const M& a) {\n    if ((x += a.x) >= mod) x -=\
+    \ mod;\n    return *this;\n  }\n  M& operator-=(const M& a) {\n    if ((x += mod\
+    \ - a.x) >= mod) x -= mod;\n    return *this;\n  }\n  M& operator*=(const M& a)\
+    \ {\n    x = reduce(u64(x) * a.x);\n    return *this;\n  }\n  M& operator/=(const\
+    \ M& a) { return *this *= a.inv(); }\n  M operator+(const M& a) const { return\
+    \ M(*this) += a; }\n  M operator-(const M& a) const { return M(*this) -= a; }\n\
+    \  M operator*(const M& a) const { return M(*this) *= a; }\n  M operator/(const\
+    \ M& a) const { return M(*this) /= a; }\n  bool operator==(const M& a) const {\
+    \ return x == a.x; }\n  bool operator!=(const M& a) const { return x != a.x; }\n\
+    \  M pow(u64 k) const {\n    M res(1), b = *this;\n    while (k) {\n      if (k\
+    \ & 1) res *= b;\n      b *= b, k >>= 1;\n    }\n    return res;\n  }\n  M inv()\
+    \ const { return pow(mod - 2); }\n  friend ostream& operator<<(ostream& os, const\
+    \ M& a) {\n    return os << reduce(a.x);\n  }\n  friend istream& operator>>(istream&\
+    \ is, M& a) {\n    i64 v;\n    is >> v;\n    a = M(v);\n    return is;\n  }\n\
+    };\n#line 1 \"math/MillerRabin.h\"\nbool isPrime(u64 n) {\n  if (n < 2 || n %\
+    \ 6 % 4 != 1) return (n | 1) == 3;\n  u64 A[] = {2, 325, 9375, 28178, 450775,\
+    \ 9780504, 1795265022},\n      s = __builtin_ctzll(n - 1), d = n >> s;\n  for\
+    \ (u64 a : A) {  // ^ count trailing zeroes\n    u64 p = modpow(a % n, d, n),\
+    \ i = s;\n    while (p != 1 && p != n - 1 && a % n && i--) p = modmul(p, p, n);\n\
+    \    if (p != n - 1 && i != s) return 0;\n  }\n  return 1;\n}\n#line 6 \"tests/Primality_Test.test.cpp\"\
     \n\nvoid solve() {\n  u64 x;\n  cin >> x;\n  cout << (isPrime(x) ? \"Yes\\n\"\
     \ : \"No\\n\");\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
     \  int tc = 1;\n  cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n\
@@ -84,8 +85,8 @@ data:
   isVerificationFile: true
   path: tests/Primality_Test.test.cpp
   requiredBy: []
-  timestamp: '2025-11-18 17:42:34+07:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-11-19 14:43:55+07:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: tests/Primality_Test.test.cpp
 layout: document

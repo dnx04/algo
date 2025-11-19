@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Find_Linear_Recurrence.test.cpp
     title: tests/Find_Linear_Recurrence.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"math/LinearRec.h\"\ntemplate <class Fp>\nvector<Fp> LinearRec(const\
@@ -34,7 +34,7 @@ data:
   path: math/LinearRec.h
   requiredBy: []
   timestamp: '2025-11-18 18:21:29+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - tests/Find_Linear_Recurrence.test.cpp
 documentation_of: math/LinearRec.h
