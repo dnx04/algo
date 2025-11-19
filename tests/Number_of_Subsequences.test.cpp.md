@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/ModInt.h
     title: math/ModInt.h
   - icon: ':heavy_check_mark:'
@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: misc/CountSubseq.h
     title: misc/CountSubseq.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
@@ -47,40 +47,38 @@ data:
     \ cur);\n*/\n#line 1 \"math/ModInt.h\"\ntemplate <int mod>\nstruct modint {\n\
     \  using M = modint;\n  static_assert(mod > 0 && mod <= 2147483647);\n  static\
     \ constexpr u32 r1 = []() {\n    u32 r1 = mod;\n    for (int i = 0; i < 5; ++i)\
-    \ r1 *= 2 - mod * r1;\n    return -r1;\n  }();\n  static constexpr u32 r2 = []()\
-    \ {\n    u64 r2 = (u64(1) << 32) % mod;\n    return r2 * r2 % mod;\n  }();\n \
-    \ static u32 reduce(u64 x) {\n    u32 y = u32(x) * r1, r = (x + u64(y) * mod)\
-    \ >> 32;\n    return r >= mod ? r - mod : r;\n  }\n  u32 x;\n  modint() : x(0)\
-    \ {}\n  modint(i64 v) {\n    v %= mod;\n    if (v < 0) v += mod;\n    x = reduce(u64(v)\
-    \ * r2);\n  }\n  M& operator+=(const M& a) {\n    if ((x += a.x) >= mod) x -=\
-    \ mod;\n    return *this;\n  }\n  M& operator-=(const M& a) {\n    if ((x += mod\
-    \ - a.x) >= mod) x -= mod;\n    return *this;\n  }\n  M& operator*=(const M& a)\
-    \ {\n    x = reduce(u64(x) * a.x);\n    return *this;\n  }\n  M& operator/=(const\
-    \ M& a) { return *this *= a.inv(); }\n  M operator-() const { return M(-x); }\n\
-    \  M operator+(const M& a) const { return M(*this) += a; }\n  M operator-(const\
-    \ M& a) const { return M(*this) -= a; }\n  M operator*(const M& a) const { return\
-    \ M(*this) *= a; }\n  M operator/(const M& a) const { return M(*this) /= a; }\n\
-    \  bool operator==(const M& a) const { return x == a.x; }\n  bool operator!=(const\
-    \ M& a) const { return x != a.x; }\n  M pow(u64 k) const {\n    M res(1), b =\
-    \ *this;\n    while (k) {\n      if (k & 1) res *= b;\n      b *= b, k >>= 1;\n\
-    \    }\n    return res;\n  }\n  M inv() const { return pow(mod - 2); }\n  friend\
-    \ ostream& operator<<(ostream& os, const M& a) {\n    return os << reduce(a.x);\n\
-    \  }\n  friend istream& operator>>(istream& is, M& a) {\n    i64 v;\n    is >>\
-    \ v;\n    a = M(v);\n    return is;\n  }\n};\n\nu64 modmul(u64 x, u64 y, u64 m)\
-    \ { return u128(x) * y % m; }\nu64 modpow(u64 x, u64 k, u64 m) {\n  u64 res =\
-    \ 1;\n  while (k) {\n    if (k & 1) res = modmul(res, x, m);\n    x = modmul(x,\
-    \ x, m);\n    k >>= 1;\n  }\n  return res;\n}\n#line 1 \"misc/Compressor.h\"\n\
-    template <typename T>\nvi compressor(vector<T>& v) {\n  auto cv = v;\n  sort(all(cv));\n\
-    \  cv.erase(unique(all(cv)), cv.end());\n  for (auto& e : v) e = lower_bound(all(cv),\
-    \ e) - cv.begin();\n  return v;\n}\n#line 2 \"misc/CountSubseq.h\"\n\ntemplate\
-    \ <typename T, typename Fp>\nFp CountSubseq(vector<T> a) {\n  a = compressor<T>(a);\n\
-    \  vi last(sz(a) + 1, -1);\n  vector<Fp> f(sz(a) + 1);\n  f[0] = 1;\n  for (int\
-    \ i = 0; i < sz(a); ++i) {\n    f[i + 1] = f[i] * 2;\n    if (last[a[i]] >= 0)\
-    \ f[i + 1] -= f[last[a[i]]];\n    last[a[i]] = i;\n  }\n  return f.back() - 1;\n\
-    }\n#line 6 \"tests/Number_of_Subsequences.test.cpp\"\n\nusing Fp = modint<998244353>;\n\
-    \nsigned main() {\n  ios::sync_with_stdio(false);\n  cin.tie(0);\n  int n;\n \
-    \ cin >> n;\n  vector<int> a(n);\n  for (auto& x : a) cin >> x;\n  cout << CountSubseq<int,\
-    \ Fp>(a);\n}\n"
+    \ r1 *= 2 - mod * r1;\n    return -r1;\n  }();\n  static constexpr u32 r2 = -u64(mod)\
+    \ % mod;\n  static u32 reduce(u64 x) {\n    u32 y = u32(x) * r1, r = (x + u64(y)\
+    \ * mod) >> 32;\n    return r >= mod ? r - mod : r;\n  }\n  u32 x;\n  modint()\
+    \ : x(0) {}\n  modint(i64 x) : x(reduce(u64(x % mod + mod) * r2)) {}\n  M& operator+=(const\
+    \ M& a) {\n    if ((x += a.x) >= mod) x -= mod;\n    return *this;\n  }\n  M&\
+    \ operator-=(const M& a) {\n    if ((x += mod - a.x) >= mod) x -= mod;\n    return\
+    \ *this;\n  }\n  M& operator*=(const M& a) {\n    x = reduce(u64(x) * a.x);\n\
+    \    return *this;\n  }\n  M& operator/=(const M& a) { return *this *= a.inv();\
+    \ }\n  M operator-() const { return M(0) - *this; }\n  M operator+(const M& a)\
+    \ const { return M(*this) += a; }\n  M operator-(const M& a) const { return M(*this)\
+    \ -= a; }\n  M operator*(const M& a) const { return M(*this) *= a; }\n  M operator/(const\
+    \ M& a) const { return M(*this) /= a; }\n  bool operator==(const M& a) const {\
+    \ return x == a.x; }\n  bool operator!=(const M& a) const { return x != a.x; }\n\
+    \  M pow(u64 k) const {\n    M res(1), b = *this;\n    while (k) {\n      if (k\
+    \ & 1) res *= b;\n      b *= b, k >>= 1;\n    }\n    return res;\n  }\n  M inv()\
+    \ const { return pow(mod - 2); }\n  friend ostream& operator<<(ostream& os, const\
+    \ M& a) {\n    return os << reduce(a.x);\n  }\n  friend istream& operator>>(istream&\
+    \ is, M& a) {\n    i64 v;\n    is >> v;\n    a = M(v);\n    return is;\n  }\n\
+    };\n\nu64 modmul(u64 x, u64 y, u64 m) { return u128(x) * y % m; }\nu64 modpow(u64\
+    \ x, u64 k, u64 m) {\n  u64 res = 1;\n  while (k) {\n    if (k & 1) res = modmul(res,\
+    \ x, m);\n    x = modmul(x, x, m);\n    k >>= 1;\n  }\n  return res;\n}\n#line\
+    \ 1 \"misc/Compressor.h\"\ntemplate <typename T>\nvi compressor(vector<T>& v)\
+    \ {\n  auto cv = v;\n  sort(all(cv));\n  cv.erase(unique(all(cv)), cv.end());\n\
+    \  for (auto& e : v) e = lower_bound(all(cv), e) - cv.begin();\n  return v;\n\
+    }\n#line 2 \"misc/CountSubseq.h\"\n\ntemplate <typename T, typename Fp>\nFp CountSubseq(vector<T>\
+    \ a) {\n  a = compressor<T>(a);\n  vi last(sz(a) + 1, -1);\n  vector<Fp> f(sz(a)\
+    \ + 1);\n  f[0] = 1;\n  for (int i = 0; i < sz(a); ++i) {\n    f[i + 1] = f[i]\
+    \ * 2;\n    if (last[a[i]] >= 0) f[i + 1] -= f[last[a[i]]];\n    last[a[i]] =\
+    \ i;\n  }\n  return f.back() - 1;\n}\n#line 6 \"tests/Number_of_Subsequences.test.cpp\"\
+    \n\nusing Fp = modint<998244353>;\n\nsigned main() {\n  ios::sync_with_stdio(false);\n\
+    \  cin.tie(0);\n  int n;\n  cin >> n;\n  vector<int> a(n);\n  for (auto& x : a)\
+    \ cin >> x;\n  cout << CountSubseq<int, Fp>(a);\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/number_of_subsequences\"\
     \n\n#include \"../misc/macros.h\"\n#include \"../math/ModInt.h\"\n#include \"\
     ../misc/CountSubseq.h\"\n\nusing Fp = modint<998244353>;\n\nsigned main() {\n\
@@ -94,7 +92,7 @@ data:
   isVerificationFile: true
   path: tests/Number_of_Subsequences.test.cpp
   requiredBy: []
-  timestamp: '2025-11-19 15:40:30+07:00'
+  timestamp: '2025-11-19 16:07:23+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Number_of_Subsequences.test.cpp

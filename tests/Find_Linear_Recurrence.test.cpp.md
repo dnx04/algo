@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/LinearRec.h
     title: math/LinearRec.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/ModInt.h
     title: math/ModInt.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/find_linear_recurrence
@@ -44,43 +44,41 @@ data:
     \ cur);\n*/\n#line 1 \"math/ModInt.h\"\ntemplate <int mod>\nstruct modint {\n\
     \  using M = modint;\n  static_assert(mod > 0 && mod <= 2147483647);\n  static\
     \ constexpr u32 r1 = []() {\n    u32 r1 = mod;\n    for (int i = 0; i < 5; ++i)\
-    \ r1 *= 2 - mod * r1;\n    return -r1;\n  }();\n  static constexpr u32 r2 = []()\
-    \ {\n    u64 r2 = (u64(1) << 32) % mod;\n    return r2 * r2 % mod;\n  }();\n \
-    \ static u32 reduce(u64 x) {\n    u32 y = u32(x) * r1, r = (x + u64(y) * mod)\
-    \ >> 32;\n    return r >= mod ? r - mod : r;\n  }\n  u32 x;\n  modint() : x(0)\
-    \ {}\n  modint(i64 v) {\n    v %= mod;\n    if (v < 0) v += mod;\n    x = reduce(u64(v)\
-    \ * r2);\n  }\n  M& operator+=(const M& a) {\n    if ((x += a.x) >= mod) x -=\
-    \ mod;\n    return *this;\n  }\n  M& operator-=(const M& a) {\n    if ((x += mod\
-    \ - a.x) >= mod) x -= mod;\n    return *this;\n  }\n  M& operator*=(const M& a)\
-    \ {\n    x = reduce(u64(x) * a.x);\n    return *this;\n  }\n  M& operator/=(const\
-    \ M& a) { return *this *= a.inv(); }\n  M operator-() const { return M(-x); }\n\
-    \  M operator+(const M& a) const { return M(*this) += a; }\n  M operator-(const\
-    \ M& a) const { return M(*this) -= a; }\n  M operator*(const M& a) const { return\
-    \ M(*this) *= a; }\n  M operator/(const M& a) const { return M(*this) /= a; }\n\
-    \  bool operator==(const M& a) const { return x == a.x; }\n  bool operator!=(const\
-    \ M& a) const { return x != a.x; }\n  M pow(u64 k) const {\n    M res(1), b =\
-    \ *this;\n    while (k) {\n      if (k & 1) res *= b;\n      b *= b, k >>= 1;\n\
-    \    }\n    return res;\n  }\n  M inv() const { return pow(mod - 2); }\n  friend\
-    \ ostream& operator<<(ostream& os, const M& a) {\n    return os << reduce(a.x);\n\
-    \  }\n  friend istream& operator>>(istream& is, M& a) {\n    i64 v;\n    is >>\
-    \ v;\n    a = M(v);\n    return is;\n  }\n};\n\nu64 modmul(u64 x, u64 y, u64 m)\
-    \ { return u128(x) * y % m; }\nu64 modpow(u64 x, u64 k, u64 m) {\n  u64 res =\
-    \ 1;\n  while (k) {\n    if (k & 1) res = modmul(res, x, m);\n    x = modmul(x,\
-    \ x, m);\n    k >>= 1;\n  }\n  return res;\n}\n#line 1 \"math/LinearRec.h\"\n\
-    template <class Fp>\nvector<Fp> LinearRec(const vector<Fp>& as) {\n  const int\
-    \ n = as.size();\n  int d = 0, m = 0;\n  vector<Fp> cs(n + 1, 0), bs(n + 1, 0);\n\
-    \  cs[0] = bs[0] = 1;\n  Fp invBef = 1;\n  for (int i = 0; i < n; ++i) {\n   \
-    \ ++m;\n    Fp dif = as[i];\n    for (int j = 1; j <= d; ++j) dif += cs[j] * as[i\
-    \ - j];\n    if (dif.x != 0) {\n      auto csDup = cs;\n      const Fp r = dif\
-    \ * invBef;\n      for (int j = m; j < n; ++j) cs[j] -= r * bs[j - m];\n     \
-    \ if (2 * d <= i) {\n        d = i + 1 - d, m = 0, bs = csDup, invBef = dif.inv();\n\
-    \      }\n    }\n  }\n  cs.resize(d + 1);\n  for (auto& c : cs) c = -c;\n  return\
-    \ cs;\n}\n#line 6 \"tests/Find_Linear_Recurrence.test.cpp\"\n\nusing Fp = modint<998244353>;\n\
-    \nvoid solve() {\n  int d;\n  cin >> d;\n  vector<Fp> a(d);\n  for (int i = 0;\
-    \ i < d; ++i) cin >> a[i];\n  auto cs = LinearRec(a);\n  cout << sz(cs) - 1 <<\
-    \ '\\n';\n  for (int i = 1; i < sz(cs); ++i) cout << cs[i] << ' ';\n}\n\nint main()\
-    \ {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n  int\
-    \ tc = 1;\n  // cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n\
+    \ r1 *= 2 - mod * r1;\n    return -r1;\n  }();\n  static constexpr u32 r2 = -u64(mod)\
+    \ % mod;\n  static u32 reduce(u64 x) {\n    u32 y = u32(x) * r1, r = (x + u64(y)\
+    \ * mod) >> 32;\n    return r >= mod ? r - mod : r;\n  }\n  u32 x;\n  modint()\
+    \ : x(0) {}\n  modint(i64 x) : x(reduce(u64(x % mod + mod) * r2)) {}\n  M& operator+=(const\
+    \ M& a) {\n    if ((x += a.x) >= mod) x -= mod;\n    return *this;\n  }\n  M&\
+    \ operator-=(const M& a) {\n    if ((x += mod - a.x) >= mod) x -= mod;\n    return\
+    \ *this;\n  }\n  M& operator*=(const M& a) {\n    x = reduce(u64(x) * a.x);\n\
+    \    return *this;\n  }\n  M& operator/=(const M& a) { return *this *= a.inv();\
+    \ }\n  M operator-() const { return M(0) - *this; }\n  M operator+(const M& a)\
+    \ const { return M(*this) += a; }\n  M operator-(const M& a) const { return M(*this)\
+    \ -= a; }\n  M operator*(const M& a) const { return M(*this) *= a; }\n  M operator/(const\
+    \ M& a) const { return M(*this) /= a; }\n  bool operator==(const M& a) const {\
+    \ return x == a.x; }\n  bool operator!=(const M& a) const { return x != a.x; }\n\
+    \  M pow(u64 k) const {\n    M res(1), b = *this;\n    while (k) {\n      if (k\
+    \ & 1) res *= b;\n      b *= b, k >>= 1;\n    }\n    return res;\n  }\n  M inv()\
+    \ const { return pow(mod - 2); }\n  friend ostream& operator<<(ostream& os, const\
+    \ M& a) {\n    return os << reduce(a.x);\n  }\n  friend istream& operator>>(istream&\
+    \ is, M& a) {\n    i64 v;\n    is >> v;\n    a = M(v);\n    return is;\n  }\n\
+    };\n\nu64 modmul(u64 x, u64 y, u64 m) { return u128(x) * y % m; }\nu64 modpow(u64\
+    \ x, u64 k, u64 m) {\n  u64 res = 1;\n  while (k) {\n    if (k & 1) res = modmul(res,\
+    \ x, m);\n    x = modmul(x, x, m);\n    k >>= 1;\n  }\n  return res;\n}\n#line\
+    \ 1 \"math/LinearRec.h\"\ntemplate <class Fp>\nvector<Fp> LinearRec(const vector<Fp>&\
+    \ as) {\n  const int n = as.size();\n  int d = 0, m = 0;\n  vector<Fp> cs(n +\
+    \ 1, 0), bs(n + 1, 0);\n  cs[0] = bs[0] = 1;\n  Fp invBef = 1;\n  for (int i =\
+    \ 0; i < n; ++i) {\n    ++m;\n    Fp dif = as[i];\n    for (int j = 1; j <= d;\
+    \ ++j) dif += cs[j] * as[i - j];\n    if (dif.x != 0) {\n      auto csDup = cs;\n\
+    \      const Fp r = dif * invBef;\n      for (int j = m; j < n; ++j) cs[j] -=\
+    \ r * bs[j - m];\n      if (2 * d <= i) {\n        d = i + 1 - d, m = 0, bs =\
+    \ csDup, invBef = dif.inv();\n      }\n    }\n  }\n  cs.resize(d + 1);\n  for\
+    \ (auto& c : cs) c = -c;\n  return cs;\n}\n#line 6 \"tests/Find_Linear_Recurrence.test.cpp\"\
+    \n\nusing Fp = modint<998244353>;\n\nvoid solve() {\n  int d;\n  cin >> d;\n \
+    \ vector<Fp> a(d);\n  for (int i = 0; i < d; ++i) cin >> a[i];\n  auto cs = LinearRec(a);\n\
+    \  cout << sz(cs) - 1 << '\\n';\n  for (int i = 1; i < sz(cs); ++i) cout << cs[i]\
+    \ << ' ';\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
+    \  int tc = 1;\n  // cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n\
     \  }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/find_linear_recurrence\"\
     \n\n#include \"../misc/macros.h\"\n#include \"../math/ModInt.h\"\n#include \"\
@@ -97,8 +95,8 @@ data:
   isVerificationFile: true
   path: tests/Find_Linear_Recurrence.test.cpp
   requiredBy: []
-  timestamp: '2025-11-19 15:40:30+07:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2025-11-19 16:07:23+07:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Find_Linear_Recurrence.test.cpp
 layout: document
