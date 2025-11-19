@@ -28,11 +28,11 @@ void solve() {
     if (cmd == 0) {
       int l, r, c, d;
       cin >> l >> r >> c >> d;
-      t.upd(l, r, P{c, d});
+      t.apply(l, r, P{c, d});
     } else {
       int i;
       cin >> i;
-      cout << t.qry(i, i + 1).first << '\n';
+      cout << t.query(i, i + 1).first << '\n';
     }
   }
 }

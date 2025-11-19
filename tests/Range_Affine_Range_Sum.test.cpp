@@ -2,7 +2,7 @@
 
 #include "../misc/macros.h"
 #include "../math/ModInt.h"
-#include "ds/LazySegTree.h"
+#include "../ds/LazySegTree.h"
 
 using Fp = modint<998244353>;
 
@@ -28,11 +28,11 @@ void solve() {
     if (cmd == 0) {
       int l, r, c, d;
       cin >> l >> r >> c >> d;
-      t.upd(l, r, P{c, d});
+      t.apply(l, r, P{c, d});
     } else {
       int l, r;
       cin >> l >> r;
-      cout << t.qry(l, r).first << '\n';
+      cout << t.query(l, r).first << '\n';
     }
   }
 }

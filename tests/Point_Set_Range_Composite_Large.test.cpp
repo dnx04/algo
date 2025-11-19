@@ -19,7 +19,7 @@ void solve() {
     if (cmd == 0) {
       int p, c, d;
       cin >> p >> c >> d;
-      auto new_node = pst.update(root, 0, n - 1, p, A{c, d});
+      auto new_node = pst.apply(root, 0, n - 1, p, A{c, d});
       root = new_node;
     } else {
       int l, r, x;

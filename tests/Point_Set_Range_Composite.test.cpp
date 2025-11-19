@@ -15,7 +15,7 @@ void solve() {
   for (int i = 0; i < n; ++i) {
     int a, b;
     cin >> a >> b;
-    st.upd(i + 1, {a, b});
+    st.apply(i, {a, b});
   }
   while (q--) {
     int cmd;
@@ -23,13 +23,11 @@ void solve() {
     if (cmd == 0) {
       int p, c, d;
       cin >> p >> c >> d;
-      ++p;
-      st.upd(p, {c, d});
+      st.apply(p, {c, d});
     } else {
       int l, r, x;
       cin >> l >> r >> x;
-      ++l, ++r;
-      auto fc = st.qry(l, r);
+      auto fc = st.query(l, r);
       cout << fc(x) << '\n';
     }
   }
