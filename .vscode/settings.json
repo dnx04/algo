@@ -7,6 +7,11 @@
         "iostream": "cpp",
         "iosfwd": "cpp",
         "dynamic_bitset": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "barrier": "cpp",
+        "chrono": "cpp",
+        "latch": "cpp",
+        "limits": "cpp",
+        "semaphore": "cpp"
     },
 }

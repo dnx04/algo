@@ -1,14 +1,6 @@
 /*
   Persistent + Dynamic Segment Tree that supports Monoid operation.
   Tested on https://cses.fi/problemset/task/1737/
-
-  Usage:
-  - monoids = {f, id}, here f = u + v and id = 0:
-
-  PST pst((n + q) * log(n) * 2, f, 0ll);
-  vector<PST<ll, decltype(f)>*> roots;
-  roots.reserve(q + 1);
-  roots.push_back(pst.build(0, n - 1, a));
 */
 
 template <class T, class F>

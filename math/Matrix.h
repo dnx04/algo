@@ -1,35 +1,33 @@
-using vec = array<Fp, 3>;
-using matrix = array<vec, 3>;
-const matrix id = matrix({vec{1, 0, 0}, vec{0, 1, 0}, vec{0, 0, 1}});
-
-matrix operator*(const matrix& a, const matrix& b) {
-  matrix res;
-  for (int i = 0; i < 3; ++i) {
-    for (int j = 0; j < 3; ++j) {
-      for (int k = 0; k < 3; ++k) {
-        res[i][j] += a[i][k] * b[k][j];
-      }
+template <typename T>
+struct Matrix {
+  using vec = vector<T>;
+  int n;
+  vector<vec> a;
+  Matrix(int n = 0) : n(n), a(n, vec(n, 0)) {}
+  Matrix(const vector<vec>& a) : n(sz(a)), a(a) {}
+  vec& operator[](int i) { return a[i]; }
+  const vec& operator[](int i) const { return a[i]; }
+  Matrix operator*(const Matrix& b) const {
+    Matrix res(n);
+    for (int i = 0; i < n; ++i)
+      for (int k = 0; k < n; ++k)
+        for (int j = 0; j < n; ++j)
+          res[i][j] += a[i][k] * b[k][j];
+    return res;
+  }
+  Matrix operator^(u64 k) const {
+    Matrix res(n), b = *this;
+    for (int i = 0; i < n; ++i) res[i][i] = 1;
+    while (k) {
+      if (k & 1) res = res * b;
+      b = b * b, k >>= 1;
     }
+    return res;
   }
-  return res;
-}
-
-matrix operator^(matrix a, ll k) {
-  matrix res = id;
-  while (k) {
-    if (k & 1) res = res * a;
-    a = a * a;
-    k >>= 1;
+  vec operator*(const vec& v) const {  // b(v)
+    vec c(n);
+    for (int i = 0; i < n; ++i)
+      for (int j = 0; j < n; ++j) c[i] += a[i][j] * v[j];
+    return c;
   }
-  return res;
-}
-
-vec operator*(const matrix& a, const vec& b) {
-  vec c;
-  for (int i = 0; i < 3; ++i) {
-    for (int j = 0; j < 3; ++j) {
-      c[i] += a[i][j] * b[j];
-    }
-  }
-  return c;
-}
+};

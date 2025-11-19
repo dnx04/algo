@@ -3,9 +3,7 @@ struct SlideWindowAggregationDeque {
   vector<T> a0, a1, r0, r1;
   F f;
   T I;
-
   SlideWindowAggregationDeque(F f, T i) : f(f), I(i) {}
-
  private:
   T get0() const { return r0.empty() ? I : r0.back(); }
   T get1() const { return r1.empty() ? I : r1.back(); }
@@ -29,7 +27,6 @@ struct SlideWindowAggregationDeque {
     for (int i = s0 - 1; i >= 0; i--) push0(a[i]);
     for (int i = s0; i < n; i++) push1(a[i]);
   }
-
  public:
   void push_front(const T& t) { push0(t); }
   void push_back(const T& t) { push1(t); }
