@@ -7,21 +7,14 @@ struct modint {
     for (int i = 0; i < 5; ++i) r1 *= 2 - mod * r1;
     return -r1;
   }();
-  static constexpr u32 r2 = []() {
-    u64 r2 = (u64(1) << 32) % mod;
-    return r2 * r2 % mod;
-  }();
+  static constexpr u32 r2 = -u64(mod) % mod;
   static u32 reduce(u64 x) {
     u32 y = u32(x) * r1, r = (x + u64(y) * mod) >> 32;
     return r >= mod ? r - mod : r;
   }
   u32 x;
   modint() : x(0) {}
-  modint(i64 v) {
-    v %= mod;
-    if (v < 0) v += mod;
-    x = reduce(u64(v) * r2);
-  }
+  modint(i64 x) : x(reduce(u64(x % mod + mod) * r2)) {}
   M& operator+=(const M& a) {
     if ((x += a.x) >= mod) x -= mod;
     return *this;
@@ -35,7 +28,7 @@ struct modint {
     return *this;
   }
   M& operator/=(const M& a) { return *this *= a.inv(); }
-  M operator-() const { return M(-x); }
+  M operator-() const { return M(0) - *this; }
   M operator+(const M& a) const { return M(*this) += a; }
   M operator-(const M& a) const { return M(*this) -= a; }
   M operator*(const M& a) const { return M(*this) *= a; }
