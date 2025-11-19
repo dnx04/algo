@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/MillerRabin.h
     title: math/MillerRabin.h
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Factorize.test.cpp
     title: tests/Factorize.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"math/MillerRabin.h\"\nbool isPrime(u64 n) {\n  if (n < 2\
@@ -41,7 +41,7 @@ data:
   path: math/Factor.h
   requiredBy: []
   timestamp: '2025-11-18 17:42:34+07:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - tests/Factorize.test.cpp
 documentation_of: math/Factor.h

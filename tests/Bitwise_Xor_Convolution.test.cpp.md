@@ -53,35 +53,38 @@ data:
     \ mod;\n    return *this;\n  }\n  M& operator-=(const M& a) {\n    if ((x += mod\
     \ - a.x) >= mod) x -= mod;\n    return *this;\n  }\n  M& operator*=(const M& a)\
     \ {\n    x = reduce(u64(x) * a.x);\n    return *this;\n  }\n  M& operator/=(const\
-    \ M& a) { return *this *= a.inv(); }\n  M operator+(const M& a) const { return\
-    \ M(*this) += a; }\n  M operator-(const M& a) const { return M(*this) -= a; }\n\
-    \  M operator*(const M& a) const { return M(*this) *= a; }\n  M operator/(const\
-    \ M& a) const { return M(*this) /= a; }\n  bool operator==(const M& a) const {\
-    \ return x == a.x; }\n  bool operator!=(const M& a) const { return x != a.x; }\n\
-    \  M pow(u64 k) const {\n    M res(1), b = *this;\n    while (k) {\n      if (k\
-    \ & 1) res *= b;\n      b *= b, k >>= 1;\n    }\n    return res;\n  }\n  M inv()\
-    \ const { return pow(mod - 2); }\n  friend ostream& operator<<(ostream& os, const\
-    \ M& a) {\n    return os << reduce(a.x);\n  }\n  friend istream& operator>>(istream&\
-    \ is, M& a) {\n    i64 v;\n    is >> v;\n    a = M(v);\n    return is;\n  }\n\
-    };\n#line 5 \"tests/Bitwise_Xor_Convolution.test.cpp\"\n\nusing Fp = modint<998244353>;\n\
-    \n#line 1 \"math/FST.h\"\ntemplate <typename T>\nvoid FST(vector<T>& a, bool inv,\
-    \ string type) {\n  for (int n = sz(a), step = 1; step < n; step *= 2) {\n   \
-    \ for (int i = 0; i < n; i += 2 * step)\n      for (int j = i; j < i + step; ++j)\
-    \ {\n        T &u = a[j], &v = a[j + step];\n        if (type == \"and\")\n  \
-    \        tie(u, v) = inv ? tuple{v - u, u} : tuple{v, u + v};\n        else if\
-    \ (type == \"or\")\n          tie(u, v) = inv ? tuple{v, u - v} : tuple{u + v,\
-    \ u};\n        else if (type == \"xor\")\n          tie(u, v) = tuple{u + v, u\
-    \ - v};\n      }\n  }\n  if (inv && type == \"xor\")\n    for (T& x : a) x /=\
-    \ sz(a);\n}\ntemplate <typename T>\nvector<T> conv(vector<T> a, vector<T> b, string\
-    \ type) {\n  FST(a, 0, type);\n  FST(b, 0, type);\n  for (int i = 0; i < sz(a);\
-    \ ++i) a[i] *= b[i];\n  FST(a, 1, type);\n  return a;\n}\n#line 9 \"tests/Bitwise_Xor_Convolution.test.cpp\"\
-    \n\nvoid solve() {\n  int n;\n  cin >> n;\n  vector<Fp> a(1 << n), b(1 << n);\n\
-    \  for (int i = 0; i < (1 << n); ++i) cin >> a[i];\n  for (int i = 0; i < (1 <<\
-    \ n); ++i) cin >> b[i];\n  auto c = conv(a, b, \"xor\");\n  for (int i = 0; i\
-    \ < (1 << n); ++i) cout << c[i] << \" \\n\"[i == (1 << n) - 1];\n}\n\nint main()\
-    \ {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n  int\
-    \ tc = 1;\n  //   cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n\
-    \  }\n}\n"
+    \ M& a) { return *this *= a.inv(); }\n  M operator-() const { return M(-x); }\n\
+    \  M operator+(const M& a) const { return M(*this) += a; }\n  M operator-(const\
+    \ M& a) const { return M(*this) -= a; }\n  M operator*(const M& a) const { return\
+    \ M(*this) *= a; }\n  M operator/(const M& a) const { return M(*this) /= a; }\n\
+    \  bool operator==(const M& a) const { return x == a.x; }\n  bool operator!=(const\
+    \ M& a) const { return x != a.x; }\n  M pow(u64 k) const {\n    M res(1), b =\
+    \ *this;\n    while (k) {\n      if (k & 1) res *= b;\n      b *= b, k >>= 1;\n\
+    \    }\n    return res;\n  }\n  M inv() const { return pow(mod - 2); }\n  friend\
+    \ ostream& operator<<(ostream& os, const M& a) {\n    return os << reduce(a.x);\n\
+    \  }\n  friend istream& operator>>(istream& is, M& a) {\n    i64 v;\n    is >>\
+    \ v;\n    a = M(v);\n    return is;\n  }\n};\n\nu64 modmul(u64 x, u64 y, u64 m)\
+    \ { return u128(x) * y % m; }\nu64 modpow(u64 x, u64 k, u64 m) {\n  u64 res =\
+    \ 1;\n  while (k) {\n    if (k & 1) res = modmul(res, x, m);\n    x = modmul(x,\
+    \ x, m);\n    k >>= 1;\n  }\n  return res;\n}\n#line 5 \"tests/Bitwise_Xor_Convolution.test.cpp\"\
+    \n\nusing Fp = modint<998244353>;\n\n#line 1 \"math/FST.h\"\ntemplate <typename\
+    \ T>\nvoid FST(vector<T>& a, bool inv, string type) {\n  for (int n = sz(a), step\
+    \ = 1; step < n; step *= 2) {\n    for (int i = 0; i < n; i += 2 * step)\n   \
+    \   for (int j = i; j < i + step; ++j) {\n        T &u = a[j], &v = a[j + step];\n\
+    \        if (type == \"and\")\n          tie(u, v) = inv ? tuple{v - u, u} : tuple{v,\
+    \ u + v};\n        else if (type == \"or\")\n          tie(u, v) = inv ? tuple{v,\
+    \ u - v} : tuple{u + v, u};\n        else if (type == \"xor\")\n          tie(u,\
+    \ v) = tuple{u + v, u - v};\n      }\n  }\n  if (inv && type == \"xor\")\n   \
+    \ for (T& x : a) x /= sz(a);\n}\ntemplate <typename T>\nvector<T> conv(vector<T>\
+    \ a, vector<T> b, string type) {\n  FST(a, 0, type);\n  FST(b, 0, type);\n  for\
+    \ (int i = 0; i < sz(a); ++i) a[i] *= b[i];\n  FST(a, 1, type);\n  return a;\n\
+    }\n#line 9 \"tests/Bitwise_Xor_Convolution.test.cpp\"\n\nvoid solve() {\n  int\
+    \ n;\n  cin >> n;\n  vector<Fp> a(1 << n), b(1 << n);\n  for (int i = 0; i < (1\
+    \ << n); ++i) cin >> a[i];\n  for (int i = 0; i < (1 << n); ++i) cin >> b[i];\n\
+    \  auto c = conv(a, b, \"xor\");\n  for (int i = 0; i < (1 << n); ++i) cout <<\
+    \ c[i] << \" \\n\"[i == (1 << n) - 1];\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n\
+    \  cin.exceptions(cin.failbit);\n  int tc = 1;\n  //   cin >> tc;\n  for (int\
+    \ i = 1; i <= tc; ++i) {\n    solve();\n  }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/bitwise_xor_convolution\"\
     \n\n#include \"../misc/macros.h\"\n#include \"../math/ModInt.h\"\n\nusing Fp =\
     \ modint<998244353>;\n\n#include \"../math/FST.h\"\n\nvoid solve() {\n  int n;\n\
@@ -98,7 +101,7 @@ data:
   isVerificationFile: true
   path: tests/Bitwise_Xor_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2025-11-19 14:43:55+07:00'
+  timestamp: '2025-11-19 15:40:30+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Bitwise_Xor_Convolution.test.cpp

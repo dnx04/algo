@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: math/ModInt.h
     title: math/ModInt.h
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/ModSQRT.h
     title: math/ModSQRT.h
   - icon: ':question:'
@@ -12,9 +12,9 @@ data:
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/sqrt_mod
@@ -52,30 +52,34 @@ data:
     \ mod;\n    return *this;\n  }\n  M& operator-=(const M& a) {\n    if ((x += mod\
     \ - a.x) >= mod) x -= mod;\n    return *this;\n  }\n  M& operator*=(const M& a)\
     \ {\n    x = reduce(u64(x) * a.x);\n    return *this;\n  }\n  M& operator/=(const\
-    \ M& a) { return *this *= a.inv(); }\n  M operator+(const M& a) const { return\
-    \ M(*this) += a; }\n  M operator-(const M& a) const { return M(*this) -= a; }\n\
-    \  M operator*(const M& a) const { return M(*this) *= a; }\n  M operator/(const\
-    \ M& a) const { return M(*this) /= a; }\n  bool operator==(const M& a) const {\
-    \ return x == a.x; }\n  bool operator!=(const M& a) const { return x != a.x; }\n\
-    \  M pow(u64 k) const {\n    M res(1), b = *this;\n    while (k) {\n      if (k\
-    \ & 1) res *= b;\n      b *= b, k >>= 1;\n    }\n    return res;\n  }\n  M inv()\
-    \ const { return pow(mod - 2); }\n  friend ostream& operator<<(ostream& os, const\
-    \ M& a) {\n    return os << reduce(a.x);\n  }\n  friend istream& operator>>(istream&\
-    \ is, M& a) {\n    i64 v;\n    is >> v;\n    a = M(v);\n    return is;\n  }\n\
-    };\n#line 1 \"math/ModSQRT.h\"\ni64 modsqrt(i64 a, i64 p) {\n  a %= p;\n  if (a\
-    \ < 0) a += p;\n  if (a == 0) return 0;\n\n  if (modpow(a, (p - 1) / 2, p) !=\
-    \ 1) return -1;\n  if (p % 4 == 3) return modpow(a, (p + 1) / 4, p);\n  // a^(n+3)/8\
-    \ or 2^(n+3)/8 * 2^(n-1)/4 works if p % 8 == 5\n  i64 s = p - 1, n = 2;\n  int\
-    \ r = 0, m;\n  while (s % 2 == 0) ++r, s /= 2;\n  /// find a non-square mod p\n\
-    \  while (modpow(n, (p - 1) / 2, p) != p - 1) ++n;\n  i64 x = modpow(a, (s + 1)\
-    \ / 2, p);\n  i64 b = modpow(a, s, p), g = modpow(n, s, p);\n  for (;; r = m)\
-    \ {\n    i64 t = b;\n    for (m = 0; m < r && t != 1; ++m) t = t * t % p;\n  \
-    \  if (m == 0) return x;\n    i64 gs = modpow(g, 1LL << (r - m - 1), p);\n   \
-    \ g = gs * gs % p;\n    x = x * gs % p;\n    b = b * g % p;\n  }\n}\n#line 6 \"\
-    tests/Sqrt_Mod.test.cpp\"\n\nvoid solve() {\n  int y, p;\n  cin >> y >> p;\n \
-    \ cout << modsqrt(y, p) << '\\n';\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n\
-    \  cin.exceptions(cin.failbit);\n  int tc = 1;\n  cin >> tc;\n  for (int i = 1;\
-    \ i <= tc; ++i) {\n    solve();\n  }\n}\n"
+    \ M& a) { return *this *= a.inv(); }\n  M operator-() const { return M(-x); }\n\
+    \  M operator+(const M& a) const { return M(*this) += a; }\n  M operator-(const\
+    \ M& a) const { return M(*this) -= a; }\n  M operator*(const M& a) const { return\
+    \ M(*this) *= a; }\n  M operator/(const M& a) const { return M(*this) /= a; }\n\
+    \  bool operator==(const M& a) const { return x == a.x; }\n  bool operator!=(const\
+    \ M& a) const { return x != a.x; }\n  M pow(u64 k) const {\n    M res(1), b =\
+    \ *this;\n    while (k) {\n      if (k & 1) res *= b;\n      b *= b, k >>= 1;\n\
+    \    }\n    return res;\n  }\n  M inv() const { return pow(mod - 2); }\n  friend\
+    \ ostream& operator<<(ostream& os, const M& a) {\n    return os << reduce(a.x);\n\
+    \  }\n  friend istream& operator>>(istream& is, M& a) {\n    i64 v;\n    is >>\
+    \ v;\n    a = M(v);\n    return is;\n  }\n};\n\nu64 modmul(u64 x, u64 y, u64 m)\
+    \ { return u128(x) * y % m; }\nu64 modpow(u64 x, u64 k, u64 m) {\n  u64 res =\
+    \ 1;\n  while (k) {\n    if (k & 1) res = modmul(res, x, m);\n    x = modmul(x,\
+    \ x, m);\n    k >>= 1;\n  }\n  return res;\n}\n#line 1 \"math/ModSQRT.h\"\ni64\
+    \ modsqrt(i64 a, i64 p) {\n  a %= p;\n  if (a < 0) a += p;\n  if (a == 0) return\
+    \ 0;\n\n  if (modpow(a, (p - 1) / 2, p) != 1) return -1;\n  if (p % 4 == 3) return\
+    \ modpow(a, (p + 1) / 4, p);\n  // a^(n+3)/8 or 2^(n+3)/8 * 2^(n-1)/4 works if\
+    \ p % 8 == 5\n  i64 s = p - 1, n = 2;\n  int r = 0, m;\n  while (s % 2 == 0) ++r,\
+    \ s /= 2;\n  /// find a non-square mod p\n  while (modpow(n, (p - 1) / 2, p) !=\
+    \ p - 1) ++n;\n  i64 x = modpow(a, (s + 1) / 2, p);\n  i64 b = modpow(a, s, p),\
+    \ g = modpow(n, s, p);\n  for (;; r = m) {\n    i64 t = b;\n    for (m = 0; m\
+    \ < r && t != 1; ++m) t = t * t % p;\n    if (m == 0) return x;\n    i64 gs =\
+    \ modpow(g, 1LL << (r - m - 1), p);\n    g = gs * gs % p;\n    x = x * gs % p;\n\
+    \    b = b * g % p;\n  }\n}\n#line 6 \"tests/Sqrt_Mod.test.cpp\"\n\nvoid solve()\
+    \ {\n  int y, p;\n  cin >> y >> p;\n  cout << modsqrt(y, p) << '\\n';\n}\n\nint\
+    \ main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
+    \  int tc = 1;\n  cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n\
+    \  }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/sqrt_mod\"\n\n#include\
     \ \"../misc/macros.h\"\n#include \"../math/ModInt.h\"\n#include \"../math/ModSQRT.h\"\
     \n\nvoid solve() {\n  int y, p;\n  cin >> y >> p;\n  cout << modsqrt(y, p) <<\
@@ -89,8 +93,8 @@ data:
   isVerificationFile: true
   path: tests/Sqrt_Mod.test.cpp
   requiredBy: []
-  timestamp: '2025-11-19 14:43:55+07:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2025-11-19 15:40:30+07:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Sqrt_Mod.test.cpp
 layout: document

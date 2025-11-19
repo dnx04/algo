@@ -56,37 +56,41 @@ data:
     \ mod;\n    return *this;\n  }\n  M& operator-=(const M& a) {\n    if ((x += mod\
     \ - a.x) >= mod) x -= mod;\n    return *this;\n  }\n  M& operator*=(const M& a)\
     \ {\n    x = reduce(u64(x) * a.x);\n    return *this;\n  }\n  M& operator/=(const\
-    \ M& a) { return *this *= a.inv(); }\n  M operator+(const M& a) const { return\
-    \ M(*this) += a; }\n  M operator-(const M& a) const { return M(*this) -= a; }\n\
-    \  M operator*(const M& a) const { return M(*this) *= a; }\n  M operator/(const\
-    \ M& a) const { return M(*this) /= a; }\n  bool operator==(const M& a) const {\
-    \ return x == a.x; }\n  bool operator!=(const M& a) const { return x != a.x; }\n\
-    \  M pow(u64 k) const {\n    M res(1), b = *this;\n    while (k) {\n      if (k\
-    \ & 1) res *= b;\n      b *= b, k >>= 1;\n    }\n    return res;\n  }\n  M inv()\
-    \ const { return pow(mod - 2); }\n  friend ostream& operator<<(ostream& os, const\
-    \ M& a) {\n    return os << reduce(a.x);\n  }\n  friend istream& operator>>(istream&\
-    \ is, M& a) {\n    i64 v;\n    is >> v;\n    a = M(v);\n    return is;\n  }\n\
-    };\n#line 1 \"math/Affine.h\"\ntemplate <typename T>\nstruct affine {\n  T a,\
-    \ b;\n  constexpr affine() : a(1), b(0) {}\n  constexpr affine(T a, T b) : a(a),\
-    \ b(b) {}\n  T operator()(T x) const { return a * x + b; }\n  affine operator()(const\
-    \ affine& f) const {\n    return f * (*this);\n  }\n  affine operator*(const affine&\
-    \ g) const {  // g(f(x))\n    return {a * g.a, b * g.a + g.b};\n  }\n  affine\
-    \ operator!=(const affine& g) const {\n    return a != g.a || b != g.b;\n  }\n\
-    };\n#line 1 \"ds/PersistentSegTree.h\"\n/*\n  Persistent + Dynamic Segment Tree\
-    \ that supports Monoid operation.\n  Tested on https://cses.fi/problemset/task/1737/\n\
-    */\n\ntemplate <class T, class F>\nstruct PST {\n  struct Node {\n    T v;\n \
-    \   Node *l = nullptr, *r = nullptr;\n    Node(T v) : v(v) {}\n  };\n  int n;\n\
-    \  const F f;\n  const T I;\n  PST(int n, F f, const T& I) : n(n), f(f), I(I)\
-    \ {}\n  T get_val(Node* u) const { return u ? u->v : I; }\n\n  Node* apply(Node*\
-    \ prev, int L, int R, int pos, const T& nv) {\n    Node* u = new Node(prev ? prev->v\
-    \ : I);\n    if (prev) u->l = prev->l, u->r = prev->r;\n    if (L == R) {\n  \
-    \    u->v = nv;\n      return u;\n    }\n    int M = (L + R) >> 1;\n    if (pos\
-    \ <= M) {\n      u->l = apply(u->l, L, M, pos, nv);\n    } else {\n      u->r\
-    \ = apply(u->r, M + 1, R, pos, nv);\n    }\n    u->v = f(get_val(u->l), get_val(u->r));\n\
-    \    return u;\n  }\n  // [ql, qr] inclusive\n  T query(Node* u, int L, int R,\
-    \ int ql, int qr) const {\n    if (!u || qr < L || R < ql) return I;\n    if (ql\
-    \ <= L && R <= qr) return u->v;\n    int M = (L + R) >> 1;\n    return f(query(u->l,\
-    \ L, M, ql, qr), query(u->r, M + 1, R, ql, qr));\n  }\n};\n#line 7 \"tests/Point_Set_Range_Composite_Large.test.cpp\"\
+    \ M& a) { return *this *= a.inv(); }\n  M operator-() const { return M(-x); }\n\
+    \  M operator+(const M& a) const { return M(*this) += a; }\n  M operator-(const\
+    \ M& a) const { return M(*this) -= a; }\n  M operator*(const M& a) const { return\
+    \ M(*this) *= a; }\n  M operator/(const M& a) const { return M(*this) /= a; }\n\
+    \  bool operator==(const M& a) const { return x == a.x; }\n  bool operator!=(const\
+    \ M& a) const { return x != a.x; }\n  M pow(u64 k) const {\n    M res(1), b =\
+    \ *this;\n    while (k) {\n      if (k & 1) res *= b;\n      b *= b, k >>= 1;\n\
+    \    }\n    return res;\n  }\n  M inv() const { return pow(mod - 2); }\n  friend\
+    \ ostream& operator<<(ostream& os, const M& a) {\n    return os << reduce(a.x);\n\
+    \  }\n  friend istream& operator>>(istream& is, M& a) {\n    i64 v;\n    is >>\
+    \ v;\n    a = M(v);\n    return is;\n  }\n};\n\nu64 modmul(u64 x, u64 y, u64 m)\
+    \ { return u128(x) * y % m; }\nu64 modpow(u64 x, u64 k, u64 m) {\n  u64 res =\
+    \ 1;\n  while (k) {\n    if (k & 1) res = modmul(res, x, m);\n    x = modmul(x,\
+    \ x, m);\n    k >>= 1;\n  }\n  return res;\n}\n#line 1 \"math/Affine.h\"\ntemplate\
+    \ <typename T>\nstruct affine {\n  T a, b;\n  constexpr affine() : a(1), b(0)\
+    \ {}\n  constexpr affine(T a, T b) : a(a), b(b) {}\n  T operator()(T x) const\
+    \ { return a * x + b; }\n  affine operator()(const affine& f) const {\n    return\
+    \ f * (*this);\n  }\n  affine operator*(const affine& g) const {  // g(f(x))\n\
+    \    return {a * g.a, b * g.a + g.b};\n  }\n  affine operator!=(const affine&\
+    \ g) const {\n    return a != g.a || b != g.b;\n  }\n};\n#line 1 \"ds/PersistentSegTree.h\"\
+    \n/*\n  Persistent + Dynamic Segment Tree that supports Monoid operation.\n  Tested\
+    \ on https://cses.fi/problemset/task/1737/\n*/\n\ntemplate <class T, class F>\n\
+    struct PST {\n  struct Node {\n    T v;\n    Node *l = nullptr, *r = nullptr;\n\
+    \    Node(T v) : v(v) {}\n  };\n  int n;\n  const F f;\n  const T I;\n  PST(int\
+    \ n, F f, const T& I) : n(n), f(f), I(I) {}\n  T get_val(Node* u) const { return\
+    \ u ? u->v : I; }\n\n  Node* apply(Node* prev, int L, int R, int pos, const T&\
+    \ nv) {\n    Node* u = new Node(prev ? prev->v : I);\n    if (prev) u->l = prev->l,\
+    \ u->r = prev->r;\n    if (L == R) {\n      u->v = nv;\n      return u;\n    }\n\
+    \    int M = (L + R) >> 1;\n    if (pos <= M) {\n      u->l = apply(u->l, L, M,\
+    \ pos, nv);\n    } else {\n      u->r = apply(u->r, M + 1, R, pos, nv);\n    }\n\
+    \    u->v = f(get_val(u->l), get_val(u->r));\n    return u;\n  }\n  // [ql, qr]\
+    \ inclusive\n  T query(Node* u, int L, int R, int ql, int qr) const {\n    if\
+    \ (!u || qr < L || R < ql) return I;\n    if (ql <= L && R <= qr) return u->v;\n\
+    \    int M = (L + R) >> 1;\n    return f(query(u->l, L, M, ql, qr), query(u->r,\
+    \ M + 1, R, ql, qr));\n  }\n};\n#line 7 \"tests/Point_Set_Range_Composite_Large.test.cpp\"\
     \n\nusing Fp = modint<998244353>;\nusing A = affine<Fp>;\n\nvoid solve() {\n \
     \ int n, q;\n  cin >> n >> q;\n  PST pst(n, [&](const A& l, const A& r) { return\
     \ l * r; }, A{});\n  decltype(pst)::Node* root = nullptr;\n  while (q--) {\n \
@@ -118,7 +122,7 @@ data:
   isVerificationFile: true
   path: tests/Point_Set_Range_Composite_Large.test.cpp
   requiredBy: []
-  timestamp: '2025-11-19 14:43:55+07:00'
+  timestamp: '2025-11-19 15:40:30+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Point_Set_Range_Composite_Large.test.cpp

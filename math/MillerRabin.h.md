@@ -2,19 +2,19 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/Factor.h
     title: math/Factor.h
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Factorize.test.cpp
     title: tests/Factorize.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Primality_Test.test.cpp
     title: tests/Primality_Test.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"math/MillerRabin.h\"\nbool isPrime(u64 n) {\n  if (n < 2\
@@ -35,7 +35,7 @@ data:
   requiredBy:
   - math/Factor.h
   timestamp: '2025-11-18 17:42:34+07:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - tests/Factorize.test.cpp
   - tests/Primality_Test.test.cpp

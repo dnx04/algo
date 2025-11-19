@@ -45,7 +45,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Enumerate_Triangles.test.cpp
     title: tests/Enumerate_Triangles.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Factorize.test.cpp
     title: tests/Factorize.test.cpp
   - icon: ':x:'
@@ -81,7 +81,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Pow_of_Matrix.test.cpp
     title: tests/Pow_of_Matrix.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Primality_Test.test.cpp
     title: tests/Primality_Test.test.cpp
   - icon: ':heavy_check_mark:'
@@ -93,7 +93,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Sort_Points_by_Argument.test.cpp
     title: tests/Sort_Points_by_Argument.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Sqrt_Mod.test.cpp
     title: tests/Sqrt_Mod.test.cpp
   - icon: ':heavy_check_mark:'
