@@ -35,6 +35,7 @@ struct modint {
     return *this;
   }
   M& operator/=(const M& a) { return *this *= a.inv(); }
+  M operator-() const { return M(-x); }
   M operator+(const M& a) const { return M(*this) += a; }
   M operator-(const M& a) const { return M(*this) -= a; }
   M operator*(const M& a) const { return M(*this) *= a; }
@@ -60,3 +61,14 @@ struct modint {
     return is;
   }
 };
+
+u64 modmul(u64 x, u64 y, u64 m) { return u128(x) * y % m; }
+u64 modpow(u64 x, u64 k, u64 m) {
+  u64 res = 1;
+  while (k) {
+    if (k & 1) res = modmul(res, x, m);
+    x = modmul(x, x, m);
+    k >>= 1;
+  }
+  return res;
+}
