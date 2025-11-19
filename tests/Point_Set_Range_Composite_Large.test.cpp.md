@@ -79,26 +79,26 @@ data:
     \ {\n    T v;\n    Node *l = nullptr, *r = nullptr;\n    Node(T v) : v(v) {}\n\
     \  };\n  int n;\n  const F f;\n  const T I;\n  PST(int n, F f, const T& I) : n(n),\
     \ f(f), I(I) {}\n  T get_val(Node* u) const { return u ? u->v : I; }\n\n  Node*\
-    \ update(Node* prev, int L, int R, int pos, const T& nv) {\n    Node* u = new\
-    \ Node(prev ? prev->v : I);\n    if (prev) u->l = prev->l, u->r = prev->r;\n \
-    \   if (L == R) {\n      u->v = nv;\n      return u;\n    }\n    int M = (L +\
-    \ R) >> 1;\n    if (pos <= M) {\n      u->l = update(u->l, L, M, pos, nv);\n \
-    \   } else {\n      u->r = update(u->r, M + 1, R, pos, nv);\n    }\n    u->v =\
-    \ f(get_val(u->l), get_val(u->r));\n    return u;\n  }\n  // [ql, qr] inclusive\n\
-    \  T query(Node* u, int L, int R, int ql, int qr) const {\n    if (!u || qr <\
-    \ L || R < ql) return I;\n    if (ql <= L && R <= qr) return u->v;\n    int M\
-    \ = (L + R) >> 1;\n    return f(query(u->l, L, M, ql, qr), query(u->r, M + 1,\
-    \ R, ql, qr));\n  }\n};\n#line 7 \"tests/Point_Set_Range_Composite_Large.test.cpp\"\
-    \n\nusing Fp = modint<998244353>;\nusing A = affine<Fp>;\n\nvoid solve() {\n \
-    \ int n, q;\n  cin >> n >> q;\n  PST pst(n, [&](const A& l, const A& r) { return\
-    \ l * r; }, A{});\n  decltype(pst)::Node* root = nullptr;\n  while (q--) {\n \
-    \   int cmd;\n    cin >> cmd;\n    if (cmd == 0) {\n      int p, c, d;\n     \
-    \ cin >> p >> c >> d;\n      auto new_node = pst.update(root, 0, n - 1, p, A{c,\
-    \ d});\n      root = new_node;\n    } else {\n      int l, r, x;\n      cin >>\
-    \ l >> r >> x;\n      auto fc = pst.query(root, 0, n - 1, l, r - 1);\n      cout\
-    \ << fc(x) << '\\n';\n    }\n  }\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n\
-    \  cin.exceptions(cin.failbit);\n  int tc = 1;\n  // cin >> tc;\n  for (int i\
-    \ = 1; i <= tc; ++i) {\n    solve();\n  }\n}\n"
+    \ apply(Node* prev, int L, int R, int pos, const T& nv) {\n    Node* u = new Node(prev\
+    \ ? prev->v : I);\n    if (prev) u->l = prev->l, u->r = prev->r;\n    if (L ==\
+    \ R) {\n      u->v = nv;\n      return u;\n    }\n    int M = (L + R) >> 1;\n\
+    \    if (pos <= M) {\n      u->l = apply(u->l, L, M, pos, nv);\n    } else {\n\
+    \      u->r = apply(u->r, M + 1, R, pos, nv);\n    }\n    u->v = f(get_val(u->l),\
+    \ get_val(u->r));\n    return u;\n  }\n  // [ql, qr] inclusive\n  T query(Node*\
+    \ u, int L, int R, int ql, int qr) const {\n    if (!u || qr < L || R < ql) return\
+    \ I;\n    if (ql <= L && R <= qr) return u->v;\n    int M = (L + R) >> 1;\n  \
+    \  return f(query(u->l, L, M, ql, qr), query(u->r, M + 1, R, ql, qr));\n  }\n\
+    };\n#line 7 \"tests/Point_Set_Range_Composite_Large.test.cpp\"\n\nusing Fp = modint<998244353>;\n\
+    using A = affine<Fp>;\n\nvoid solve() {\n  int n, q;\n  cin >> n >> q;\n  PST\
+    \ pst(n, [&](const A& l, const A& r) { return l * r; }, A{});\n  decltype(pst)::Node*\
+    \ root = nullptr;\n  while (q--) {\n    int cmd;\n    cin >> cmd;\n    if (cmd\
+    \ == 0) {\n      int p, c, d;\n      cin >> p >> c >> d;\n      auto new_node\
+    \ = pst.apply(root, 0, n - 1, p, A{c, d});\n      root = new_node;\n    } else\
+    \ {\n      int l, r, x;\n      cin >> l >> r >> x;\n      auto fc = pst.query(root,\
+    \ 0, n - 1, l, r - 1);\n      cout << fc(x) << '\\n';\n    }\n  }\n}\n\nint main()\
+    \ {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n  int\
+    \ tc = 1;\n  // cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n\
+    \  }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite_large_array\"\
     \n\n#include \"../misc/macros.h\"\n#include \"../math/ModInt.h\"\n#include \"\
     ../math/Affine.h\"\n#include \"../ds/PersistentSegTree.h\"\n\nusing Fp = modint<998244353>;\n\
@@ -106,7 +106,7 @@ data:
     \ pst(n, [&](const A& l, const A& r) { return l * r; }, A{});\n  decltype(pst)::Node*\
     \ root = nullptr;\n  while (q--) {\n    int cmd;\n    cin >> cmd;\n    if (cmd\
     \ == 0) {\n      int p, c, d;\n      cin >> p >> c >> d;\n      auto new_node\
-    \ = pst.update(root, 0, n - 1, p, A{c, d});\n      root = new_node;\n    } else\
+    \ = pst.apply(root, 0, n - 1, p, A{c, d});\n      root = new_node;\n    } else\
     \ {\n      int l, r, x;\n      cin >> l >> r >> x;\n      auto fc = pst.query(root,\
     \ 0, n - 1, l, r - 1);\n      cout << fc(x) << '\\n';\n    }\n  }\n}\n\nint main()\
     \ {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n  int\
@@ -120,7 +120,7 @@ data:
   isVerificationFile: true
   path: tests/Point_Set_Range_Composite_Large.test.cpp
   requiredBy: []
-  timestamp: '2025-11-18 22:42:15+07:00'
+  timestamp: '2025-11-19 09:51:05+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Point_Set_Range_Composite_Large.test.cpp

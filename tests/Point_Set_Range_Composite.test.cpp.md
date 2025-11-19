@@ -71,38 +71,37 @@ data:
     \nu64 modmul(u64 x, u64 y, u64 m) { return u128(x) * y % m; }\nu64 modpow(u64\
     \ x, u64 k, u64 m) {\n  u64 res = 1;\n  while (k) {\n    if (k & 1) res = modmul(res,\
     \ x, m);\n    x = modmul(x, x, m);\n    k >>= 1;\n  }\n  return res;\n}\n#line\
-    \ 1 \"ds/SegTree.h\"\ntemplate <typename T, typename F>\nstruct SegTree {  //\
-    \ 1-indexed\n  int n;\n  vector<T> seg;\n  const F f;\n  const T I;\n  SegTree(int\
-    \ n, F f, const T& I) : n(n), seg(2 * n + 1), f(f), I(I) {}\n  void set(int k,\
-    \ T x) { seg[k + n] = x; }\n  void upd(int k, T x) {\n    k += n, seg[k] = x;\n\
-    \    while (k >>= 1) {\n      seg[k] = f(seg[k << 1], seg[k << 1 | 1]);\n    }\n\
-    \  }\n  // query [l, r)\n  T qry(int l, int r) {\n    T L = I, R = I;\n    for\
+    \ 1 \"ds/SegTree.h\"\n// 0-indexed\ntemplate <typename T, typename F>\nstruct\
+    \ SegTree {\n  int n;\n  vector<T> seg;\n  const F f;\n  const T I;\n  SegTree(int\
+    \ n, F f, const T& I) : n(n), seg(2 * n + 2), f(f), I(I) {}\n  void set(int k,\
+    \ T x) { seg[k + n] = x; } // to build\n  void apply(int k, T x) {\n    k += n,\
+    \ seg[k] = x;\n    while (k >>= 1) seg[k] = f(seg[k << 1], seg[k << 1 | 1]);\n\
+    \  }\n  // query [l, r)\n  T query(int l, int r) {\n    T L = I, R = I;\n    for\
     \ (l += n, r += n; l < r; l >>= 1, r >>= 1) {\n      if (l & 1) L = f(L, seg[l++]);\n\
-    \      if (r & 1) R = f(seg[--r], R);\n    }\n    return f(L, R);\n  }\n  T& operator[](const\
-    \ int& k) { return seg[k + n]; }\n};\n#line 7 \"tests/Point_Set_Range_Composite.test.cpp\"\
+    \      if (r & 1) R = f(seg[--r], R);\n    }\n    return f(L, R);\n  }\n  T& operator[](int\
+    \ k) { return seg[k + n]; }\n};\n#line 7 \"tests/Point_Set_Range_Composite.test.cpp\"\
     \n\nusing Fp = modint<998244353>;\nusing A = affine<Fp>;\n\nvoid solve() {\n \
     \ int n, q;\n  cin >> n >> q;\n  SegTree st(n, [&](const A& l, const A& r) { return\
     \ l * r; }, A{});\n  for (int i = 0; i < n; ++i) {\n    int a, b;\n    cin >>\
-    \ a >> b;\n    st.upd(i + 1, {a, b});\n  }\n  while (q--) {\n    int cmd;\n  \
-    \  cin >> cmd;\n    if (cmd == 0) {\n      int p, c, d;\n      cin >> p >> c >>\
-    \ d;\n      ++p;\n      st.upd(p, {c, d});\n    } else {\n      int l, r, x;\n\
-    \      cin >> l >> r >> x;\n      ++l, ++r;\n      auto fc = st.qry(l, r);\n \
-    \     cout << fc(x) << '\\n';\n    }\n  }\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n\
-    \  cin.exceptions(cin.failbit);\n  int tc = 1;\n  // cin >> tc;\n  for (int i\
-    \ = 1; i <= tc; ++i) {\n    solve();\n  }\n}\n"
+    \ a >> b;\n    st.apply(i, {a, b});\n  }\n  while (q--) {\n    int cmd;\n    cin\
+    \ >> cmd;\n    if (cmd == 0) {\n      int p, c, d;\n      cin >> p >> c >> d;\n\
+    \      st.apply(p, {c, d});\n    } else {\n      int l, r, x;\n      cin >> l\
+    \ >> r >> x;\n      auto fc = st.query(l, r);\n      cout << fc(x) << '\\n';\n\
+    \    }\n  }\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
+    \  int tc = 1;\n  // cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n\
+    \  }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
     \n\n#include \"../misc/macros.h\"\n#include \"../math/Affine.h\"\n#include \"\
     ../math/ModInt.h\"\n#include \"../ds/SegTree.h\"\n\nusing Fp = modint<998244353>;\n\
     using A = affine<Fp>;\n\nvoid solve() {\n  int n, q;\n  cin >> n >> q;\n  SegTree\
     \ st(n, [&](const A& l, const A& r) { return l * r; }, A{});\n  for (int i = 0;\
-    \ i < n; ++i) {\n    int a, b;\n    cin >> a >> b;\n    st.upd(i + 1, {a, b});\n\
+    \ i < n; ++i) {\n    int a, b;\n    cin >> a >> b;\n    st.apply(i, {a, b});\n\
     \  }\n  while (q--) {\n    int cmd;\n    cin >> cmd;\n    if (cmd == 0) {\n  \
-    \    int p, c, d;\n      cin >> p >> c >> d;\n      ++p;\n      st.upd(p, {c,\
-    \ d});\n    } else {\n      int l, r, x;\n      cin >> l >> r >> x;\n      ++l,\
-    \ ++r;\n      auto fc = st.qry(l, r);\n      cout << fc(x) << '\\n';\n    }\n\
-    \  }\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
-    \  int tc = 1;\n  // cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n\
-    \  }\n}\n"
+    \    int p, c, d;\n      cin >> p >> c >> d;\n      st.apply(p, {c, d});\n   \
+    \ } else {\n      int l, r, x;\n      cin >> l >> r >> x;\n      auto fc = st.query(l,\
+    \ r);\n      cout << fc(x) << '\\n';\n    }\n  }\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n\
+    \  cin.exceptions(cin.failbit);\n  int tc = 1;\n  // cin >> tc;\n  for (int i\
+    \ = 1; i <= tc; ++i) {\n    solve();\n  }\n}\n"
   dependsOn:
   - misc/macros.h
   - math/Affine.h
@@ -111,7 +110,7 @@ data:
   isVerificationFile: true
   path: tests/Point_Set_Range_Composite.test.cpp
   requiredBy: []
-  timestamp: '2025-11-18 22:42:15+07:00'
+  timestamp: '2025-11-19 09:51:05+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Point_Set_Range_Composite.test.cpp
