@@ -166,6 +166,9 @@ data:
     - icon: ':warning:'
       path: graph/MinCostMaxFlow.h
       title: graph/MinCostMaxFlow.h
+    - icon: ':warning:'
+      path: graph/SCC.h
+      title: graph/SCC.h
   - name: math
     pages:
     - icon: ':heavy_check_mark:'
@@ -236,6 +239,9 @@ data:
     - icon: ':warning:'
       path: misc/Frievalds.cpp
       title: misc/Frievalds.cpp
+    - icon: ':warning:'
+      path: misc/GrayCode.h
+      title: misc/GrayCode.h
     - icon: ':warning:'
       path: misc/HexGrid.h
       title: misc/HexGrid.h

@@ -22,8 +22,9 @@ data:
     \    return x->p >= y->p;\n  }\n  void add(i64 k, i64 m) {\n    auto z = insert({k,\
     \ m, 0}), y = z++, x = y;\n    while (isect(y, z)) z = erase(z);\n    if (x !=\
     \ begin() && isect(--x, y)) isect(x, y = erase(y));\n    while ((y = x) != begin()\
-    \ && (--x)->p >= y->p) isect(x, erase(y));\n  }\n  i64 query(i64 x) {\n    assert(!empty());\n\
-    \    auto l = *lower_bound(x);\n    return l.k * x + l.m;\n  }\n};\n"
+    \ && (--x)->p >= y->p) isect(x, erase(y));\n  }\n  i64 query(i64 x) { // return\
+    \ max\n    assert(!empty());\n    auto l = *lower_bound(x);\n    return l.k *\
+    \ x + l.m;\n  }\n};\n"
   code: "struct Line {\n  mutable i64 k, m, p;\n  bool operator<(const Line& o) const\
     \ { return k < o.k; }\n  bool operator<(i64 x) const { return p < x; }\n};\n\n\
     struct LineContainer : multiset<Line, less<>> {\n  // (for lds, use inf = 1/.0,\
@@ -35,13 +36,13 @@ data:
     \ add(i64 k, i64 m) {\n    auto z = insert({k, m, 0}), y = z++, x = y;\n    while\
     \ (isect(y, z)) z = erase(z);\n    if (x != begin() && isect(--x, y)) isect(x,\
     \ y = erase(y));\n    while ((y = x) != begin() && (--x)->p >= y->p) isect(x,\
-    \ erase(y));\n  }\n  i64 query(i64 x) {\n    assert(!empty());\n    auto l = *lower_bound(x);\n\
-    \    return l.k * x + l.m;\n  }\n};"
+    \ erase(y));\n  }\n  i64 query(i64 x) { // return max\n    assert(!empty());\n\
+    \    auto l = *lower_bound(x);\n    return l.k * x + l.m;\n  }\n};"
   dependsOn: []
   isVerificationFile: false
   path: ds/LineContainer.h
   requiredBy: []
-  timestamp: '2025-11-18 16:58:39+07:00'
+  timestamp: '2025-11-20 17:14:03+07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - tests/Line_Add_Get_Min.test.cpp

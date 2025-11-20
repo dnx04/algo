@@ -75,16 +75,32 @@ data:
     \ x, u64 k, u64 m) {\n  u64 res = 1;\n  while (k) {\n    if (k & 1) res = modmul(res,\
     \ x, m);\n    x = modmul(x, x, m);\n    k >>= 1;\n  }\n  return res;\n}\n#line\
     \ 1 \"ds/SegTree.h\"\n// 0-indexed\ntemplate <typename T, typename F>\nstruct\
-    \ SegTree {\n  int n;\n  vector<T> seg;\n  const F f;\n  const T I;\n  SegTree(int\
-    \ n, F f, const T& I) : n(n), seg(2 * n + 2), f(f), I(I) {}\n  void set(int k,\
-    \ T x) { seg[k + n] = x; } // to build\n  void apply(int k, T x) {\n    k += n,\
-    \ seg[k] = x;\n    while (k >>= 1) seg[k] = f(seg[k << 1], seg[k << 1 | 1]);\n\
-    \  }\n  // query [l, r)\n  T query(int l, int r) {\n    T L = I, R = I;\n    for\
-    \ (l += n, r += n; l < r; l >>= 1, r >>= 1) {\n      if (l & 1) L = f(L, seg[l++]);\n\
-    \      if (r & 1) R = f(seg[--r], R);\n    }\n    return f(L, R);\n  }\n  T& operator[](int\
-    \ k) { return seg[k + n]; }\n};\n#line 7 \"tests/Point_Set_Range_Composite.test.cpp\"\
-    \n\nusing Fp = modint<998244353>;\nusing A = affine<Fp>;\n\nvoid solve() {\n \
-    \ int n, q;\n  cin >> n >> q;\n  SegTree st(n, [&](const A& l, const A& r) { return\
+    \ SegTree {\n  int n, size;  // smallest size = 2^k >= n\n  vector<T> seg;\n \
+    \ const F f;\n  const T I;\n  SegTree(int n, F f, const T& I) : n(n), f(f), I(I)\
+    \ {\n    size = 1;\n    while (size < n) size <<= 1;\n    seg.assign(size << 1,\
+    \ I);\n  }\n  T& operator[](int k) { return seg[k + size]; }\n  void set(int k,\
+    \ T x) { seg[k + size] = x; }  // to build\n  void build() {\n    for (int i =\
+    \ size - 1; i > 0; --i) seg[i] = f(seg[i << 1], seg[i << 1 | 1]);\n  }\n  void\
+    \ apply(int k, T x) {\n    k += size, seg[k] = x;\n    while (k >>= 1) seg[k]\
+    \ = f(seg[k << 1], seg[k << 1 | 1]);\n  }\n  // query [l, r)\n  T query(int l,\
+    \ int r) {\n    T L = I, R = I;\n    for (l += size, r += size; l < r; l >>= 1,\
+    \ r >>= 1) {\n      if (l & 1) L = f(L, seg[l++]);\n      if (r & 1) R = f(seg[--r],\
+    \ R);\n    }\n    return f(L, R);\n  }\n  template <class C>\n  int max_right(int\
+    \ l, C check) {\n    assert(0 <= l && l <= n && check(I) == true);\n    if (l\
+    \ == n) return n;\n    l += size;\n    T sm = I;\n    do {\n      while (l % 2\
+    \ == 0) l >>= 1;\n      if (!check(f(sm, seg[l]))) {\n        while (l < size)\
+    \ {\n          l = l << 1;\n          if (check(f(sm, seg[l]))) sm = f(sm, seg[l]),\
+    \ l++;\n        }\n        return l - size;\n      }\n      sm = f(sm, seg[l]),\
+    \ l++;\n    } while ((l & -l) != l);\n    return n;\n  }\n  template <typename\
+    \ C>\n  int min_left(int r, C check) {\n    assert(0 <= r && r <= n && check(I)\
+    \ == true);\n    if (r == 0) return 0;\n    r += size;\n    T sm = I;\n    do\
+    \ {\n      r--;\n      while (r > 1 && (r % 2)) r >>= 1;\n      if (!check(f(seg[r],\
+    \ sm))) {\n        while (r < size) {\n          r = r << 1 | 1;\n          if\
+    \ (check(f(seg[r], sm))) sm = f(seg[r], sm), r--;\n        }\n        return r\
+    \ + 1 - size;\n      }\n      sm = f(seg[r], sm);\n    } while ((r & -r) != r);\n\
+    \    return 0;\n  }\n};\n#line 7 \"tests/Point_Set_Range_Composite.test.cpp\"\n\
+    \nusing Fp = modint<998244353>;\nusing A = affine<Fp>;\n\nvoid solve() {\n  int\
+    \ n, q;\n  cin >> n >> q;\n  SegTree st(n, [&](const A& l, const A& r) { return\
     \ l * r; }, A{});\n  for (int i = 0; i < n; ++i) {\n    int a, b;\n    cin >>\
     \ a >> b;\n    st.apply(i, {a, b});\n  }\n  while (q--) {\n    int cmd;\n    cin\
     \ >> cmd;\n    if (cmd == 0) {\n      int p, c, d;\n      cin >> p >> c >> d;\n\
@@ -113,7 +129,7 @@ data:
   isVerificationFile: true
   path: tests/Point_Set_Range_Composite.test.cpp
   requiredBy: []
-  timestamp: '2025-11-19 16:07:23+07:00'
+  timestamp: '2025-11-20 17:14:03+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Point_Set_Range_Composite.test.cpp

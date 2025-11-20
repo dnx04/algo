@@ -48,16 +48,17 @@ data:
     \    return x->p >= y->p;\n  }\n  void add(i64 k, i64 m) {\n    auto z = insert({k,\
     \ m, 0}), y = z++, x = y;\n    while (isect(y, z)) z = erase(z);\n    if (x !=\
     \ begin() && isect(--x, y)) isect(x, y = erase(y));\n    while ((y = x) != begin()\
-    \ && (--x)->p >= y->p) isect(x, erase(y));\n  }\n  i64 query(i64 x) {\n    assert(!empty());\n\
-    \    auto l = *lower_bound(x);\n    return l.k * x + l.m;\n  }\n};\n#line 5 \"\
-    tests/Line_Add_Get_Min.test.cpp\"\n\nvoid solve() {\n  int n, q;\n  cin >> n >>\
-    \ q;\n  LineContainer cht;\n  for (int i = 0; i < n; ++i) {\n    i64 a, b;\n \
-    \   cin >> a >> b;\n    cht.add(-a, -b);\n  }\n  while (q--) {\n    int cmd;\n\
-    \    cin >> cmd;\n    if (cmd == 0) {\n      i64 a, b;\n      cin >> a >> b;\n\
-    \      cht.add(-a, -b);\n    } else {\n      i64 p;\n      cin >> p;\n      cout\
-    \ << -cht.query(p) << '\\n';\n    }\n  }\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n\
-    \  cin.exceptions(cin.failbit);\n  int tc = 1;\n  // cin >> tc;\n  for (int i\
-    \ = 1; i <= tc; ++i) {\n    solve();\n  }\n}\n"
+    \ && (--x)->p >= y->p) isect(x, erase(y));\n  }\n  i64 query(i64 x) { // return\
+    \ max\n    assert(!empty());\n    auto l = *lower_bound(x);\n    return l.k *\
+    \ x + l.m;\n  }\n};\n#line 5 \"tests/Line_Add_Get_Min.test.cpp\"\n\nvoid solve()\
+    \ {\n  int n, q;\n  cin >> n >> q;\n  LineContainer cht;\n  for (int i = 0; i\
+    \ < n; ++i) {\n    i64 a, b;\n    cin >> a >> b;\n    cht.add(-a, -b);\n  }\n\
+    \  while (q--) {\n    int cmd;\n    cin >> cmd;\n    if (cmd == 0) {\n      i64\
+    \ a, b;\n      cin >> a >> b;\n      cht.add(-a, -b);\n    } else {\n      i64\
+    \ p;\n      cin >> p;\n      cout << -cht.query(p) << '\\n';\n    }\n  }\n}\n\n\
+    int main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
+    \  int tc = 1;\n  // cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n\
+    \  }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/line_add_get_min\"\n\n\
     #include \"../misc/macros.h\"\n#include \"../ds/LineContainer.h\"\n\nvoid solve()\
     \ {\n  int n, q;\n  cin >> n >> q;\n  LineContainer cht;\n  for (int i = 0; i\
@@ -74,7 +75,7 @@ data:
   isVerificationFile: true
   path: tests/Line_Add_Get_Min.test.cpp
   requiredBy: []
-  timestamp: '2025-11-20 10:20:22+07:00'
+  timestamp: '2025-11-20 17:14:03+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Line_Add_Get_Min.test.cpp
