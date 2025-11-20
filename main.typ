@@ -121,9 +121,6 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 #file("math/FST.h", description: [
   Tính tích chập AND, OR, XOR.
 ])
-#file("math/LinearRec.h", description: [
-  Tìm số hạng thứ $k$ của dãy truy hồi cấp $n$ `S[i] = sum S[i-j-1]tr[j]` trong $O(n^2 log k)$.
-])
 #file("math/BerlekampMassey.h", description: [
   Phục hồi một dãy truy hồi cấp $n$ từ $2n$ số hạng đầu tiên trong $O(n^2)$.
 ])
@@ -147,6 +144,7 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
   2. `subtree(x)`: trả về đoạn `[l, r)` tương ứng với cây con của `x`.
   3. `path_query(a, b, f)`: phân hoạch đường đi từ `a` đến `b` thành các đoạn liên tiếp trong mảng DFS. Hàm `f` có thể được dùng để truy vấn/cập nhật Segment Tree.
 ])
+#file("ds/AuxiliaryTree.h")
 #file(
   "ds/LineContainer.h",
   description: [Duy trì tập các đường thẳng dạng $y = k x + m$ và truy vấn giá trị *lớn nhất* tại điểm $x$. Nếu muốn tìm giá trị nhỏ nhất, đổi dấu `k`, `m` và kết quả truy vấn.
@@ -162,7 +160,9 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 //   Tìm luồng cực đại bằng Ford-Fulkerson trong với $U$ là luồng tối đa trên một cạnh. Độ phức tạp $O(E F)$ với $F$ là luồng cực đại.
 // ])
 //
-#file("graph/LowLink.h")
+// #file("graph/LowLink.h")
+#file("graph/SCC.h")
+#file("graph/EulerWalk.h")
 #file("graph/EnumTriangles.h", description: [
   Duyệt qua tất cả tam giác của đồ thị trong $O(M^(4/3))$
 ])
@@ -217,22 +217,13 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 // #file("strings/Manacher.h")
 // #file("strings/AhoCorasick.h")
 // #file("strings/SuffixArray.h", description: [Suffix Array và LCP trong $O(n log n)$.])
-#file("strings/PalindromeTree.h", description: [
-  Dựng Palindrome Tree. Nó có 2 root, root 0/1 cho xâu đối xứng chẵn/lẻ, mỗi node lưu độ dài xâu đối xứng, số lượng và link đến xâu đó. Xâu độ dài $N$ *chỉ có tối đa $N$ xâu con đối xứng phân biệt*.
-])
-
-= Khác
-
-#file("misc/maxHist.h", description: [
-  Hình chữ nhật lớn nhất.
-])
-#file("misc/FracBinarySearch.h", description: [
-  Tìm phân số $p/q$ nhỏ nhất trong đoạn $[0, 1]$ sao cho $f(p/q)$ là đúng, với $p <= m_p, q <= m_q$
-])
-// #file("misc/ContinuedFraction.h", description: [
-//   Cho $N$ và số thực $x > 0$, tính xấp xỉ hữu tỉ $p/q$ của $x$ với $p, q <= N$ trong $O(log N)$. Đảm bảo $abs(p/q - x) < 1/q$.
-
+// #file("strings/PalindromeTree.h", description: [
+//   Dựng Palindrome Tree. Nó có 2 root, root 0/1 cho xâu đối xứng chẵn/lẻ, mỗi node lưu độ dài xâu đối xứng, số lượng và link đến xâu đó. Xâu độ dài $N$ *chỉ có tối đa $N$ xâu con đối xứng phân biệt*.
 // ])
+
+= Quy hoạch động
+
+#file("misc/CountSubseq.h")
 #file(
   "misc/1D1D.cpp",
   description: [
@@ -252,7 +243,21 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
   description: [Nếu hàm $w(i, j)$ thoả mãn bất đẳng thức tứ giác: $w(a, c) + w(b, d) <= w(a, d) + w(b, c)$ với mọi $a < b < c < d$, thì ta có thể tính hàm DP: $f(i, j) = min_(i <= k < j) f(i, k) + f(k + 1, j) + w(j, i)$ trong $O(n^2)$.],
   hash: false,
 )
-#file("misc/HexGrid.h", hash: false)
+
+= Khác
+
+#file("misc/maxHist.h", description: [
+  Hình chữ nhật lớn nhất.
+])
+#file("misc/FracBinarySearch.h", description: [
+  Tìm phân số $p/q$ nhỏ nhất trong đoạn $[0, 1]$ sao cho $f(p/q)$ là đúng, với $p <= m_p, q <= m_q$
+])
+// #file("misc/ContinuedFraction.h", description: [
+//   Cho $N$ và số thực $x > 0$, tính xấp xỉ hữu tỉ $p/q$ của $x$ với $p, q <= N$ trong $O(log N)$. Đảm bảo $abs(p/q - x) < 1/q$.
+
+// ])
+
+// #file("misc/HexGrid.h", hash: false)
 #file(
   "misc/MaximalCliques.h",
   description: [Chạy một hàm nào đó duyệt qua tất cả các clique của một đồ thị trong $O(3^(n/3))$.],

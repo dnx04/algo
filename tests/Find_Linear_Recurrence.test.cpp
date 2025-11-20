@@ -2,7 +2,7 @@
 
 #include "../misc/macros.h"
 #include "../math/ModInt.h"
-#include "../math/LinearRec.h"
+#include "../math/BerlekampMassey.h"
 
 using Fp = modint<998244353>;
 
@@ -11,9 +11,9 @@ void solve() {
   cin >> d;
   vector<Fp> a(d);
   for (int i = 0; i < d; ++i) cin >> a[i];
-  auto cs = LinearRec(a);
-  cout << sz(cs) - 1 << '\n';
-  for (int i = 1; i < sz(cs); ++i) cout << cs[i] << ' ';
+  auto cs = BerlekampMassey(a);
+  cout << sz(cs) << '\n';
+  for (auto c : cs) cout << c << ' ';
 }
 
 int main() {
