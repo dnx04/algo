@@ -48,14 +48,14 @@ struct HLD {
  public:
   G& g;
   int root, id;
-  vector<int> size, depth, down, up, nxt, par;
+  vi size, depth, down, up, nxt, par;
   HLD(G& g, int root = 0) : g(g), root(root), id(0), size(sz(g), 0), depth(sz(g), 0), down(sz(g), -1), up(sz(g), -1), nxt(sz(g), root), par(sz(g), root) {
     dfs_sz(root);
     dfs_hld(root);
   }
 
   pii idx(int i) const { return make_pair(down[i], up[i]); }
-
+  
   template <typename F>
   void path_query(int u, int v, bool vertex, const F& f) {
     int l = lca(u, v);

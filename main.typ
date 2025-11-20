@@ -1,7 +1,7 @@
 #import "@preview/codly:1.3.0": *
 // #import "@preview/outrageous:0.3.0"
 #import "@preview/cheq:0.3.0": checklist
-#import "utils/icpc.typ": *
+#import "icpc.typ": *
 
 #set outline(indent: auto, depth: 4)
 
@@ -20,65 +20,7 @@
 
 #pagebreak()
 
-= Thi cử
-
-== Checklists
-
-1. Wrong answer:
-  - [ ] Clear data structure sau mỗi test case chưa ?
-  - [ ] Thuật có đúng trong giới hạn input không ?
-  - [ ] Đọc lại đề
-  - [ ] Xét trường hợp biên chưa ?
-  - [ ] Hiểu đúng đề chưa ?
-  - [ ] Có biến nào chưa khởi tạo không ?
-  - [ ] Tràn số ?
-  - [ ] Nhầm biến (N với M, i với j) ?
-  - [ ] Có chắc thuật đúng không ?
-  - [ ] Có case nào không ngờ đến không ?
-  - [ ] Nếu dùng STL, các hàm STL có hoạt động như ý muốn không ?
-  - [ ] Debug bằng assert.
-  - [ ] Trao đổi với teammate / 2 người cùng code.
-  - [ ] Output format đúng chưa ?
-  - [ ] Đọc lại checklist.
-
-2. Runtime error:
-  - [ ] Test trường hợp biên chưa ?
-  - [ ] Biến chưa khởi tạo ?
-  - [ ] Tràn mảng ?
-  - [ ] Fail assert nào đó ?
-  - [ ] Chia/mod cho 0 ?
-  - [ ] Đệ quy vô hạn ?
-  - [ ] Con trỏ hoặc iterator ?
-  - [ ] Dùng quá nhiều bộ nhớ ?
-  - [ ] Spam sub đề debug (e.g. remapped signals, see Various).
-
-3. Time limit exceeded:
-  - [ ] Lặp vô hạn ?
-  - [ ] Độ phức tạp có đúng không ?
-  - [ ] Tối ưu mod ?
-  - [ ] Copy biến quá nhiều ?
-  - [ ] Thay `vector, map` thành `array, unordered_map` ? Thay `int` thành `short` ?
-
-4. Memory limit exceeded:
-- [ ] Tối đa cần bao nhiêu bộ nhớ ?
-- [ ] Clear data structure sau mỗi test case chưa ?
-
-== Advices
-
-- Khi không còn bài gì để làm thì hẵng làm hình.
-- Nếu không sure bất cứ điều gì (kể cả đọc đề), hãy thảo luận với teammate.
-- Viết pseudocode trước khi code, không chỉ để tiết kiệm computer time, mà còn tự phản biện chính mình.
-- Đừng debug code trên máy. In code và debug output rồi debug trên giấy.
-- Nếu kẹt, hãy đi dạo hoặc đi vệ sinh. Có thể nghĩ ra gì đó đấy.
-- Nếu bị WA liên tục, để tạm đấy và xem bài khác rồi quay lại.
-- Đừng ngại viết lại hết code, thường chỉ mất khoảng 15 phút.
-- Nếu có thể dễ sinh ra input lớn hoặc tricky test, hãy cố làm điều đó trước khi nộp.
-- Làm xong bài nào thì ném và xoá mọi thứ liên quan đến nó (đề bài, giấy nháp, ...).
-- Ghi lại xem ai đang làm bài nào.
-- Cuối giờ, mọi người tập trung vào 1 bài thôi.
-
-#file("misc/commands.sh", hash: false)
-#file("misc/macros.h", hash: false)
+// #file("misc/macros.h", hash: false)
 // #file("misc/c_cpp_properties.json")
 // #file("misc/tasks.json")
 // #file("misc/launch.json")
@@ -97,7 +39,7 @@ Let $n = n_k p^k + n_(k-1) p^(k-1) + ... + n_0$ and $m = m_k p^k + m_(k-1) p^(k-
 
 === Number of Derangements
 
-$d(n)$ là số hoán vị $n$ phần tử mà không có $i$ sao cho $p_i = i$. $ d(n) = (n - 1)(d(n - 1) + d(n - 2)) $.
+$ d(n) = (n - 1)(d(n - 1) + d(n - 2)) $.
 
 === Số Stirling loại 1
 
@@ -137,11 +79,14 @@ Cho một đa giác có các điểm nguyên. Gọi $i$ là số điểm nguyên
 
 == Nhận xét
 
-- Trong đồ thị 2 phía, MIS = N - cặp ghép cực đại.
-- Cho 2 xâu $S$, $T$. Số xâu phân biệt của prefix(S) + suffix(T) = $|S| * |T|$ - số kí tự giống nhau của S và T, không tính $S_0$ và $T_(n)$.
+1. Trong đồ thị 2 phía, MIS = N - cặp ghép cực đại.
+2. Cho 2 xâu $S$, $T$. Số xâu phân biệt của prefix(S) + suffix(T) = $|S| * |T|$ - số kí tự giống nhau của S và T, không tính $S_0$ và $T_(n)$.
 
 = Toán
 
+#file("math/ModInt.h", description: [
+  Biểu diễn số nguyên modulo sử dụng Montgomery.
+])
 #file("math/MillerRabin.h", description: [
   Kiểm tra số nguyên tố nhanh, *chắc chắn* đúng trong `unsigned long long`.
 ])
@@ -167,7 +112,7 @@ Cho một đa giác có các điểm nguyên. Gọi $i$ là số điểm nguyên
   FFT trên $RR$
 ])
 #file("math/NTT.h", description: [
-  FFT modulo nguyên tố *bất kỳ* dựa trên FFT thực.
+  FFT modulo nguyên tố *bất kỳ*.
 ])
 #file("math/FST.h", description: [
   Tính tích chập AND, OR, XOR.
@@ -181,29 +126,17 @@ Cho một đa giác có các điểm nguyên. Gọi $i$ là số điểm nguyên
 #file("math/Lagrange.h", description: [
   Tìm đa thức bậc $n - 1$ qua $n$ điểm trong $O(n^2)$. Vẫn đúng trong trường modulo.
 ])
-#file("math/RowEchelon.h", description: [
-  Chuyển ma trận về dạng bậc thang trong $O(M^2 N)$, với $M$ là số hàng, $N$ là số cột.
-])
-#file("math/MatrixDet.h", description: [
-  Tính định thức ma trận vuông trong $O(n^3)$.
-])
-#file("math/MatrixInv.h", description: [
-  Tìm ma trận nghịch đảo trong $O(n^3)$.
-])
-#file("math/SolveLinear.h", description: [
-  Giải hệ phương trình tuyến tính sau khi chuyển về dạng bậc thang trong $O(M^2 N)$.
-])
-#file("math/GaussBinary.h", description: [
-  Giải hệ phương trình tuyến tính modulo 2 trong $O(n^3/64)$ sử dụng bitset.
-])
-#file("math/PolyRoots.h", description: [
-  Tìm các nghiệm phức của đa thức bậc $n$ trong $O(n^2 times T)$ với $T$ là số lần lặp hội tụ. Nếu mò được nghiệm, hãy cho chúng vào phần khởi tạo.
-])
+#file("math/XorBasis.h", description: [])
 
 = Cấu trúc dữ liệu
 
-#file("ds/DSURollback.h")
+// #file("ds/DSURollback.h")
+#file("ds/DSU.h")
 #file("ds/RMQ.h")
+#file("ds/Fenwick.h")
+#file("ds/SegTree.h")
+#file("ds/LazySegTree.h")
+#file("ds/PersistentSegTree.h", description: [])
 #file("ds/HLD.h", description: [
   HLD cho phép truy vấn cả đường đi và cây con trong $O(log N)$.
   1. `pos(x)`: trả về vị trí của đỉnh `x` trong quá trình duyệt DFS.
@@ -212,17 +145,22 @@ Cho một đa giác có các điểm nguyên. Gọi $i$ là số điểm nguyên
 ])
 #file(
   "ds/LineContainer.h",
-  description: [Duy trì tập các đường thẳng dạng $y = k x + m$ và truy vấn giá trị lớn nhất tại điểm $x$. Nếu muốn tìm giá trị nhỏ nhất, đổi dấu `k`, `m` và kết quả truy vấn.
+  description: [Duy trì tập các đường thẳng dạng $y = k x + m$ và truy vấn giá trị *lớn nhất* tại điểm $x$. Nếu muốn tìm giá trị nhỏ nhất, đổi dấu `k`, `m` và kết quả truy vấn.
   ],
 )
 #file("ds/SWAG.h")
-#file("ds/PersistentIT.h")
-#file("ds/WaveletTree.h")
+#file("ds/Mo.h")
+// #file("ds/WaveletTree.h")
 
 = Đồ thị
 
-#file("graph/FordFulkerson.h", description: [
-  Tìm luồng cực đại bằng Ford-Fulkerson trong với $U$ là luồng tối đa trên một cạnh. Độ phức tạp $O(E F)$ với $F$ là luồng cực đại.
+// #file("graph/FordFulkerson.h", description: [
+//   Tìm luồng cực đại bằng Ford-Fulkerson trong với $U$ là luồng tối đa trên một cạnh. Độ phức tạp $O(E F)$ với $F$ là luồng cực đại.
+// ])
+//
+#file("graph/LowLink.h")
+#file("graph/EnumTriangles.h", description: [
+  Duyệt qua tất cả tam giác của đồ thị trong $O(M^(4/3))$
 ])
 #file("graph/Dinic.h", description: [
   Tìm luồng cực đại bằng Dinic trong với $U$ là luồng tối đa trên một cạnh. Nếu mọi cạnh đều có luồng 1 thì độ phức tạp là $O(min(E^(2/3), V^(1/2)) E)$.
@@ -237,14 +175,14 @@ Cho một đa giác có các điểm nguyên. Gọi $i$ là số điểm nguyên
   Tìm cặp ghép cực đại trên đồ thị thường trong $O(V^3)$. 0-indexed.
 ])
 #file("graph/MinAssignment.h", description: [ Nhanh hơn Hungarian nhiều. Muốn tìm max cost, đặt cost âm. 0-indexed.])
-#file("graph/Biconnected.h", description: [
-  Tìm tất cả thành phân song liên thông trong $O(E + V)$, và với mỗi thành phần chạy callback cho mỗi cạnh.
-])
+#file("graph/CentroidDecomposition.h")
+// #file("graph/Biconnected.h", description: [
+//   Tìm tất cả thành phân song liên thông trong $O(E + V)$, và với mỗi thành phần chạy callback cho mỗi cạnh.
+// ])
 #file("graph/2SAT.h")
 // #file("graph/EdgeColoring.h", description: [
 //   Cho đồ thị $N$ đỉnh có bậc lớn nhất $D$, tô không quá $D + 1$ màu vào cạnh sao cho 2 cạnh kề nhau khác màu trong $O(N M)$.
 // ])
-
 #file(
   "graph/Dominator.h",
   description: [Dựng Dominator Tree cho đồ thị có hướng khi đặt gốc là $s$. $u$ là cha của $v$ nếu mọi đường đi từ $s$ đến $v$ đều phải đi qua $u$. Độ phức tạp $O(M log N)$ hằng số thấp.
@@ -261,9 +199,9 @@ Cho một đa giác có các điểm nguyên. Gọi $i$ là số điểm nguyên
 #file("graph/GlobalMinCut.h", description: [
   Tìm lát cắt cực tiểu trong đồ thị vô hướng trong $O(V^3)$.
 ])
-#file("graph/DirectedMST.h", description: [
-  Trả về giá trị và các cạnh của cây khung nhỏ nhất trên đồ thị có hướng với đỉnh nguồn cho trước trong $O(E log V)$. Nếu không tồn tại in ra `-1`.
-])
+// #file("graph/DirectedMST.h", description: [
+//   Trả về giá trị và các cạnh của cây khung nhỏ nhất trên đồ thị có hướng với đỉnh nguồn cho trước trong $O(E log V)$. Nếu không tồn tại in ra `-1`.
+// ])
 
 = Xâu
 
@@ -287,10 +225,10 @@ Cho một đa giác có các điểm nguyên. Gọi $i$ là số điểm nguyên
 #file("misc/FracBinarySearch.h", description: [
   Tìm phân số $p/q$ nhỏ nhất trong đoạn $[0, 1]$ sao cho $f(p/q)$ là đúng, với $p <= m_p, q <= m_q$
 ])
-#file("misc/ContinuedFraction.h", description: [
-  Cho $N$ và số thực $x > 0$, tính xấp xỉ hữu tỉ $p/q$ của $x$ với $p, q <= N$ trong $O(log N)$. Đảm bảo $abs(p/q - x) < 1/q$.
+// #file("misc/ContinuedFraction.h", description: [
+//   Cho $N$ và số thực $x > 0$, tính xấp xỉ hữu tỉ $p/q$ của $x$ với $p, q <= N$ trong $O(log N)$. Đảm bảo $abs(p/q - x) < 1/q$.
 
-])
+// ])
 #file(
   "misc/1D1D.cpp",
   description: [
@@ -323,7 +261,7 @@ Cho một đa giác có các điểm nguyên. Gọi $i$ là số điểm nguyên
   "misc/Frievalds.cpp",
   description: [Kiểm tra xác suất tích ma trận $A B = C$ trong $O(T n^2)$. Xác suất sai là $2^(-T)$.],
 )
-#file("misc/XorBasis.h")
+
 
 = Hình
 
@@ -336,7 +274,6 @@ Các thuật toán hình có đa giác, nếu không chú thích gì, thì hoạ
   "geometry/ConvexHull.h",
   description: [Trả về bao lồi của tập điểm theo CCW. Nếu muốn tính cả điểm nằm trên biên, sửa `<=` thành `<`.],
 )
-
 #file("geometry/OnSegment.h")
 #file("geometry/LineDistance.h")
 #file("geometry/LineIntersection.h")
@@ -344,7 +281,6 @@ Các thuật toán hình có đa giác, nếu không chú thích gì, thì hoạ
   "geometry/LineProjectionReflection.h",
   description: [Trả về chân đường vuông góc/điểm đối xứng (tuỳ vào `refl=false/true`) của điểm `p` qua đường `ab`. Các điểm phải là số thực, cẩn thận tràn số.],
 )
-
 #file("geometry/CircleLine.h", description: [Định nghĩa của đường thẳng dạng $a x + b y = c$ với $a, b, c in ZZ/RR$])
 #file("geometry/CircleIntersection.h")
 #file("geometry/CircleTangents.h", description: [
@@ -362,19 +298,17 @@ Các thuật toán hình có đa giác, nếu không chú thích gì, thì hoạ
   "geometry/CirclePolygonIntersection.h",
   description: [Trả về diện tích phần giao của đường tròn với đa giác trong $O(n)$],
 )
-
 #file("geometry/InsidePolygon.h")
 #file("geometry/PolygonCenter.h")
 #file("geometry/PolygonArea.h", description: [ Trả về 2 lần diện tích có dấu của đa giác.])
-#file(
-  "geometry/PolygonUnion.h",
-  description: [ Trả về diện tích giao nhau của $n$ đa giác trong $O(N^2)$ với $N$ là tổng số điểm. ],
-)
-
+// #file(
+//   "geometry/PolygonUnion.h",
+//   description: [ Trả về diện tích giao nhau của $n$ đa giác trong $O(N^2)$ với $N$ là tổng số điểm. ],
+// )
 #file("geometry/PointInsideHull.h")
 #file("geometry/HullDiameter.h")
 #file("geometry/Minkowski.h", description: [ Tính tổng của 2 bao lồi trong $O(n + m).$])
-#file("geometry/Line.h", description: [Định nghĩa của đường thẳng dạng $y = k x + m$ với $k, m in ZZ$ hoặc $RR$])
+// #file("geometry/Line.h", description: [Định nghĩa của đường thẳng dạng $y = k x + m$ với $k, m in ZZ$ hoặc $RR$])
 // #file(
 //   "geometry/HalfplaneSet.h",
 //   description: [Tìm bao lồi giao của nửa mặt phẳng trong $O(n log n)$. Nửa mặt phẳng được định nghĩa bằng $a x + b y <= c$],

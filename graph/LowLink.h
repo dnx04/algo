@@ -2,17 +2,13 @@ template <typename G>
 struct LowLink {
   const G& g;
   int N;
-  vector<int> ord, low, articulation;
-  vector<pair<int, int> > bridge;
-
+  vector<int> ord, low, cut;
+  vector<pii> bridge;
   LowLink(const G& g) : g(g), N(g.size()), ord(N, -1), low(N, -1) {
     for (int i = 0, k = 0; i < N; i++) {
-      if (ord[i] == -1) {
-        k = dfs(i, k, -1);
-      }
+      if (ord[i] == -1) k = dfs(i, k, -1);
     }
   }
-
   int dfs(int idx, int k, int par) {
     low[idx] = (ord[idx] = k++);
     int cnt = 0;
@@ -23,9 +19,7 @@ struct LowLink {
         k = dfs(to, k, idx);
         low[idx] = min(low[idx], low[to]);
         arti |= (par != -1) && (low[to] >= ord[idx]);
-        if (ord[idx] < low[to]) {
-          bridge.emplace_back(minmax(idx, (int) to));
-        }
+        if (ord[idx] < low[to]) bridge.eb(minmax(idx, (int) to));
       } else if (to != par || second) {
         low[idx] = min(low[idx], ord[to]);
       } else {
@@ -33,7 +27,7 @@ struct LowLink {
       }
     }
     arti |= par == -1 && cnt > 1;
-    if (arti) articulation.push_back(idx);
+    if (arti) cut.eb(idx);
     return k;
   }
 };

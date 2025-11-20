@@ -3,14 +3,14 @@
 #include "../misc/macros.h"
 #include "../math/ModInt.h"
 #include "../math/Affine.h"
-#include "../ds/SWAG.h"
+#include "../ds/SWAD.h"
 
 void solve() {
   using Fp = modint<998244353>;
   using A = affine<Fp>;
   int q;
   cin >> q;
-  SlideWindowAggregationDeque swag([](const A& f, const A& g) { return f * g; }, A{});
+  SWAD swag([](const A& f, const A& g) { return f * g; }, A{});
   while (q--) {
     int cmd;
     cin >> cmd;
