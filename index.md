@@ -4,6 +4,9 @@ data:
   - name: ds
     pages:
     - icon: ':warning:'
+      path: ds/AuxiliaryTree.h
+      title: ds/AuxiliaryTree.h
+    - icon: ':heavy_check_mark:'
       path: ds/DSU.h
       title: ds/DSU.h
     - icon: ':warning:'
@@ -18,7 +21,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: ds/LazySegTree.h
       title: ds/LazySegTree.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: ds/LineContainer.h
       title: ds/LineContainer.h
     - icon: ':warning:'
@@ -30,9 +33,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: ds/RMQ.h
       title: ds/RMQ.h
-    - icon: ':heavy_check_mark:'
-      path: ds/SWAG.h
-      title: ds/SWAG.h
+    - icon: ':x:'
+      path: ds/SWAD.h
+      title: ds/SWAD.h
     - icon: ':heavy_check_mark:'
       path: ds/SegTree.h
       title: ds/SegTree.h
@@ -165,7 +168,7 @@ data:
       title: graph/MinCostMaxFlow.h
   - name: math
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/Affine.h
       title: math/Affine.h
     - icon: ':warning:'
@@ -201,7 +204,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/MillerRabin.h
       title: math/MillerRabin.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/ModInt.h
       title: math/ModInt.h
     - icon: ':heavy_check_mark:'
@@ -213,9 +216,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/NTT.h
       title: math/NTT.h
-    - icon: ':warning:'
-      path: math/PolyRoots.h
-      title: math/PolyRoots.h
     - icon: ':heavy_check_mark:'
       path: math/XorBasis.h
       title: math/XorBasis.h
@@ -251,7 +251,7 @@ data:
     - icon: ':warning:'
       path: misc/SOSDP.cpp
       title: misc/SOSDP.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: misc/macros.h
       title: misc/macros.h
     - icon: ':warning:'
@@ -295,7 +295,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Deque.test.cpp
       title: tests/Deque.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Deque_Operate_All_Composite.test.cpp
       title: tests/Deque_Operate_All_Composite.test.cpp
     - icon: ':heavy_check_mark:'
@@ -328,6 +328,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Intersection_of_F2_vector_spaces.test.cpp
       title: tests/Intersection_of_F2_vector_spaces.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: tests/Line_Add_Get_Min.test.cpp
+      title: tests/Line_Add_Get_Min.test.cpp
     - icon: ':heavy_check_mark:'
       path: tests/Matching_on_Bipartite_Graph_HopcroftKarp.test.cpp
       title: tests/Matching_on_Bipartite_Graph_HopcroftKarp.test.cpp
@@ -376,6 +379,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Sum_of_Floor_of_Linear.test.cpp
       title: tests/Sum_of_Floor_of_Linear.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: tests/Unionfind.test.cpp
+      title: tests/Unionfind.test.cpp
     - icon: ':heavy_check_mark:'
       path: tests/Vertex_Add_Path_Sum.test.cpp
       title: tests/Vertex_Add_Path_Sum.test.cpp

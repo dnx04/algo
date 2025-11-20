@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: ds/SWAG.h
-    title: ds/SWAG.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
+    path: ds/SWAD.h
+    title: ds/SWAD.h
+  - icon: ':question:'
     path: math/Affine.h
     title: math/Affine.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/ModInt.h
     title: math/ModInt.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/deque_operate_all_composite
@@ -73,39 +73,25 @@ data:
     \ operator()(T x) const { return a * x + b; }\n  affine operator()(const affine&\
     \ f) const {\n    return f * (*this);\n  }\n  affine operator*(const affine& g)\
     \ const {  // g(f(x))\n    return {a * g.a, b * g.a + g.b};\n  }\n  affine operator!=(const\
-    \ affine& g) const {\n    return a != g.a || b != g.b;\n  }\n};\n#line 1 \"ds/SWAG.h\"\
-    \ntemplate <typename T, typename F>\nstruct SlideWindowAggregationDeque {\n  vector<T>\
-    \ a0, a1, r0, r1;\n  F f;\n  T I;\n  SlideWindowAggregationDeque(F f, T i) : f(f),\
-    \ I(i) {}\n private:\n  T get0() const { return r0.empty() ? I : r0.back(); }\n\
-    \  T get1() const { return r1.empty() ? I : r1.back(); }\n\n  void push0(const\
-    \ T& x) {\n    a0.push_back(x);\n    r0.push_back(f(x, get0()));\n  }\n  void\
-    \ push1(const T& x) {\n    a1.push_back(x);\n    r1.push_back(f(get1(), x));\n\
-    \  }\n  void rebalance() {\n    int n = a0.size() + a1.size();\n    int s0 = n\
-    \ / 2 + (a0.empty() ? n % 2 : 0);\n    vector<T> a{a0};\n    reverse(begin(a),\
-    \ end(a));\n    copy(begin(a1), end(a1), back_inserter(a));\n    a0.clear(), r0.clear();\n\
-    \    a1.clear(), r1.clear();\n    for (int i = s0 - 1; i >= 0; i--) push0(a[i]);\n\
-    \    for (int i = s0; i < n; i++) push1(a[i]);\n  }\n public:\n  void push_front(const\
-    \ T& t) { push0(t); }\n  void push_back(const T& t) { push1(t); }\n  T front()\
-    \ const { return a0.empty() ? a1.front() : a0.back(); }\n  T back() const { return\
-    \ a1.empty() ? a0.front() : a1.back(); }\n  void pop_front() {\n    if (a0.empty())\
-    \ rebalance();\n    assert(!a0.empty());\n    a0.pop_back(), r0.pop_back();\n\
-    \  }\n  void pop_back() {\n    if (a1.empty()) rebalance();\n    assert(!a1.empty());\n\
-    \    a1.pop_back(), r1.pop_back();\n  }\n  T query() { return f(get0(), get1());\
-    \ }\n};\n#line 7 \"tests/Deque_Operate_All_Composite.test.cpp\"\n\nvoid solve()\
-    \ {\n  using Fp = modint<998244353>;\n  using A = affine<Fp>;\n  int q;\n  cin\
-    \ >> q;\n  SlideWindowAggregationDeque swag([](const A& f, const A& g) { return\
-    \ f * g; }, A{});\n  while (q--) {\n    int cmd;\n    cin >> cmd;\n    if (cmd\
-    \ == 0) {\n      int a, b;\n      cin >> a >> b;\n      swag.push_front({a, b});\n\
-    \    } else if (cmd == 1) {\n      int a, b;\n      cin >> a >> b;\n      swag.push_back({a,\
-    \ b});\n    } else if (cmd == 2) {\n      swag.pop_front();\n    } else if (cmd\
-    \ == 3) {\n      swag.pop_back();\n    } else {\n      int x;\n      cin >> x;\n\
-    \      cout << swag.query()(x) << '\\n';\n    }\n  }\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n\
-    \  cin.exceptions(cin.failbit);\n  int tc = 1;\n  //   cin >> tc;\n  for (int\
-    \ i = 1; i <= tc; ++i) {\n    solve();\n  }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/deque_operate_all_composite\"\
-    \n\n#include \"../misc/macros.h\"\n#include \"../math/ModInt.h\"\n#include \"\
-    ../math/Affine.h\"\n#include \"../ds/SWAG.h\"\n\nvoid solve() {\n  using Fp =\
-    \ modint<998244353>;\n  using A = affine<Fp>;\n  int q;\n  cin >> q;\n  SlideWindowAggregationDeque\
+    \ affine& g) const {\n    return a != g.a || b != g.b;\n  }\n};\n#line 1 \"ds/SWAD.h\"\
+    \ntemplate <typename T, typename F>\nstruct SWAD {\n  vector<T> a0, a1, r0, r1;\n\
+    \  F f;\n  T I;\n  SWAD(F f, T i) : f(f), I(i) {}\n\n private:\n  T get0() const\
+    \ { return r0.empty() ? I : r0.back(); }\n  T get1() const { return r1.empty()\
+    \ ? I : r1.back(); }\n\n  void push0(const T& x) {\n    a0.eb(x), r0.eb(f(x, get0()));\n\
+    \  }\n  void push1(const T& x) {\n    a1.eb(x), r1.eb(f(get1(), x));\n  }\n  void\
+    \ rebalance() {\n    int n = a0.size() + a1.size();\n    int s0 = n / 2 + (a0.empty()\
+    \ ? n % 2 : 0);\n    vector<T> a{a0};\n    reverse(all(a));\n    copy(all(a1),\
+    \ back_inserter(a));\n    a0.clear(), r0.clear(), a1.clear(), r1.clear();\n  \
+    \  for (int i = s0 - 1; i >= 0; i--) push0(a[i]);\n    for (int i = s0; i < n;\
+    \ i++) push1(a[i]);\n  }\n\n public:\n  void push_front(const T& t) { push0(t);\
+    \ }\n  void eb(const T& t) { push1(t); }\n  T front() const { return a0.empty()\
+    \ ? a1.front() : a0.back(); }\n  T back() const { return a1.empty() ? a0.front()\
+    \ : a1.back(); }\n  void pop_front() {\n    if (a0.empty()) rebalance();\n   \
+    \ assert(!a0.empty());\n    a0.pop_back(), r0.pop_back();\n  }\n  void pop_back()\
+    \ {\n    if (a1.empty()) rebalance();\n    assert(!a1.empty());\n    a1.pop_back(),\
+    \ r1.pop_back();\n  }\n  T query() { return f(get0(), get1()); }\n};\n#line 7\
+    \ \"tests/Deque_Operate_All_Composite.test.cpp\"\n\nvoid solve() {\n  using Fp\
+    \ = modint<998244353>;\n  using A = affine<Fp>;\n  int q;\n  cin >> q;\n  SWAD\
     \ swag([](const A& f, const A& g) { return f * g; }, A{});\n  while (q--) {\n\
     \    int cmd;\n    cin >> cmd;\n    if (cmd == 0) {\n      int a, b;\n      cin\
     \ >> a >> b;\n      swag.push_front({a, b});\n    } else if (cmd == 1) {\n   \
@@ -115,16 +101,29 @@ data:
     \ swag.query()(x) << '\\n';\n    }\n  }\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n\
     \  cin.exceptions(cin.failbit);\n  int tc = 1;\n  //   cin >> tc;\n  for (int\
     \ i = 1; i <= tc; ++i) {\n    solve();\n  }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/deque_operate_all_composite\"\
+    \n\n#include \"../misc/macros.h\"\n#include \"../math/ModInt.h\"\n#include \"\
+    ../math/Affine.h\"\n#include \"../ds/SWAD.h\"\n\nvoid solve() {\n  using Fp =\
+    \ modint<998244353>;\n  using A = affine<Fp>;\n  int q;\n  cin >> q;\n  SWAD swag([](const\
+    \ A& f, const A& g) { return f * g; }, A{});\n  while (q--) {\n    int cmd;\n\
+    \    cin >> cmd;\n    if (cmd == 0) {\n      int a, b;\n      cin >> a >> b;\n\
+    \      swag.push_front({a, b});\n    } else if (cmd == 1) {\n      int a, b;\n\
+    \      cin >> a >> b;\n      swag.push_back({a, b});\n    } else if (cmd == 2)\
+    \ {\n      swag.pop_front();\n    } else if (cmd == 3) {\n      swag.pop_back();\n\
+    \    } else {\n      int x;\n      cin >> x;\n      cout << swag.query()(x) <<\
+    \ '\\n';\n    }\n  }\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n \
+    \ cin.exceptions(cin.failbit);\n  int tc = 1;\n  //   cin >> tc;\n  for (int i\
+    \ = 1; i <= tc; ++i) {\n    solve();\n  }\n}\n"
   dependsOn:
   - misc/macros.h
   - math/ModInt.h
   - math/Affine.h
-  - ds/SWAG.h
+  - ds/SWAD.h
   isVerificationFile: true
   path: tests/Deque_Operate_All_Composite.test.cpp
   requiredBy: []
-  timestamp: '2025-11-19 16:07:23+07:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-11-20 10:20:22+07:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: tests/Deque_Operate_All_Composite.test.cpp
 layout: document

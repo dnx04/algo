@@ -24,7 +24,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Deque.test.cpp
     title: tests/Deque.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Deque_Operate_All_Composite.test.cpp
     title: tests/Deque_Operate_All_Composite.test.cpp
   - icon: ':heavy_check_mark:'
@@ -57,6 +57,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Intersection_of_F2_vector_spaces.test.cpp
     title: tests/Intersection_of_F2_vector_spaces.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Line_Add_Get_Min.test.cpp
+    title: tests/Line_Add_Get_Min.test.cpp
   - icon: ':heavy_check_mark:'
     path: tests/Matching_on_Bipartite_Graph_HopcroftKarp.test.cpp
     title: tests/Matching_on_Bipartite_Graph_HopcroftKarp.test.cpp
@@ -106,14 +109,17 @@ data:
     path: tests/Sum_of_Floor_of_Linear.test.cpp
     title: tests/Sum_of_Floor_of_Linear.test.cpp
   - icon: ':heavy_check_mark:'
+    path: tests/Unionfind.test.cpp
+    title: tests/Unionfind.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/Vertex_Add_Path_Sum.test.cpp
     title: tests/Vertex_Add_Path_Sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: tests/Z_Algorithm.test.cpp
     title: tests/Z_Algorithm.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"misc/macros.h\"\n// #pragma GCC optimize(\"Ofast,unroll-loops\"\
@@ -161,7 +167,7 @@ data:
   path: misc/macros.h
   requiredBy: []
   timestamp: '2025-11-18 17:12:08+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - tests/Bitwise_Xor_Convolution.test.cpp
   - tests/Static_Convex_Hull.test.cpp
@@ -174,6 +180,7 @@ data:
   - tests/Pow_of_Matrix.test.cpp
   - tests/Range_Affine_Point_Get.test.cpp
   - tests/Factorize.test.cpp
+  - tests/Line_Add_Get_Min.test.cpp
   - tests/General_Matching.test.cpp
   - tests/Maximum_Independent_Set.test.cpp
   - tests/Dominator_Tree.test.cpp
@@ -192,6 +199,7 @@ data:
   - tests/Convolution.test.cpp
   - tests/Enumerate_Cliques.test.cpp
   - tests/Point_Set_Range_Composite.test.cpp
+  - tests/Unionfind.test.cpp
   - tests/Assignment_Problem.test.cpp
   - tests/Point_Set_Range_Composite_Large.test.cpp
   - tests/Bitwise_And_Convolution.test.cpp

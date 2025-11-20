@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: tests/Line_Add_Get_Min.test.cpp
+    title: tests/Line_Add_Get_Min.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"ds/LineContainer.h\"\nstruct Line {\n  mutable i64 k, m,\
@@ -39,8 +42,9 @@ data:
   path: ds/LineContainer.h
   requiredBy: []
   timestamp: '2025-11-18 16:58:39+07:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - tests/Line_Add_Get_Min.test.cpp
 documentation_of: ds/LineContainer.h
 layout: document
 redirect_from:

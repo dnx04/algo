@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: ds/HLD.h
     title: ds/HLD.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
@@ -62,11 +62,11 @@ data:
     \ v]\n  vector<pii> descend(int u, int v) const {\n    if (u == v) return {};\n\
     \    if (nxt[u] == nxt[v]) return {{down[u] + 1, down[v]}};\n    auto res = descend(u,\
     \ par[nxt[v]]);\n    res.eb(down[nxt[v]], down[v]);\n    return res;\n  }\n\n\
-    \ public:\n  G& g;\n  int root, id;\n  vector<int> size, depth, down, up, nxt,\
-    \ par;\n  HLD(G& g, int root = 0) : g(g), root(root), id(0), size(sz(g), 0), depth(sz(g),\
+    \ public:\n  G& g;\n  int root, id;\n  vi size, depth, down, up, nxt, par;\n \
+    \ HLD(G& g, int root = 0) : g(g), root(root), id(0), size(sz(g), 0), depth(sz(g),\
     \ 0), down(sz(g), -1), up(sz(g), -1), nxt(sz(g), root), par(sz(g), root) {\n \
     \   dfs_sz(root);\n    dfs_hld(root);\n  }\n\n  pii idx(int i) const { return\
-    \ make_pair(down[i], up[i]); }\n\n  template <typename F>\n  void path_query(int\
+    \ make_pair(down[i], up[i]); }\n  \n  template <typename F>\n  void path_query(int\
     \ u, int v, bool vertex, const F& f) {\n    int l = lca(u, v);\n    for (auto&&\
     \ [a, b] : ascend(u, l)) {\n      int s = a + 1, t = b;\n      s > t ? f(t, s)\
     \ : f(s, t);\n    }\n    if (vertex) f(down[l], down[l] + 1);\n    for (auto&&\
@@ -111,7 +111,7 @@ data:
   isVerificationFile: true
   path: tests/Vertex_Add_Path_Sum.test.cpp
   requiredBy: []
-  timestamp: '2025-11-18 22:42:15+07:00'
+  timestamp: '2025-11-20 10:20:22+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Vertex_Add_Path_Sum.test.cpp

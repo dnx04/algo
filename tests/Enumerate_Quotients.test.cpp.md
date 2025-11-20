@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/EnumQuotients.h
     title: math/EnumQuotients.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []

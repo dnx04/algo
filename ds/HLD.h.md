@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: ds/AuxiliaryTree.h
+    title: ds/AuxiliaryTree.h
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: tests/Vertex_Add_Path_Sum.test.cpp
@@ -26,11 +29,11 @@ data:
     \    return res;\n  }\n\n  // (u, v]\n  vector<pii> descend(int u, int v) const\
     \ {\n    if (u == v) return {};\n    if (nxt[u] == nxt[v]) return {{down[u] +\
     \ 1, down[v]}};\n    auto res = descend(u, par[nxt[v]]);\n    res.eb(down[nxt[v]],\
-    \ down[v]);\n    return res;\n  }\n\n public:\n  G& g;\n  int root, id;\n  vector<int>\
+    \ down[v]);\n    return res;\n  }\n\n public:\n  G& g;\n  int root, id;\n  vi\
     \ size, depth, down, up, nxt, par;\n  HLD(G& g, int root = 0) : g(g), root(root),\
     \ id(0), size(sz(g), 0), depth(sz(g), 0), down(sz(g), -1), up(sz(g), -1), nxt(sz(g),\
     \ root), par(sz(g), root) {\n    dfs_sz(root);\n    dfs_hld(root);\n  }\n\n  pii\
-    \ idx(int i) const { return make_pair(down[i], up[i]); }\n\n  template <typename\
+    \ idx(int i) const { return make_pair(down[i], up[i]); }\n  \n  template <typename\
     \ F>\n  void path_query(int u, int v, bool vertex, const F& f) {\n    int l =\
     \ lca(u, v);\n    for (auto&& [a, b] : ascend(u, l)) {\n      int s = a + 1, t\
     \ = b;\n      s > t ? f(t, s) : f(s, t);\n    }\n    if (vertex) f(down[l], down[l]\
@@ -60,11 +63,11 @@ data:
     \    return res;\n  }\n\n  // (u, v]\n  vector<pii> descend(int u, int v) const\
     \ {\n    if (u == v) return {};\n    if (nxt[u] == nxt[v]) return {{down[u] +\
     \ 1, down[v]}};\n    auto res = descend(u, par[nxt[v]]);\n    res.eb(down[nxt[v]],\
-    \ down[v]);\n    return res;\n  }\n\n public:\n  G& g;\n  int root, id;\n  vector<int>\
+    \ down[v]);\n    return res;\n  }\n\n public:\n  G& g;\n  int root, id;\n  vi\
     \ size, depth, down, up, nxt, par;\n  HLD(G& g, int root = 0) : g(g), root(root),\
     \ id(0), size(sz(g), 0), depth(sz(g), 0), down(sz(g), -1), up(sz(g), -1), nxt(sz(g),\
     \ root), par(sz(g), root) {\n    dfs_sz(root);\n    dfs_hld(root);\n  }\n\n  pii\
-    \ idx(int i) const { return make_pair(down[i], up[i]); }\n\n  template <typename\
+    \ idx(int i) const { return make_pair(down[i], up[i]); }\n  \n  template <typename\
     \ F>\n  void path_query(int u, int v, bool vertex, const F& f) {\n    int l =\
     \ lca(u, v);\n    for (auto&& [a, b] : ascend(u, l)) {\n      int s = a + 1, t\
     \ = b;\n      s > t ? f(t, s) : f(s, t);\n    }\n    if (vertex) f(down[l], down[l]\
@@ -82,8 +85,9 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: ds/HLD.h
-  requiredBy: []
-  timestamp: '2025-11-16 01:14:31+07:00'
+  requiredBy:
+  - ds/AuxiliaryTree.h
+  timestamp: '2025-11-20 10:20:22+07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - tests/Vertex_Add_Path_Sum.test.cpp

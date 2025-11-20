@@ -1,6 +1,9 @@
 ---
 data:
   _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: ds/DSU.h
+    title: ds/DSU.h
   - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
@@ -11,10 +14,10 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/deque
+    PROBLEM: https://judge.yosupo.jp/problem/unionfind
     links:
-    - https://judge.yosupo.jp/problem/deque
-  bundledCode: "#line 1 \"tests/Deque.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/deque\"\
+    - https://judge.yosupo.jp/problem/unionfind
+  bundledCode: "#line 1 \"tests/Unionfind.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/unionfind\"\
     \n\n#line 1 \"misc/macros.h\"\n// #pragma GCC optimize(\"Ofast,unroll-loops\"\
     )       // unroll long, simple loops\n// #pragma GCC target(\"avx2,fma\")    \
     \               // vectorizing code\n// #pragma GCC target(\"lzcnt,popcnt,abm,bmi,bmi2\"\
@@ -34,39 +37,38 @@ data:
     \ null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n// dynamic\
     \ bitset\nusing bs = tr2::dynamic_bitset<u64>;\n\n/*  rope\n    rope <int> cur\
     \ = v.substr(l, r - l + 1);\n    v.erase(l, r - l + 1);\n    v.insert(v.mutable_begin(),\
-    \ cur);\n*/\n#line 4 \"tests/Deque.test.cpp\"\n\nvoid solve() {\n  int q;\n  cin\
-    \ >> q;\n  deque<int> dq;\n  while (q--) {\n    int t;\n    cin >> t;\n    if\
-    \ (t == 0) {\n      int x;\n      cin >> x;\n      dq.push_front(x);\n    } else\
-    \ if (t == 1) {\n      int x;\n      cin >> x;\n      dq.push_back(x);\n    }\
-    \ else if (t == 2) {\n      dq.pop_front();\n    } else if (t == 3) {\n      dq.pop_back();\n\
-    \    } else if (t == 4) {\n      int i;\n      cin >> i;\n      cout << dq[i]\
-    \ << '\\n';\n    }\n  }\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n\
-    \  cin.exceptions(cin.failbit);\n#ifdef LOCAL\n  freopen(\"input.txt\", \"r\"\
-    , stdin);\n  freopen(\"output.txt\", \"w\", stdout);\n#endif\n  int tc = 1;\n\
-    \  // cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n  }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/deque\"\n\n#include \"\
-    ../misc/macros.h\"\n\nvoid solve() {\n  int q;\n  cin >> q;\n  deque<int> dq;\n\
-    \  while (q--) {\n    int t;\n    cin >> t;\n    if (t == 0) {\n      int x;\n\
-    \      cin >> x;\n      dq.push_front(x);\n    } else if (t == 1) {\n      int\
-    \ x;\n      cin >> x;\n      dq.push_back(x);\n    } else if (t == 2) {\n    \
-    \  dq.pop_front();\n    } else if (t == 3) {\n      dq.pop_back();\n    } else\
-    \ if (t == 4) {\n      int i;\n      cin >> i;\n      cout << dq[i] << '\\n';\n\
-    \    }\n  }\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
-    #ifdef LOCAL\n  freopen(\"input.txt\", \"r\", stdin);\n  freopen(\"output.txt\"\
-    , \"w\", stdout);\n#endif\n  int tc = 1;\n  // cin >> tc;\n  for (int i = 1; i\
-    \ <= tc; ++i) {\n    solve();\n  }\n}"
+    \ cur);\n*/\n#line 1 \"ds/DSU.h\"\nstruct DSU {\n  int n;\n  vi p;\n  DSU(int\
+    \ n) : n(n), p(n, -1) {}\n  int merge(int a, int b) {\n    int x = head(a), y\
+    \ = head(b);\n    if (x == y) return x;\n    if (-p[x] < -p[y]) swap(x, y);\n\
+    \    p[x] += p[y], p[y] = x;\n    return x;\n  }\n  bool same(int a, int b) {\
+    \ return head(a) == head(b); }\n  int head(int a) {\n    if (p[a] < 0) return\
+    \ a;\n    return p[a] = head(p[a]);\n  }\n  int size(int a) { return -p[head(a)];\
+    \ }\n};\n#line 5 \"tests/Unionfind.test.cpp\"\n\nvoid solve() {\n  int n, q;\n\
+    \  cin >> n >> q;\n  DSU d(n);\n  while (q--) {\n    int cmd, u, v;\n    cin >>\
+    \ cmd >> u >> v;\n    if (cmd == 0) {\n      d.merge(u, v);\n    } else {\n  \
+    \    cout << d.same(u, v) << '\\n';\n    }\n  }\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n\
+    \  cin.exceptions(cin.failbit);\n  int tc = 1;\n  // cin >> tc;\n  for (int i\
+    \ = 1; i <= tc; ++i) {\n    solve();\n  }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/unionfind\"\n\n#include\
+    \ \"../misc/macros.h\"\n#include \"../ds/DSU.h\"\n\nvoid solve() {\n  int n, q;\n\
+    \  cin >> n >> q;\n  DSU d(n);\n  while (q--) {\n    int cmd, u, v;\n    cin >>\
+    \ cmd >> u >> v;\n    if (cmd == 0) {\n      d.merge(u, v);\n    } else {\n  \
+    \    cout << d.same(u, v) << '\\n';\n    }\n  }\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n\
+    \  cin.exceptions(cin.failbit);\n  int tc = 1;\n  // cin >> tc;\n  for (int i\
+    \ = 1; i <= tc; ++i) {\n    solve();\n  }\n}"
   dependsOn:
   - misc/macros.h
+  - ds/DSU.h
   isVerificationFile: true
-  path: tests/Deque.test.cpp
+  path: tests/Unionfind.test.cpp
   requiredBy: []
-  timestamp: '2025-11-18 17:12:08+07:00'
+  timestamp: '2025-11-20 10:20:22+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: tests/Deque.test.cpp
+documentation_of: tests/Unionfind.test.cpp
 layout: document
 redirect_from:
-- /verify/tests/Deque.test.cpp
-- /verify/tests/Deque.test.cpp.html
-title: tests/Deque.test.cpp
+- /verify/tests/Unionfind.test.cpp
+- /verify/tests/Unionfind.test.cpp.html
+title: tests/Unionfind.test.cpp
 ---
