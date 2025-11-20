@@ -16,6 +16,7 @@
 "tests/Eulerian_Trail_Directed.test.cpp": "2025-11-20 20:30:36 +0700",
 "tests/Eulerian_Trail_Undirected.test.cpp": "2025-11-20 20:30:36 +0700",
 "tests/Factorize.test.cpp": "2025-11-19 16:07:23 +0700",
+"tests/Find_Linear_Recurrence.test.cpp": "2025-11-20 20:46:13 +0700",
 "tests/General_Matching.test.cpp": "2025-11-18 17:12:08 +0700",
 "tests/Intersection_of_F2_vector_spaces.test.cpp": "2025-11-18 17:12:08 +0700",
 "tests/Line_Add_Get_Min.test.cpp": "2025-11-20 17:14:03 +0700",
