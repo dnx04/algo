@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/2SAT.h
     title: graph/2SAT.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []

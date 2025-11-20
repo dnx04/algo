@@ -33,7 +33,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: ds/RMQ.h
       title: ds/RMQ.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: ds/SWAD.h
       title: ds/SWAD.h
     - icon: ':heavy_check_mark:'
@@ -168,7 +168,7 @@ data:
       title: graph/MinCostMaxFlow.h
   - name: math
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/Affine.h
       title: math/Affine.h
     - icon: ':warning:'
@@ -204,7 +204,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/MillerRabin.h
       title: math/MillerRabin.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/ModInt.h
       title: math/ModInt.h
     - icon: ':heavy_check_mark:'
@@ -251,7 +251,7 @@ data:
     - icon: ':warning:'
       path: misc/SOSDP.cpp
       title: misc/SOSDP.cpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: misc/macros.h
       title: misc/macros.h
     - icon: ':warning:'
@@ -295,7 +295,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Deque.test.cpp
       title: tests/Deque.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Deque_Operate_All_Composite.test.cpp
       title: tests/Deque_Operate_All_Composite.test.cpp
     - icon: ':heavy_check_mark:'

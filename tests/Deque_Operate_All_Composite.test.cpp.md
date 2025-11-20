@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: ds/SWAD.h
     title: ds/SWAD.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/Affine.h
     title: math/Affine.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/ModInt.h
     title: math/ModInt.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/deque_operate_all_composite
@@ -84,7 +84,7 @@ data:
     \ back_inserter(a));\n    a0.clear(), r0.clear(), a1.clear(), r1.clear();\n  \
     \  for (int i = s0 - 1; i >= 0; i--) push0(a[i]);\n    for (int i = s0; i < n;\
     \ i++) push1(a[i]);\n  }\n\n public:\n  void push_front(const T& t) { push0(t);\
-    \ }\n  void eb(const T& t) { push1(t); }\n  T front() const { return a0.empty()\
+    \ }\n  void push_back(const T& t) { push1(t); }\n  T front() const { return a0.empty()\
     \ ? a1.front() : a0.back(); }\n  T back() const { return a1.empty() ? a0.front()\
     \ : a1.back(); }\n  void pop_front() {\n    if (a0.empty()) rebalance();\n   \
     \ assert(!a0.empty());\n    a0.pop_back(), r0.pop_back();\n  }\n  void pop_back()\
@@ -122,8 +122,8 @@ data:
   isVerificationFile: true
   path: tests/Deque_Operate_All_Composite.test.cpp
   requiredBy: []
-  timestamp: '2025-11-20 10:20:22+07:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2025-11-20 10:26:30+07:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Deque_Operate_All_Composite.test.cpp
 layout: document
