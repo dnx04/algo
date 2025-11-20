@@ -35,7 +35,7 @@ $ C_n = 1 / (n + 1) binom(2n, n), C_(n + 1) = sum_(i=0)^n C_i C_(n - i) $
 
 === Lucas
 
-Let $n = n_k p^k + n_(k-1) p^(k-1) + ... + n_0$ and $m = m_k p^k + m_(k-1) p^(k-1) + ... + m_0$ in base $p$. $ binom(n, m) = product_(i=0)^k binom(n_i, m_i) mod p $.
+Với $n = n_k p^k + n_(k-1) p^(k-1) + ... + n_0$ và $m = m_k p^k + m_(k-1) p^(k-1) + ... + m_0$. Ta có $binom(n, m) = product_(i=0)^k binom(n_i, m_i) mod p$.
 
 === Number of Derangements
 
@@ -76,6 +76,10 @@ If you want to maintain the sum of $k$-th powers, it might help to also maintain
 == Định lý Pick
 
 Cho một đa giác có các điểm nguyên. Gọi $i$ là số điểm nguyên nằm trong đa giác, và $b$ là số điểm nguyên năm trên cạnh. Diện tích của đa giác là: $A = i + b/2 - 1$.
+
+== Frobenius
+
+$ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 
 == Nhận xét
 
@@ -148,7 +152,7 @@ Cho một đa giác có các điểm nguyên. Gọi $i$ là số điểm nguyên
   description: [Duy trì tập các đường thẳng dạng $y = k x + m$ và truy vấn giá trị *lớn nhất* tại điểm $x$. Nếu muốn tìm giá trị nhỏ nhất, đổi dấu `k`, `m` và kết quả truy vấn.
   ],
 )
-#file("ds/SWAG.h")
+#file("ds/SWAD.h")
 #file("ds/Mo.h")
 // #file("ds/WaveletTree.h")
 

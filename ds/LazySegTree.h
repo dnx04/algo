@@ -1,6 +1,7 @@
 // 0-indexed
 template <class T, class L, class F, class M, class C>
 struct LazySegTree {
+ private:
   int n, h;
   vector<T> seg;
   vector<L> laz;
@@ -8,8 +9,7 @@ struct LazySegTree {
   const L L0;  // Identity laz (e.g., 0 for add, -1 for set)
   const F f;   // f: Merge 2 nodes (T, T) -> T
   const M m;   // m: Mapping laz to node (T, L) -> T
-  const C c;   // c: Composition 2 laz (L prev, L next) -> next(prev): L
-  LazySegTree(int n, T I, L L0, F f, M m, C c) : n(n), h(32 - __builtin_clz(n)), seg(n << 1 | 1, I), laz(n, L0), I(I), L0(L0), f(f), m(m), c(c) {}
+  const C c;   // c: Composition 2 laz (L prev, L next) -> next(prev)
   void apply(int p, L val) {
     seg[p] = m(seg[p], val);
     if (p < n) laz[p] = c(laz[p], val);
@@ -26,6 +26,10 @@ struct LazySegTree {
       if (laz[i] != L0) apply(i << 1, laz[i]), apply(i << 1 | 1, laz[i]), laz[i] = L0;
     }
   }
+
+ public:
+  LazySegTree(int n, T I, L L0, F f, M m, C c) : n(n), h(32 - __builtin_clz(n)), seg(n << 1 | 1, I), laz(n, L0), I(I), L0(L0), f(f), m(m), c(c) {}
+  // set p to x
   void set(int p, T x) {
     p += n;
     for (int i = h; i > 0; --i) {
@@ -34,14 +38,14 @@ struct LazySegTree {
     }
     seg[p] = x, pull(p);
   }
-  // Apply to [l, r)
-  void apply(int l, int r, L val) {
+  // Apply op -> [l, r)
+  void apply(int l, int r, L op) {
     l += n, r += n;
     int l0 = l, r0 = r;
     push(l0), push(r0 - 1);
     for (; l < r; l >>= 1, r >>= 1) {
-      if (l & 1) apply(l++, val);
-      if (r & 1) apply(--r, val);
+      if (l & 1) apply(l++, op);
+      if (r & 1) apply(--r, op);
     }
     pull(l0), pull(r0 - 1);
   }
