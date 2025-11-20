@@ -28,7 +28,7 @@ struct SWAD {
 
  public:
   void push_front(const T& t) { push0(t); }
-  void eb(const T& t) { push1(t); }
+  void push_back(const T& t) { push1(t); }
   T front() const { return a0.empty() ? a1.front() : a0.back(); }
   T back() const { return a1.empty() ? a0.front() : a1.back(); }
   void pop_front() {
