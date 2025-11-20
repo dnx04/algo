@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/HopcroftKarp.h
     title: graph/HopcroftKarp.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []

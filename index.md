@@ -146,6 +146,9 @@ data:
       path: graph/EnumTriangles.h
       title: graph/EnumTriangles.h
     - icon: ':heavy_check_mark:'
+      path: graph/EulerWalk.h
+      title: graph/EulerWalk.h
+    - icon: ':heavy_check_mark:'
       path: graph/GeneralMatching.h
       title: graph/GeneralMatching.h
     - icon: ':warning:'
@@ -166,7 +169,7 @@ data:
     - icon: ':warning:'
       path: graph/MinCostMaxFlow.h
       title: graph/MinCostMaxFlow.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: graph/SCC.h
       title: graph/SCC.h
   - name: math
@@ -174,7 +177,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/Affine.h
       title: math/Affine.h
-    - icon: ':warning:'
+    - icon: ':x:'
       path: math/BerlekampMassey.h
       title: math/BerlekampMassey.h
     - icon: ':warning:'
@@ -199,15 +202,12 @@ data:
       path: math/Lagrange.h
       title: math/Lagrange.h
     - icon: ':heavy_check_mark:'
-      path: math/LinearRec.h
-      title: math/LinearRec.h
-    - icon: ':heavy_check_mark:'
       path: math/Matrix.h
       title: math/Matrix.h
     - icon: ':heavy_check_mark:'
       path: math/MillerRabin.h
       title: math/MillerRabin.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/ModInt.h
       title: math/ModInt.h
     - icon: ':heavy_check_mark:'
@@ -257,7 +257,7 @@ data:
     - icon: ':warning:'
       path: misc/SOSDP.cpp
       title: misc/SOSDP.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: misc/macros.h
       title: misc/macros.h
     - icon: ':warning:'
@@ -323,9 +323,15 @@ data:
       path: tests/Enumerate_Triangles.test.cpp
       title: tests/Enumerate_Triangles.test.cpp
     - icon: ':heavy_check_mark:'
+      path: tests/Eulerian_Trail_Directed.test.cpp
+      title: tests/Eulerian_Trail_Directed.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: tests/Eulerian_Trail_Undirected.test.cpp
+      title: tests/Eulerian_Trail_Undirected.test.cpp
+    - icon: ':heavy_check_mark:'
       path: tests/Factorize.test.cpp
       title: tests/Factorize.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Find_Linear_Recurrence.test.cpp
       title: tests/Find_Linear_Recurrence.test.cpp
     - icon: ':heavy_check_mark:'
@@ -370,6 +376,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Range_Affine_Range_Sum.test.cpp
       title: tests/Range_Affine_Range_Sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: tests/SCC.test.cpp
+      title: tests/SCC.test.cpp
     - icon: ':heavy_check_mark:'
       path: tests/Sort_Points_by_Argument.test.cpp
       title: tests/Sort_Points_by_Argument.test.cpp

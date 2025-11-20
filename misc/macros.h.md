@@ -46,9 +46,15 @@ data:
     path: tests/Enumerate_Triangles.test.cpp
     title: tests/Enumerate_Triangles.test.cpp
   - icon: ':heavy_check_mark:'
+    path: tests/Eulerian_Trail_Directed.test.cpp
+    title: tests/Eulerian_Trail_Directed.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Eulerian_Trail_Undirected.test.cpp
+    title: tests/Eulerian_Trail_Undirected.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/Factorize.test.cpp
     title: tests/Factorize.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Find_Linear_Recurrence.test.cpp
     title: tests/Find_Linear_Recurrence.test.cpp
   - icon: ':heavy_check_mark:'
@@ -94,6 +100,9 @@ data:
     path: tests/Range_Affine_Range_Sum.test.cpp
     title: tests/Range_Affine_Range_Sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: tests/SCC.test.cpp
+    title: tests/SCC.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/Sort_Points_by_Argument.test.cpp
     title: tests/Sort_Points_by_Argument.test.cpp
   - icon: ':heavy_check_mark:'
@@ -117,9 +126,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Z_Algorithm.test.cpp
     title: tests/Z_Algorithm.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"misc/macros.h\"\n// #pragma GCC optimize(\"Ofast,unroll-loops\"\
@@ -167,10 +176,12 @@ data:
   path: misc/macros.h
   requiredBy: []
   timestamp: '2025-11-18 17:12:08+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - tests/Bitwise_Xor_Convolution.test.cpp
   - tests/Static_Convex_Hull.test.cpp
+  - tests/SCC.test.cpp
+  - tests/Eulerian_Trail_Directed.test.cpp
   - tests/2_Sat.test.cpp
   - tests/Enumerate_Triangles.test.cpp
   - tests/Z_Algorithm.test.cpp
@@ -185,6 +196,7 @@ data:
   - tests/Maximum_Independent_Set.test.cpp
   - tests/Dominator_Tree.test.cpp
   - tests/Static_RMQ.test.cpp
+  - tests/Eulerian_Trail_Undirected.test.cpp
   - tests/Enumerate_Quotients.test.cpp
   - tests/Matching_on_Bipartite_Graph_HopcroftKarp.test.cpp
   - tests/Closest_Pair_of_Points.test.cpp
