@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: ds/Fenwick.h
     title: ds/Fenwick.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []

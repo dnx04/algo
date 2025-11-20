@@ -177,7 +177,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/Affine.h
       title: math/Affine.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/BerlekampMassey.h
       title: math/BerlekampMassey.h
     - icon: ':warning:'
@@ -207,7 +207,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/MillerRabin.h
       title: math/MillerRabin.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/ModInt.h
       title: math/ModInt.h
     - icon: ':heavy_check_mark:'
@@ -257,7 +257,7 @@ data:
     - icon: ':warning:'
       path: misc/SOSDP.cpp
       title: misc/SOSDP.cpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: misc/macros.h
       title: misc/macros.h
     - icon: ':warning:'
@@ -331,7 +331,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Factorize.test.cpp
       title: tests/Factorize.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Find_Linear_Recurrence.test.cpp
       title: tests/Find_Linear_Recurrence.test.cpp
     - icon: ':heavy_check_mark:'
