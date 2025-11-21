@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/sum_of_exponential_times_polynomial"
 
-#include "misc/macros.h"
-#include "math/SumPowerPoly.h"
+#include "../misc/macros.h"
+#include "../math/SumPowerPoly.h"
 
 // calculate pws(i) = i^d for 0 <= i < n using sieve
 vector<Fp> getMonomials(int n, int d) {
