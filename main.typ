@@ -10,12 +10,11 @@
 #show: checklist
 
 #codly(number-format: none)
-#codly(display-icon: false)
+#codly(display-icon: true)
 
 #show: doc => icpc(
   team: [Quattuorvigintillion - University of Engineering and Technology, VNU],
-  icon: "uet.png",
-  doc,
+  doc
 )
 
 #pagebreak()

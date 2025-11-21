@@ -2,7 +2,6 @@
 
 #let icpc(
   team: none,
-  icon: none,
   doc
 ) = {
   set page(flipped: true, columns: 3, header: context [*#team* #h(1fr) #counter(page).display() #line(length: 100%)], margin: (left: 1cm, right: 1cm, top: 1.5cm, bottom: 1cm))
@@ -28,7 +27,7 @@
   description
   if (hash) {
     let hash_value = raw(bytes-to-hex(sha1(minify(content))).slice(0, 8))
-    [(#hash_value)]
+    // [(#hash_value)]
   }
   line(length: 100%)
   raw(content, block: true, lang: filename.split(".").at(-1))
