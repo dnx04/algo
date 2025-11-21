@@ -217,7 +217,7 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 ])
 // #file("strings/Manacher.h")
 // #file("strings/AhoCorasick.h")
-// #file("strings/SuffixArray.h", description: [Suffix Array và LCP trong $O(n log n)$.])
+#file("strings/SuffixArray.h")
 // #file("strings/PalindromeTree.h", description: [
 //   Dựng Palindrome Tree. Nó có 2 root, root 0/1 cho xâu đối xứng chẵn/lẻ, mỗi node lưu độ dài xâu đối xứng, số lượng và link đến xâu đó. Xâu độ dài $N$ *chỉ có tối đa $N$ xâu con đối xứng phân biệt*.
 // ])
@@ -278,6 +278,7 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 Các thuật toán hình có đa giác, nếu không chú thích gì, thì hoạt động với mọi loại đa giác (lồi, lõm, tự cắt). Khi không còn bài gì để làm nữa thì hẵng làm hình.
 
 #file("geometry/Point.h")
+#file("geometry/TrianglePointCount.h")
 #file("geometry/SideOf.h")
 #file("geometry/ClosestPair.h")
 #file(
