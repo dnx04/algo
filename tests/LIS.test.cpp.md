@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: ds/SegTree.h
     title: ds/SegTree.h
   - icon: ':heavy_check_mark:'
     path: misc/Compressor.h
     title: misc/Compressor.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []

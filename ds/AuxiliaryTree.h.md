@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: ds/HLD.h
     title: ds/HLD.h
   _extendedRequiredBy: []

@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/Factor.h
     title: math/Factor.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/MillerRabin.h
     title: math/MillerRabin.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/ModInt.h
     title: math/ModInt.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []

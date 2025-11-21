@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: ds/PersistentSegTree.h
     title: ds/PersistentSegTree.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/Affine.h
     title: math/Affine.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/ModInt.h
     title: math/ModInt.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/point_set_range_composite_large_array
@@ -121,7 +121,7 @@ data:
   path: tests/Point_Set_Range_Composite_Large.test.cpp
   requiredBy: []
   timestamp: '2025-11-21 16:12:02+07:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Point_Set_Range_Composite_Large.test.cpp
 layout: document

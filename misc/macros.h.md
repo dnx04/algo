@@ -84,69 +84,69 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Number_of_Subsequences.test.cpp
     title: tests/Number_of_Subsequences.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Persistent_Unionfind.test.cpp
     title: tests/Persistent_Unionfind.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Point_Add_Range_Sum.test.cpp
     title: tests/Point_Add_Range_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Point_Set_Range_Composite.test.cpp
     title: tests/Point_Set_Range_Composite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Point_Set_Range_Composite_Large.test.cpp
     title: tests/Point_Set_Range_Composite_Large.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Pow_of_Matrix.test.cpp
     title: tests/Pow_of_Matrix.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Primality_Test.test.cpp
     title: tests/Primality_Test.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Primitive_Root.test.cpp
     title: tests/Primitive_Root.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Range_Affine_Point_Get.test.cpp
     title: tests/Range_Affine_Point_Get.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Range_Affine_Range_Sum.test.cpp
     title: tests/Range_Affine_Range_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/SCC.test.cpp
     title: tests/SCC.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Sort_Points_by_Argument.test.cpp
     title: tests/Sort_Points_by_Argument.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Sqrt_Mod.test.cpp
     title: tests/Sqrt_Mod.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Static_Convex_Hull.test.cpp
     title: tests/Static_Convex_Hull.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Static_RMQ.test.cpp
     title: tests/Static_RMQ.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Sum_of_Exponential_times_Polynomial.test.cpp
     title: tests/Sum_of_Exponential_times_Polynomial.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
     title: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Sum_of_Floor_of_Linear.test.cpp
     title: tests/Sum_of_Floor_of_Linear.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Unionfind.test.cpp
     title: tests/Unionfind.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Vertex_Add_Path_Sum.test.cpp
     title: tests/Vertex_Add_Path_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Z_Algorithm.test.cpp
     title: tests/Z_Algorithm.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"misc/macros.h\"\n// #pragma GCC optimize(\"Ofast,unroll-loops\"\
@@ -194,7 +194,7 @@ data:
   path: misc/macros.h
   requiredBy: []
   timestamp: '2025-11-21 16:12:02+07:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - tests/Bitwise_Xor_Convolution.test.cpp
   - tests/Sum_of_Exponential_times_Polynomial.test.cpp

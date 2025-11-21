@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/Factor.h
     title: math/Factor.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/MillerRabin.h
     title: math/MillerRabin.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/ModInt.h
     title: math/ModInt.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/primitive_root
@@ -105,7 +105,7 @@ data:
   path: tests/Primitive_Root.test.cpp
   requiredBy: []
   timestamp: '2025-11-21 16:17:46+07:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Primitive_Root.test.cpp
 layout: document

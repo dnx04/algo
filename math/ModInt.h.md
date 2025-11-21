@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/Factor.h
     title: math/Factor.h
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/SumPowerPoly.h
     title: math/SumPowerPoly.h
   _extendedVerifiedWith:
@@ -33,39 +33,39 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Number_of_Subsequences.test.cpp
     title: tests/Number_of_Subsequences.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Point_Set_Range_Composite.test.cpp
     title: tests/Point_Set_Range_Composite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Point_Set_Range_Composite_Large.test.cpp
     title: tests/Point_Set_Range_Composite_Large.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Pow_of_Matrix.test.cpp
     title: tests/Pow_of_Matrix.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Primality_Test.test.cpp
     title: tests/Primality_Test.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Primitive_Root.test.cpp
     title: tests/Primitive_Root.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Range_Affine_Point_Get.test.cpp
     title: tests/Range_Affine_Point_Get.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Range_Affine_Range_Sum.test.cpp
     title: tests/Range_Affine_Range_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Sqrt_Mod.test.cpp
     title: tests/Sqrt_Mod.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Sum_of_Exponential_times_Polynomial.test.cpp
     title: tests/Sum_of_Exponential_times_Polynomial.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
     title: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/ModInt.h\"\n\ntemplate <int mod>\nstruct modint {\n\
@@ -123,7 +123,7 @@ data:
   - math/SumPowerPoly.h
   - math/Factor.h
   timestamp: '2025-11-21 16:12:02+07:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - tests/Bitwise_Xor_Convolution.test.cpp
   - tests/Sum_of_Exponential_times_Polynomial.test.cpp
