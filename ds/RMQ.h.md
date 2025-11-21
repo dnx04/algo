@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: tests/Run_Enumerate.test.cpp
+    title: tests/Run_Enumerate.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/Static_RMQ.test.cpp
     title: tests/Static_RMQ.test.cpp
   _isVerificationFailed: false
@@ -33,6 +36,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - tests/Static_RMQ.test.cpp
+  - tests/Run_Enumerate.test.cpp
 documentation_of: ds/RMQ.h
 layout: document
 redirect_from:

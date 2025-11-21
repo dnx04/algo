@@ -122,6 +122,9 @@ data:
     - icon: ':warning:'
       path: geometry/SideOf.h
       title: geometry/SideOf.h
+    - icon: ':heavy_check_mark:'
+      path: geometry/TrianglePointCount.h
+      title: geometry/TrianglePointCount.h
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'
@@ -230,12 +233,18 @@ data:
     - icon: ':warning:'
       path: misc/1D1D.cpp
       title: misc/1D1D.cpp
+    - icon: ':warning:'
+      path: misc/CDQ.h
+      title: misc/CDQ.h
     - icon: ':heavy_check_mark:'
       path: misc/Compressor.h
       title: misc/Compressor.h
     - icon: ':heavy_check_mark:'
       path: misc/CountSubseq.h
       title: misc/CountSubseq.h
+    - icon: ':warning:'
+      path: misc/DnCDP.h
+      title: misc/DnCDP.h
     - icon: ':warning:'
       path: misc/FracBinarySearch.h
       title: misc/FracBinarySearch.h
@@ -278,6 +287,9 @@ data:
       path: strings/PalindromeTree.h
       title: strings/PalindromeTree.h
     - icon: ':heavy_check_mark:'
+      path: strings/SuffixArray.h
+      title: strings/SuffixArray.h
+    - icon: ':heavy_check_mark:'
       path: strings/Z.h
       title: strings/Z.h
   verificationCategories:
@@ -301,6 +313,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Convolution.test.cpp
       title: tests/Convolution.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: tests/Count_Points_in_Triangle.test.cpp
+      title: tests/Count_Points_in_Triangle.test.cpp
     - icon: ':heavy_check_mark:'
       path: tests/Deque.test.cpp
       title: tests/Deque.test.cpp
@@ -392,6 +407,9 @@ data:
       path: tests/Range_Affine_Range_Sum.test.cpp
       title: tests/Range_Affine_Range_Sum.test.cpp
     - icon: ':heavy_check_mark:'
+      path: tests/Run_Enumerate.test.cpp
+      title: tests/Run_Enumerate.test.cpp
+    - icon: ':heavy_check_mark:'
       path: tests/SCC.test.cpp
       title: tests/SCC.test.cpp
     - icon: ':heavy_check_mark:'
@@ -406,6 +424,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Static_RMQ.test.cpp
       title: tests/Static_RMQ.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: tests/Suffix_Array.test.cpp
+      title: tests/Suffix_Array.test.cpp
     - icon: ':heavy_check_mark:'
       path: tests/Sum_of_Exponential_times_Polynomial.test.cpp
       title: tests/Sum_of_Exponential_times_Polynomial.test.cpp

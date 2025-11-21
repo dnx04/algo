@@ -71,10 +71,16 @@ data:
   - icon: ':warning:'
     path: geometry/SideOf.h
     title: geometry/SideOf.h
+  - icon: ':heavy_check_mark:'
+    path: geometry/TrianglePointCount.h
+    title: geometry/TrianglePointCount.h
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: tests/Closest_Pair_of_Points.test.cpp
     title: tests/Closest_Pair_of_Points.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Count_Points_in_Triangle.test.cpp
+    title: tests/Count_Points_in_Triangle.test.cpp
   - icon: ':heavy_check_mark:'
     path: tests/Furthest_Pair_of_Points.test.cpp
     title: tests/Furthest_Pair_of_Points.test.cpp
@@ -150,6 +156,7 @@ data:
   - geometry/PolygonArea.h
   - geometry/ConvexHull.h
   - geometry/CircleTangents.h
+  - geometry/TrianglePointCount.h
   - geometry/HullDiameter.h
   - geometry/Circumcircle.h
   - geometry/MinimumEnclosingCircle.h
@@ -163,6 +170,7 @@ data:
   - tests/Furthest_Pair_of_Points.test.cpp
   - tests/Closest_Pair_of_Points.test.cpp
   - tests/Sort_Points_by_Argument.test.cpp
+  - tests/Count_Points_in_Triangle.test.cpp
 documentation_of: geometry/Point.h
 layout: document
 redirect_from:

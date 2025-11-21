@@ -22,6 +22,9 @@ data:
     path: tests/Convolution.test.cpp
     title: tests/Convolution.test.cpp
   - icon: ':heavy_check_mark:'
+    path: tests/Count_Points_in_Triangle.test.cpp
+    title: tests/Count_Points_in_Triangle.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/Deque.test.cpp
     title: tests/Deque.test.cpp
   - icon: ':heavy_check_mark:'
@@ -112,6 +115,9 @@ data:
     path: tests/Range_Affine_Range_Sum.test.cpp
     title: tests/Range_Affine_Range_Sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: tests/Run_Enumerate.test.cpp
+    title: tests/Run_Enumerate.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/SCC.test.cpp
     title: tests/SCC.test.cpp
   - icon: ':heavy_check_mark:'
@@ -126,6 +132,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Static_RMQ.test.cpp
     title: tests/Static_RMQ.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Suffix_Array.test.cpp
+    title: tests/Suffix_Array.test.cpp
   - icon: ':heavy_check_mark:'
     path: tests/Sum_of_Exponential_times_Polynomial.test.cpp
     title: tests/Sum_of_Exponential_times_Polynomial.test.cpp
@@ -225,6 +234,7 @@ data:
   - tests/Find_Linear_Recurrence.test.cpp
   - tests/Primality_Test.test.cpp
   - tests/Sqrt_Mod.test.cpp
+  - tests/Run_Enumerate.test.cpp
   - tests/Vertex_Add_Path_Sum.test.cpp
   - tests/Discrete_Logarithm.test.cpp
   - tests/Range_Affine_Range_Sum.test.cpp
@@ -233,12 +243,14 @@ data:
   - tests/Sort_Points_by_Argument.test.cpp
   - tests/Convolution.test.cpp
   - tests/Enumerate_Cliques.test.cpp
+  - tests/Count_Points_in_Triangle.test.cpp
   - tests/Point_Set_Range_Composite.test.cpp
   - tests/Unionfind.test.cpp
   - tests/Assignment_Problem.test.cpp
   - tests/Point_Set_Range_Composite_Large.test.cpp
   - tests/Bitwise_And_Convolution.test.cpp
   - tests/Point_Add_Range_Sum.test.cpp
+  - tests/Suffix_Array.test.cpp
   - tests/Derangement.test.cpp
   - tests/Primitive_Root.test.cpp
   - tests/Number_of_Subsequences.test.cpp
