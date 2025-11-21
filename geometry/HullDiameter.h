@@ -1,6 +1,6 @@
 #include "Point.h"
 
-typedef Point<i64> P;
+// S must already be a convex hull
 array<P, 2> hullDiameter(vector<P> S) {
   int n = sz(S), j = n < 2 ? 0 : 1;
   pair<i64, array<P, 2>> res({0, {S[0], S[0]}});

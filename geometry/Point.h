@@ -1,7 +1,7 @@
+#pragma once
+
 template <class T>
-int sgn(T x) {
-  return (x > 0) - (x < 0);
-}
+int sgn(T x) { return (x > 0) - (x < 0); }
 template <class T>
 struct Point {
   typedef Point P;
@@ -31,3 +31,4 @@ struct Point {
     return os << "(" << p.x << "," << p.y << ")";
   }
 };
+typedef Point<i64> P;

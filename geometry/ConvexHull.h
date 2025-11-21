@@ -1,6 +1,5 @@
 #include "Point.h"
 
-typedef Point<i64> P;
 vector<P> convexHull(vector<P> pts) {
   if (sz(pts) <= 1) return pts;
   sort(all(pts));

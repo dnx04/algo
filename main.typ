@@ -127,7 +127,9 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 #file("math/Lagrange.h", description: [
   Tìm đa thức bậc $n - 1$ qua $n$ điểm trong $O(n^2)$. Vẫn đúng trong trường modulo.
 ])
+#file("math/SumPowerPoly.h")
 #file("math/XorBasis.h", description: [])
+
 
 = Cấu trúc dữ liệu
 
