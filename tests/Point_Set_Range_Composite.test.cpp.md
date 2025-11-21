@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: ds/SegTree.h
     title: ds/SegTree.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/Affine.h
     title: math/Affine.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/ModInt.h
     title: math/ModInt.h
   - icon: ':question:'
@@ -15,9 +15,9 @@ data:
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/point_set_range_composite
@@ -40,18 +40,18 @@ data:
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
     \ (0-based)\n    order_of_key(k): returns the number of elements in the set that\
-    \ are strictly less than k\n*/\ntemplate <typename T>\nusing ordered_set = tree<T,\
+    \ are strictly less than k\n*/\ntemplate <class T>\nusing ordered_set = tree<T,\
     \ null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n// dynamic\
     \ bitset\nusing bs = tr2::dynamic_bitset<u64>;\n\n/*  rope\n    rope <int> cur\
     \ = v.substr(l, r - l + 1);\n    v.erase(l, r - l + 1);\n    v.insert(v.mutable_begin(),\
-    \ cur);\n*/\n#line 1 \"math/Affine.h\"\ntemplate <typename T>\nstruct affine {\n\
+    \ cur);\n*/\n#line 1 \"math/Affine.h\"\ntemplate <class T>\nstruct affine {\n\
     \  T a, b;\n  constexpr affine() : a(1), b(0) {}\n  constexpr affine(T a, T b)\
     \ : a(a), b(b) {}\n  T operator()(T x) const { return a * x + b; }\n  affine operator()(const\
     \ affine& f) const {\n    return f * (*this);\n  }\n  affine operator*(const affine&\
     \ g) const {  // g(f(x))\n    return {a * g.a, b * g.a + g.b};\n  }\n  affine\
     \ operator!=(const affine& g) const {\n    return a != g.a || b != g.b;\n  }\n\
-    };\n#line 1 \"math/ModInt.h\"\ntemplate <int mod>\nstruct modint {\n  using M\
-    \ = modint;\n  static_assert(mod > 0 && mod <= 2147483647);\n  static constexpr\
+    };\n#line 2 \"math/ModInt.h\"\n\ntemplate <int mod>\nstruct modint {\n  using\
+    \ M = modint;\n  static_assert(mod > 0 && mod <= 2147483647);\n  static constexpr\
     \ u32 r1 = []() {\n    u32 r1 = mod;\n    for (int i = 0; i < 5; ++i) r1 *= 2\
     \ - mod * r1;\n    return -r1;\n  }();\n  static constexpr u32 r2 = -u64(mod)\
     \ % mod;\n  static u32 reduce(u64 x) {\n    u32 y = u32(x) * r1, r = (x + u64(y)\
@@ -74,27 +74,27 @@ data:
     };\n\nu64 modmul(u64 x, u64 y, u64 m) { return u128(x) * y % m; }\nu64 modpow(u64\
     \ x, u64 k, u64 m) {\n  u64 res = 1;\n  while (k) {\n    if (k & 1) res = modmul(res,\
     \ x, m);\n    x = modmul(x, x, m);\n    k >>= 1;\n  }\n  return res;\n}\n#line\
-    \ 1 \"ds/SegTree.h\"\n// 0-indexed\ntemplate <typename T, typename F>\nstruct\
-    \ SegTree {\n  int n, size;  // smallest size = 2^k >= n\n  vector<T> seg;\n \
-    \ const F f;\n  const T I;\n  SegTree(int n, F f, const T& I) : n(n), f(f), I(I)\
-    \ {\n    size = 1;\n    while (size < n) size <<= 1;\n    seg.assign(size << 1,\
-    \ I);\n  }\n  T& operator[](int k) { return seg[k + size]; }\n  void set(int k,\
-    \ T x) { seg[k + size] = x; }  // to build\n  void build() {\n    for (int i =\
-    \ size - 1; i > 0; --i) seg[i] = f(seg[i << 1], seg[i << 1 | 1]);\n  }\n  void\
-    \ apply(int k, T x) {\n    k += size, seg[k] = x;\n    while (k >>= 1) seg[k]\
-    \ = f(seg[k << 1], seg[k << 1 | 1]);\n  }\n  // query [l, r)\n  T query(int l,\
-    \ int r) {\n    T L = I, R = I;\n    for (l += size, r += size; l < r; l >>= 1,\
-    \ r >>= 1) {\n      if (l & 1) L = f(L, seg[l++]);\n      if (r & 1) R = f(seg[--r],\
-    \ R);\n    }\n    return f(L, R);\n  }\n  template <class C>\n  int max_right(int\
-    \ l, C check) {\n    assert(0 <= l && l <= n && check(I) == true);\n    if (l\
-    \ == n) return n;\n    l += size;\n    T sm = I;\n    do {\n      while (l % 2\
-    \ == 0) l >>= 1;\n      if (!check(f(sm, seg[l]))) {\n        while (l < size)\
-    \ {\n          l = l << 1;\n          if (check(f(sm, seg[l]))) sm = f(sm, seg[l]),\
+    \ 1 \"ds/SegTree.h\"\n// 0-indexed\ntemplate <class T, class F>\nstruct SegTree\
+    \ {\n  int n, size;  // smallest size = 2^k >= n\n  vector<T> seg;\n  const F\
+    \ f;\n  const T I;\n  SegTree(int n, F f, const T& I) : n(n), f(f), I(I) {\n \
+    \   size = 1;\n    while (size < n) size <<= 1;\n    seg.assign(size << 1, I);\n\
+    \  }\n  T& operator[](int k) { return seg[k + size]; }\n  void set(int k, T x)\
+    \ { seg[k + size] = x; }  // to build\n  void build() {\n    for (int i = size\
+    \ - 1; i > 0; --i) seg[i] = f(seg[i << 1], seg[i << 1 | 1]);\n  }\n  void apply(int\
+    \ k, T x) {\n    k += size, seg[k] = x;\n    while (k >>= 1) seg[k] = f(seg[k\
+    \ << 1], seg[k << 1 | 1]);\n  }\n  // query [l, r)\n  T query(int l, int r) {\n\
+    \    T L = I, R = I;\n    for (l += size, r += size; l < r; l >>= 1, r >>= 1)\
+    \ {\n      if (l & 1) L = f(L, seg[l++]);\n      if (r & 1) R = f(seg[--r], R);\n\
+    \    }\n    return f(L, R);\n  }\n  template <class C>\n  int max_right(int l,\
+    \ C check) {\n    assert(0 <= l && l <= n && check(I) == true);\n    if (l ==\
+    \ n) return n;\n    l += size;\n    T sm = I;\n    do {\n      while (l % 2 ==\
+    \ 0) l >>= 1;\n      if (!check(f(sm, seg[l]))) {\n        while (l < size) {\n\
+    \          l = l << 1;\n          if (check(f(sm, seg[l]))) sm = f(sm, seg[l]),\
     \ l++;\n        }\n        return l - size;\n      }\n      sm = f(sm, seg[l]),\
-    \ l++;\n    } while ((l & -l) != l);\n    return n;\n  }\n  template <typename\
-    \ C>\n  int min_left(int r, C check) {\n    assert(0 <= r && r <= n && check(I)\
-    \ == true);\n    if (r == 0) return 0;\n    r += size;\n    T sm = I;\n    do\
-    \ {\n      r--;\n      while (r > 1 && (r % 2)) r >>= 1;\n      if (!check(f(seg[r],\
+    \ l++;\n    } while ((l & -l) != l);\n    return n;\n  }\n  template <class C>\n\
+    \  int min_left(int r, C check) {\n    assert(0 <= r && r <= n && check(I) ==\
+    \ true);\n    if (r == 0) return 0;\n    r += size;\n    T sm = I;\n    do {\n\
+    \      r--;\n      while (r > 1 && (r % 2)) r >>= 1;\n      if (!check(f(seg[r],\
     \ sm))) {\n        while (r < size) {\n          r = r << 1 | 1;\n          if\
     \ (check(f(seg[r], sm))) sm = f(seg[r], sm), r--;\n        }\n        return r\
     \ + 1 - size;\n      }\n      sm = f(seg[r], sm);\n    } while ((r & -r) != r);\n\
@@ -129,8 +129,8 @@ data:
   isVerificationFile: true
   path: tests/Point_Set_Range_Composite.test.cpp
   requiredBy: []
-  timestamp: '2025-11-20 17:14:03+07:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-11-21 16:12:02+07:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: tests/Point_Set_Range_Composite.test.cpp
 layout: document

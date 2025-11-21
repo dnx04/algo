@@ -34,7 +34,7 @@ data:
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
     \ (0-based)\n    order_of_key(k): returns the number of elements in the set that\
-    \ are strictly less than k\n*/\ntemplate <typename T>\nusing ordered_set = tree<T,\
+    \ are strictly less than k\n*/\ntemplate <class T>\nusing ordered_set = tree<T,\
     \ null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n// dynamic\
     \ bitset\nusing bs = tr2::dynamic_bitset<u64>;\n\n/*  rope\n    rope <int> cur\
     \ = v.substr(l, r - l + 1);\n    v.erase(l, r - l + 1);\n    v.insert(v.mutable_begin(),\
@@ -55,14 +55,14 @@ data:
     \ perp().unit(); }\n  // returns point rotated 'a' radians ccw around the origin\n\
     \  P rotate(ld a) const {\n    return P(x * cos(a) - y * sin(a), x * sin(a) +\
     \ y * cos(a));\n  }\n  friend ostream& operator<<(ostream& os, P p) {\n    return\
-    \ os << \"(\" << p.x << \",\" << p.y << \")\";\n  }\n};\ntypedef Point<i64> P;\n\
-    #line 5 \"tests/Sort_Points_by_Argument.test.cpp\"\n\ntypedef Point<ld> P;\n\n\
-    void solve() {\n  int n;\n  cin >> n;\n  vector<P> pts(n);\n  for(int i = 0; i\
-    \ < n; ++i) cin >> pts[i].x >> pts[i].y;\n  stable_sort(all(pts), [&](P a, P b)\
-    \ { return a.angle() < b.angle(); });\n  for (auto p : pts)\n    cout << fixed\
-    \ << setprecision(0) << p.x << ' ' << p.y << '\\n';\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n\
-    \  cin.exceptions(cin.failbit);\n  int tc = 1;\n  //   cin >> tc;\n  for (int\
-    \ i = 1; i <= tc; ++i) {\n    solve();\n  }\n}\n"
+    \ os << \"(\" << p.x << \",\" << p.y << \")\";\n  }\n};\n#line 5 \"tests/Sort_Points_by_Argument.test.cpp\"\
+    \n\ntypedef Point<ld> P;\n\nvoid solve() {\n  int n;\n  cin >> n;\n  vector<P>\
+    \ pts(n);\n  for(int i = 0; i < n; ++i) cin >> pts[i].x >> pts[i].y;\n  stable_sort(all(pts),\
+    \ [&](P a, P b) { return a.angle() < b.angle(); });\n  for (auto p : pts)\n  \
+    \  cout << fixed << setprecision(0) << p.x << ' ' << p.y << '\\n';\n}\n\nint main()\
+    \ {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n  int\
+    \ tc = 1;\n  //   cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n\
+    \  }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/sort_points_by_argument\"\
     \n\n#include \"../misc/macros.h\"\n#include \"../geometry/Point.h\"\n\ntypedef\
     \ Point<ld> P;\n\nvoid solve() {\n  int n;\n  cin >> n;\n  vector<P> pts(n);\n\
@@ -78,7 +78,7 @@ data:
   isVerificationFile: true
   path: tests/Sort_Points_by_Argument.test.cpp
   requiredBy: []
-  timestamp: '2025-11-21 16:03:24+07:00'
+  timestamp: '2025-11-21 16:12:02+07:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: tests/Sort_Points_by_Argument.test.cpp

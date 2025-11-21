@@ -1,10 +1,7 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: tests/Furthest_Pair_of_Points.tests.cpp
-    title: tests/Furthest_Pair_of_Points.tests.cpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: tests/2_Sat.test.cpp
@@ -61,6 +58,9 @@ data:
     path: tests/Find_Linear_Recurrence.test.cpp
     title: tests/Find_Linear_Recurrence.test.cpp
   - icon: ':heavy_check_mark:'
+    path: tests/Furthest_Pair_of_Points.test.cpp
+    title: tests/Furthest_Pair_of_Points.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/General_Matching.test.cpp
     title: tests/General_Matching.test.cpp
   - icon: ':heavy_check_mark:'
@@ -78,67 +78,70 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Maximum_Independent_Set.test.cpp
     title: tests/Maximum_Independent_Set.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Minimum_Enclosing_Circle.test.cpp
     title: tests/Minimum_Enclosing_Circle.test.cpp
   - icon: ':heavy_check_mark:'
     path: tests/Number_of_Subsequences.test.cpp
     title: tests/Number_of_Subsequences.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Persistent_Unionfind.test.cpp
     title: tests/Persistent_Unionfind.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Point_Add_Range_Sum.test.cpp
     title: tests/Point_Add_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Point_Set_Range_Composite.test.cpp
     title: tests/Point_Set_Range_Composite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Point_Set_Range_Composite_Large.test.cpp
     title: tests/Point_Set_Range_Composite_Large.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Pow_of_Matrix.test.cpp
     title: tests/Pow_of_Matrix.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Primality_Test.test.cpp
     title: tests/Primality_Test.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
+    path: tests/Primitive_Root.test.cpp
+    title: tests/Primitive_Root.test.cpp
+  - icon: ':x:'
     path: tests/Range_Affine_Point_Get.test.cpp
     title: tests/Range_Affine_Point_Get.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Range_Affine_Range_Sum.test.cpp
     title: tests/Range_Affine_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/SCC.test.cpp
     title: tests/SCC.test.cpp
   - icon: ':x:'
     path: tests/Sort_Points_by_Argument.test.cpp
     title: tests/Sort_Points_by_Argument.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Sqrt_Mod.test.cpp
     title: tests/Sqrt_Mod.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Static_Convex_Hull.test.cpp
     title: tests/Static_Convex_Hull.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Static_RMQ.test.cpp
     title: tests/Static_RMQ.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Sum_of_Exponential_times_Polynomial.test.cpp
     title: tests/Sum_of_Exponential_times_Polynomial.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
     title: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Sum_of_Floor_of_Linear.test.cpp
     title: tests/Sum_of_Floor_of_Linear.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Unionfind.test.cpp
     title: tests/Unionfind.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Vertex_Add_Path_Sum.test.cpp
     title: tests/Vertex_Add_Path_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Z_Algorithm.test.cpp
     title: tests/Z_Algorithm.test.cpp
   _isVerificationFailed: true
@@ -161,7 +164,7 @@ data:
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
     \ (0-based)\n    order_of_key(k): returns the number of elements in the set that\
-    \ are strictly less than k\n*/\ntemplate <typename T>\nusing ordered_set = tree<T,\
+    \ are strictly less than k\n*/\ntemplate <class T>\nusing ordered_set = tree<T,\
     \ null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n// dynamic\
     \ bitset\nusing bs = tr2::dynamic_bitset<u64>;\n\n/*  rope\n    rope <int> cur\
     \ = v.substr(l, r - l + 1);\n    v.erase(l, r - l + 1);\n    v.insert(v.mutable_begin(),\
@@ -181,7 +184,7 @@ data:
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
     \ (0-based)\n    order_of_key(k): returns the number of elements in the set that\
-    \ are strictly less than k\n*/\ntemplate <typename T>\nusing ordered_set = tree<T,\
+    \ are strictly less than k\n*/\ntemplate <class T>\nusing ordered_set = tree<T,\
     \ null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n// dynamic\
     \ bitset\nusing bs = tr2::dynamic_bitset<u64>;\n\n/*  rope\n    rope <int> cur\
     \ = v.substr(l, r - l + 1);\n    v.erase(l, r - l + 1);\n    v.insert(v.mutable_begin(),\
@@ -189,9 +192,8 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: misc/macros.h
-  requiredBy:
-  - tests/Furthest_Pair_of_Points.tests.cpp
-  timestamp: '2025-11-18 17:12:08+07:00'
+  requiredBy: []
+  timestamp: '2025-11-21 16:12:02+07:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - tests/Bitwise_Xor_Convolution.test.cpp
@@ -215,6 +217,7 @@ data:
   - tests/Dominator_Tree.test.cpp
   - tests/Static_RMQ.test.cpp
   - tests/Persistent_Unionfind.test.cpp
+  - tests/Furthest_Pair_of_Points.test.cpp
   - tests/Eulerian_Trail_Undirected.test.cpp
   - tests/Enumerate_Quotients.test.cpp
   - tests/Matching_on_Bipartite_Graph_HopcroftKarp.test.cpp
@@ -237,6 +240,7 @@ data:
   - tests/Bitwise_And_Convolution.test.cpp
   - tests/Point_Add_Range_Sum.test.cpp
   - tests/Derangement.test.cpp
+  - tests/Primitive_Root.test.cpp
   - tests/Number_of_Subsequences.test.cpp
   - tests/Sum_of_Floor_of_Linear.test.cpp
 documentation_of: misc/macros.h

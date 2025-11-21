@@ -5,16 +5,16 @@ data:
     path: geometry/Point.h
     title: geometry/Point.h
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/MinimumEnclosingCircle.h
     title: geometry/MinimumEnclosingCircle.h
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Minimum_Enclosing_Circle.test.cpp
     title: tests/Minimum_Enclosing_Circle.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/Point.h\"\n\ntemplate <class T>\nint sgn(T x) {\
@@ -34,12 +34,12 @@ data:
     \ }\n  // returns point rotated 'a' radians ccw around the origin\n  P rotate(ld\
     \ a) const {\n    return P(x * cos(a) - y * sin(a), x * sin(a) + y * cos(a));\n\
     \  }\n  friend ostream& operator<<(ostream& os, P p) {\n    return os << \"(\"\
-    \ << p.x << \",\" << p.y << \")\";\n  }\n};\ntypedef Point<i64> P;\n#line 2 \"\
-    geometry/Circumcircle.h\"\n\ntypedef Point<ld> P;\nld ccRadius(const P& A, const\
-    \ P& B, const P& C) {\n  return (B - A).dist() * (C - B).dist() * (A - C).dist()\
-    \ /\n         abs((B - A).cross(C - A)) / 2;\n}\nP ccCenter(const P& A, const\
-    \ P& B, const P& C) {\n  P b = C - A, c = B - A;\n  return A + (b * c.dist2()\
-    \ - c * b.dist2()).perp() / b.cross(c) / 2;\n}\n"
+    \ << p.x << \",\" << p.y << \")\";\n  }\n};\n#line 2 \"geometry/Circumcircle.h\"\
+    \n\ntypedef Point<ld> P;\nld ccRadius(const P& A, const P& B, const P& C) {\n\
+    \  return (B - A).dist() * (C - B).dist() * (A - C).dist() /\n         abs((B\
+    \ - A).cross(C - A)) / 2;\n}\nP ccCenter(const P& A, const P& B, const P& C) {\n\
+    \  P b = C - A, c = B - A;\n  return A + (b * c.dist2() - c * b.dist2()).perp()\
+    \ / b.cross(c) / 2;\n}\n"
   code: "#include \"Point.h\"\n\ntypedef Point<ld> P;\nld ccRadius(const P& A, const\
     \ P& B, const P& C) {\n  return (B - A).dist() * (C - B).dist() * (A - C).dist()\
     \ /\n         abs((B - A).cross(C - A)) / 2;\n}\nP ccCenter(const P& A, const\
@@ -51,8 +51,8 @@ data:
   path: geometry/Circumcircle.h
   requiredBy:
   - geometry/MinimumEnclosingCircle.h
-  timestamp: '2025-11-21 16:03:24+07:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2025-11-21 16:12:02+07:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - tests/Minimum_Enclosing_Circle.test.cpp
 documentation_of: geometry/Circumcircle.h

@@ -28,15 +28,15 @@ data:
     \ }\n  // returns point rotated 'a' radians ccw around the origin\n  P rotate(ld\
     \ a) const {\n    return P(x * cos(a) - y * sin(a), x * sin(a) + y * cos(a));\n\
     \  }\n  friend ostream& operator<<(ostream& os, P p) {\n    return os << \"(\"\
-    \ << p.x << \",\" << p.y << \")\";\n  }\n};\ntypedef Point<i64> P;\n#line 2 \"\
-    geometry/CircleLine.h\"\n\ntemplate <class P>\nvector<P> circleLine(P c, ld r,\
-    \ P a, P b) {\n  P ab = b - a;\n  ld s = a.cross(b, c);\n\n  // calculate intersection,\
-    \ return vector<P>\n  P p = a + ab * (c - a).dot(ab) / ab.dist2();\n  ld h2 =\
-    \ r * r - s * s / ab.dist2();\n  if (h2 < 0) return {};\n  if (h2 == 0) return\
-    \ {p};\n  P h = ab.unit() * sqrt(h2);\n  return {p - h, p + h};\n\n  // calculate\
-    \ smaller part area, return ld\n  // ld dist = fabs(s) / sqrt(ab.dist2());\n \
-    \ // assert(dist <= r);\n  // ld theta = 2.0 * acos(dist / r);\n  // ld area =\
-    \ 0.5 * r * r * (theta - sin(theta));\n  // return area;\n}\n"
+    \ << p.x << \",\" << p.y << \")\";\n  }\n};\n#line 2 \"geometry/CircleLine.h\"\
+    \n\ntemplate <class P>\nvector<P> circleLine(P c, ld r, P a, P b) {\n  P ab =\
+    \ b - a;\n  ld s = a.cross(b, c);\n\n  // calculate intersection, return vector<P>\n\
+    \  P p = a + ab * (c - a).dot(ab) / ab.dist2();\n  ld h2 = r * r - s * s / ab.dist2();\n\
+    \  if (h2 < 0) return {};\n  if (h2 == 0) return {p};\n  P h = ab.unit() * sqrt(h2);\n\
+    \  return {p - h, p + h};\n\n  // calculate smaller part area, return ld\n  //\
+    \ ld dist = fabs(s) / sqrt(ab.dist2());\n  // assert(dist <= r);\n  // ld theta\
+    \ = 2.0 * acos(dist / r);\n  // ld area = 0.5 * r * r * (theta - sin(theta));\n\
+    \  // return area;\n}\n"
   code: "#include \"Point.h\"\n\ntemplate <class P>\nvector<P> circleLine(P c, ld\
     \ r, P a, P b) {\n  P ab = b - a;\n  ld s = a.cross(b, c);\n\n  // calculate intersection,\
     \ return vector<P>\n  P p = a + ab * (c - a).dot(ab) / ab.dist2();\n  ld h2 =\
@@ -50,7 +50,7 @@ data:
   isVerificationFile: false
   path: geometry/CircleLine.h
   requiredBy: []
-  timestamp: '2025-11-21 16:03:24+07:00'
+  timestamp: '2025-11-21 16:12:02+07:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/CircleLine.h

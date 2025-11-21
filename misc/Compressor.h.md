@@ -17,11 +17,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"misc/Compressor.h\"\ntemplate <typename T>\nvi compressor(vector<T>&\
+  bundledCode: "#line 1 \"misc/Compressor.h\"\ntemplate <class T>\nvi compressor(vector<T>&\
     \ v) {\n  auto cv = v;\n  sort(all(cv));\n  cv.erase(unique(all(cv)), cv.end());\n\
     \  for (auto& e : v) e = lower_bound(all(cv), e) - cv.begin();\n  return v;\n\
     }\n"
-  code: "template <typename T>\nvi compressor(vector<T>& v) {\n  auto cv = v;\n  sort(all(cv));\n\
+  code: "template <class T>\nvi compressor(vector<T>& v) {\n  auto cv = v;\n  sort(all(cv));\n\
     \  cv.erase(unique(all(cv)), cv.end());\n  for (auto& e : v) e = lower_bound(all(cv),\
     \ e) - cv.begin();\n  return v;\n}"
   dependsOn: []
@@ -29,7 +29,7 @@ data:
   path: misc/Compressor.h
   requiredBy:
   - misc/CountSubseq.h
-  timestamp: '2025-11-15 15:31:54+07:00'
+  timestamp: '2025-11-21 16:12:02+07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - tests/LIS.test.cpp

@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/Factor.h
     title: math/Factor.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/MillerRabin.h
     title: math/MillerRabin.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/ModInt.h
     title: math/ModInt.h
   - icon: ':question:'
@@ -39,11 +39,11 @@ data:
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
     \ (0-based)\n    order_of_key(k): returns the number of elements in the set that\
-    \ are strictly less than k\n*/\ntemplate <typename T>\nusing ordered_set = tree<T,\
+    \ are strictly less than k\n*/\ntemplate <class T>\nusing ordered_set = tree<T,\
     \ null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n// dynamic\
     \ bitset\nusing bs = tr2::dynamic_bitset<u64>;\n\n/*  rope\n    rope <int> cur\
     \ = v.substr(l, r - l + 1);\n    v.erase(l, r - l + 1);\n    v.insert(v.mutable_begin(),\
-    \ cur);\n*/\n#line 1 \"math/ModInt.h\"\ntemplate <int mod>\nstruct modint {\n\
+    \ cur);\n*/\n#line 2 \"math/ModInt.h\"\n\ntemplate <int mod>\nstruct modint {\n\
     \  using M = modint;\n  static_assert(mod > 0 && mod <= 2147483647);\n  static\
     \ constexpr u32 r1 = []() {\n    u32 r1 = mod;\n    for (int i = 0; i < 5; ++i)\
     \ r1 *= 2 - mod * r1;\n    return -r1;\n  }();\n  static constexpr u32 r2 = -u64(mod)\
@@ -72,7 +72,7 @@ data:
     \ 1795265022},\n      s = __builtin_ctzll(n - 1), d = n >> s;\n  for (u64 a :\
     \ A) {  // ^ count trailing zeroes\n    u64 p = modpow(a % n, d, n), i = s;\n\
     \    while (p != 1 && p != n - 1 && a % n && i--) p = modmul(p, p, n);\n    if\
-    \ (p != n - 1 && i != s) return 0;\n  }\n  return 1;\n}\n#line 2 \"math/Factor.h\"\
+    \ (p != n - 1 && i != s) return 0;\n  }\n  return 1;\n}\n#line 3 \"math/Factor.h\"\
     \n\nu64 pollard(u64 n) {\n  u64 x = 0, y = 0, t = 30, prd = 2, i = 1, q;\n  auto\
     \ f = [&](u64 x) { return modmul(x, x, n) + i; };\n  while (t++ % 40 || gcd(prd,\
     \ n) == 1) {\n    if (x == y) x = ++i, y = f(x);\n    if ((q = modmul(prd, max(x,\
@@ -98,7 +98,7 @@ data:
   isVerificationFile: true
   path: tests/Factorize.test.cpp
   requiredBy: []
-  timestamp: '2025-11-19 16:07:23+07:00'
+  timestamp: '2025-11-21 16:12:02+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Factorize.test.cpp

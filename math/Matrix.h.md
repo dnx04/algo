@@ -3,16 +3,16 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Pow_of_Matrix.test.cpp
     title: tests/Pow_of_Matrix.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"math/Matrix.h\"\ntemplate <typename T>\nstruct Matrix {\n\
-    \  using vec = vector<T>;\n  int n;\n  vector<vec> a;\n  Matrix(int n = 0) : n(n),\
+  bundledCode: "#line 1 \"math/Matrix.h\"\ntemplate <class T>\nstruct Matrix {\n \
+    \ using vec = vector<T>;\n  int n;\n  vector<vec> a;\n  Matrix(int n = 0) : n(n),\
     \ a(n, vec(n, 0)) {}\n  Matrix(const vector<vec>& a) : n(sz(a)), a(a) {}\n  vec&\
     \ operator[](int i) { return a[i]; }\n  const vec& operator[](int i) const { return\
     \ a[i]; }\n  Matrix operator*(const Matrix& b) const {\n    Matrix res(n);\n \
@@ -24,7 +24,7 @@ data:
     \  vec operator*(const vec& v) const {  // b(v)\n    vec c(n);\n    for (int i\
     \ = 0; i < n; ++i)\n      for (int j = 0; j < n; ++j) c[i] += a[i][j] * v[j];\n\
     \    return c;\n  }\n};\n"
-  code: "template <typename T>\nstruct Matrix {\n  using vec = vector<T>;\n  int n;\n\
+  code: "template <class T>\nstruct Matrix {\n  using vec = vector<T>;\n  int n;\n\
     \  vector<vec> a;\n  Matrix(int n = 0) : n(n), a(n, vec(n, 0)) {}\n  Matrix(const\
     \ vector<vec>& a) : n(sz(a)), a(a) {}\n  vec& operator[](int i) { return a[i];\
     \ }\n  const vec& operator[](int i) const { return a[i]; }\n  Matrix operator*(const\
@@ -40,8 +40,8 @@ data:
   isVerificationFile: false
   path: math/Matrix.h
   requiredBy: []
-  timestamp: '2025-11-19 14:43:55+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2025-11-21 16:12:02+07:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - tests/Pow_of_Matrix.test.cpp
 documentation_of: math/Matrix.h

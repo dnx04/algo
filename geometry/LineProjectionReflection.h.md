@@ -28,10 +28,10 @@ data:
     \ }\n  // returns point rotated 'a' radians ccw around the origin\n  P rotate(ld\
     \ a) const {\n    return P(x * cos(a) - y * sin(a), x * sin(a) + y * cos(a));\n\
     \  }\n  friend ostream& operator<<(ostream& os, P p) {\n    return os << \"(\"\
-    \ << p.x << \",\" << p.y << \")\";\n  }\n};\ntypedef Point<i64> P;\n#line 2 \"\
-    geometry/LineProjectionReflection.h\"\n\ntemplate <class P>\nP lineProj(P a, P\
-    \ b, P p, bool refl = false) {\n  P v = b - a;\n  return p - v.perp() * (1 + refl)\
-    \ * v.cross(p - a) / v.dist2();\n}\n"
+    \ << p.x << \",\" << p.y << \")\";\n  }\n};\n#line 2 \"geometry/LineProjectionReflection.h\"\
+    \n\ntemplate <class P>\nP lineProj(P a, P b, P p, bool refl = false) {\n  P v\
+    \ = b - a;\n  return p - v.perp() * (1 + refl) * v.cross(p - a) / v.dist2();\n\
+    }\n"
   code: "#include \"Point.h\"\n\ntemplate <class P>\nP lineProj(P a, P b, P p, bool\
     \ refl = false) {\n  P v = b - a;\n  return p - v.perp() * (1 + refl) * v.cross(p\
     \ - a) / v.dist2();\n}"
@@ -40,7 +40,7 @@ data:
   isVerificationFile: false
   path: geometry/LineProjectionReflection.h
   requiredBy: []
-  timestamp: '2025-11-21 16:03:24+07:00'
+  timestamp: '2025-11-21 16:12:02+07:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/LineProjectionReflection.h

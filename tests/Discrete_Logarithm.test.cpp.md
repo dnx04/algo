@@ -34,7 +34,7 @@ data:
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
     \ (0-based)\n    order_of_key(k): returns the number of elements in the set that\
-    \ are strictly less than k\n*/\ntemplate <typename T>\nusing ordered_set = tree<T,\
+    \ are strictly less than k\n*/\ntemplate <class T>\nusing ordered_set = tree<T,\
     \ null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n// dynamic\
     \ bitset\nusing bs = tr2::dynamic_bitset<u64>;\n\n/*  rope\n    rope <int> cur\
     \ = v.substr(l, r - l + 1);\n    v.erase(l, r - l + 1);\n    v.insert(v.mutable_begin(),\
@@ -62,7 +62,7 @@ data:
   isVerificationFile: true
   path: tests/Discrete_Logarithm.test.cpp
   requiredBy: []
-  timestamp: '2025-11-18 17:42:34+07:00'
+  timestamp: '2025-11-21 16:12:02+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Discrete_Logarithm.test.cpp

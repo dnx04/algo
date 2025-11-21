@@ -28,13 +28,13 @@ data:
     \ }\n  // returns point rotated 'a' radians ccw around the origin\n  P rotate(ld\
     \ a) const {\n    return P(x * cos(a) - y * sin(a), x * sin(a) + y * cos(a));\n\
     \  }\n  friend ostream& operator<<(ostream& os, P p) {\n    return os << \"(\"\
-    \ << p.x << \",\" << p.y << \")\";\n  }\n};\ntypedef Point<i64> P;\n#line 2 \"\
-    geometry/CircleTangents.h\"\n\ntemplate <class P>\nvector<pair<P, P>> tangents(P\
-    \ c1, ld r1, P c2, ld r2) {\n  P d = c2 - c1;\n  ld dr = r1 - r2, d2 = d.dist2(),\
-    \ h2 = d2 - dr * dr;\n  if (d2 == 0 || h2 < 0) return {};\n  vector<pair<P, P>>\
-    \ out;\n  for (ld sign : {-1, 1}) {\n    P v = (d * dr + d.perp() * sqrt(h2) *\
-    \ sign) / d2;\n    out.push_back({c1 + v * r1, c2 + v * r2});\n  }\n  if (h2 ==\
-    \ 0) out.pop_back();\n  return out;\n}\n"
+    \ << p.x << \",\" << p.y << \")\";\n  }\n};\n#line 2 \"geometry/CircleTangents.h\"\
+    \n\ntemplate <class P>\nvector<pair<P, P>> tangents(P c1, ld r1, P c2, ld r2)\
+    \ {\n  P d = c2 - c1;\n  ld dr = r1 - r2, d2 = d.dist2(), h2 = d2 - dr * dr;\n\
+    \  if (d2 == 0 || h2 < 0) return {};\n  vector<pair<P, P>> out;\n  for (ld sign\
+    \ : {-1, 1}) {\n    P v = (d * dr + d.perp() * sqrt(h2) * sign) / d2;\n    out.push_back({c1\
+    \ + v * r1, c2 + v * r2});\n  }\n  if (h2 == 0) out.pop_back();\n  return out;\n\
+    }\n"
   code: "#include \"Point.h\"\n\ntemplate <class P>\nvector<pair<P, P>> tangents(P\
     \ c1, ld r1, P c2, ld r2) {\n  P d = c2 - c1;\n  ld dr = r1 - r2, d2 = d.dist2(),\
     \ h2 = d2 - dr * dr;\n  if (d2 == 0 || h2 < 0) return {};\n  vector<pair<P, P>>\
@@ -46,7 +46,7 @@ data:
   isVerificationFile: false
   path: geometry/CircleTangents.h
   requiredBy: []
-  timestamp: '2025-11-21 16:03:24+07:00'
+  timestamp: '2025-11-21 16:12:02+07:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/CircleTangents.h

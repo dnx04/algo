@@ -4,14 +4,14 @@ data:
   - icon: ':question:'
     path: geometry/Point.h
     title: geometry/Point.h
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: tests/Furthest_Pair_of_Points.tests.cpp
-    title: tests/Furthest_Pair_of_Points.tests.cpp
-  _extendedVerifiedWith: []
+  _extendedRequiredBy: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: tests/Furthest_Pair_of_Points.test.cpp
+    title: tests/Furthest_Pair_of_Points.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/Point.h\"\n\ntemplate <class T>\nint sgn(T x) {\
@@ -31,28 +31,28 @@ data:
     \ }\n  // returns point rotated 'a' radians ccw around the origin\n  P rotate(ld\
     \ a) const {\n    return P(x * cos(a) - y * sin(a), x * sin(a) + y * cos(a));\n\
     \  }\n  friend ostream& operator<<(ostream& os, P p) {\n    return os << \"(\"\
-    \ << p.x << \",\" << p.y << \")\";\n  }\n};\ntypedef Point<i64> P;\n#line 2 \"\
-    geometry/HullDiameter.h\"\n\n// S must already be a convex hull\narray<P, 2> hullDiameter(vector<P>\
+    \ << p.x << \",\" << p.y << \")\";\n  }\n};\n#line 2 \"geometry/HullDiameter.h\"\
+    \n\n// S must already be a convex hull\ntemplate<class P>\narray<P, 2> hullDiameter(vector<P>\
     \ S) {\n  int n = sz(S), j = n < 2 ? 0 : 1;\n  pair<i64, array<P, 2>> res({0,\
     \ {S[0], S[0]}});\n  for (int i = 0; i < j; ++i) {\n    for (;; j = (j + 1) %\
     \ n) {\n      res = max(res, {(S[i] - S[j]).dist2(), {S[i], S[j]}});\n      if\
     \ ((S[(j + 1) % n] - S[j]).cross(S[i + 1] - S[i]) >= 0) break;\n    }\n  }\n \
     \ return res.second;\n}\n"
-  code: "#include \"Point.h\"\n\n// S must already be a convex hull\narray<P, 2> hullDiameter(vector<P>\
-    \ S) {\n  int n = sz(S), j = n < 2 ? 0 : 1;\n  pair<i64, array<P, 2>> res({0,\
-    \ {S[0], S[0]}});\n  for (int i = 0; i < j; ++i) {\n    for (;; j = (j + 1) %\
-    \ n) {\n      res = max(res, {(S[i] - S[j]).dist2(), {S[i], S[j]}});\n      if\
-    \ ((S[(j + 1) % n] - S[j]).cross(S[i + 1] - S[i]) >= 0) break;\n    }\n  }\n \
-    \ return res.second;\n}"
+  code: "#include \"Point.h\"\n\n// S must already be a convex hull\ntemplate<class\
+    \ P>\narray<P, 2> hullDiameter(vector<P> S) {\n  int n = sz(S), j = n < 2 ? 0\
+    \ : 1;\n  pair<i64, array<P, 2>> res({0, {S[0], S[0]}});\n  for (int i = 0; i\
+    \ < j; ++i) {\n    for (;; j = (j + 1) % n) {\n      res = max(res, {(S[i] - S[j]).dist2(),\
+    \ {S[i], S[j]}});\n      if ((S[(j + 1) % n] - S[j]).cross(S[i + 1] - S[i]) >=\
+    \ 0) break;\n    }\n  }\n  return res.second;\n}"
   dependsOn:
   - geometry/Point.h
   isVerificationFile: false
   path: geometry/HullDiameter.h
-  requiredBy:
-  - tests/Furthest_Pair_of_Points.tests.cpp
-  timestamp: '2025-11-21 16:03:24+07:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  requiredBy: []
+  timestamp: '2025-11-21 16:12:02+07:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - tests/Furthest_Pair_of_Points.test.cpp
 documentation_of: geometry/HullDiameter.h
 layout: document
 redirect_from:

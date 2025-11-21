@@ -11,7 +11,7 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"graph/EnumTriangles.h\"\ntemplate <typename F>\nvoid EnumTriangles(int\
+  bundledCode: "#line 1 \"graph/EnumTriangles.h\"\ntemplate <class F>\nvoid EnumTriangles(int\
     \ n, const vector<pii>& ed, F f) {  // 0-indexed graph\n  vi deg(n);\n  for (auto\
     \ [u, v] : ed) ++deg[u], ++deg[v];\n  vector<vi> g(n);  // directed\n  for (auto&\
     \ e : ed) {\n    auto [u, v] = e;\n    if (tie(deg[u], u) > tie(deg[v], v)) swap(u,\
@@ -19,8 +19,8 @@ data:
     \ {\n    for (auto nu : g[u]) adj[nu] = true;\n    for (auto nv : g[v]) {\n  \
     \    if (adj[nv]) f(u, v, nv);\n    }\n    for (auto nu : g[u]) adj[nu] = false;\n\
     \  }\n}\n"
-  code: "template <typename F>\nvoid EnumTriangles(int n, const vector<pii>& ed, F\
-    \ f) {  // 0-indexed graph\n  vi deg(n);\n  for (auto [u, v] : ed) ++deg[u], ++deg[v];\n\
+  code: "template <class F>\nvoid EnumTriangles(int n, const vector<pii>& ed, F f)\
+    \ {  // 0-indexed graph\n  vi deg(n);\n  for (auto [u, v] : ed) ++deg[u], ++deg[v];\n\
     \  vector<vi> g(n);  // directed\n  for (auto& e : ed) {\n    auto [u, v] = e;\n\
     \    if (tie(deg[u], u) > tie(deg[v], v)) swap(u, v);\n    g[u].eb(v);\n  }\n\
     \  vector<bool> adj(n);\n  for (auto& [u, v] : ed) {\n    for (auto nu : g[u])\
@@ -30,7 +30,7 @@ data:
   isVerificationFile: false
   path: graph/EnumTriangles.h
   requiredBy: []
-  timestamp: '2025-11-16 01:14:31+07:00'
+  timestamp: '2025-11-21 16:12:02+07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - tests/Enumerate_Triangles.test.cpp

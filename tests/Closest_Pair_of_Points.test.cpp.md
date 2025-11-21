@@ -37,7 +37,7 @@ data:
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
     \ (0-based)\n    order_of_key(k): returns the number of elements in the set that\
-    \ are strictly less than k\n*/\ntemplate <typename T>\nusing ordered_set = tree<T,\
+    \ are strictly less than k\n*/\ntemplate <class T>\nusing ordered_set = tree<T,\
     \ null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n// dynamic\
     \ bitset\nusing bs = tr2::dynamic_bitset<u64>;\n\n/*  rope\n    rope <int> cur\
     \ = v.substr(l, r - l + 1);\n    v.erase(l, r - l + 1);\n    v.insert(v.mutable_begin(),\
@@ -58,14 +58,14 @@ data:
     \ perp().unit(); }\n  // returns point rotated 'a' radians ccw around the origin\n\
     \  P rotate(ld a) const {\n    return P(x * cos(a) - y * sin(a), x * sin(a) +\
     \ y * cos(a));\n  }\n  friend ostream& operator<<(ostream& os, P p) {\n    return\
-    \ os << \"(\" << p.x << \",\" << p.y << \")\";\n  }\n};\ntypedef Point<i64> P;\n\
-    #line 2 \"geometry/ClosestPair.h\"\n\ntypedef Point<i64> P;\npair<P, P> closest(vector<P>\
-    \ v) {\n  assert(sz(v) > 1);\n  set<P> S;\n  sort(all(v), [](P a, P b) { return\
-    \ a.y < b.y; });\n  pair<i64, pair<P, P>> ret{LLONG_MAX, {P(), P()}};\n  int j\
-    \ = 0;\n  for (P p : v) {\n    P d{1 + (i64)sqrt(ret.first), 0};\n    while (v[j].y\
-    \ <= p.y - d.x) S.erase(v[j++]);\n    auto lo = S.lower_bound(p - d), hi = S.upper_bound(p\
-    \ + d);\n    for (; lo != hi; ++lo) ret = min(ret, {(*lo - p).dist2(), {*lo, p}});\n\
-    \    S.insert(p);\n  }\n  return ret.second;\n}\n#line 5 \"tests/Closest_Pair_of_Points.test.cpp\"\
+    \ os << \"(\" << p.x << \",\" << p.y << \")\";\n  }\n};\n#line 2 \"geometry/ClosestPair.h\"\
+    \n\ntypedef Point<i64> P;\npair<P, P> closest(vector<P> v) {\n  assert(sz(v) >\
+    \ 1);\n  set<P> S;\n  sort(all(v), [](P a, P b) { return a.y < b.y; });\n  pair<i64,\
+    \ pair<P, P>> ret{LLONG_MAX, {P(), P()}};\n  int j = 0;\n  for (P p : v) {\n \
+    \   P d{1 + (i64)sqrt(ret.first), 0};\n    while (v[j].y <= p.y - d.x) S.erase(v[j++]);\n\
+    \    auto lo = S.lower_bound(p - d), hi = S.upper_bound(p + d);\n    for (; lo\
+    \ != hi; ++lo) ret = min(ret, {(*lo - p).dist2(), {*lo, p}});\n    S.insert(p);\n\
+    \  }\n  return ret.second;\n}\n#line 5 \"tests/Closest_Pair_of_Points.test.cpp\"\
     \n\nvoid solve() {\n  int n;\n  cin >> n;\n  vector<Point<i64>> p(n);\n  for (int\
     \ i = 0; i < n; ++i) cin >> p[i].x >> p[i].y;\n  auto ans = closest(p);\n  int\
     \ p1, p2;\n  for (int i = 0; i < n; ++i) {\n    if (p[i] == ans.first) {\n   \
@@ -91,7 +91,7 @@ data:
   isVerificationFile: true
   path: tests/Closest_Pair_of_Points.test.cpp
   requiredBy: []
-  timestamp: '2025-11-21 16:03:24+07:00'
+  timestamp: '2025-11-21 16:12:02+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Closest_Pair_of_Points.test.cpp

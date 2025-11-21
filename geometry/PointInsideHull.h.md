@@ -34,13 +34,13 @@ data:
     \ }\n  // returns point rotated 'a' radians ccw around the origin\n  P rotate(ld\
     \ a) const {\n    return P(x * cos(a) - y * sin(a), x * sin(a) + y * cos(a));\n\
     \  }\n  friend ostream& operator<<(ostream& os, P p) {\n    return os << \"(\"\
-    \ << p.x << \",\" << p.y << \")\";\n  }\n};\ntypedef Point<i64> P;\n#line 2 \"\
-    geometry/OnSegment.h\"\n\ntemplate <class P>\nbool onSegment(P s, P e, P p) {\n\
-    \  return p.cross(s, e) == 0 && (s - p).dot(e - p) <= 0;\n}\n#line 2 \"geometry/SideOf.h\"\
-    \n\ntemplate <class P>\nint sideOf(P s, P e, P p) {\n  return sgn(s.cross(e, p));\n\
-    }\n\ntemplate <class P>\nint sideOf(const P& s, const P& e, const P& p, ld eps)\
-    \ {\n  auto a = (e - s).cross(p - s);\n  ld l = (e - s).dist() * eps;\n  return\
-    \ (a > l) - (a < -l);\n}\n#line 4 \"geometry/PointInsideHull.h\"\n\ntypedef Point<ll>\
+    \ << p.x << \",\" << p.y << \")\";\n  }\n};\n#line 2 \"geometry/OnSegment.h\"\n\
+    \ntemplate <class P>\nbool onSegment(P s, P e, P p) {\n  return p.cross(s, e)\
+    \ == 0 && (s - p).dot(e - p) <= 0;\n}\n#line 2 \"geometry/SideOf.h\"\n\ntemplate\
+    \ <class P>\nint sideOf(P s, P e, P p) {\n  return sgn(s.cross(e, p));\n}\n\n\
+    template <class P>\nint sideOf(const P& s, const P& e, const P& p, ld eps) {\n\
+    \  auto a = (e - s).cross(p - s);\n  ld l = (e - s).dist() * eps;\n  return (a\
+    \ > l) - (a < -l);\n}\n#line 4 \"geometry/PointInsideHull.h\"\n\ntypedef Point<ll>\
     \ P;\n\nbool inHull(const vector<P>& l, P p, bool strict = true) {\n  int a =\
     \ 1, b = sz(l) - 1, r = !strict;\n  if (sz(l) < 3) return r && onSegment(l[0],\
     \ l.back(), p);\n  if (sideOf(l[0], l[a], l[b]) > 0) swap(a, b);\n  if (sideOf(l[0],\
@@ -61,7 +61,7 @@ data:
   isVerificationFile: false
   path: geometry/PointInsideHull.h
   requiredBy: []
-  timestamp: '2025-11-21 16:03:24+07:00'
+  timestamp: '2025-11-21 16:12:02+07:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/PointInsideHull.h

@@ -28,11 +28,10 @@ data:
     \ }\n  // returns point rotated 'a' radians ccw around the origin\n  P rotate(ld\
     \ a) const {\n    return P(x * cos(a) - y * sin(a), x * sin(a) + y * cos(a));\n\
     \  }\n  friend ostream& operator<<(ostream& os, P p) {\n    return os << \"(\"\
-    \ << p.x << \",\" << p.y << \")\";\n  }\n};\ntypedef Point<i64> P;\n#line 2 \"\
-    geometry/SegmentDistance.h\"\n\ntypedef Point<ld> P;\nld segDist(P& s, P& e, P&\
-    \ p) {\n  if (s == e) return (p - s).dist();\n  auto d = (e - s).dist2(), t =\
-    \ min(d, max(.0, (p - s).dot(e - s)));\n  return ((p - s) * d - (e - s) * t).dist()\
-    \ / d;\n}\n"
+    \ << p.x << \",\" << p.y << \")\";\n  }\n};\n#line 2 \"geometry/SegmentDistance.h\"\
+    \n\ntypedef Point<ld> P;\nld segDist(P& s, P& e, P& p) {\n  if (s == e) return\
+    \ (p - s).dist();\n  auto d = (e - s).dist2(), t = min(d, max(.0, (p - s).dot(e\
+    \ - s)));\n  return ((p - s) * d - (e - s) * t).dist() / d;\n}\n"
   code: "#include \"Point.h\"\n\ntypedef Point<ld> P;\nld segDist(P& s, P& e, P& p)\
     \ {\n  if (s == e) return (p - s).dist();\n  auto d = (e - s).dist2(), t = min(d,\
     \ max(.0, (p - s).dot(e - s)));\n  return ((p - s) * d - (e - s) * t).dist() /\
@@ -42,7 +41,7 @@ data:
   isVerificationFile: false
   path: geometry/SegmentDistance.h
   requiredBy: []
-  timestamp: '2025-11-21 16:03:24+07:00'
+  timestamp: '2025-11-21 16:12:02+07:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/SegmentDistance.h

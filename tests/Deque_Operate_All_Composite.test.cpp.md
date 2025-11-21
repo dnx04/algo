@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: ds/SWAD.h
     title: ds/SWAD.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/Affine.h
     title: math/Affine.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/ModInt.h
     title: math/ModInt.h
   - icon: ':question:'
@@ -40,11 +40,11 @@ data:
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
     \ (0-based)\n    order_of_key(k): returns the number of elements in the set that\
-    \ are strictly less than k\n*/\ntemplate <typename T>\nusing ordered_set = tree<T,\
+    \ are strictly less than k\n*/\ntemplate <class T>\nusing ordered_set = tree<T,\
     \ null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n// dynamic\
     \ bitset\nusing bs = tr2::dynamic_bitset<u64>;\n\n/*  rope\n    rope <int> cur\
     \ = v.substr(l, r - l + 1);\n    v.erase(l, r - l + 1);\n    v.insert(v.mutable_begin(),\
-    \ cur);\n*/\n#line 1 \"math/ModInt.h\"\ntemplate <int mod>\nstruct modint {\n\
+    \ cur);\n*/\n#line 2 \"math/ModInt.h\"\n\ntemplate <int mod>\nstruct modint {\n\
     \  using M = modint;\n  static_assert(mod > 0 && mod <= 2147483647);\n  static\
     \ constexpr u32 r1 = []() {\n    u32 r1 = mod;\n    for (int i = 0; i < 5; ++i)\
     \ r1 *= 2 - mod * r1;\n    return -r1;\n  }();\n  static constexpr u32 r2 = -u64(mod)\
@@ -68,14 +68,14 @@ data:
     };\n\nu64 modmul(u64 x, u64 y, u64 m) { return u128(x) * y % m; }\nu64 modpow(u64\
     \ x, u64 k, u64 m) {\n  u64 res = 1;\n  while (k) {\n    if (k & 1) res = modmul(res,\
     \ x, m);\n    x = modmul(x, x, m);\n    k >>= 1;\n  }\n  return res;\n}\n#line\
-    \ 1 \"math/Affine.h\"\ntemplate <typename T>\nstruct affine {\n  T a, b;\n  constexpr\
+    \ 1 \"math/Affine.h\"\ntemplate <class T>\nstruct affine {\n  T a, b;\n  constexpr\
     \ affine() : a(1), b(0) {}\n  constexpr affine(T a, T b) : a(a), b(b) {}\n  T\
     \ operator()(T x) const { return a * x + b; }\n  affine operator()(const affine&\
     \ f) const {\n    return f * (*this);\n  }\n  affine operator*(const affine& g)\
     \ const {  // g(f(x))\n    return {a * g.a, b * g.a + g.b};\n  }\n  affine operator!=(const\
     \ affine& g) const {\n    return a != g.a || b != g.b;\n  }\n};\n#line 1 \"ds/SWAD.h\"\
-    \ntemplate <typename T, typename F>\nstruct SWAD {\n  vector<T> a0, a1, r0, r1;\n\
-    \  F f;\n  T I;\n  SWAD(F f, T i) : f(f), I(i) {}\n\n private:\n  T get0() const\
+    \ntemplate <class T, class F>\nstruct SWAD {\n  vector<T> a0, a1, r0, r1;\n  F\
+    \ f;\n  T I;\n  SWAD(F f, T i) : f(f), I(i) {}\n\n private:\n  T get0() const\
     \ { return r0.empty() ? I : r0.back(); }\n  T get1() const { return r1.empty()\
     \ ? I : r1.back(); }\n\n  void push0(const T& x) {\n    a0.eb(x), r0.eb(f(x, get0()));\n\
     \  }\n  void push1(const T& x) {\n    a1.eb(x), r1.eb(f(get1(), x));\n  }\n  void\
@@ -122,7 +122,7 @@ data:
   isVerificationFile: true
   path: tests/Deque_Operate_All_Composite.test.cpp
   requiredBy: []
-  timestamp: '2025-11-20 10:26:30+07:00'
+  timestamp: '2025-11-21 16:12:02+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Deque_Operate_All_Composite.test.cpp

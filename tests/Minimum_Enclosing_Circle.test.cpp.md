@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/Circumcircle.h
     title: geometry/Circumcircle.h
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/MinimumEnclosingCircle.h
     title: geometry/MinimumEnclosingCircle.h
   - icon: ':question:'
@@ -15,9 +15,9 @@ data:
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/minimum_enclosing_circle
@@ -40,7 +40,7 @@ data:
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
     \ (0-based)\n    order_of_key(k): returns the number of elements in the set that\
-    \ are strictly less than k\n*/\ntemplate <typename T>\nusing ordered_set = tree<T,\
+    \ are strictly less than k\n*/\ntemplate <class T>\nusing ordered_set = tree<T,\
     \ null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n// dynamic\
     \ bitset\nusing bs = tr2::dynamic_bitset<u64>;\n\n/*  rope\n    rope <int> cur\
     \ = v.substr(l, r - l + 1);\n    v.erase(l, r - l + 1);\n    v.insert(v.mutable_begin(),\
@@ -61,26 +61,26 @@ data:
     \ perp().unit(); }\n  // returns point rotated 'a' radians ccw around the origin\n\
     \  P rotate(ld a) const {\n    return P(x * cos(a) - y * sin(a), x * sin(a) +\
     \ y * cos(a));\n  }\n  friend ostream& operator<<(ostream& os, P p) {\n    return\
-    \ os << \"(\" << p.x << \",\" << p.y << \")\";\n  }\n};\ntypedef Point<i64> P;\n\
-    #line 2 \"geometry/Circumcircle.h\"\n\ntypedef Point<ld> P;\nld ccRadius(const\
-    \ P& A, const P& B, const P& C) {\n  return (B - A).dist() * (C - B).dist() *\
-    \ (A - C).dist() /\n         abs((B - A).cross(C - A)) / 2;\n}\nP ccCenter(const\
-    \ P& A, const P& B, const P& C) {\n  P b = C - A, c = B - A;\n  return A + (b\
-    \ * c.dist2() - c * b.dist2()).perp() / b.cross(c) / 2;\n}\n#line 2 \"geometry/MinimumEnclosingCircle.h\"\
-    \n\npair<P, ld> mec(vector<P> ps) {\n  shuffle(all(ps), mt19937(time(0)));\n \
-    \ P o = ps[0];\n  ld r = 0, EPS = 1 + 1e-12;\n  for (int i = 0; i < sz(ps); ++i)\
-    \ {\n    if ((o - ps[i]).dist() > r * EPS) {\n      o = ps[i], r = 0;\n      for\
-    \ (int j = 0; j < i; ++j) {\n        if ((o - ps[j]).dist() > r * EPS) {\n   \
-    \       o = (ps[i] + ps[j]) / 2;\n          r = (o - ps[i]).dist();\n        \
-    \  for (int k = 0; k < j; ++k) {\n            if ((o - ps[k]).dist() > r * EPS)\
-    \ {\n              o = ccCenter(ps[i], ps[j], ps[k]);\n              r = (o -\
-    \ ps[i]).dist();\n            }\n          }\n        }\n      }\n    }\n  }\n\
-    \  return {o, r};\n}\n#line 5 \"tests/Minimum_Enclosing_Circle.test.cpp\"\n\n\
-    using P = Point<ld>;\nvoid solve() {\n  int n;\n  cin >> n;\n  vector<P> pts(n);\n\
-    \  for (auto& [x, y] : pts) cin >> x >> y;\n  auto [o, r] = mec(pts);\n  const\
-    \ ld EPS = 1e-10;\n  for (int i = 0; i < n; ++i) {\n    if (fabsl((o - pts[i]).dist2()\
-    \ - r * r) < EPS) {\n      cout << 1;\n    } else {\n      cout << 0;\n    }\n\
-    \  }\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
+    \ os << \"(\" << p.x << \",\" << p.y << \")\";\n  }\n};\n#line 2 \"geometry/Circumcircle.h\"\
+    \n\ntypedef Point<ld> P;\nld ccRadius(const P& A, const P& B, const P& C) {\n\
+    \  return (B - A).dist() * (C - B).dist() * (A - C).dist() /\n         abs((B\
+    \ - A).cross(C - A)) / 2;\n}\nP ccCenter(const P& A, const P& B, const P& C) {\n\
+    \  P b = C - A, c = B - A;\n  return A + (b * c.dist2() - c * b.dist2()).perp()\
+    \ / b.cross(c) / 2;\n}\n#line 2 \"geometry/MinimumEnclosingCircle.h\"\n\npair<P,\
+    \ ld> mec(vector<P> ps) {\n  shuffle(all(ps), mt19937(time(0)));\n  P o = ps[0];\n\
+    \  ld r = 0, EPS = 1 + 1e-12;\n  for (int i = 0; i < sz(ps); ++i) {\n    if ((o\
+    \ - ps[i]).dist() > r * EPS) {\n      o = ps[i], r = 0;\n      for (int j = 0;\
+    \ j < i; ++j) {\n        if ((o - ps[j]).dist() > r * EPS) {\n          o = (ps[i]\
+    \ + ps[j]) / 2;\n          r = (o - ps[i]).dist();\n          for (int k = 0;\
+    \ k < j; ++k) {\n            if ((o - ps[k]).dist() > r * EPS) {\n           \
+    \   o = ccCenter(ps[i], ps[j], ps[k]);\n              r = (o - ps[i]).dist();\n\
+    \            }\n          }\n        }\n      }\n    }\n  }\n  return {o, r};\n\
+    }\n#line 5 \"tests/Minimum_Enclosing_Circle.test.cpp\"\n\nusing P = Point<ld>;\n\
+    void solve() {\n  int n;\n  cin >> n;\n  vector<P> pts(n);\n  for (auto& [x, y]\
+    \ : pts) cin >> x >> y;\n  auto [o, r] = mec(pts);\n  const ld EPS = 1e-10;\n\
+    \  for (int i = 0; i < n; ++i) {\n    if (fabsl((o - pts[i]).dist2() - r * r)\
+    \ < EPS) {\n      cout << 1;\n    } else {\n      cout << 0;\n    }\n  }\n}\n\n\
+    int main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
     \  int tc = 1;\n  // cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n\
     \  }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/minimum_enclosing_circle\"\
@@ -100,8 +100,8 @@ data:
   isVerificationFile: true
   path: tests/Minimum_Enclosing_Circle.test.cpp
   requiredBy: []
-  timestamp: '2025-11-21 16:03:24+07:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2025-11-21 16:12:02+07:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Minimum_Enclosing_Circle.test.cpp
 layout: document

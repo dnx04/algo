@@ -31,12 +31,12 @@ data:
     \ }\n  // returns point rotated 'a' radians ccw around the origin\n  P rotate(ld\
     \ a) const {\n    return P(x * cos(a) - y * sin(a), x * sin(a) + y * cos(a));\n\
     \  }\n  friend ostream& operator<<(ostream& os, P p) {\n    return os << \"(\"\
-    \ << p.x << \",\" << p.y << \")\";\n  }\n};\ntypedef Point<i64> P;\n#line 2 \"\
-    geometry/OnSegment.h\"\n\ntemplate <class P>\nbool onSegment(P s, P e, P p) {\n\
-    \  return p.cross(s, e) == 0 && (s - p).dot(e - p) <= 0;\n}\n#line 3 \"geometry/InsidePolygon.h\"\
-    \n\ntemplate <class P>\nbool inPolygon(vector<P>& p, P a, bool strict = true)\
-    \ {\n  int cnt = 0, n = sz(p);\n  for (int i = 0; i < n; ++i) {\n    P q = p[(i\
-    \ + 1) % n];\n    if (onSegment(p[i], q, a)) return !strict;\n    // or: if (segDist(p[i],\
+    \ << p.x << \",\" << p.y << \")\";\n  }\n};\n#line 2 \"geometry/OnSegment.h\"\n\
+    \ntemplate <class P>\nbool onSegment(P s, P e, P p) {\n  return p.cross(s, e)\
+    \ == 0 && (s - p).dot(e - p) <= 0;\n}\n#line 3 \"geometry/InsidePolygon.h\"\n\n\
+    template <class P>\nbool inPolygon(vector<P>& p, P a, bool strict = true) {\n\
+    \  int cnt = 0, n = sz(p);\n  for (int i = 0; i < n; ++i) {\n    P q = p[(i +\
+    \ 1) % n];\n    if (onSegment(p[i], q, a)) return !strict;\n    // or: if (segDist(p[i],\
     \ q, a) <= eps) return !strict;\n    cnt ^= ((a.y < p[i].y) - (a.y < q.y)) * a.cross(p[i],\
     \ q) > 0;\n  }\n  return cnt;\n}\n"
   code: "#include \"OnSegment.h\"\n#include \"Point.h\"\n\ntemplate <class P>\nbool\
@@ -51,7 +51,7 @@ data:
   isVerificationFile: false
   path: geometry/InsidePolygon.h
   requiredBy: []
-  timestamp: '2025-11-21 16:03:24+07:00'
+  timestamp: '2025-11-21 16:12:02+07:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/InsidePolygon.h

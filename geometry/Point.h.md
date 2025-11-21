@@ -14,19 +14,19 @@ data:
   - icon: ':warning:'
     path: geometry/CircleTangents.h
     title: geometry/CircleTangents.h
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/Circumcircle.h
     title: geometry/Circumcircle.h
   - icon: ':heavy_check_mark:'
     path: geometry/ClosestPair.h
     title: geometry/ClosestPair.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/ConvexHull.h
     title: geometry/ConvexHull.h
   - icon: ':warning:'
     path: geometry/HalfplaneSet.h
     title: geometry/HalfplaneSet.h
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: geometry/HullDiameter.h
     title: geometry/HullDiameter.h
   - icon: ':warning:'
@@ -44,7 +44,7 @@ data:
   - icon: ':warning:'
     path: geometry/LinearTransformation.h
     title: geometry/LinearTransformation.h
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/MinimumEnclosingCircle.h
     title: geometry/MinimumEnclosingCircle.h
   - icon: ':warning:'
@@ -71,20 +71,20 @@ data:
   - icon: ':warning:'
     path: geometry/SideOf.h
     title: geometry/SideOf.h
-  - icon: ':warning:'
-    path: tests/Furthest_Pair_of_Points.tests.cpp
-    title: tests/Furthest_Pair_of_Points.tests.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: tests/Closest_Pair_of_Points.test.cpp
     title: tests/Closest_Pair_of_Points.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
+    path: tests/Furthest_Pair_of_Points.test.cpp
+    title: tests/Furthest_Pair_of_Points.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/Minimum_Enclosing_Circle.test.cpp
     title: tests/Minimum_Enclosing_Circle.test.cpp
   - icon: ':x:'
     path: tests/Sort_Points_by_Argument.test.cpp
     title: tests/Sort_Points_by_Argument.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Static_Convex_Hull.test.cpp
     title: tests/Static_Convex_Hull.test.cpp
   _isVerificationFailed: true
@@ -109,7 +109,7 @@ data:
     \ }\n  // returns point rotated 'a' radians ccw around the origin\n  P rotate(ld\
     \ a) const {\n    return P(x * cos(a) - y * sin(a), x * sin(a) + y * cos(a));\n\
     \  }\n  friend ostream& operator<<(ostream& os, P p) {\n    return os << \"(\"\
-    \ << p.x << \",\" << p.y << \")\";\n  }\n};\ntypedef Point<i64> P;\n"
+    \ << p.x << \",\" << p.y << \")\";\n  }\n};\n"
   code: "#pragma once\n\ntemplate <class T>\nint sgn(T x) { return (x > 0) - (x <\
     \ 0); }\ntemplate <class T>\nstruct Point {\n  typedef Point P;\n  T x, y;\n \
     \ explicit Point(T x = 0, T y = 0) : x(x), y(y) {}\n  bool operator<(P p) const\
@@ -127,12 +127,11 @@ data:
     \  // returns point rotated 'a' radians ccw around the origin\n  P rotate(ld a)\
     \ const {\n    return P(x * cos(a) - y * sin(a), x * sin(a) + y * cos(a));\n \
     \ }\n  friend ostream& operator<<(ostream& os, P p) {\n    return os << \"(\"\
-    \ << p.x << \",\" << p.y << \")\";\n  }\n};\ntypedef Point<i64> P;"
+    \ << p.x << \",\" << p.y << \")\";\n  }\n};"
   dependsOn: []
   isVerificationFile: false
   path: geometry/Point.h
   requiredBy:
-  - tests/Furthest_Pair_of_Points.tests.cpp
   - geometry/InsidePolygon.h
   - geometry/LineIntersection.h
   - geometry/PolygonCenter.h
@@ -156,11 +155,12 @@ data:
   - geometry/MinimumEnclosingCircle.h
   - geometry/LineDistance.h
   - geometry/LinearTransformation.h
-  timestamp: '2025-11-21 16:03:24+07:00'
+  timestamp: '2025-11-21 16:12:02+07:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - tests/Static_Convex_Hull.test.cpp
   - tests/Minimum_Enclosing_Circle.test.cpp
+  - tests/Furthest_Pair_of_Points.test.cpp
   - tests/Closest_Pair_of_Points.test.cpp
   - tests/Sort_Points_by_Argument.test.cpp
 documentation_of: geometry/Point.h

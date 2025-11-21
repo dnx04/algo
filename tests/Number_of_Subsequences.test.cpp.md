@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/ModInt.h
     title: math/ModInt.h
   - icon: ':heavy_check_mark:'
@@ -40,11 +40,11 @@ data:
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
     \ (0-based)\n    order_of_key(k): returns the number of elements in the set that\
-    \ are strictly less than k\n*/\ntemplate <typename T>\nusing ordered_set = tree<T,\
+    \ are strictly less than k\n*/\ntemplate <class T>\nusing ordered_set = tree<T,\
     \ null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n// dynamic\
     \ bitset\nusing bs = tr2::dynamic_bitset<u64>;\n\n/*  rope\n    rope <int> cur\
     \ = v.substr(l, r - l + 1);\n    v.erase(l, r - l + 1);\n    v.insert(v.mutable_begin(),\
-    \ cur);\n*/\n#line 1 \"math/ModInt.h\"\ntemplate <int mod>\nstruct modint {\n\
+    \ cur);\n*/\n#line 2 \"math/ModInt.h\"\n\ntemplate <int mod>\nstruct modint {\n\
     \  using M = modint;\n  static_assert(mod > 0 && mod <= 2147483647);\n  static\
     \ constexpr u32 r1 = []() {\n    u32 r1 = mod;\n    for (int i = 0; i < 5; ++i)\
     \ r1 *= 2 - mod * r1;\n    return -r1;\n  }();\n  static constexpr u32 r2 = -u64(mod)\
@@ -68,10 +68,10 @@ data:
     };\n\nu64 modmul(u64 x, u64 y, u64 m) { return u128(x) * y % m; }\nu64 modpow(u64\
     \ x, u64 k, u64 m) {\n  u64 res = 1;\n  while (k) {\n    if (k & 1) res = modmul(res,\
     \ x, m);\n    x = modmul(x, x, m);\n    k >>= 1;\n  }\n  return res;\n}\n#line\
-    \ 1 \"misc/Compressor.h\"\ntemplate <typename T>\nvi compressor(vector<T>& v)\
-    \ {\n  auto cv = v;\n  sort(all(cv));\n  cv.erase(unique(all(cv)), cv.end());\n\
-    \  for (auto& e : v) e = lower_bound(all(cv), e) - cv.begin();\n  return v;\n\
-    }\n#line 2 \"misc/CountSubseq.h\"\n\ntemplate <typename T, typename Fp>\nFp CountSubseq(vector<T>\
+    \ 1 \"misc/Compressor.h\"\ntemplate <class T>\nvi compressor(vector<T>& v) {\n\
+    \  auto cv = v;\n  sort(all(cv));\n  cv.erase(unique(all(cv)), cv.end());\n  for\
+    \ (auto& e : v) e = lower_bound(all(cv), e) - cv.begin();\n  return v;\n}\n#line\
+    \ 2 \"misc/CountSubseq.h\"\n\ntemplate <class T, class Fp>\nFp CountSubseq(vector<T>\
     \ a) {\n  a = compressor<T>(a);\n  vi last(sz(a) + 1, -1);\n  vector<Fp> f(sz(a)\
     \ + 1);\n  f[0] = 1;\n  for (int i = 0; i < sz(a); ++i) {\n    f[i + 1] = f[i]\
     \ * 2;\n    if (last[a[i]] >= 0) f[i + 1] -= f[last[a[i]]];\n    last[a[i]] =\
@@ -92,7 +92,7 @@ data:
   isVerificationFile: true
   path: tests/Number_of_Subsequences.test.cpp
   requiredBy: []
-  timestamp: '2025-11-19 16:07:23+07:00'
+  timestamp: '2025-11-21 16:12:02+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Number_of_Subsequences.test.cpp

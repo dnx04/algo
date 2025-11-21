@@ -6,15 +6,15 @@ data:
     path: ds/AuxiliaryTree.h
     title: ds/AuxiliaryTree.h
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Vertex_Add_Path_Sum.test.cpp
     title: tests/Vertex_Add_Path_Sum.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"ds/HLD.h\"\ntemplate <typename G>\nstruct HLD {\n private:\n\
+  bundledCode: "#line 1 \"ds/HLD.h\"\ntemplate <class G>\nstruct HLD {\n private:\n\
     \  void dfs_sz(int cur) {\n    size[cur] = 1;\n    for (auto& dst : g[cur]) {\n\
     \      if (dst == par[cur]) {\n        if (g[cur].size() >= 2 && int(dst) == int(g[cur][0]))\n\
     \          swap(g[cur][0], g[cur][1]);\n        else\n          continue;\n  \
@@ -33,23 +33,23 @@ data:
     \ size, depth, down, up, nxt, par;\n  HLD(G& g, int root = 0) : g(g), root(root),\
     \ id(0), size(sz(g), 0), depth(sz(g), 0), down(sz(g), -1), up(sz(g), -1), nxt(sz(g),\
     \ root), par(sz(g), root) {\n    dfs_sz(root);\n    dfs_hld(root);\n  }\n\n  pii\
-    \ idx(int i) const { return make_pair(down[i], up[i]); }\n  \n  template <typename\
+    \ idx(int i) const { return make_pair(down[i], up[i]); }\n\n  template <class\
     \ F>\n  void path_query(int u, int v, bool vertex, const F& f) {\n    int l =\
     \ lca(u, v);\n    for (auto&& [a, b] : ascend(u, l)) {\n      int s = a + 1, t\
     \ = b;\n      s > t ? f(t, s) : f(s, t);\n    }\n    if (vertex) f(down[l], down[l]\
     \ + 1);\n    for (auto&& [a, b] : descend(l, v)) {\n      int s = a, t = b + 1;\n\
-    \      s > t ? f(t, s) : f(s, t);\n    }\n  }\n\n  template <typename F>\n  void\
+    \      s > t ? f(t, s) : f(s, t);\n    }\n  }\n\n  template <class F>\n  void\
     \ path_noncommutative_query(int u, int v, bool vertex, const F& f) {\n    int\
     \ l = lca(u, v);\n    for (auto&& [a, b] : ascend(u, l)) f(a + 1, b);\n    if\
     \ (vertex) f(down[l], down[l] + 1);\n    for (auto&& [a, b] : descend(l, v)) f(a,\
-    \ b + 1);\n  }\n\n  template <typename F>\n  void subtree_query(int u, bool vertex,\
+    \ b + 1);\n  }\n\n  template <class F>\n  void subtree_query(int u, bool vertex,\
     \ const F& f) {\n    f(down[u] + int(!vertex), up[u]);\n  }\n\n  int lca(int a,\
     \ int b) {\n    while (nxt[a] != nxt[b]) {\n      if (down[a] < down[b]) swap(a,\
     \ b);\n      a = par[nxt[a]];\n    }\n    return depth[a] < depth[b] ? a : b;\n\
     \  }\n\n  int dist(int a, int b) { return depth[a] + depth[b] - depth[lca(a, b)]\
     \ * 2; }\n};\n"
-  code: "template <typename G>\nstruct HLD {\n private:\n  void dfs_sz(int cur) {\n\
-    \    size[cur] = 1;\n    for (auto& dst : g[cur]) {\n      if (dst == par[cur])\
+  code: "template <class G>\nstruct HLD {\n private:\n  void dfs_sz(int cur) {\n \
+    \   size[cur] = 1;\n    for (auto& dst : g[cur]) {\n      if (dst == par[cur])\
     \ {\n        if (g[cur].size() >= 2 && int(dst) == int(g[cur][0]))\n         \
     \ swap(g[cur][0], g[cur][1]);\n        else\n          continue;\n      }\n  \
     \    depth[dst] = depth[cur] + 1;\n      par[dst] = cur;\n      dfs_sz(dst);\n\
@@ -67,16 +67,16 @@ data:
     \ size, depth, down, up, nxt, par;\n  HLD(G& g, int root = 0) : g(g), root(root),\
     \ id(0), size(sz(g), 0), depth(sz(g), 0), down(sz(g), -1), up(sz(g), -1), nxt(sz(g),\
     \ root), par(sz(g), root) {\n    dfs_sz(root);\n    dfs_hld(root);\n  }\n\n  pii\
-    \ idx(int i) const { return make_pair(down[i], up[i]); }\n  \n  template <typename\
+    \ idx(int i) const { return make_pair(down[i], up[i]); }\n\n  template <class\
     \ F>\n  void path_query(int u, int v, bool vertex, const F& f) {\n    int l =\
     \ lca(u, v);\n    for (auto&& [a, b] : ascend(u, l)) {\n      int s = a + 1, t\
     \ = b;\n      s > t ? f(t, s) : f(s, t);\n    }\n    if (vertex) f(down[l], down[l]\
     \ + 1);\n    for (auto&& [a, b] : descend(l, v)) {\n      int s = a, t = b + 1;\n\
-    \      s > t ? f(t, s) : f(s, t);\n    }\n  }\n\n  template <typename F>\n  void\
+    \      s > t ? f(t, s) : f(s, t);\n    }\n  }\n\n  template <class F>\n  void\
     \ path_noncommutative_query(int u, int v, bool vertex, const F& f) {\n    int\
     \ l = lca(u, v);\n    for (auto&& [a, b] : ascend(u, l)) f(a + 1, b);\n    if\
     \ (vertex) f(down[l], down[l] + 1);\n    for (auto&& [a, b] : descend(l, v)) f(a,\
-    \ b + 1);\n  }\n\n  template <typename F>\n  void subtree_query(int u, bool vertex,\
+    \ b + 1);\n  }\n\n  template <class F>\n  void subtree_query(int u, bool vertex,\
     \ const F& f) {\n    f(down[u] + int(!vertex), up[u]);\n  }\n\n  int lca(int a,\
     \ int b) {\n    while (nxt[a] != nxt[b]) {\n      if (down[a] < down[b]) swap(a,\
     \ b);\n      a = par[nxt[a]];\n    }\n    return depth[a] < depth[b] ? a : b;\n\
@@ -87,8 +87,8 @@ data:
   path: ds/HLD.h
   requiredBy:
   - ds/AuxiliaryTree.h
-  timestamp: '2025-11-20 10:20:22+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2025-11-21 16:12:02+07:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - tests/Vertex_Add_Path_Sum.test.cpp
 documentation_of: ds/HLD.h

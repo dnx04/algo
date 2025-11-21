@@ -6,19 +6,19 @@ data:
     - icon: ':warning:'
       path: ds/AuxiliaryTree.h
       title: ds/AuxiliaryTree.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: ds/DSU.h
       title: ds/DSU.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: ds/DSURollback.h
       title: ds/DSURollback.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: ds/Fenwick.h
       title: ds/Fenwick.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: ds/HLD.h
       title: ds/HLD.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: ds/LazySegTree.h
       title: ds/LazySegTree.h
     - icon: ':heavy_check_mark:'
@@ -27,16 +27,16 @@ data:
     - icon: ':warning:'
       path: ds/Mo.h
       title: ds/Mo.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: ds/PersistentSegTree.h
       title: ds/PersistentSegTree.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: ds/RMQ.h
       title: ds/RMQ.h
     - icon: ':heavy_check_mark:'
       path: ds/SWAD.h
       title: ds/SWAD.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: ds/SegTree.h
       title: ds/SegTree.h
     - icon: ':warning:'
@@ -59,19 +59,19 @@ data:
     - icon: ':warning:'
       path: geometry/CircleTangents.h
       title: geometry/CircleTangents.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: geometry/Circumcircle.h
       title: geometry/Circumcircle.h
     - icon: ':heavy_check_mark:'
       path: geometry/ClosestPair.h
       title: geometry/ClosestPair.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: geometry/ConvexHull.h
       title: geometry/ConvexHull.h
     - icon: ':warning:'
       path: geometry/HalfplaneSet.h
       title: geometry/HalfplaneSet.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: geometry/HullDiameter.h
       title: geometry/HullDiameter.h
     - icon: ':warning:'
@@ -92,7 +92,7 @@ data:
     - icon: ':warning:'
       path: geometry/LinearTransformation.h
       title: geometry/LinearTransformation.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: geometry/MinimumEnclosingCircle.h
       title: geometry/MinimumEnclosingCircle.h
     - icon: ':warning:'
@@ -169,12 +169,12 @@ data:
     - icon: ':warning:'
       path: graph/MinCostMaxFlow.h
       title: graph/MinCostMaxFlow.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: graph/SCC.h
       title: graph/SCC.h
   - name: math
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/Affine.h
       title: math/Affine.h
     - icon: ':heavy_check_mark:'
@@ -183,7 +183,7 @@ data:
     - icon: ':warning:'
       path: math/CRT.h
       title: math/CRT.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/DivModSum.h
       title: math/DivModSum.h
     - icon: ':heavy_check_mark:'
@@ -195,31 +195,31 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/FST.h
       title: math/FST.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/Factor.h
       title: math/Factor.h
     - icon: ':warning:'
       path: math/Lagrange.h
       title: math/Lagrange.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/Matrix.h
       title: math/Matrix.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/MillerRabin.h
       title: math/MillerRabin.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/ModInt.h
       title: math/ModInt.h
     - icon: ':heavy_check_mark:'
       path: math/ModLog.h
       title: math/ModLog.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/ModSQRT.h
       title: math/ModSQRT.h
     - icon: ':heavy_check_mark:'
       path: math/NTT.h
       title: math/NTT.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/SumPowerPoly.h
       title: math/SumPowerPoly.h
     - icon: ':heavy_check_mark:'
@@ -277,14 +277,9 @@ data:
     - icon: ':warning:'
       path: strings/PalindromeTree.h
       title: strings/PalindromeTree.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: strings/Z.h
       title: strings/Z.h
-  - name: tests
-    pages:
-    - icon: ':warning:'
-      path: tests/Furthest_Pair_of_Points.tests.cpp
-      title: tests/Furthest_Pair_of_Points.tests.cpp
   verificationCategories:
   - name: tests
     pages:
@@ -343,6 +338,9 @@ data:
       path: tests/Find_Linear_Recurrence.test.cpp
       title: tests/Find_Linear_Recurrence.test.cpp
     - icon: ':heavy_check_mark:'
+      path: tests/Furthest_Pair_of_Points.test.cpp
+      title: tests/Furthest_Pair_of_Points.test.cpp
+    - icon: ':heavy_check_mark:'
       path: tests/General_Matching.test.cpp
       title: tests/General_Matching.test.cpp
     - icon: ':heavy_check_mark:'
@@ -360,67 +358,70 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Maximum_Independent_Set.test.cpp
       title: tests/Maximum_Independent_Set.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Minimum_Enclosing_Circle.test.cpp
       title: tests/Minimum_Enclosing_Circle.test.cpp
     - icon: ':heavy_check_mark:'
       path: tests/Number_of_Subsequences.test.cpp
       title: tests/Number_of_Subsequences.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Persistent_Unionfind.test.cpp
       title: tests/Persistent_Unionfind.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Point_Add_Range_Sum.test.cpp
       title: tests/Point_Add_Range_Sum.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Point_Set_Range_Composite.test.cpp
       title: tests/Point_Set_Range_Composite.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Point_Set_Range_Composite_Large.test.cpp
       title: tests/Point_Set_Range_Composite_Large.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Pow_of_Matrix.test.cpp
       title: tests/Pow_of_Matrix.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Primality_Test.test.cpp
       title: tests/Primality_Test.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
+      path: tests/Primitive_Root.test.cpp
+      title: tests/Primitive_Root.test.cpp
+    - icon: ':x:'
       path: tests/Range_Affine_Point_Get.test.cpp
       title: tests/Range_Affine_Point_Get.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Range_Affine_Range_Sum.test.cpp
       title: tests/Range_Affine_Range_Sum.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/SCC.test.cpp
       title: tests/SCC.test.cpp
     - icon: ':x:'
       path: tests/Sort_Points_by_Argument.test.cpp
       title: tests/Sort_Points_by_Argument.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Sqrt_Mod.test.cpp
       title: tests/Sqrt_Mod.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Static_Convex_Hull.test.cpp
       title: tests/Static_Convex_Hull.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Static_RMQ.test.cpp
       title: tests/Static_RMQ.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Sum_of_Exponential_times_Polynomial.test.cpp
       title: tests/Sum_of_Exponential_times_Polynomial.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
       title: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Sum_of_Floor_of_Linear.test.cpp
       title: tests/Sum_of_Floor_of_Linear.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Unionfind.test.cpp
       title: tests/Unionfind.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Vertex_Add_Path_Sum.test.cpp
       title: tests/Vertex_Add_Path_Sum.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Z_Algorithm.test.cpp
       title: tests/Z_Algorithm.test.cpp
 layout: toppage

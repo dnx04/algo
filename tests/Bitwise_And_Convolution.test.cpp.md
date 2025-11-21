@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/FST.h
     title: math/FST.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/ModInt.h
     title: math/ModInt.h
   - icon: ':question:'
@@ -37,11 +37,11 @@ data:
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
     \ (0-based)\n    order_of_key(k): returns the number of elements in the set that\
-    \ are strictly less than k\n*/\ntemplate <typename T>\nusing ordered_set = tree<T,\
+    \ are strictly less than k\n*/\ntemplate <class T>\nusing ordered_set = tree<T,\
     \ null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n// dynamic\
     \ bitset\nusing bs = tr2::dynamic_bitset<u64>;\n\n/*  rope\n    rope <int> cur\
     \ = v.substr(l, r - l + 1);\n    v.erase(l, r - l + 1);\n    v.insert(v.mutable_begin(),\
-    \ cur);\n*/\n#line 1 \"math/ModInt.h\"\ntemplate <int mod>\nstruct modint {\n\
+    \ cur);\n*/\n#line 2 \"math/ModInt.h\"\n\ntemplate <int mod>\nstruct modint {\n\
     \  using M = modint;\n  static_assert(mod > 0 && mod <= 2147483647);\n  static\
     \ constexpr u32 r1 = []() {\n    u32 r1 = mod;\n    for (int i = 0; i < 5; ++i)\
     \ r1 *= 2 - mod * r1;\n    return -r1;\n  }();\n  static constexpr u32 r2 = -u64(mod)\
@@ -66,7 +66,7 @@ data:
     \ x, u64 k, u64 m) {\n  u64 res = 1;\n  while (k) {\n    if (k & 1) res = modmul(res,\
     \ x, m);\n    x = modmul(x, x, m);\n    k >>= 1;\n  }\n  return res;\n}\n#line\
     \ 5 \"tests/Bitwise_And_Convolution.test.cpp\"\n\nusing Fp = modint<998244353>;\n\
-    \n#line 1 \"math/FST.h\"\ntemplate <typename T>\nvoid FST(vector<T>& a, bool inv,\
+    \n#line 1 \"math/FST.h\"\ntemplate <class T>\nvoid FST(vector<T>& a, bool inv,\
     \ string type) {\n  for (int n = sz(a), step = 1; step < n; step *= 2) {\n   \
     \ for (int i = 0; i < n; i += 2 * step)\n      for (int j = i; j < i + step; ++j)\
     \ {\n        T &u = a[j], &v = a[j + step];\n        if (type == \"and\")\n  \
@@ -74,7 +74,7 @@ data:
     \ (type == \"or\")\n          tie(u, v) = inv ? tuple{v, u - v} : tuple{u + v,\
     \ u};\n        else if (type == \"xor\")\n          tie(u, v) = tuple{u + v, u\
     \ - v};\n      }\n  }\n  if (inv && type == \"xor\")\n    for (T& x : a) x /=\
-    \ sz(a);\n}\ntemplate <typename T>\nvector<T> conv(vector<T> a, vector<T> b, string\
+    \ sz(a);\n}\ntemplate <class T>\nvector<T> conv(vector<T> a, vector<T> b, string\
     \ type) {\n  FST(a, 0, type);\n  FST(b, 0, type);\n  for (int i = 0; i < sz(a);\
     \ ++i) a[i] *= b[i];\n  FST(a, 1, type);\n  return a;\n}\n#line 9 \"tests/Bitwise_And_Convolution.test.cpp\"\
     \n\nvoid solve() {\n  int n;\n  cin >> n;\n  vector<Fp> a(1 << n), b(1 << n);\n\
@@ -100,7 +100,7 @@ data:
   isVerificationFile: true
   path: tests/Bitwise_And_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2025-11-19 16:07:23+07:00'
+  timestamp: '2025-11-21 16:12:02+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Bitwise_And_Convolution.test.cpp

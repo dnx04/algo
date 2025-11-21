@@ -28,14 +28,14 @@ data:
     \ }\n  // returns point rotated 'a' radians ccw around the origin\n  P rotate(ld\
     \ a) const {\n    return P(x * cos(a) - y * sin(a), x * sin(a) + y * cos(a));\n\
     \  }\n  friend ostream& operator<<(ostream& os, P p) {\n    return os << \"(\"\
-    \ << p.x << \",\" << p.y << \")\";\n  }\n};\ntypedef Point<i64> P;\n#line 2 \"\
-    geometry/CircleIntersection.h\"\n\ntypedef Point<ld> P;\nbool circleInter(P a,\
-    \ P b, ld r1, ld r2, pair<P, P>* out) {\n  if (a == b) {\n    assert(r1 != r2);\n\
-    \    return false;\n  }\n  P vec = b - a;\n  ld d2 = vec.dist2(), sum = r1 + r2,\
-    \ dif = r1 - r2,\n     p = (d2 + r1 * r1 - r2 * r2) / (d2 * 2), h2 = r1 * r1 -\
-    \ p * p * d2;\n  if (sum * sum < d2 || dif * dif > d2) return false;\n  P mid\
-    \ = a + vec * p, per = vec.perp() * sqrt(fmax(0, h2) / d2);\n  *out = {mid + per,\
-    \ mid - per};\n  return true;\n}\n"
+    \ << p.x << \",\" << p.y << \")\";\n  }\n};\n#line 2 \"geometry/CircleIntersection.h\"\
+    \n\ntypedef Point<ld> P;\nbool circleInter(P a, P b, ld r1, ld r2, pair<P, P>*\
+    \ out) {\n  if (a == b) {\n    assert(r1 != r2);\n    return false;\n  }\n  P\
+    \ vec = b - a;\n  ld d2 = vec.dist2(), sum = r1 + r2, dif = r1 - r2,\n     p =\
+    \ (d2 + r1 * r1 - r2 * r2) / (d2 * 2), h2 = r1 * r1 - p * p * d2;\n  if (sum *\
+    \ sum < d2 || dif * dif > d2) return false;\n  P mid = a + vec * p, per = vec.perp()\
+    \ * sqrt(fmax(0, h2) / d2);\n  *out = {mid + per, mid - per};\n  return true;\n\
+    }\n"
   code: "#include \"Point.h\"\n\ntypedef Point<ld> P;\nbool circleInter(P a, P b,\
     \ ld r1, ld r2, pair<P, P>* out) {\n  if (a == b) {\n    assert(r1 != r2);\n \
     \   return false;\n  }\n  P vec = b - a;\n  ld d2 = vec.dist2(), sum = r1 + r2,\
@@ -48,7 +48,7 @@ data:
   isVerificationFile: false
   path: geometry/CircleIntersection.h
   requiredBy: []
-  timestamp: '2025-11-21 16:03:24+07:00'
+  timestamp: '2025-11-21 16:12:02+07:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/CircleIntersection.h

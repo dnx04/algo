@@ -28,10 +28,10 @@ data:
     \ }\n  // returns point rotated 'a' radians ccw around the origin\n  P rotate(ld\
     \ a) const {\n    return P(x * cos(a) - y * sin(a), x * sin(a) + y * cos(a));\n\
     \  }\n  friend ostream& operator<<(ostream& os, P p) {\n    return os << \"(\"\
-    \ << p.x << \",\" << p.y << \")\";\n  }\n};\ntypedef Point<i64> P;\n#line 2 \"\
-    geometry/PolygonArea.h\"\n\ntemplate <class T>\nT polygonArea2(vector<Point<T>>&\
-    \ v) {\n  T a = v.back().cross(v[0]);\n  for (int i = 0; i < n; ++i)i, 0, sz(v)\
-    \ - 1) a += v[i].cross(v[i + 1]);\n  return a;\n}\n"
+    \ << p.x << \",\" << p.y << \")\";\n  }\n};\n#line 2 \"geometry/PolygonArea.h\"\
+    \n\ntemplate <class T>\nT polygonArea2(vector<Point<T>>& v) {\n  T a = v.back().cross(v[0]);\n\
+    \  for (int i = 0; i < n; ++i)i, 0, sz(v) - 1) a += v[i].cross(v[i + 1]);\n  return\
+    \ a;\n}\n"
   code: "#include \"Point.h\"\n\ntemplate <class T>\nT polygonArea2(vector<Point<T>>&\
     \ v) {\n  T a = v.back().cross(v[0]);\n  for (int i = 0; i < n; ++i)i, 0, sz(v)\
     \ - 1) a += v[i].cross(v[i + 1]);\n  return a;\n}"
@@ -40,7 +40,7 @@ data:
   isVerificationFile: false
   path: geometry/PolygonArea.h
   requiredBy: []
-  timestamp: '2025-11-21 16:03:24+07:00'
+  timestamp: '2025-11-21 16:12:02+07:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/PolygonArea.h

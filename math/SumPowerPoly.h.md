@@ -1,24 +1,24 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/ModInt.h
     title: math/ModInt.h
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Sum_of_Exponential_times_Polynomial.test.cpp
     title: tests/Sum_of_Exponential_times_Polynomial.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
     title: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"math/ModInt.h\"\ntemplate <int mod>\nstruct modint {\n \
-    \ using M = modint;\n  static_assert(mod > 0 && mod <= 2147483647);\n  static\
+  bundledCode: "#line 2 \"math/ModInt.h\"\n\ntemplate <int mod>\nstruct modint {\n\
+    \  using M = modint;\n  static_assert(mod > 0 && mod <= 2147483647);\n  static\
     \ constexpr u32 r1 = []() {\n    u32 r1 = mod;\n    for (int i = 0; i < 5; ++i)\
     \ r1 *= 2 - mod * r1;\n    return -r1;\n  }();\n  static constexpr u32 r2 = -u64(mod)\
     \ % mod;\n  static u32 reduce(u64 x) {\n    u32 y = u32(x) * r1, r = (x + u64(y)\
@@ -96,8 +96,8 @@ data:
   isVerificationFile: false
   path: math/SumPowerPoly.h
   requiredBy: []
-  timestamp: '2025-11-21 16:03:24+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2025-11-21 16:12:02+07:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - tests/Sum_of_Exponential_times_Polynomial.test.cpp
   - tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp

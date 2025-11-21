@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: ds/SegTree.h
     title: ds/SegTree.h
   - icon: ':heavy_check_mark:'
@@ -36,16 +36,16 @@ data:
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
     \ (0-based)\n    order_of_key(k): returns the number of elements in the set that\
-    \ are strictly less than k\n*/\ntemplate <typename T>\nusing ordered_set = tree<T,\
+    \ are strictly less than k\n*/\ntemplate <class T>\nusing ordered_set = tree<T,\
     \ null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n// dynamic\
     \ bitset\nusing bs = tr2::dynamic_bitset<u64>;\n\n/*  rope\n    rope <int> cur\
     \ = v.substr(l, r - l + 1);\n    v.erase(l, r - l + 1);\n    v.insert(v.mutable_begin(),\
-    \ cur);\n*/\n#line 1 \"misc/Compressor.h\"\ntemplate <typename T>\nvi compressor(vector<T>&\
+    \ cur);\n*/\n#line 1 \"misc/Compressor.h\"\ntemplate <class T>\nvi compressor(vector<T>&\
     \ v) {\n  auto cv = v;\n  sort(all(cv));\n  cv.erase(unique(all(cv)), cv.end());\n\
     \  for (auto& e : v) e = lower_bound(all(cv), e) - cv.begin();\n  return v;\n\
-    }\n#line 1 \"ds/SegTree.h\"\n// 0-indexed\ntemplate <typename T, typename F>\n\
-    struct SegTree {\n  int n, size;  // smallest size = 2^k >= n\n  vector<T> seg;\n\
-    \  const F f;\n  const T I;\n  SegTree(int n, F f, const T& I) : n(n), f(f), I(I)\
+    }\n#line 1 \"ds/SegTree.h\"\n// 0-indexed\ntemplate <class T, class F>\nstruct\
+    \ SegTree {\n  int n, size;  // smallest size = 2^k >= n\n  vector<T> seg;\n \
+    \ const F f;\n  const T I;\n  SegTree(int n, F f, const T& I) : n(n), f(f), I(I)\
     \ {\n    size = 1;\n    while (size < n) size <<= 1;\n    seg.assign(size << 1,\
     \ I);\n  }\n  T& operator[](int k) { return seg[k + size]; }\n  void set(int k,\
     \ T x) { seg[k + size] = x; }  // to build\n  void build() {\n    for (int i =\
@@ -60,10 +60,10 @@ data:
     \ == 0) l >>= 1;\n      if (!check(f(sm, seg[l]))) {\n        while (l < size)\
     \ {\n          l = l << 1;\n          if (check(f(sm, seg[l]))) sm = f(sm, seg[l]),\
     \ l++;\n        }\n        return l - size;\n      }\n      sm = f(sm, seg[l]),\
-    \ l++;\n    } while ((l & -l) != l);\n    return n;\n  }\n  template <typename\
-    \ C>\n  int min_left(int r, C check) {\n    assert(0 <= r && r <= n && check(I)\
-    \ == true);\n    if (r == 0) return 0;\n    r += size;\n    T sm = I;\n    do\
-    \ {\n      r--;\n      while (r > 1 && (r % 2)) r >>= 1;\n      if (!check(f(seg[r],\
+    \ l++;\n    } while ((l & -l) != l);\n    return n;\n  }\n  template <class C>\n\
+    \  int min_left(int r, C check) {\n    assert(0 <= r && r <= n && check(I) ==\
+    \ true);\n    if (r == 0) return 0;\n    r += size;\n    T sm = I;\n    do {\n\
+    \      r--;\n      while (r > 1 && (r % 2)) r >>= 1;\n      if (!check(f(seg[r],\
     \ sm))) {\n        while (r < size) {\n          r = r << 1 | 1;\n          if\
     \ (check(f(seg[r], sm))) sm = f(seg[r], sm), r--;\n        }\n        return r\
     \ + 1 - size;\n      }\n      sm = f(seg[r], sm);\n    } while ((r & -r) != r);\n\
@@ -94,7 +94,7 @@ data:
   isVerificationFile: true
   path: tests/LIS.test.cpp
   requiredBy: []
-  timestamp: '2025-11-21 16:03:24+07:00'
+  timestamp: '2025-11-21 16:12:02+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/LIS.test.cpp

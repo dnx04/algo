@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: ds/Fenwick.h
     title: ds/Fenwick.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: ds/HLD.h
     title: ds/HLD.h
   - icon: ':question:'
@@ -12,9 +12,9 @@ data:
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/vertex_add_path_sum
@@ -37,17 +37,17 @@ data:
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
     \ (0-based)\n    order_of_key(k): returns the number of elements in the set that\
-    \ are strictly less than k\n*/\ntemplate <typename T>\nusing ordered_set = tree<T,\
+    \ are strictly less than k\n*/\ntemplate <class T>\nusing ordered_set = tree<T,\
     \ null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n// dynamic\
     \ bitset\nusing bs = tr2::dynamic_bitset<u64>;\n\n/*  rope\n    rope <int> cur\
     \ = v.substr(l, r - l + 1);\n    v.erase(l, r - l + 1);\n    v.insert(v.mutable_begin(),\
-    \ cur);\n*/\n#line 1 \"ds/Fenwick.h\"\ntemplate <typename T>\nstruct Fenwick {\
-    \  // 1-indexed\n  int n;\n  vector<T> t;\n  Fenwick(int n) : n(n), t(n + 1, T(0))\
+    \ cur);\n*/\n#line 1 \"ds/Fenwick.h\"\ntemplate <class T>\nstruct Fenwick {  //\
+    \ 1-indexed\n  int n;\n  vector<T> t;\n  Fenwick(int n) : n(n), t(n + 1, T(0))\
     \ {}\n  void add(int p, T v) {\n    while (p <= n) t[p] += v, p += (p & -p);\n\
     \  }\n  T sum(int p) {\n    T res = 0;\n    while (p) res += t[p], p -= (p & -p);\n\
     \    return res;\n  }\n  // [l, r)\n  T sum(int l, int r) {\n    if (l > r) return\
     \ T(0);\n    return sum(r) - sum(l - 1);\n  }\n};\n#line 1 \"ds/HLD.h\"\ntemplate\
-    \ <typename G>\nstruct HLD {\n private:\n  void dfs_sz(int cur) {\n    size[cur]\
+    \ <class G>\nstruct HLD {\n private:\n  void dfs_sz(int cur) {\n    size[cur]\
     \ = 1;\n    for (auto& dst : g[cur]) {\n      if (dst == par[cur]) {\n       \
     \ if (g[cur].size() >= 2 && int(dst) == int(g[cur][0]))\n          swap(g[cur][0],\
     \ g[cur][1]);\n        else\n          continue;\n      }\n      depth[dst] =\
@@ -66,15 +66,15 @@ data:
     \ HLD(G& g, int root = 0) : g(g), root(root), id(0), size(sz(g), 0), depth(sz(g),\
     \ 0), down(sz(g), -1), up(sz(g), -1), nxt(sz(g), root), par(sz(g), root) {\n \
     \   dfs_sz(root);\n    dfs_hld(root);\n  }\n\n  pii idx(int i) const { return\
-    \ make_pair(down[i], up[i]); }\n  \n  template <typename F>\n  void path_query(int\
+    \ make_pair(down[i], up[i]); }\n\n  template <class F>\n  void path_query(int\
     \ u, int v, bool vertex, const F& f) {\n    int l = lca(u, v);\n    for (auto&&\
     \ [a, b] : ascend(u, l)) {\n      int s = a + 1, t = b;\n      s > t ? f(t, s)\
     \ : f(s, t);\n    }\n    if (vertex) f(down[l], down[l] + 1);\n    for (auto&&\
     \ [a, b] : descend(l, v)) {\n      int s = a, t = b + 1;\n      s > t ? f(t, s)\
-    \ : f(s, t);\n    }\n  }\n\n  template <typename F>\n  void path_noncommutative_query(int\
+    \ : f(s, t);\n    }\n  }\n\n  template <class F>\n  void path_noncommutative_query(int\
     \ u, int v, bool vertex, const F& f) {\n    int l = lca(u, v);\n    for (auto&&\
     \ [a, b] : ascend(u, l)) f(a + 1, b);\n    if (vertex) f(down[l], down[l] + 1);\n\
-    \    for (auto&& [a, b] : descend(l, v)) f(a, b + 1);\n  }\n\n  template <typename\
+    \    for (auto&& [a, b] : descend(l, v)) f(a, b + 1);\n  }\n\n  template <class\
     \ F>\n  void subtree_query(int u, bool vertex, const F& f) {\n    f(down[u] +\
     \ int(!vertex), up[u]);\n  }\n\n  int lca(int a, int b) {\n    while (nxt[a] !=\
     \ nxt[b]) {\n      if (down[a] < down[b]) swap(a, b);\n      a = par[nxt[a]];\n\
@@ -111,8 +111,8 @@ data:
   isVerificationFile: true
   path: tests/Vertex_Add_Path_Sum.test.cpp
   requiredBy: []
-  timestamp: '2025-11-20 10:20:22+07:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-11-21 16:12:02+07:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: tests/Vertex_Add_Path_Sum.test.cpp
 layout: document

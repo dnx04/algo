@@ -28,13 +28,13 @@ data:
     \ }\n  // returns point rotated 'a' radians ccw around the origin\n  P rotate(ld\
     \ a) const {\n    return P(x * cos(a) - y * sin(a), x * sin(a) + y * cos(a));\n\
     \  }\n  friend ostream& operator<<(ostream& os, P p) {\n    return os << \"(\"\
-    \ << p.x << \",\" << p.y << \")\";\n  }\n};\ntypedef Point<i64> P;\n#line 2 \"\
-    geometry/Minkowski.h\"\n\nvector<Point> MinkowskiSum(vector<Point> P, vector<Point>\
-    \ Q) {\n  int n = P.size(), m = Q.size();\n  vector<Point> R = {P[0] + Q[0]};\n\
-    \  for (int i = 1, j = 1; i < n || j < m; ) {\n    if (i < n && (j == m || cross(P[i]\
-    \ - P[i - 1], Q[j] - Q[j - 1]) > 0)) {\n      R.push_back(R.back() + P[i] - P[i\
-    \ - 1]);\n      ++i;\n    } else {\n      R.push_back(R.back() + Q[j] - Q[j -\
-    \ 1]);\n      ++j;\n    }\n  }\n  return R;\n}\n"
+    \ << p.x << \",\" << p.y << \")\";\n  }\n};\n#line 2 \"geometry/Minkowski.h\"\n\
+    \nvector<Point> MinkowskiSum(vector<Point> P, vector<Point> Q) {\n  int n = P.size(),\
+    \ m = Q.size();\n  vector<Point> R = {P[0] + Q[0]};\n  for (int i = 1, j = 1;\
+    \ i < n || j < m; ) {\n    if (i < n && (j == m || cross(P[i] - P[i - 1], Q[j]\
+    \ - Q[j - 1]) > 0)) {\n      R.push_back(R.back() + P[i] - P[i - 1]);\n      ++i;\n\
+    \    } else {\n      R.push_back(R.back() + Q[j] - Q[j - 1]);\n      ++j;\n  \
+    \  }\n  }\n  return R;\n}\n"
   code: "#include \"Point.h\"\n\nvector<Point> MinkowskiSum(vector<Point> P, vector<Point>\
     \ Q) {\n  int n = P.size(), m = Q.size();\n  vector<Point> R = {P[0] + Q[0]};\n\
     \  for (int i = 1, j = 1; i < n || j < m; ) {\n    if (i < n && (j == m || cross(P[i]\
@@ -46,7 +46,7 @@ data:
   isVerificationFile: false
   path: geometry/Minkowski.h
   requiredBy: []
-  timestamp: '2025-11-21 16:03:24+07:00'
+  timestamp: '2025-11-21 16:12:02+07:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/Minkowski.h

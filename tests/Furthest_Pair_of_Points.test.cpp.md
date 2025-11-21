@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/ConvexHull.h
     title: geometry/ConvexHull.h
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: geometry/HullDiameter.h
     title: geometry/HullDiameter.h
   - icon: ':question:'
@@ -17,11 +17,13 @@ data:
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/furthest_pair
     links:
     - https://judge.yosupo.jp/problem/furthest_pair
-  bundledCode: "#line 1 \"tests/Furthest_Pair_of_Points.tests.cpp\"\n#define PROBLEM\
+  bundledCode: "#line 1 \"tests/Furthest_Pair_of_Points.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.yosupo.jp/problem/furthest_pair\"\n\n#line 1 \"misc/macros.h\"\
     \n// #pragma GCC optimize(\"Ofast,unroll-loops\")       // unroll long, simple\
     \ loops\n// #pragma GCC target(\"avx2,fma\")                   // vectorizing\
@@ -38,7 +40,7 @@ data:
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
     \ (0-based)\n    order_of_key(k): returns the number of elements in the set that\
-    \ are strictly less than k\n*/\ntemplate <typename T>\nusing ordered_set = tree<T,\
+    \ are strictly less than k\n*/\ntemplate <class T>\nusing ordered_set = tree<T,\
     \ null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n// dynamic\
     \ bitset\nusing bs = tr2::dynamic_bitset<u64>;\n\n/*  rope\n    rope <int> cur\
     \ = v.substr(l, r - l + 1);\n    v.erase(l, r - l + 1);\n    v.insert(v.mutable_begin(),\
@@ -59,48 +61,50 @@ data:
     \ perp().unit(); }\n  // returns point rotated 'a' radians ccw around the origin\n\
     \  P rotate(ld a) const {\n    return P(x * cos(a) - y * sin(a), x * sin(a) +\
     \ y * cos(a));\n  }\n  friend ostream& operator<<(ostream& os, P p) {\n    return\
-    \ os << \"(\" << p.x << \",\" << p.y << \")\";\n  }\n};\ntypedef Point<i64> P;\n\
-    #line 2 \"geometry/ConvexHull.h\"\n\nvector<P> convexHull(vector<P> pts) {\n \
-    \ if (sz(pts) <= 1) return pts;\n  sort(all(pts));\n  vector<P> h(2 * sz(pts)\
-    \ + 2);\n  int s = 0, t = 0;\n  for (int it = 2; it--; s = --t, reverse(all(pts)))\
-    \ {\n    for (P p : pts) {\n      while (t >= s + 2 && h[t - 2].cross(h[t - 1],\
-    \ p) <= 0) t--;\n      h[t++] = p;\n    }\n  }\n  return {h.begin(), h.begin()\
-    \ + t - (t == 2 && h[0] == h[1])};\n}\n#line 2 \"geometry/HullDiameter.h\"\n\n\
-    // S must already be a convex hull\narray<P, 2> hullDiameter(vector<P> S) {\n\
-    \  int n = sz(S), j = n < 2 ? 0 : 1;\n  pair<i64, array<P, 2>> res({0, {S[0],\
-    \ S[0]}});\n  for (int i = 0; i < j; ++i) {\n    for (;; j = (j + 1) % n) {\n\
-    \      res = max(res, {(S[i] - S[j]).dist2(), {S[i], S[j]}});\n      if ((S[(j\
-    \ + 1) % n] - S[j]).cross(S[i + 1] - S[i]) >= 0) break;\n    }\n  }\n  return\
-    \ res.second;\n}\n#line 6 \"tests/Furthest_Pair_of_Points.tests.cpp\"\n\nvoid\
-    \ solve() {\n  int n;\n  cin >> n;\n  vector<P> pts(n);\n  for (auto& [x, y] :\
-    \ pts) cin >> x >> y;\n  auto cvh = convexHull(pts);\n  auto [pi, pj] = hullDiameter(cvh);\n\
-    \  int i, j;\n  for (i = 0; i < n; ++i) {\n    if (pts[i] == pi) {\n      cout\
-    \ << i << ' ';\n      break;\n    }\n  }\n  for (j = 0; j < n; ++j) {\n    if\
-    \ (pts[j] == pj && j != i) {\n      cout << j << '\\n';\n      break;\n    }\n\
-    \  }\n}\n\nint main() {\n  int tc;\n  cin >> tc;\n  while (tc--) solve();\n}\n"
+    \ os << \"(\" << p.x << \",\" << p.y << \")\";\n  }\n};\n#line 2 \"geometry/ConvexHull.h\"\
+    \n\ntemplate <class P>\nvector<P> convexHull(vector<P> pts) {\n  if (sz(pts) <=\
+    \ 1) return pts;\n  sort(all(pts));\n  vector<P> h(2 * sz(pts) + 2);\n  int s\
+    \ = 0, t = 0;\n  for (int it = 2; it--; s = --t, reverse(all(pts))) {\n    for\
+    \ (P p : pts) {\n      while (t >= s + 2 && h[t - 2].cross(h[t - 1], p) <= 0)\
+    \ t--;\n      h[t++] = p;\n    }\n  }\n  return {h.begin(), h.begin() + t - (t\
+    \ == 2 && h[0] == h[1])};\n}\n#line 2 \"geometry/HullDiameter.h\"\n\n// S must\
+    \ already be a convex hull\ntemplate<class P>\narray<P, 2> hullDiameter(vector<P>\
+    \ S) {\n  int n = sz(S), j = n < 2 ? 0 : 1;\n  pair<i64, array<P, 2>> res({0,\
+    \ {S[0], S[0]}});\n  for (int i = 0; i < j; ++i) {\n    for (;; j = (j + 1) %\
+    \ n) {\n      res = max(res, {(S[i] - S[j]).dist2(), {S[i], S[j]}});\n      if\
+    \ ((S[(j + 1) % n] - S[j]).cross(S[i + 1] - S[i]) >= 0) break;\n    }\n  }\n \
+    \ return res.second;\n}\n#line 6 \"tests/Furthest_Pair_of_Points.test.cpp\"\n\n\
+    using P = Point<ld>;\n\nvoid solve() {\n  int n;\n  cin >> n;\n  vector<P> pts(n);\n\
+    \  for (auto& [x, y] : pts) cin >> x >> y;\n  auto cvh = convexHull(pts);\n  auto\
+    \ [pi, pj] = hullDiameter(cvh);\n  int i, j;\n  for (i = 0; i < n; ++i) {\n  \
+    \  if (pts[i] == pi) {\n      cout << i << ' ';\n      break;\n    }\n  }\n  for\
+    \ (j = 0; j < n; ++j) {\n    if (pts[j] == pj && j != i) {\n      cout << j <<\
+    \ '\\n';\n      break;\n    }\n  }\n}\n\nint main() {\n  int tc;\n  cin >> tc;\n\
+    \  while (tc--) solve();\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/furthest_pair\"\n\n#include\
     \ \"../misc/macros.h\"\n#include \"../geometry/ConvexHull.h\"\n#include \"../geometry/HullDiameter.h\"\
-    \n\nvoid solve() {\n  int n;\n  cin >> n;\n  vector<P> pts(n);\n  for (auto& [x,\
-    \ y] : pts) cin >> x >> y;\n  auto cvh = convexHull(pts);\n  auto [pi, pj] = hullDiameter(cvh);\n\
-    \  int i, j;\n  for (i = 0; i < n; ++i) {\n    if (pts[i] == pi) {\n      cout\
-    \ << i << ' ';\n      break;\n    }\n  }\n  for (j = 0; j < n; ++j) {\n    if\
-    \ (pts[j] == pj && j != i) {\n      cout << j << '\\n';\n      break;\n    }\n\
-    \  }\n}\n\nint main() {\n  int tc;\n  cin >> tc;\n  while (tc--) solve();\n}"
+    \n\nusing P = Point<ld>;\n\nvoid solve() {\n  int n;\n  cin >> n;\n  vector<P>\
+    \ pts(n);\n  for (auto& [x, y] : pts) cin >> x >> y;\n  auto cvh = convexHull(pts);\n\
+    \  auto [pi, pj] = hullDiameter(cvh);\n  int i, j;\n  for (i = 0; i < n; ++i)\
+    \ {\n    if (pts[i] == pi) {\n      cout << i << ' ';\n      break;\n    }\n \
+    \ }\n  for (j = 0; j < n; ++j) {\n    if (pts[j] == pj && j != i) {\n      cout\
+    \ << j << '\\n';\n      break;\n    }\n  }\n}\n\nint main() {\n  int tc;\n  cin\
+    \ >> tc;\n  while (tc--) solve();\n}"
   dependsOn:
   - misc/macros.h
   - geometry/ConvexHull.h
   - geometry/Point.h
   - geometry/HullDiameter.h
-  isVerificationFile: false
-  path: tests/Furthest_Pair_of_Points.tests.cpp
+  isVerificationFile: true
+  path: tests/Furthest_Pair_of_Points.test.cpp
   requiredBy: []
-  timestamp: '2025-11-21 16:03:24+07:00'
-  verificationStatus: LIBRARY_NO_TESTS
+  timestamp: '2025-11-21 16:23:19+07:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: tests/Furthest_Pair_of_Points.tests.cpp
+documentation_of: tests/Furthest_Pair_of_Points.test.cpp
 layout: document
 redirect_from:
-- /library/tests/Furthest_Pair_of_Points.tests.cpp
-- /library/tests/Furthest_Pair_of_Points.tests.cpp.html
-title: tests/Furthest_Pair_of_Points.tests.cpp
+- /verify/tests/Furthest_Pair_of_Points.test.cpp
+- /verify/tests/Furthest_Pair_of_Points.test.cpp.html
+title: tests/Furthest_Pair_of_Points.test.cpp
 ---

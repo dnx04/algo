@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/Circumcircle.h
     title: geometry/Circumcircle.h
   - icon: ':question:'
@@ -9,12 +9,12 @@ data:
     title: geometry/Point.h
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Minimum_Enclosing_Circle.test.cpp
     title: tests/Minimum_Enclosing_Circle.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/Point.h\"\n\ntemplate <class T>\nint sgn(T x) {\
@@ -34,21 +34,21 @@ data:
     \ }\n  // returns point rotated 'a' radians ccw around the origin\n  P rotate(ld\
     \ a) const {\n    return P(x * cos(a) - y * sin(a), x * sin(a) + y * cos(a));\n\
     \  }\n  friend ostream& operator<<(ostream& os, P p) {\n    return os << \"(\"\
-    \ << p.x << \",\" << p.y << \")\";\n  }\n};\ntypedef Point<i64> P;\n#line 2 \"\
-    geometry/Circumcircle.h\"\n\ntypedef Point<ld> P;\nld ccRadius(const P& A, const\
-    \ P& B, const P& C) {\n  return (B - A).dist() * (C - B).dist() * (A - C).dist()\
-    \ /\n         abs((B - A).cross(C - A)) / 2;\n}\nP ccCenter(const P& A, const\
-    \ P& B, const P& C) {\n  P b = C - A, c = B - A;\n  return A + (b * c.dist2()\
-    \ - c * b.dist2()).perp() / b.cross(c) / 2;\n}\n#line 2 \"geometry/MinimumEnclosingCircle.h\"\
-    \n\npair<P, ld> mec(vector<P> ps) {\n  shuffle(all(ps), mt19937(time(0)));\n \
-    \ P o = ps[0];\n  ld r = 0, EPS = 1 + 1e-12;\n  for (int i = 0; i < sz(ps); ++i)\
-    \ {\n    if ((o - ps[i]).dist() > r * EPS) {\n      o = ps[i], r = 0;\n      for\
-    \ (int j = 0; j < i; ++j) {\n        if ((o - ps[j]).dist() > r * EPS) {\n   \
-    \       o = (ps[i] + ps[j]) / 2;\n          r = (o - ps[i]).dist();\n        \
-    \  for (int k = 0; k < j; ++k) {\n            if ((o - ps[k]).dist() > r * EPS)\
-    \ {\n              o = ccCenter(ps[i], ps[j], ps[k]);\n              r = (o -\
-    \ ps[i]).dist();\n            }\n          }\n        }\n      }\n    }\n  }\n\
-    \  return {o, r};\n}\n"
+    \ << p.x << \",\" << p.y << \")\";\n  }\n};\n#line 2 \"geometry/Circumcircle.h\"\
+    \n\ntypedef Point<ld> P;\nld ccRadius(const P& A, const P& B, const P& C) {\n\
+    \  return (B - A).dist() * (C - B).dist() * (A - C).dist() /\n         abs((B\
+    \ - A).cross(C - A)) / 2;\n}\nP ccCenter(const P& A, const P& B, const P& C) {\n\
+    \  P b = C - A, c = B - A;\n  return A + (b * c.dist2() - c * b.dist2()).perp()\
+    \ / b.cross(c) / 2;\n}\n#line 2 \"geometry/MinimumEnclosingCircle.h\"\n\npair<P,\
+    \ ld> mec(vector<P> ps) {\n  shuffle(all(ps), mt19937(time(0)));\n  P o = ps[0];\n\
+    \  ld r = 0, EPS = 1 + 1e-12;\n  for (int i = 0; i < sz(ps); ++i) {\n    if ((o\
+    \ - ps[i]).dist() > r * EPS) {\n      o = ps[i], r = 0;\n      for (int j = 0;\
+    \ j < i; ++j) {\n        if ((o - ps[j]).dist() > r * EPS) {\n          o = (ps[i]\
+    \ + ps[j]) / 2;\n          r = (o - ps[i]).dist();\n          for (int k = 0;\
+    \ k < j; ++k) {\n            if ((o - ps[k]).dist() > r * EPS) {\n           \
+    \   o = ccCenter(ps[i], ps[j], ps[k]);\n              r = (o - ps[i]).dist();\n\
+    \            }\n          }\n        }\n      }\n    }\n  }\n  return {o, r};\n\
+    }\n"
   code: "#include \"Circumcircle.h\"\n\npair<P, ld> mec(vector<P> ps) {\n  shuffle(all(ps),\
     \ mt19937(time(0)));\n  P o = ps[0];\n  ld r = 0, EPS = 1 + 1e-12;\n  for (int\
     \ i = 0; i < sz(ps); ++i) {\n    if ((o - ps[i]).dist() > r * EPS) {\n      o\
@@ -64,8 +64,8 @@ data:
   isVerificationFile: false
   path: geometry/MinimumEnclosingCircle.h
   requiredBy: []
-  timestamp: '2025-11-21 16:03:24+07:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2025-11-21 16:12:02+07:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - tests/Minimum_Enclosing_Circle.test.cpp
 documentation_of: geometry/MinimumEnclosingCircle.h

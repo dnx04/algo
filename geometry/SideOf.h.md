@@ -31,11 +31,11 @@ data:
     \ }\n  // returns point rotated 'a' radians ccw around the origin\n  P rotate(ld\
     \ a) const {\n    return P(x * cos(a) - y * sin(a), x * sin(a) + y * cos(a));\n\
     \  }\n  friend ostream& operator<<(ostream& os, P p) {\n    return os << \"(\"\
-    \ << p.x << \",\" << p.y << \")\";\n  }\n};\ntypedef Point<i64> P;\n#line 2 \"\
-    geometry/SideOf.h\"\n\ntemplate <class P>\nint sideOf(P s, P e, P p) {\n  return\
-    \ sgn(s.cross(e, p));\n}\n\ntemplate <class P>\nint sideOf(const P& s, const P&\
-    \ e, const P& p, ld eps) {\n  auto a = (e - s).cross(p - s);\n  ld l = (e - s).dist()\
-    \ * eps;\n  return (a > l) - (a < -l);\n}\n"
+    \ << p.x << \",\" << p.y << \")\";\n  }\n};\n#line 2 \"geometry/SideOf.h\"\n\n\
+    template <class P>\nint sideOf(P s, P e, P p) {\n  return sgn(s.cross(e, p));\n\
+    }\n\ntemplate <class P>\nint sideOf(const P& s, const P& e, const P& p, ld eps)\
+    \ {\n  auto a = (e - s).cross(p - s);\n  ld l = (e - s).dist() * eps;\n  return\
+    \ (a > l) - (a < -l);\n}\n"
   code: "#include \"Point.h\"\n\ntemplate <class P>\nint sideOf(P s, P e, P p) {\n\
     \  return sgn(s.cross(e, p));\n}\n\ntemplate <class P>\nint sideOf(const P& s,\
     \ const P& e, const P& p, ld eps) {\n  auto a = (e - s).cross(p - s);\n  ld l\
@@ -46,7 +46,7 @@ data:
   path: geometry/SideOf.h
   requiredBy:
   - geometry/PointInsideHull.h
-  timestamp: '2025-11-21 16:03:24+07:00'
+  timestamp: '2025-11-21 16:12:02+07:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/SideOf.h
