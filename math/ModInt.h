@@ -1,3 +1,5 @@
+#pragma once
+
 template <int mod>
 struct modint {
   using M = modint;

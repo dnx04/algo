@@ -1,5 +1,5 @@
 // 0-indexed
-template <typename T, typename F>
+template <class T, class F>
 struct SegTree {
   int n, size;  // smallest size = 2^k >= n
   vector<T> seg;
@@ -47,7 +47,7 @@ struct SegTree {
     } while ((l & -l) != l);
     return n;
   }
-  template <typename C>
+  template <class C>
   int min_left(int r, C check) {
     assert(0 <= r && r <= n && check(I) == true);
     if (r == 0) return 0;

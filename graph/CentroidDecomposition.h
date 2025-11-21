@@ -1,4 +1,4 @@
-template <typename G>
+template <class G>
 struct CentroidDecomposition {
   const G& g;
   vi sub;

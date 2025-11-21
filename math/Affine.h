@@ -1,4 +1,4 @@
-template <typename T>
+template <class T>
 struct affine {
   T a, b;
   constexpr affine() : a(1), b(0) {}

@@ -1,5 +1,6 @@
 #include "Point.h"
 
+template <class P>
 vector<P> convexHull(vector<P> pts) {
   if (sz(pts) <= 1) return pts;
   sort(all(pts));

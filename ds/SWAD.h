@@ -1,4 +1,4 @@
-template <typename T, typename F>
+template <class T, class F>
 struct SWAD {
   vector<T> a0, a1, r0, r1;
   F f;

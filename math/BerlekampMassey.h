@@ -1,4 +1,4 @@
-template <typename Fp>
+template <class Fp>
 vector<Fp> BerlekampMassey(const vector<Fp>& s) {
   if (s.empty()) return {};
   int n = sz(s), L = 0, m = 0;

@@ -1,4 +1,4 @@
-template <typename G>
+template <class G>
 struct LowLink {
   const G& g;
   int N;

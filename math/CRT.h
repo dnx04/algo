@@ -1,4 +1,4 @@
-template <typename T>
+template <class T>
 struct CRT {
   T res;
   CRT() { res = 0, prd = 1; }

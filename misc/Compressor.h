@@ -1,4 +1,4 @@
-template <typename T>
+template <class T>
 vi compressor(vector<T>& v) {
   auto cv = v;
   sort(all(cv));

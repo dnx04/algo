@@ -1,6 +1,6 @@
 #include "Compressor.h"
 
-template <typename T, typename Fp>
+template <class T, class Fp>
 Fp CountSubseq(vector<T> a) {
   a = compressor<T>(a);
   vi last(sz(a) + 1, -1);

@@ -1,4 +1,4 @@
-template <typename T>
+template <class T>
 void FST(vector<T>& a, bool inv, string type) {
   for (int n = sz(a), step = 1; step < n; step *= 2) {
     for (int i = 0; i < n; i += 2 * step)
@@ -15,7 +15,7 @@ void FST(vector<T>& a, bool inv, string type) {
   if (inv && type == "xor")
     for (T& x : a) x /= sz(a);
 }
-template <typename T>
+template <class T>
 vector<T> conv(vector<T> a, vector<T> b, string type) {
   FST(a, 0, type);
   FST(b, 0, type);

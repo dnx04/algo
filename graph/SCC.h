@@ -1,9 +1,9 @@
-template <typename G>
+template <class G>
 struct SCC {
  public:
   vector<vi> dag;
   SCC(G& g) : g(g), used(sz(g), 0) { build(); }
-  int operator[](int k) { return comp[k]; } 
+  int operator[](int k) { return comp[k]; }
   vi& belong(int i) { return blng[i]; }
 
  private:
@@ -36,7 +36,8 @@ struct SCC {
       }
     }
     int ptr = 0;
-    for (int i : ord) if (comp[i] == -1) rdfs(i, ptr), ptr++;
+    for (int i : ord)
+      if (comp[i] == -1) rdfs(i, ptr), ptr++;
     rg.clear(), rg.shrink_to_fit();
     ord.clear(), ord.shrink_to_fit();
     dag.resize(ptr), blng.resize(ptr);

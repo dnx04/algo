@@ -1,4 +1,4 @@
-template <typename T>
+template <class T>
 struct Matrix {
   using vec = vector<T>;
   int n;

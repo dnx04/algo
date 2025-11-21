@@ -36,7 +36,7 @@ gp_hash_table<int, int, chash> table;
     find_by_order(k): returns an iterator to the k-th element (0-based)
     order_of_key(k): returns the number of elements in the set that are strictly less than k
 */
-template <typename T>
+template <class T>
 using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 
 // dynamic bitset

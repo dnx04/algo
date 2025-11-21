@@ -1,4 +1,4 @@
-template <typename F>
+template <class F>
 void EnumTriangles(int n, const vector<pii>& ed, F f) {  // 0-indexed graph
   vi deg(n);
   for (auto [u, v] : ed) ++deg[u], ++deg[v];

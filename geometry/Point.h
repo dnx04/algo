@@ -31,4 +31,3 @@ struct Point {
     return os << "(" << p.x << "," << p.y << ")";
   }
 };
-typedef Point<i64> P;

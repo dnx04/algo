@@ -1,6 +1,6 @@
 #include "HLD.h"
 
-template <typename G>
+template <class G>
 struct AuxiliaryTree {
   G g;
   HLD<G> hld;

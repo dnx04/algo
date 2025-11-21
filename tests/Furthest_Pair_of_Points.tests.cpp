@@ -4,6 +4,8 @@
 #include "../geometry/ConvexHull.h"
 #include "../geometry/HullDiameter.h"
 
+using P = Point<ld>;
+
 void solve() {
   int n;
   cin >> n;

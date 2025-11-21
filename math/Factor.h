@@ -1,3 +1,4 @@
+#include "ModInt.h"
 #include "MillerRabin.h"
 
 u64 pollard(u64 n) {

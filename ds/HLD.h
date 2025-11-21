@@ -1,4 +1,4 @@
-template <typename G>
+template <class G>
 struct HLD {
  private:
   void dfs_sz(int cur) {
@@ -55,8 +55,8 @@ struct HLD {
   }
 
   pii idx(int i) const { return make_pair(down[i], up[i]); }
-  
-  template <typename F>
+
+  template <class F>
   void path_query(int u, int v, bool vertex, const F& f) {
     int l = lca(u, v);
     for (auto&& [a, b] : ascend(u, l)) {
@@ -70,7 +70,7 @@ struct HLD {
     }
   }
 
-  template <typename F>
+  template <class F>
   void path_noncommutative_query(int u, int v, bool vertex, const F& f) {
     int l = lca(u, v);
     for (auto&& [a, b] : ascend(u, l)) f(a + 1, b);
@@ -78,7 +78,7 @@ struct HLD {
     for (auto&& [a, b] : descend(l, v)) f(a, b + 1);
   }
 
-  template <typename F>
+  template <class F>
   void subtree_query(int u, bool vertex, const F& f) {
     f(down[u] + int(!vertex), up[u]);
   }

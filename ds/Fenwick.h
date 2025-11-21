@@ -1,4 +1,4 @@
-template <typename T>
+template <class T>
 struct Fenwick {  // 1-indexed
   int n;
   vector<T> t;
