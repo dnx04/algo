@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: tests/LIS.test.cpp
+    title: tests/LIS.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/Point_Set_Range_Composite.test.cpp
     title: tests/Point_Set_Range_Composite.test.cpp
   _isVerificationFailed: false
@@ -67,6 +70,7 @@ data:
   timestamp: '2025-11-20 17:14:03+07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - tests/LIS.test.cpp
   - tests/Point_Set_Range_Composite.test.cpp
 documentation_of: ds/SegTree.h
 layout: document

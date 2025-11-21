@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: tests/Persistent_Unionfind.test.cpp
+    title: tests/Persistent_Unionfind.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"ds/DSURollback.h\"\nstruct DSURollback {\n  int n;\n  vector<int>\
@@ -29,8 +32,9 @@ data:
   path: ds/DSURollback.h
   requiredBy: []
   timestamp: '2025-11-20 10:20:22+07:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - tests/Persistent_Unionfind.test.cpp
 documentation_of: ds/DSURollback.h
 layout: document
 redirect_from:

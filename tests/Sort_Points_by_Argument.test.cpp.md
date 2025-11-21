@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/Point.h
     title: geometry/Point.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/sort_points_by_argument
@@ -38,8 +38,8 @@ data:
     \ null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n// dynamic\
     \ bitset\nusing bs = tr2::dynamic_bitset<u64>;\n\n/*  rope\n    rope <int> cur\
     \ = v.substr(l, r - l + 1);\n    v.erase(l, r - l + 1);\n    v.insert(v.mutable_begin(),\
-    \ cur);\n*/\n#line 1 \"geometry/Point.h\"\ntemplate <class T>\nint sgn(T x) {\n\
-    \  return (x > 0) - (x < 0);\n}\ntemplate <class T>\nstruct Point {\n  typedef\
+    \ cur);\n*/\n#line 2 \"geometry/Point.h\"\n\ntemplate <class T>\nint sgn(T x)\
+    \ { return (x > 0) - (x < 0); }\ntemplate <class T>\nstruct Point {\n  typedef\
     \ Point P;\n  T x, y;\n  explicit Point(T x = 0, T y = 0) : x(x), y(y) {}\n  bool\
     \ operator<(P p) const { return tie(x, y) < tie(p.x, p.y); }\n  bool operator==(P\
     \ p) const { return tie(x, y) == tie(p.x, p.y); }\n  P operator+(P p) const {\
@@ -55,14 +55,14 @@ data:
     \ perp().unit(); }\n  // returns point rotated 'a' radians ccw around the origin\n\
     \  P rotate(ld a) const {\n    return P(x * cos(a) - y * sin(a), x * sin(a) +\
     \ y * cos(a));\n  }\n  friend ostream& operator<<(ostream& os, P p) {\n    return\
-    \ os << \"(\" << p.x << \",\" << p.y << \")\";\n  }\n};\n#line 5 \"tests/Sort_Points_by_Argument.test.cpp\"\
-    \n\ntypedef Point<ld> P;\n\nvoid solve() {\n  int n;\n  cin >> n;\n  vector<P>\
-    \ pts(n);\n  for(int i = 0; i < n; ++i) cin >> pts[i].x >> pts[i].y;\n  stable_sort(all(pts),\
-    \ [&](P a, P b) { return a.angle() < b.angle(); });\n  for (auto p : pts)\n  \
-    \  cout << fixed << setprecision(0) << p.x << ' ' << p.y << '\\n';\n}\n\nint main()\
-    \ {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n  int\
-    \ tc = 1;\n  //   cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n\
-    \  }\n}\n"
+    \ os << \"(\" << p.x << \",\" << p.y << \")\";\n  }\n};\ntypedef Point<i64> P;\n\
+    #line 5 \"tests/Sort_Points_by_Argument.test.cpp\"\n\ntypedef Point<ld> P;\n\n\
+    void solve() {\n  int n;\n  cin >> n;\n  vector<P> pts(n);\n  for(int i = 0; i\
+    \ < n; ++i) cin >> pts[i].x >> pts[i].y;\n  stable_sort(all(pts), [&](P a, P b)\
+    \ { return a.angle() < b.angle(); });\n  for (auto p : pts)\n    cout << fixed\
+    \ << setprecision(0) << p.x << ' ' << p.y << '\\n';\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n\
+    \  cin.exceptions(cin.failbit);\n  int tc = 1;\n  //   cin >> tc;\n  for (int\
+    \ i = 1; i <= tc; ++i) {\n    solve();\n  }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/sort_points_by_argument\"\
     \n\n#include \"../misc/macros.h\"\n#include \"../geometry/Point.h\"\n\ntypedef\
     \ Point<ld> P;\n\nvoid solve() {\n  int n;\n  cin >> n;\n  vector<P> pts(n);\n\
@@ -78,8 +78,8 @@ data:
   isVerificationFile: true
   path: tests/Sort_Points_by_Argument.test.cpp
   requiredBy: []
-  timestamp: '2025-11-18 18:35:11+07:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-11-21 16:03:24+07:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: tests/Sort_Points_by_Argument.test.cpp
 layout: document

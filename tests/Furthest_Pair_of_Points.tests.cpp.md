@@ -1,12 +1,12 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
-    path: geometry/Circumcircle.h
-    title: geometry/Circumcircle.h
-  - icon: ':x:'
-    path: geometry/MinimumEnclosingCircle.h
-    title: geometry/MinimumEnclosingCircle.h
+  - icon: ':heavy_check_mark:'
+    path: geometry/ConvexHull.h
+    title: geometry/ConvexHull.h
+  - icon: ':warning:'
+    path: geometry/HullDiameter.h
+    title: geometry/HullDiameter.h
   - icon: ':question:'
     path: geometry/Point.h
     title: geometry/Point.h
@@ -15,16 +15,14 @@ data:
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/minimum_enclosing_circle
     links:
-    - https://judge.yosupo.jp/problem/minimum_enclosing_circle
-  bundledCode: "#line 1 \"tests/Minimum_Enclosing_Circle.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/problem/minimum_enclosing_circle\"\n\n#line 1 \"misc/macros.h\"\
+    - https://judge.yosupo.jp/problem/furthest_pair
+  bundledCode: "#line 1 \"tests/Furthest_Pair_of_Points.tests.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/furthest_pair\"\n\n#line 1 \"misc/macros.h\"\
     \n// #pragma GCC optimize(\"Ofast,unroll-loops\")       // unroll long, simple\
     \ loops\n// #pragma GCC target(\"avx2,fma\")                   // vectorizing\
     \ code\n// #pragma GCC target(\"lzcnt,popcnt,abm,bmi,bmi2\")  // for fast bitset\
@@ -62,51 +60,47 @@ data:
     \  P rotate(ld a) const {\n    return P(x * cos(a) - y * sin(a), x * sin(a) +\
     \ y * cos(a));\n  }\n  friend ostream& operator<<(ostream& os, P p) {\n    return\
     \ os << \"(\" << p.x << \",\" << p.y << \")\";\n  }\n};\ntypedef Point<i64> P;\n\
-    #line 2 \"geometry/Circumcircle.h\"\n\ntypedef Point<ld> P;\nld ccRadius(const\
-    \ P& A, const P& B, const P& C) {\n  return (B - A).dist() * (C - B).dist() *\
-    \ (A - C).dist() /\n         abs((B - A).cross(C - A)) / 2;\n}\nP ccCenter(const\
-    \ P& A, const P& B, const P& C) {\n  P b = C - A, c = B - A;\n  return A + (b\
-    \ * c.dist2() - c * b.dist2()).perp() / b.cross(c) / 2;\n}\n#line 2 \"geometry/MinimumEnclosingCircle.h\"\
-    \n\npair<P, ld> mec(vector<P> ps) {\n  shuffle(all(ps), mt19937(time(0)));\n \
-    \ P o = ps[0];\n  ld r = 0, EPS = 1 + 1e-12;\n  for (int i = 0; i < sz(ps); ++i)\
-    \ {\n    if ((o - ps[i]).dist() > r * EPS) {\n      o = ps[i], r = 0;\n      for\
-    \ (int j = 0; j < i; ++j) {\n        if ((o - ps[j]).dist() > r * EPS) {\n   \
-    \       o = (ps[i] + ps[j]) / 2;\n          r = (o - ps[i]).dist();\n        \
-    \  for (int k = 0; k < j; ++k) {\n            if ((o - ps[k]).dist() > r * EPS)\
-    \ {\n              o = ccCenter(ps[i], ps[j], ps[k]);\n              r = (o -\
-    \ ps[i]).dist();\n            }\n          }\n        }\n      }\n    }\n  }\n\
-    \  return {o, r};\n}\n#line 5 \"tests/Minimum_Enclosing_Circle.test.cpp\"\n\n\
-    using P = Point<ld>;\nvoid solve() {\n  int n;\n  cin >> n;\n  vector<P> pts(n);\n\
-    \  for (auto& [x, y] : pts) cin >> x >> y;\n  auto [o, r] = mec(pts);\n  const\
-    \ ld EPS = 1e-10;\n  for (int i = 0; i < n; ++i) {\n    if (fabsl((o - pts[i]).dist2()\
-    \ - r * r) < EPS) {\n      cout << 1;\n    } else {\n      cout << 0;\n    }\n\
-    \  }\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
-    \  int tc = 1;\n  // cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n\
-    \  }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/minimum_enclosing_circle\"\
-    \n\n#include \"../misc/macros.h\"\n#include \"../geometry/MinimumEnclosingCircle.h\"\
-    \n\nusing P = Point<ld>;\nvoid solve() {\n  int n;\n  cin >> n;\n  vector<P> pts(n);\n\
-    \  for (auto& [x, y] : pts) cin >> x >> y;\n  auto [o, r] = mec(pts);\n  const\
-    \ ld EPS = 1e-10;\n  for (int i = 0; i < n; ++i) {\n    if (fabsl((o - pts[i]).dist2()\
-    \ - r * r) < EPS) {\n      cout << 1;\n    } else {\n      cout << 0;\n    }\n\
-    \  }\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
-    \  int tc = 1;\n  // cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n\
-    \  }\n}\n"
+    #line 2 \"geometry/ConvexHull.h\"\n\nvector<P> convexHull(vector<P> pts) {\n \
+    \ if (sz(pts) <= 1) return pts;\n  sort(all(pts));\n  vector<P> h(2 * sz(pts)\
+    \ + 2);\n  int s = 0, t = 0;\n  for (int it = 2; it--; s = --t, reverse(all(pts)))\
+    \ {\n    for (P p : pts) {\n      while (t >= s + 2 && h[t - 2].cross(h[t - 1],\
+    \ p) <= 0) t--;\n      h[t++] = p;\n    }\n  }\n  return {h.begin(), h.begin()\
+    \ + t - (t == 2 && h[0] == h[1])};\n}\n#line 2 \"geometry/HullDiameter.h\"\n\n\
+    // S must already be a convex hull\narray<P, 2> hullDiameter(vector<P> S) {\n\
+    \  int n = sz(S), j = n < 2 ? 0 : 1;\n  pair<i64, array<P, 2>> res({0, {S[0],\
+    \ S[0]}});\n  for (int i = 0; i < j; ++i) {\n    for (;; j = (j + 1) % n) {\n\
+    \      res = max(res, {(S[i] - S[j]).dist2(), {S[i], S[j]}});\n      if ((S[(j\
+    \ + 1) % n] - S[j]).cross(S[i + 1] - S[i]) >= 0) break;\n    }\n  }\n  return\
+    \ res.second;\n}\n#line 6 \"tests/Furthest_Pair_of_Points.tests.cpp\"\n\nvoid\
+    \ solve() {\n  int n;\n  cin >> n;\n  vector<P> pts(n);\n  for (auto& [x, y] :\
+    \ pts) cin >> x >> y;\n  auto cvh = convexHull(pts);\n  auto [pi, pj] = hullDiameter(cvh);\n\
+    \  int i, j;\n  for (i = 0; i < n; ++i) {\n    if (pts[i] == pi) {\n      cout\
+    \ << i << ' ';\n      break;\n    }\n  }\n  for (j = 0; j < n; ++j) {\n    if\
+    \ (pts[j] == pj && j != i) {\n      cout << j << '\\n';\n      break;\n    }\n\
+    \  }\n}\n\nint main() {\n  int tc;\n  cin >> tc;\n  while (tc--) solve();\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/furthest_pair\"\n\n#include\
+    \ \"../misc/macros.h\"\n#include \"../geometry/ConvexHull.h\"\n#include \"../geometry/HullDiameter.h\"\
+    \n\nvoid solve() {\n  int n;\n  cin >> n;\n  vector<P> pts(n);\n  for (auto& [x,\
+    \ y] : pts) cin >> x >> y;\n  auto cvh = convexHull(pts);\n  auto [pi, pj] = hullDiameter(cvh);\n\
+    \  int i, j;\n  for (i = 0; i < n; ++i) {\n    if (pts[i] == pi) {\n      cout\
+    \ << i << ' ';\n      break;\n    }\n  }\n  for (j = 0; j < n; ++j) {\n    if\
+    \ (pts[j] == pj && j != i) {\n      cout << j << '\\n';\n      break;\n    }\n\
+    \  }\n}\n\nint main() {\n  int tc;\n  cin >> tc;\n  while (tc--) solve();\n}"
   dependsOn:
   - misc/macros.h
-  - geometry/MinimumEnclosingCircle.h
-  - geometry/Circumcircle.h
+  - geometry/ConvexHull.h
   - geometry/Point.h
-  isVerificationFile: true
-  path: tests/Minimum_Enclosing_Circle.test.cpp
+  - geometry/HullDiameter.h
+  isVerificationFile: false
+  path: tests/Furthest_Pair_of_Points.tests.cpp
   requiredBy: []
   timestamp: '2025-11-21 16:03:24+07:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: tests/Minimum_Enclosing_Circle.test.cpp
+documentation_of: tests/Furthest_Pair_of_Points.tests.cpp
 layout: document
 redirect_from:
-- /verify/tests/Minimum_Enclosing_Circle.test.cpp
-- /verify/tests/Minimum_Enclosing_Circle.test.cpp.html
-title: tests/Minimum_Enclosing_Circle.test.cpp
+- /library/tests/Furthest_Pair_of_Points.tests.cpp
+- /library/tests/Furthest_Pair_of_Points.tests.cpp.html
+title: tests/Furthest_Pair_of_Points.tests.cpp
 ---

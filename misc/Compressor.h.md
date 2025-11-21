@@ -7,6 +7,9 @@ data:
     title: misc/CountSubseq.h
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: tests/LIS.test.cpp
+    title: tests/LIS.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/Number_of_Subsequences.test.cpp
     title: tests/Number_of_Subsequences.test.cpp
   _isVerificationFailed: false
@@ -29,6 +32,7 @@ data:
   timestamp: '2025-11-15 15:31:54+07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - tests/LIS.test.cpp
   - tests/Number_of_Subsequences.test.cpp
 documentation_of: misc/Compressor.h
 layout: document

@@ -9,7 +9,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: ds/DSU.h
       title: ds/DSU.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: ds/DSURollback.h
       title: ds/DSURollback.h
     - icon: ':heavy_check_mark:'
@@ -59,7 +59,7 @@ data:
     - icon: ':warning:'
       path: geometry/CircleTangents.h
       title: geometry/CircleTangents.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: geometry/Circumcircle.h
       title: geometry/Circumcircle.h
     - icon: ':heavy_check_mark:'
@@ -92,7 +92,7 @@ data:
     - icon: ':warning:'
       path: geometry/LinearTransformation.h
       title: geometry/LinearTransformation.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: geometry/MinimumEnclosingCircle.h
       title: geometry/MinimumEnclosingCircle.h
     - icon: ':warning:'
@@ -101,7 +101,7 @@ data:
     - icon: ':warning:'
       path: geometry/OnSegment.h
       title: geometry/OnSegment.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: geometry/Point.h
       title: geometry/Point.h
     - icon: ':warning:'
@@ -220,6 +220,9 @@ data:
       path: math/NTT.h
       title: math/NTT.h
     - icon: ':heavy_check_mark:'
+      path: math/SumPowerPoly.h
+      title: math/SumPowerPoly.h
+    - icon: ':heavy_check_mark:'
       path: math/XorBasis.h
       title: math/XorBasis.h
   - name: misc
@@ -257,7 +260,7 @@ data:
     - icon: ':warning:'
       path: misc/SOSDP.cpp
       title: misc/SOSDP.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: misc/macros.h
       title: misc/macros.h
     - icon: ':warning:'
@@ -277,6 +280,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: strings/Z.h
       title: strings/Z.h
+  - name: tests
+    pages:
+    - icon: ':warning:'
+      path: tests/Furthest_Pair_of_Points.tests.cpp
+      title: tests/Furthest_Pair_of_Points.tests.cpp
   verificationCategories:
   - name: tests
     pages:
@@ -341,6 +349,9 @@ data:
       path: tests/Intersection_of_F2_vector_spaces.test.cpp
       title: tests/Intersection_of_F2_vector_spaces.test.cpp
     - icon: ':heavy_check_mark:'
+      path: tests/LIS.test.cpp
+      title: tests/LIS.test.cpp
+    - icon: ':heavy_check_mark:'
       path: tests/Line_Add_Get_Min.test.cpp
       title: tests/Line_Add_Get_Min.test.cpp
     - icon: ':heavy_check_mark:'
@@ -349,12 +360,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Maximum_Independent_Set.test.cpp
       title: tests/Maximum_Independent_Set.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Minimum_Enclosing_Circle.test.cpp
       title: tests/Minimum_Enclosing_Circle.test.cpp
     - icon: ':heavy_check_mark:'
       path: tests/Number_of_Subsequences.test.cpp
       title: tests/Number_of_Subsequences.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: tests/Persistent_Unionfind.test.cpp
+      title: tests/Persistent_Unionfind.test.cpp
     - icon: ':heavy_check_mark:'
       path: tests/Point_Add_Range_Sum.test.cpp
       title: tests/Point_Add_Range_Sum.test.cpp
@@ -379,7 +393,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/SCC.test.cpp
       title: tests/SCC.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Sort_Points_by_Argument.test.cpp
       title: tests/Sort_Points_by_Argument.test.cpp
     - icon: ':heavy_check_mark:'
@@ -391,6 +405,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Static_RMQ.test.cpp
       title: tests/Static_RMQ.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: tests/Sum_of_Exponential_times_Polynomial.test.cpp
+      title: tests/Sum_of_Exponential_times_Polynomial.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
+      title: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
     - icon: ':heavy_check_mark:'
       path: tests/Sum_of_Floor_of_Linear.test.cpp
       title: tests/Sum_of_Floor_of_Linear.test.cpp

@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: tests/Furthest_Pair_of_Points.tests.cpp
+    title: tests/Furthest_Pair_of_Points.tests.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: tests/2_Sat.test.cpp
@@ -64,6 +67,9 @@ data:
     path: tests/Intersection_of_F2_vector_spaces.test.cpp
     title: tests/Intersection_of_F2_vector_spaces.test.cpp
   - icon: ':heavy_check_mark:'
+    path: tests/LIS.test.cpp
+    title: tests/LIS.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/Line_Add_Get_Min.test.cpp
     title: tests/Line_Add_Get_Min.test.cpp
   - icon: ':heavy_check_mark:'
@@ -72,12 +78,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Maximum_Independent_Set.test.cpp
     title: tests/Maximum_Independent_Set.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Minimum_Enclosing_Circle.test.cpp
     title: tests/Minimum_Enclosing_Circle.test.cpp
   - icon: ':heavy_check_mark:'
     path: tests/Number_of_Subsequences.test.cpp
     title: tests/Number_of_Subsequences.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Persistent_Unionfind.test.cpp
+    title: tests/Persistent_Unionfind.test.cpp
   - icon: ':heavy_check_mark:'
     path: tests/Point_Add_Range_Sum.test.cpp
     title: tests/Point_Add_Range_Sum.test.cpp
@@ -102,7 +111,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/SCC.test.cpp
     title: tests/SCC.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Sort_Points_by_Argument.test.cpp
     title: tests/Sort_Points_by_Argument.test.cpp
   - icon: ':heavy_check_mark:'
@@ -115,6 +124,12 @@ data:
     path: tests/Static_RMQ.test.cpp
     title: tests/Static_RMQ.test.cpp
   - icon: ':heavy_check_mark:'
+    path: tests/Sum_of_Exponential_times_Polynomial.test.cpp
+    title: tests/Sum_of_Exponential_times_Polynomial.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
+    title: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/Sum_of_Floor_of_Linear.test.cpp
     title: tests/Sum_of_Floor_of_Linear.test.cpp
   - icon: ':heavy_check_mark:'
@@ -126,9 +141,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Z_Algorithm.test.cpp
     title: tests/Z_Algorithm.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"misc/macros.h\"\n// #pragma GCC optimize(\"Ofast,unroll-loops\"\
@@ -174,11 +189,13 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: misc/macros.h
-  requiredBy: []
+  requiredBy:
+  - tests/Furthest_Pair_of_Points.tests.cpp
   timestamp: '2025-11-18 17:12:08+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - tests/Bitwise_Xor_Convolution.test.cpp
+  - tests/Sum_of_Exponential_times_Polynomial.test.cpp
   - tests/Static_Convex_Hull.test.cpp
   - tests/SCC.test.cpp
   - tests/Eulerian_Trail_Directed.test.cpp
@@ -193,9 +210,11 @@ data:
   - tests/Factorize.test.cpp
   - tests/Line_Add_Get_Min.test.cpp
   - tests/General_Matching.test.cpp
+  - tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
   - tests/Maximum_Independent_Set.test.cpp
   - tests/Dominator_Tree.test.cpp
   - tests/Static_RMQ.test.cpp
+  - tests/Persistent_Unionfind.test.cpp
   - tests/Eulerian_Trail_Undirected.test.cpp
   - tests/Enumerate_Quotients.test.cpp
   - tests/Matching_on_Bipartite_Graph_HopcroftKarp.test.cpp
@@ -206,6 +225,7 @@ data:
   - tests/Vertex_Add_Path_Sum.test.cpp
   - tests/Discrete_Logarithm.test.cpp
   - tests/Range_Affine_Range_Sum.test.cpp
+  - tests/LIS.test.cpp
   - tests/Intersection_of_F2_vector_spaces.test.cpp
   - tests/Sort_Points_by_Argument.test.cpp
   - tests/Convolution.test.cpp

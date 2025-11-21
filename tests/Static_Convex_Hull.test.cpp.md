@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/ConvexHull.h
     title: geometry/ConvexHull.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/Point.h
     title: geometry/Point.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
@@ -41,35 +41,34 @@ data:
     \ null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n// dynamic\
     \ bitset\nusing bs = tr2::dynamic_bitset<u64>;\n\n/*  rope\n    rope <int> cur\
     \ = v.substr(l, r - l + 1);\n    v.erase(l, r - l + 1);\n    v.insert(v.mutable_begin(),\
-    \ cur);\n*/\n#line 4 \"tests/Static_Convex_Hull.test.cpp\"\n\n#line 1 \"geometry/Point.h\"\
-    \ntemplate <class T>\nint sgn(T x) {\n  return (x > 0) - (x < 0);\n}\ntemplate\
-    \ <class T>\nstruct Point {\n  typedef Point P;\n  T x, y;\n  explicit Point(T\
-    \ x = 0, T y = 0) : x(x), y(y) {}\n  bool operator<(P p) const { return tie(x,\
-    \ y) < tie(p.x, p.y); }\n  bool operator==(P p) const { return tie(x, y) == tie(p.x,\
-    \ p.y); }\n  P operator+(P p) const { return P(x + p.x, y + p.y); }\n  P operator-(P\
-    \ p) const { return P(x - p.x, y - p.y); }\n  P operator*(T d) const { return\
-    \ P(x * d, y * d); }\n  P operator/(T d) const { return P(x / d, y / d); }\n \
-    \ T dot(P p) const { return x * p.x + y * p.y; }\n  T cross(P p) const { return\
-    \ x * p.y - y * p.x; }\n  T cross(P a, P b) const { return (a - *this).cross(b\
-    \ - *this); }\n  T dist2() const { return x * x + y * y; }\n  T dist() const {\
-    \ return sqrt(dist2()); }\n  // angle to x-axis in interval [-pi, pi]\n  T angle()\
-    \ const { return atan2l(y, x); }\n  P unit() const { return *this / dist(); }\
-    \  // makes dist()=1\n  P perp() const { return P(-y, x); }        // rotates\
-    \ +90 degrees\n  P normal() const { return perp().unit(); }\n  // returns point\
-    \ rotated 'a' radians ccw around the origin\n  P rotate(ld a) const {\n    return\
-    \ P(x * cos(a) - y * sin(a), x * sin(a) + y * cos(a));\n  }\n  friend ostream&\
-    \ operator<<(ostream& os, P p) {\n    return os << \"(\" << p.x << \",\" << p.y\
-    \ << \")\";\n  }\n};\n#line 2 \"geometry/ConvexHull.h\"\n\ntypedef Point<i64>\
-    \ P;\nvector<P> convexHull(vector<P> pts) {\n  if (sz(pts) <= 1) return pts;\n\
-    \  sort(all(pts));\n  vector<P> h(2 * sz(pts) + 2);\n  int s = 0, t = 0;\n  for\
-    \ (int it = 2; it--; s = --t, reverse(all(pts))) {\n    for (P p : pts) {\n  \
-    \    while (t >= s + 2 && h[t - 2].cross(h[t - 1], p) <= 0) t--;\n      h[t++]\
-    \ = p;\n    }\n  }\n  return {h.begin(), h.begin() + t - (t == 2 && h[0] == h[1])};\n\
-    }\n#line 6 \"tests/Static_Convex_Hull.test.cpp\"\n\nvoid solve() {\n  int n;\n\
-    \  cin >> n;\n  vector<Point<i64>> pts(n);\n  for (int i = 0; i < n; ++i) cin\
-    \ >> pts[i].x >> pts[i].y;\n  auto hull = convexHull(pts);\n  cout << sz(hull)\
-    \ << '\\n';\n  for (auto p : hull) cout << p.x << ' ' << p.y << '\\n';\n}\n\n\
-    int main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
+    \ cur);\n*/\n#line 4 \"tests/Static_Convex_Hull.test.cpp\"\n\n#line 2 \"geometry/Point.h\"\
+    \n\ntemplate <class T>\nint sgn(T x) { return (x > 0) - (x < 0); }\ntemplate <class\
+    \ T>\nstruct Point {\n  typedef Point P;\n  T x, y;\n  explicit Point(T x = 0,\
+    \ T y = 0) : x(x), y(y) {}\n  bool operator<(P p) const { return tie(x, y) < tie(p.x,\
+    \ p.y); }\n  bool operator==(P p) const { return tie(x, y) == tie(p.x, p.y); }\n\
+    \  P operator+(P p) const { return P(x + p.x, y + p.y); }\n  P operator-(P p)\
+    \ const { return P(x - p.x, y - p.y); }\n  P operator*(T d) const { return P(x\
+    \ * d, y * d); }\n  P operator/(T d) const { return P(x / d, y / d); }\n  T dot(P\
+    \ p) const { return x * p.x + y * p.y; }\n  T cross(P p) const { return x * p.y\
+    \ - y * p.x; }\n  T cross(P a, P b) const { return (a - *this).cross(b - *this);\
+    \ }\n  T dist2() const { return x * x + y * y; }\n  T dist() const { return sqrt(dist2());\
+    \ }\n  // angle to x-axis in interval [-pi, pi]\n  T angle() const { return atan2l(y,\
+    \ x); }\n  P unit() const { return *this / dist(); }  // makes dist()=1\n  P perp()\
+    \ const { return P(-y, x); }        // rotates +90 degrees\n  P normal() const\
+    \ { return perp().unit(); }\n  // returns point rotated 'a' radians ccw around\
+    \ the origin\n  P rotate(ld a) const {\n    return P(x * cos(a) - y * sin(a),\
+    \ x * sin(a) + y * cos(a));\n  }\n  friend ostream& operator<<(ostream& os, P\
+    \ p) {\n    return os << \"(\" << p.x << \",\" << p.y << \")\";\n  }\n};\ntypedef\
+    \ Point<i64> P;\n#line 2 \"geometry/ConvexHull.h\"\n\nvector<P> convexHull(vector<P>\
+    \ pts) {\n  if (sz(pts) <= 1) return pts;\n  sort(all(pts));\n  vector<P> h(2\
+    \ * sz(pts) + 2);\n  int s = 0, t = 0;\n  for (int it = 2; it--; s = --t, reverse(all(pts)))\
+    \ {\n    for (P p : pts) {\n      while (t >= s + 2 && h[t - 2].cross(h[t - 1],\
+    \ p) <= 0) t--;\n      h[t++] = p;\n    }\n  }\n  return {h.begin(), h.begin()\
+    \ + t - (t == 2 && h[0] == h[1])};\n}\n#line 6 \"tests/Static_Convex_Hull.test.cpp\"\
+    \n\nvoid solve() {\n  int n;\n  cin >> n;\n  vector<Point<i64>> pts(n);\n  for\
+    \ (int i = 0; i < n; ++i) cin >> pts[i].x >> pts[i].y;\n  auto hull = convexHull(pts);\n\
+    \  cout << sz(hull) << '\\n';\n  for (auto p : hull) cout << p.x << ' ' << p.y\
+    \ << '\\n';\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
     \  int tc = 1;\n  cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n\
     \  }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_convex_hull\"\n\n\
@@ -87,7 +86,7 @@ data:
   isVerificationFile: true
   path: tests/Static_Convex_Hull.test.cpp
   requiredBy: []
-  timestamp: '2025-11-18 18:21:29+07:00'
+  timestamp: '2025-11-21 16:03:24+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Static_Convex_Hull.test.cpp

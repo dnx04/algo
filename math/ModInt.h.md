@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: math/SumPowerPoly.h
+    title: math/SumPowerPoly.h
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: tests/Bitwise_And_Convolution.test.cpp
@@ -48,6 +51,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Sqrt_Mod.test.cpp
     title: tests/Sqrt_Mod.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Sum_of_Exponential_times_Polynomial.test.cpp
+    title: tests/Sum_of_Exponential_times_Polynomial.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
+    title: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -104,16 +113,19 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: math/ModInt.h
-  requiredBy: []
+  requiredBy:
+  - math/SumPowerPoly.h
   timestamp: '2025-11-19 16:07:23+07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - tests/Bitwise_Xor_Convolution.test.cpp
+  - tests/Sum_of_Exponential_times_Polynomial.test.cpp
   - tests/Enumerate_Triangles.test.cpp
   - tests/Deque_Operate_All_Composite.test.cpp
   - tests/Pow_of_Matrix.test.cpp
   - tests/Range_Affine_Point_Get.test.cpp
   - tests/Factorize.test.cpp
+  - tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
   - tests/Find_Linear_Recurrence.test.cpp
   - tests/Primality_Test.test.cpp
   - tests/Sqrt_Mod.test.cpp
