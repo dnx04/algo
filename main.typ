@@ -132,13 +132,12 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 
 = Cấu trúc dữ liệu
 
-// #file("ds/DSURollback.h")
+
 #file("ds/DSU.h")
 #file("ds/RMQ.h")
 #file("ds/Fenwick.h")
 #file("ds/SegTree.h")
 #file("ds/LazySegTree.h")
-#file("ds/PersistentSegTree.h", description: [])
 #file("ds/HLD.h", description: [
   HLD cho phép truy vấn cả đường đi và cây con trong $O(log N)$.
   1. `pos(x)`: trả về vị trí của đỉnh `x` trong quá trình duyệt DFS.
@@ -146,6 +145,8 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
   3. `path_query(a, b, f)`: phân hoạch đường đi từ `a` đến `b` thành các đoạn liên tiếp trong mảng DFS. Hàm `f` có thể được dùng để truy vấn/cập nhật Segment Tree.
 ])
 #file("ds/AuxiliaryTree.h")
+#file("ds/PersistentSegTree.h")
+#file("ds/DSURollback.h")
 #file(
   "ds/LineContainer.h",
   description: [Duy trì tập các đường thẳng dạng $y = k x + m$ và truy vấn giá trị *lớn nhất* tại điểm $x$. Nếu muốn tìm giá trị nhỏ nhất, đổi dấu `k`, `m` và kết quả truy vấn.
@@ -226,13 +227,6 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 
 #file("misc/CountSubseq.h")
 #file(
-  "misc/1D1D.cpp",
-  description: [
-    Nếu hàm $w(i, j)$ thoả mãn bất đẳng thức tứ giác: $w(a, c) + w(b, d) <= w(a, d) + w(b, c)$ với mọi $a < b < c < d$, thì ta có thể tính hàm DP 1 chiều: $f(i) = min_(0 <= j < i) f(j) + w(j, i)$ trong $O(n log n)$.
-  ],
-  hash: false,
-)
-#file(
   "misc/SOSDP.cpp",
   description: [
     Toàn bộ implementation SOS DP của VNOI.
@@ -240,8 +234,20 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
   hash: false,
 )
 #file(
+  "misc/1D1D.h",
+  description: [
+    Nếu hàm $w(i, j)$ thoả mãn bất đẳng thức tứ giác: $w(a, c) + w(b, d) <= w(a, d) + w(b, c)$ với mọi $a < b < c < d$, thì ta có thể tính hàm DP 1 chiều: $f(i) = min_(0 <= j < i) f(j) + w(j, i)$ trong $O(n log n)$.
+  ],
+  hash: false,
+)
+#file(
   "misc/Knuth.h",
   description: [Nếu hàm $w(i, j)$ thoả mãn bất đẳng thức tứ giác: $w(a, c) + w(b, d) <= w(a, d) + w(b, c)$ với mọi $a < b < c < d$, thì ta có thể tính hàm DP: $f(i, j) = min_(i <= k < j) f(i, k) + f(k + 1, j) + w(j, i)$ trong $O(n^2)$.],
+  hash: false,
+)
+#file(
+  "misc/DnCDP.h",
+  description: [Nếu hàm $w(i, j)$ thoả mãn bất đẳng thức tứ giác: $w(a, c) + w(b, d) <= w(a, d) + w(b, c)$ với mọi $a < b < c < d$, thì ta có thể tính hàm DP: $f[i][j] = min_{k < j} (f[i-1][k] + w(k+1, j))$ trong $O(n log n)$.],
   hash: false,
 )
 
@@ -256,9 +262,6 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 // #file("misc/ContinuedFraction.h", description: [
 //   Cho $N$ và số thực $x > 0$, tính xấp xỉ hữu tỉ $p/q$ của $x$ với $p, q <= N$ trong $O(log N)$. Đảm bảo $abs(p/q - x) < 1/q$.
 
-// ])
-
-// #file("misc/HexGrid.h", hash: false)
 #file(
   "misc/MaximalCliques.h",
   description: [Chạy một hàm nào đó duyệt qua tất cả các clique của một đồ thị trong $O(3^(n/3))$.],
