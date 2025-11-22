@@ -4,6 +4,12 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: tests/Longest_Common_Substring.test.cpp
+    title: tests/Longest_Common_Substring.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Number_of_Substrings.test.cpp
+    title: tests/Number_of_Substrings.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/Run_Enumerate.test.cpp
     title: tests/Run_Enumerate.test.cpp
   - icon: ':heavy_check_mark:'
@@ -53,8 +59,10 @@ data:
   timestamp: '2025-11-22 00:26:56+07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - tests/Longest_Common_Substring.test.cpp
   - tests/Run_Enumerate.test.cpp
   - tests/Suffix_Array.test.cpp
+  - tests/Number_of_Substrings.test.cpp
 documentation_of: strings/SuffixArray.h
 layout: document
 redirect_from:

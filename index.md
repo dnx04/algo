@@ -231,8 +231,8 @@ data:
   - name: misc
     pages:
     - icon: ':warning:'
-      path: misc/1D1D.cpp
-      title: misc/1D1D.cpp
+      path: misc/1D1D.h
+      title: misc/1D1D.h
     - icon: ':warning:'
       path: misc/CDQ.h
       title: misc/CDQ.h
@@ -368,6 +368,9 @@ data:
       path: tests/Line_Add_Get_Min.test.cpp
       title: tests/Line_Add_Get_Min.test.cpp
     - icon: ':heavy_check_mark:'
+      path: tests/Longest_Common_Substring.test.cpp
+      title: tests/Longest_Common_Substring.test.cpp
+    - icon: ':heavy_check_mark:'
       path: tests/Matching_on_Bipartite_Graph_HopcroftKarp.test.cpp
       title: tests/Matching_on_Bipartite_Graph_HopcroftKarp.test.cpp
     - icon: ':heavy_check_mark:'
@@ -379,6 +382,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Number_of_Subsequences.test.cpp
       title: tests/Number_of_Subsequences.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: tests/Number_of_Substrings.test.cpp
+      title: tests/Number_of_Substrings.test.cpp
     - icon: ':heavy_check_mark:'
       path: tests/Persistent_Unionfind.test.cpp
       title: tests/Persistent_Unionfind.test.cpp

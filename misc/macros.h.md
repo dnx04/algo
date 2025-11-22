@@ -76,6 +76,9 @@ data:
     path: tests/Line_Add_Get_Min.test.cpp
     title: tests/Line_Add_Get_Min.test.cpp
   - icon: ':heavy_check_mark:'
+    path: tests/Longest_Common_Substring.test.cpp
+    title: tests/Longest_Common_Substring.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/Matching_on_Bipartite_Graph_HopcroftKarp.test.cpp
     title: tests/Matching_on_Bipartite_Graph_HopcroftKarp.test.cpp
   - icon: ':heavy_check_mark:'
@@ -87,6 +90,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Number_of_Subsequences.test.cpp
     title: tests/Number_of_Subsequences.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Number_of_Substrings.test.cpp
+    title: tests/Number_of_Substrings.test.cpp
   - icon: ':heavy_check_mark:'
     path: tests/Persistent_Unionfind.test.cpp
     title: tests/Persistent_Unionfind.test.cpp
@@ -220,6 +226,7 @@ data:
   - tests/Range_Affine_Point_Get.test.cpp
   - tests/Factorize.test.cpp
   - tests/Line_Add_Get_Min.test.cpp
+  - tests/Longest_Common_Substring.test.cpp
   - tests/General_Matching.test.cpp
   - tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
   - tests/Maximum_Independent_Set.test.cpp
@@ -254,6 +261,7 @@ data:
   - tests/Derangement.test.cpp
   - tests/Primitive_Root.test.cpp
   - tests/Number_of_Subsequences.test.cpp
+  - tests/Number_of_Substrings.test.cpp
   - tests/Sum_of_Floor_of_Linear.test.cpp
 documentation_of: misc/macros.h
 layout: document
