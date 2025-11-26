@@ -84,6 +84,9 @@ data:
       path: geometry/LineDistance.h
       title: geometry/LineDistance.h
     - icon: ':warning:'
+      path: geometry/LineHullIntersection.h
+      title: geometry/LineHullIntersection.h
+    - icon: ':warning:'
       path: geometry/LineIntersection.h
       title: geometry/LineIntersection.h
     - icon: ':warning:'
@@ -192,7 +195,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/EnumQuotients.h
       title: math/EnumQuotients.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: math/FFT.h
       title: math/FFT.h
     - icon: ':heavy_check_mark:'
@@ -220,8 +223,8 @@ data:
       path: math/ModSQRT.h
       title: math/ModSQRT.h
     - icon: ':heavy_check_mark:'
-      path: math/NTT.h
-      title: math/NTT.h
+      path: math/Poly.h
+      title: math/Poly.h
     - icon: ':heavy_check_mark:'
       path: math/SumPowerPoly.h
       title: math/SumPowerPoly.h
@@ -275,6 +278,11 @@ data:
     - icon: ':warning:'
       path: misc/maxHist.h
       title: misc/maxHist.h
+  - name: stash
+    pages:
+    - icon: ':warning:'
+      path: stash/C.cpp
+      title: stash/C.cpp
   - name: strings
     pages:
     - icon: ':warning:'
@@ -347,6 +355,9 @@ data:
       path: tests/Eulerian_Trail_Undirected.test.cpp
       title: tests/Eulerian_Trail_Undirected.test.cpp
     - icon: ':heavy_check_mark:'
+      path: tests/Exp_of_FPS.test.cpp
+      title: tests/Exp_of_FPS.test.cpp
+    - icon: ':heavy_check_mark:'
       path: tests/Factorize.test.cpp
       title: tests/Factorize.test.cpp
     - icon: ':heavy_check_mark:'
@@ -361,6 +372,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Intersection_of_F2_vector_spaces.test.cpp
       title: tests/Intersection_of_F2_vector_spaces.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: tests/Inv_of_FPS.test.cpp
+      title: tests/Inv_of_FPS.test.cpp
     - icon: ':heavy_check_mark:'
       path: tests/LIS.test.cpp
       title: tests/LIS.test.cpp
@@ -397,6 +411,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Point_Set_Range_Composite_Large.test.cpp
       title: tests/Point_Set_Range_Composite_Large.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: tests/Pow_of_FPS.test.cpp
+      title: tests/Pow_of_FPS.test.cpp
     - icon: ':heavy_check_mark:'
       path: tests/Pow_of_Matrix.test.cpp
       title: tests/Pow_of_Matrix.test.cpp

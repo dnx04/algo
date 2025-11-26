@@ -52,55 +52,55 @@ data:
     \ operator!=(const affine& g) const {\n    return a != g.a || b != g.b;\n  }\n\
     };\n#line 2 \"math/ModInt.h\"\n\ntemplate <int mod>\nstruct modint {\n  using\
     \ M = modint;\n  static_assert(mod > 0 && mod <= 2147483647);\n  static constexpr\
-    \ u32 r1 = []() {\n    u32 r1 = mod;\n    for (int i = 0; i < 5; ++i) r1 *= 2\
-    \ - mod * r1;\n    return -r1;\n  }();\n  static constexpr u32 r2 = -u64(mod)\
-    \ % mod;\n  static u32 reduce(u64 x) {\n    u32 y = u32(x) * r1, r = (x + u64(y)\
-    \ * mod) >> 32;\n    return r >= mod ? r - mod : r;\n  }\n  u32 x;\n  modint()\
-    \ : x(0) {}\n  modint(i64 x) : x(reduce(u64(x % mod + mod) * r2)) {}\n  M& operator+=(const\
-    \ M& a) {\n    if ((x += a.x) >= mod) x -= mod;\n    return *this;\n  }\n  M&\
-    \ operator-=(const M& a) {\n    if ((x += mod - a.x) >= mod) x -= mod;\n    return\
-    \ *this;\n  }\n  M& operator*=(const M& a) {\n    x = reduce(u64(x) * a.x);\n\
-    \    return *this;\n  }\n  M& operator/=(const M& a) { return *this *= a.inv();\
-    \ }\n  M operator-() const { return M(0) - *this; }\n  M operator+(const M& a)\
-    \ const { return M(*this) += a; }\n  M operator-(const M& a) const { return M(*this)\
-    \ -= a; }\n  M operator*(const M& a) const { return M(*this) *= a; }\n  M operator/(const\
-    \ M& a) const { return M(*this) /= a; }\n  bool operator==(const M& a) const {\
-    \ return x == a.x; }\n  bool operator!=(const M& a) const { return x != a.x; }\n\
-    \  M pow(u64 k) const {\n    M res(1), b = *this;\n    while (k) {\n      if (k\
-    \ & 1) res *= b;\n      b *= b, k >>= 1;\n    }\n    return res;\n  }\n  M inv()\
-    \ const { return pow(mod - 2); }\n  friend ostream& operator<<(ostream& os, const\
-    \ M& a) {\n    return os << reduce(a.x);\n  }\n  friend istream& operator>>(istream&\
-    \ is, M& a) {\n    i64 v;\n    is >> v;\n    a = M(v);\n    return is;\n  }\n\
-    };\n\nu64 modmul(u64 x, u64 y, u64 m) { return u128(x) * y % m; }\nu64 modpow(u64\
-    \ x, u64 k, u64 m) {\n  u64 res = 1;\n  while (k) {\n    if (k & 1) res = modmul(res,\
-    \ x, m);\n    x = modmul(x, x, m);\n    k >>= 1;\n  }\n  return res;\n}\n#line\
-    \ 1 \"ds/SegTree.h\"\n// 0-indexed\ntemplate <class T, class F>\nstruct SegTree\
-    \ {\n  int n, size;  // smallest size = 2^k >= n\n  vector<T> seg;\n  const F\
-    \ f;\n  const T I;\n  SegTree(int n, F f, const T& I) : n(n), f(f), I(I) {\n \
-    \   size = 1;\n    while (size < n) size <<= 1;\n    seg.assign(size << 1, I);\n\
-    \  }\n  T& operator[](int k) { return seg[k + size]; }\n  void set(int k, T x)\
-    \ { seg[k + size] = x; }  // to build\n  void build() {\n    for (int i = size\
-    \ - 1; i > 0; --i) seg[i] = f(seg[i << 1], seg[i << 1 | 1]);\n  }\n  void apply(int\
-    \ k, T x) {\n    k += size, seg[k] = x;\n    while (k >>= 1) seg[k] = f(seg[k\
-    \ << 1], seg[k << 1 | 1]);\n  }\n  // query [l, r)\n  T query(int l, int r) {\n\
-    \    T L = I, R = I;\n    for (l += size, r += size; l < r; l >>= 1, r >>= 1)\
-    \ {\n      if (l & 1) L = f(L, seg[l++]);\n      if (r & 1) R = f(seg[--r], R);\n\
-    \    }\n    return f(L, R);\n  }\n  template <class C>\n  int max_right(int l,\
-    \ C check) {\n    assert(0 <= l && l <= n && check(I) == true);\n    if (l ==\
-    \ n) return n;\n    l += size;\n    T sm = I;\n    do {\n      while (l % 2 ==\
-    \ 0) l >>= 1;\n      if (!check(f(sm, seg[l]))) {\n        while (l < size) {\n\
-    \          l = l << 1;\n          if (check(f(sm, seg[l]))) sm = f(sm, seg[l]),\
-    \ l++;\n        }\n        return l - size;\n      }\n      sm = f(sm, seg[l]),\
-    \ l++;\n    } while ((l & -l) != l);\n    return n;\n  }\n  template <class C>\n\
-    \  int min_left(int r, C check) {\n    assert(0 <= r && r <= n && check(I) ==\
-    \ true);\n    if (r == 0) return 0;\n    r += size;\n    T sm = I;\n    do {\n\
-    \      r--;\n      while (r > 1 && (r % 2)) r >>= 1;\n      if (!check(f(seg[r],\
-    \ sm))) {\n        while (r < size) {\n          r = r << 1 | 1;\n          if\
-    \ (check(f(seg[r], sm))) sm = f(seg[r], sm), r--;\n        }\n        return r\
-    \ + 1 - size;\n      }\n      sm = f(seg[r], sm);\n    } while ((r & -r) != r);\n\
-    \    return 0;\n  }\n};\n#line 7 \"tests/Point_Set_Range_Composite.test.cpp\"\n\
-    \nusing Fp = modint<998244353>;\nusing A = affine<Fp>;\n\nvoid solve() {\n  int\
-    \ n, q;\n  cin >> n >> q;\n  SegTree st(n, [&](const A& l, const A& r) { return\
+    \ int modulo = mod;\n  static constexpr u32 r1 = []() {\n    u32 r1 = mod;\n \
+    \   for (int i = 0; i < 5; ++i) r1 *= 2 - mod * r1;\n    return -r1;\n  }();\n\
+    \  static constexpr u32 r2 = -u64(mod) % mod;\n  static u32 reduce(u64 x) {\n\
+    \    u32 y = u32(x) * r1, r = (x + u64(y) * mod) >> 32;\n    return r >= mod ?\
+    \ r - mod : r;\n  }\n  u32 x;\n  modint() : x(0) {}\n  modint(i64 x) : x(reduce(u64(x\
+    \ % mod + mod) * r2)) {}\n  M& operator+=(const M& a) {\n    if ((x += a.x) >=\
+    \ mod) x -= mod;\n    return *this;\n  }\n  M& operator-=(const M& a) {\n    if\
+    \ ((x += mod - a.x) >= mod) x -= mod;\n    return *this;\n  }\n  M& operator*=(const\
+    \ M& a) {\n    x = reduce(u64(x) * a.x);\n    return *this;\n  }\n  M& operator/=(const\
+    \ M& a) { return *this *= a.inv(); }\n  M operator-() const { return M(0) - *this;\
+    \ }\n  M operator+(const M& a) const { return M(*this) += a; }\n  M operator-(const\
+    \ M& a) const { return M(*this) -= a; }\n  M operator*(const M& a) const { return\
+    \ M(*this) *= a; }\n  M operator/(const M& a) const { return M(*this) /= a; }\n\
+    \  bool operator==(const M& a) const { return x == a.x; }\n  bool operator!=(const\
+    \ M& a) const { return x != a.x; }\n  M pow(u64 k) const {\n    M res(1), b =\
+    \ *this;\n    while (k) {\n      if (k & 1) res *= b;\n      b *= b, k >>= 1;\n\
+    \    }\n    return res;\n  }\n  M inv() const { return pow(mod - 2); }\n  friend\
+    \ ostream& operator<<(ostream& os, const M& a) {\n    return os << reduce(a.x);\n\
+    \  }\n  friend istream& operator>>(istream& is, M& a) {\n    i64 v;\n    is >>\
+    \ v;\n    a = M(v);\n    return is;\n  }\n};\n\nu64 modmul(u64 x, u64 y, u64 m)\
+    \ { return u128(x) * y % m; }\nu64 modpow(u64 x, u64 k, u64 m) {\n  u64 res =\
+    \ 1;\n  while (k) {\n    if (k & 1) res = modmul(res, x, m);\n    x = modmul(x,\
+    \ x, m);\n    k >>= 1;\n  }\n  return res;\n}\n#line 1 \"ds/SegTree.h\"\n// 0-indexed\n\
+    template <class T, class F>\nstruct SegTree {\n  int n, size;  // smallest size\
+    \ = 2^k >= n\n  vector<T> seg;\n  const F f;\n  const T I;\n  SegTree(int n, F\
+    \ f, const T& I) : n(n), f(f), I(I) {\n    size = 1;\n    while (size < n) size\
+    \ <<= 1;\n    seg.assign(size << 1, I);\n  }\n  T& operator[](int k) { return\
+    \ seg[k + size]; }\n  void set(int k, T x) { seg[k + size] = x; }  // to build\n\
+    \  void build() {\n    for (int i = size - 1; i > 0; --i) seg[i] = f(seg[i <<\
+    \ 1], seg[i << 1 | 1]);\n  }\n  void apply(int k, T x) {\n    k += size, seg[k]\
+    \ = x;\n    while (k >>= 1) seg[k] = f(seg[k << 1], seg[k << 1 | 1]);\n  }\n \
+    \ // query [l, r)\n  T query(int l, int r) {\n    T L = I, R = I;\n    for (l\
+    \ += size, r += size; l < r; l >>= 1, r >>= 1) {\n      if (l & 1) L = f(L, seg[l++]);\n\
+    \      if (r & 1) R = f(seg[--r], R);\n    }\n    return f(L, R);\n  }\n  template\
+    \ <class C>\n  int max_right(int l, C check) {\n    assert(0 <= l && l <= n &&\
+    \ check(I) == true);\n    if (l == n) return n;\n    l += size;\n    T sm = I;\n\
+    \    do {\n      while (l % 2 == 0) l >>= 1;\n      if (!check(f(sm, seg[l])))\
+    \ {\n        while (l < size) {\n          l = l << 1;\n          if (check(f(sm,\
+    \ seg[l]))) sm = f(sm, seg[l]), l++;\n        }\n        return l - size;\n  \
+    \    }\n      sm = f(sm, seg[l]), l++;\n    } while ((l & -l) != l);\n    return\
+    \ n;\n  }\n  template <class C>\n  int min_left(int r, C check) {\n    assert(0\
+    \ <= r && r <= n && check(I) == true);\n    if (r == 0) return 0;\n    r += size;\n\
+    \    T sm = I;\n    do {\n      r--;\n      while (r > 1 && (r % 2)) r >>= 1;\n\
+    \      if (!check(f(seg[r], sm))) {\n        while (r < size) {\n          r =\
+    \ r << 1 | 1;\n          if (check(f(seg[r], sm))) sm = f(seg[r], sm), r--;\n\
+    \        }\n        return r + 1 - size;\n      }\n      sm = f(seg[r], sm);\n\
+    \    } while ((r & -r) != r);\n    return 0;\n  }\n};\n#line 7 \"tests/Point_Set_Range_Composite.test.cpp\"\
+    \n\nusing Fp = modint<998244353>;\nusing A = affine<Fp>;\n\nvoid solve() {\n \
+    \ int n, q;\n  cin >> n >> q;\n  SegTree st(n, [&](const A& l, const A& r) { return\
     \ l * r; }, A{});\n  for (int i = 0; i < n; ++i) {\n    int a, b;\n    cin >>\
     \ a >> b;\n    st.apply(i, {a, b});\n  }\n  while (q--) {\n    int cmd;\n    cin\
     \ >> cmd;\n    if (cmd == 0) {\n      int p, c, d;\n      cin >> p >> c >> d;\n\
@@ -129,7 +129,7 @@ data:
   isVerificationFile: true
   path: tests/Point_Set_Range_Composite.test.cpp
   requiredBy: []
-  timestamp: '2025-11-21 16:12:02+07:00'
+  timestamp: '2025-11-26 18:05:06+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Point_Set_Range_Composite.test.cpp

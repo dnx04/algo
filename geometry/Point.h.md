@@ -36,6 +36,9 @@ data:
     path: geometry/LineDistance.h
     title: geometry/LineDistance.h
   - icon: ':warning:'
+    path: geometry/LineHullIntersection.h
+    title: geometry/LineHullIntersection.h
+  - icon: ':warning:'
     path: geometry/LineIntersection.h
     title: geometry/LineIntersection.h
   - icon: ':warning:'
@@ -146,6 +149,7 @@ data:
   - geometry/CirclePolygonIntersection.h
   - geometry/ClosestPair.h
   - geometry/HalfplaneSet.h
+  - geometry/LineHullIntersection.h
   - geometry/PointInsideHull.h
   - geometry/SegmentIntersection.h
   - geometry/SideOf.h

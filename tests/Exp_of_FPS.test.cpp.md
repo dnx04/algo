@@ -17,10 +17,10 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/convolution_mod
+    PROBLEM: https://judge.yosupo.jp/problem/exp_of_formal_power_series
     links:
-    - https://judge.yosupo.jp/problem/convolution_mod
-  bundledCode: "#line 1 \"tests/Convolution.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod\"\
+    - https://judge.yosupo.jp/problem/exp_of_formal_power_series
+  bundledCode: "#line 1 \"tests/Exp_of_FPS.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/exp_of_formal_power_series\"\
     \n\n#line 1 \"misc/macros.h\"\n// #pragma GCC optimize(\"Ofast,unroll-loops\"\
     )       // unroll long, simple loops\n// #pragma GCC target(\"avx2,fma\")    \
     \               // vectorizing code\n// #pragma GCC target(\"lzcnt,popcnt,abm,bmi,bmi2\"\
@@ -114,33 +114,30 @@ data:
     \ * lead.pow(k);\n    Poly res(shift, 0);\n    res.insert(res.end(), a.begin(),\
     \ a.end());\n    res.resize(n);\n    return res;\n  }\n  friend ostream& operator<<(ostream&\
     \ os, const Poly& p) {\n    for (auto x : p) os << x << \" \";\n    return os;\n\
-    \  }\n};\n#line 5 \"tests/Convolution.test.cpp\"\n\nvoid solve() {\n  int n, m;\n\
-    \  cin >> n >> m;\n  Poly a(n), b(m);\n  for (int i = 0; i < n; ++i) cin >> a[i];\n\
-    \  for (int i = 0; i < m; ++i) cin >> b[i];\n  auto c = a * b;\n  for (auto x\
-    \ : c) cout << x << ' ';\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n\
-    \  cin.exceptions(cin.failbit);\n  int tc = 1;\n  //   cin >> tc;\n  for (int\
-    \ i = 1; i <= tc; ++i) {\n    solve();\n  }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/convolution_mod\"\n\n#include\
-    \ \"../misc/macros.h\"\n#include \"../math/Poly.h\"\n\nvoid solve() {\n  int n,\
-    \ m;\n  cin >> n >> m;\n  Poly a(n), b(m);\n  for (int i = 0; i < n; ++i) cin\
-    \ >> a[i];\n  for (int i = 0; i < m; ++i) cin >> b[i];\n  auto c = a * b;\n  for\
-    \ (auto x : c) cout << x << ' ';\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n\
-    \  cin.exceptions(cin.failbit);\n  int tc = 1;\n  //   cin >> tc;\n  for (int\
-    \ i = 1; i <= tc; ++i) {\n    solve();\n  }\n}\n"
+    \  }\n};\n#line 5 \"tests/Exp_of_FPS.test.cpp\"\n\nusing namespace std;\n\nvoid\
+    \ solve() {\n  int n;\n  cin >> n;\n  Poly f(n);\n  for (auto& i : f) cin >> i;\n\
+    \  auto g = f.exp(n);\n  for (auto i : g) cout << i << ' ';\n}\n\nsigned main()\
+    \ {\n  ios::sync_with_stdio(false);\n  cin.tie(0);\n  solve();\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/exp_of_formal_power_series\"\
+    \n\n#include \"../misc/macros.h\"\n#include \"../math/Poly.h\"\n\nusing namespace\
+    \ std;\n\nvoid solve() {\n  int n;\n  cin >> n;\n  Poly f(n);\n  for (auto& i\
+    \ : f) cin >> i;\n  auto g = f.exp(n);\n  for (auto i : g) cout << i << ' ';\n\
+    }\n\nsigned main() {\n  ios::sync_with_stdio(false);\n  cin.tie(0);\n  solve();\n\
+    }"
   dependsOn:
   - misc/macros.h
   - math/Poly.h
   - math/ModInt.h
   isVerificationFile: true
-  path: tests/Convolution.test.cpp
+  path: tests/Exp_of_FPS.test.cpp
   requiredBy: []
   timestamp: '2025-11-26 18:05:06+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: tests/Convolution.test.cpp
+documentation_of: tests/Exp_of_FPS.test.cpp
 layout: document
 redirect_from:
-- /verify/tests/Convolution.test.cpp
-- /verify/tests/Convolution.test.cpp.html
-title: tests/Convolution.test.cpp
+- /verify/tests/Exp_of_FPS.test.cpp
+- /verify/tests/Exp_of_FPS.test.cpp.html
+title: tests/Exp_of_FPS.test.cpp
 ---
