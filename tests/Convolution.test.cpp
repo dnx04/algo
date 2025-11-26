@@ -1,15 +1,15 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/convolution_mod"
 
 #include "../misc/macros.h"
-#include "../math/NTT.h"
+#include "../math/Poly.h"
 
 void solve() {
   int n, m;
   cin >> n >> m;
-  vl a(n), b(m);
+  Poly a(n), b(m);
   for (int i = 0; i < n; ++i) cin >> a[i];
   for (int i = 0; i < m; ++i) cin >> b[i];
-  auto c = convMod<998244353>(a, b);
+  auto c = a * b;
   for (auto x : c) cout << x << ' ';
 }
 

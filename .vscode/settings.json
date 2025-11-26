@@ -12,6 +12,7 @@
         "chrono": "cpp",
         "latch": "cpp",
         "limits": "cpp",
-        "semaphore": "cpp"
+        "semaphore": "cpp",
+        "array": "cpp"
     },
 }

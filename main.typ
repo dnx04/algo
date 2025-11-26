@@ -14,7 +14,7 @@
 
 #show: doc => icpc(
   team: [Quattuorvigintillion - University of Engineering and Technology, VNU],
-  doc
+  doc,
 )
 
 #pagebreak()
@@ -24,43 +24,54 @@
 // #file("misc/tasks.json")
 // #file("misc/launch.json")
 
-= Trick & Ghi chú
+= Notes
 
-== Sequences
+== Chuỗi Taylor
 
-=== Catalan
+$
+  f(x) & = sum_(n=0)^infinity (f^((n))(a)) / n! (x - a)^n \
+       & = f(a) + f'(a)(x - a) + (f''(a)) / 2! (x - a)^2 + ...
+$
+
+Với $alpha$ là số thực bất kì, $k$ là số nguyên:
+
+$
+  binom(alpha, k) = cases(
+    1 & "nếu" k = 0,
+    (alpha (alpha - 1) ... (alpha - k + 1)) / k! & "nếu" k > 0
+  )
+$
+
+// $
+//   sin(a plus.minus b) &= sin a cos b plus.minus cos a sin b \
+//   cos(a plus.minus b) &= cos a cos b minus.plus sin a sin b \
+//   tan(a plus.minus b) &= (tan a plus.minus tan b) / (1 minus.plus tan a tan b) \
+//   sin 2a &= 2 sin a cos a \
+//   cos 2a &= cos^2 a - sin^2 a = 2cos^2 a - 1 = 1 - 2sin^2 a \
+//   tan 2a &= (2 tan a) / (1 - tan^2 a)
+// $
+
+== Catalan
 
 $ C_n = 1 / (n + 1) binom(2n, n), C_(n + 1) = sum_(i=0)^n C_i C_(n - i) $
 
-=== Lucas
+== Lucas
 
 Với $n = n_k p^k + n_(k-1) p^(k-1) + ... + n_0$ và $m = m_k p^k + m_(k-1) p^(k-1) + ... + m_0$. Ta có $binom(n, m) = product_(i=0)^k binom(n_i, m_i) mod p$.
-
-=== Number of Derangements
-
-$ d(n) = (n - 1)(d(n - 1) + d(n - 2)) $.
-
-=== Số Stirling loại 1
-
-Số hoán vị $n$ phần tử có đúng $k$ chu trình.
-
-$ s(n, k) = s(n - 1, k - 1) + (n - 1) s(n - 1, k) $
-
-$ sum_(k = 0)^n s(n, k)x^k = x(x + 1)...(x + n - 1) $
-
-=== Số Stirling loại 2
-
-Số cách chia $n$ phần tử vào đúng $k$ nhóm.
-
-$ S(n, k) = k S(n - 1, k) + S(n - 1, k - 1) $
-
-$ S(n, k) = 1 / k! sum_(j = 0)^k (-1)^(k - j) binom(k, j) j^n $
 
 == Bổ đề Burnside
 
 Đặt $G$ là nhóm hữu hạn tác động lên tập $X$. Với mỗi $g in G$, gọi $X^g$ là tập các điểm bất định bởi g (${ x ∈ X | g.x = x }$). Số quỹ đạo có thể có là:
 
 $ lr(|X/G|) = 1/lr(|G|) sum_(g in G) |X^g| $
+
+== Định lý Pick
+
+Cho một đa giác có các điểm nguyên. Gọi $i$ là số điểm nguyên nằm trong đa giác, và $b$ là số điểm nguyên năm trên cạnh. Diện tích của đa giác là: $A = i + b/2 - 1$.
+
+== Frobenius
+
+$ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 
 == Super interpretation of kth powers
 
@@ -72,18 +83,9 @@ $ E(X^2) = E(\#"ordered pairs"), E(X^k) = E(\#"ordered tuples") $
 
 If you want to maintain the sum of $k$-th powers, it might help to also maintain the sum of smaller powers. For example, if the sum of $0$-th, $1$-th and $2$-nd powers is $S_0$, $S_1$ and $S_2$, and we increase all elements by $x$, the new sums are $S_0$, $S_1 + S_0 x$ and $S_2 + 2x S_1 + x^2 S_0$.
 
-== Định lý Pick
-
-Cho một đa giác có các điểm nguyên. Gọi $i$ là số điểm nguyên nằm trong đa giác, và $b$ là số điểm nguyên năm trên cạnh. Diện tích của đa giác là: $A = i + b/2 - 1$.
-
-== Frobenius
-
-$ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
-
 == Nhận xét
 
-1. Trong đồ thị 2 phía, MIS = N - cặp ghép cực đại.
-2. Cho 2 xâu $S$, $T$. Số xâu phân biệt của prefix(S) + suffix(T) = $|S| * |T|$ - số kí tự giống nhau của S và T, không tính $S_0$ và $T_(n)$.
+1. Cho 2 xâu $S$, $T$. Số xâu phân biệt của prefix(S) + suffix(T) = $|S| * |T|$ - số kí tự giống nhau của S và T, không tính $S_0$ và $T_(n)$.
 
 = Toán
 
@@ -111,15 +113,18 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 #file("math/DivModSum.h", description: [
   Tính $sum_(i = 0)^(n - 1) (a + i times d) / m$ và $sum_(i = 0)^(n - 1) (a + i times d) mod m$. Độ phức tạp $O(log N)$
 ])
-#file("math/FFT.h", description: [
-  FFT trên $RR$
-])
-#file("math/NTT.h", description: [
-  FFT modulo nguyên tố *bất kỳ*.
-])
+// #file("math/FFT.h", description: [
+//   FFT trên $RR$
+// ])
+// #file("math/NTT.h", description: [
+//   FFT modulo nguyên tố *bất kỳ*.
+// ])
 #file("math/FST.h", description: [
   Tính tích chập AND, OR, XOR.
 ])
+// #file("math/Poly.h", description: [
+//   Các phép toán trên đa thức + NTT.
+// ])
 #file("math/BerlekampMassey.h", description: [
   Phục hồi một dãy truy hồi cấp $n$ từ $2n$ số hạng đầu tiên trong $O(n^2)$.
 ])
@@ -133,11 +138,11 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 = Cấu trúc dữ liệu
 
 
-#file("ds/DSU.h")
+// #file("ds/DSU.h")
 #file("ds/RMQ.h")
-#file("ds/Fenwick.h")
-#file("ds/SegTree.h")
-#file("ds/LazySegTree.h")
+// #file("ds/Fenwick.h")
+// #file("ds/SegTree.h")
+// #file("ds/LazySegTree.h")
 #file("ds/HLD.h", description: [
   HLD cho phép truy vấn cả đường đi và cây con trong $O(log N)$.
   1. `pos(x)`: trả về vị trí của đỉnh `x` trong quá trình duyệt DFS.
@@ -175,6 +180,7 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 ])
 #file("graph/HopcroftKarp.h", description: [
   Cặp ghép cực đại trên đồ thị 2 phía trong $O(E sqrt(V))$. 0-indexed.
+  Định lý Konig: Trong đồ thị 2 phía, MIS = N - cặp ghép cực đại.
   *Cách dùng:* `vi btoa(m, -1); hopcroftKarp(g, btoa);`
 ])
 #file("graph/GeneralMatching.h", description: [
@@ -289,8 +295,10 @@ Các thuật toán hình có đa giác, nếu không chú thích gì, thì hoạ
   description: [Trả về bao lồi của tập điểm theo CCW. Nếu muốn tính cả điểm nằm trên biên, sửa `<=` thành `<`.],
 )
 #file("geometry/OnSegment.h")
+#file("geometry/SegmentIntersection.h")
 #file("geometry/LineDistance.h")
 #file("geometry/LineIntersection.h")
+#file("geometry/LineHullIntersection.h")
 #file(
   "geometry/LineProjectionReflection.h",
   description: [Trả về chân đường vuông góc/điểm đối xứng (tuỳ vào `refl=false/true`) của điểm `p` qua đường `ab`. Các điểm phải là số thực, cẩn thận tràn số.],

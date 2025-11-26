@@ -5,8 +5,7 @@ void fft(vector<C>& a) {
   static vector<complex<ld>> R(2, 1);
   static vector<C> rt(2, 1);
   for (static int k = 2; k < n; k *= 2) {
-    R.resize(n);
-    rt.resize(n);
+    R.resize(n), rt.resize(n);
     auto x = polar(1.0L, acos(-1.0L) / k);
     for (int i = k; i < 2 * k; ++i) rt[i] = R[i] = i & 1 ? R[i / 2] * x : R[i / 2];
   }

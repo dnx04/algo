@@ -12,7 +12,7 @@ i64 solve_dnc(int N, int K, F cost) {
     int mid = (L + R) / 2;
     int best_k = -1;
     dp_cur[mid] = INF;
-    // Giới hạn k: từ optL đến min(mid-1, optR)
+    // Giới hạn k: từ optL đến min(mid - 1, optR)
     for (int k = optL; k <= min(mid - 1, optR); ++k) {
       i64 val = dp_before[k] + cost(k + 1, mid);
       if (val < dp_cur[mid]) {

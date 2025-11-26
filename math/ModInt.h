@@ -4,6 +4,7 @@ template <int mod>
 struct modint {
   using M = modint;
   static_assert(mod > 0 && mod <= 2147483647);
+  static constexpr int modulo = mod;
   static constexpr u32 r1 = []() {
     u32 r1 = mod;
     for (int i = 0; i < 5; ++i) r1 *= 2 - mod * r1;
