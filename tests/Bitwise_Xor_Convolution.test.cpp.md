@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/FST.h
     title: math/FST.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/ModInt.h
     title: math/ModInt.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []

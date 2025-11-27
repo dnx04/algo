@@ -88,6 +88,18 @@ data:
     path: tests/Matching_on_Bipartite_Graph_HopcroftKarp.test.cpp
     title: tests/Matching_on_Bipartite_Graph_HopcroftKarp.test.cpp
   - icon: ':heavy_check_mark:'
+    path: tests/Matrix_Det.test.cpp
+    title: tests/Matrix_Det.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Matrix_Inv.test.cpp
+    title: tests/Matrix_Inv.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Matrix_Product.test.cpp
+    title: tests/Matrix_Product.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Matrix_Solve_Linear.test.cpp
+    title: tests/Matrix_Solve_Linear.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/Maximum_Independent_Set.test.cpp
     title: tests/Maximum_Independent_Set.test.cpp
   - icon: ':heavy_check_mark:'
@@ -114,7 +126,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Pow_of_FPS.test.cpp
     title: tests/Pow_of_FPS.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Pow_of_Matrix.test.cpp
     title: tests/Pow_of_Matrix.test.cpp
   - icon: ':heavy_check_mark:'
@@ -162,15 +174,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Unionfind.test.cpp
     title: tests/Unionfind.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Vertex_Add_Path_Sum.test.cpp
     title: tests/Vertex_Add_Path_Sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: tests/Z_Algorithm.test.cpp
     title: tests/Z_Algorithm.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"misc/macros.h\"\n// #pragma GCC optimize(\"Ofast,unroll-loops\"\
@@ -218,9 +230,10 @@ data:
   path: misc/macros.h
   requiredBy: []
   timestamp: '2025-11-21 16:12:02+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - tests/Bitwise_Xor_Convolution.test.cpp
+  - tests/Matrix_Inv.test.cpp
   - tests/Sum_of_Exponential_times_Polynomial.test.cpp
   - tests/Static_Convex_Hull.test.cpp
   - tests/SCC.test.cpp
@@ -240,6 +253,7 @@ data:
   - tests/General_Matching.test.cpp
   - tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
   - tests/Maximum_Independent_Set.test.cpp
+  - tests/Matrix_Product.test.cpp
   - tests/Dominator_Tree.test.cpp
   - tests/Static_RMQ.test.cpp
   - tests/Persistent_Unionfind.test.cpp
@@ -249,6 +263,7 @@ data:
   - tests/Matching_on_Bipartite_Graph_HopcroftKarp.test.cpp
   - tests/Closest_Pair_of_Points.test.cpp
   - tests/Find_Linear_Recurrence.test.cpp
+  - tests/Matrix_Solve_Linear.test.cpp
   - tests/Inv_of_FPS.test.cpp
   - tests/Primality_Test.test.cpp
   - tests/Sqrt_Mod.test.cpp
@@ -263,6 +278,7 @@ data:
   - tests/Convolution.test.cpp
   - tests/Enumerate_Cliques.test.cpp
   - tests/Count_Points_in_Triangle.test.cpp
+  - tests/Matrix_Det.test.cpp
   - tests/Point_Set_Range_Composite.test.cpp
   - tests/Unionfind.test.cpp
   - tests/Assignment_Problem.test.cpp

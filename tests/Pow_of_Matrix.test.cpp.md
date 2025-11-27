@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/Matrix.h
     title: math/Matrix.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/ModInt.h
     title: math/ModInt.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/pow_of_matrix
@@ -65,23 +65,53 @@ data:
     \ { return u128(x) * y % m; }\nu64 modpow(u64 x, u64 k, u64 m) {\n  u64 res =\
     \ 1;\n  while (k) {\n    if (k & 1) res = modmul(res, x, m);\n    x = modmul(x,\
     \ x, m);\n    k >>= 1;\n  }\n  return res;\n}\n#line 1 \"math/Matrix.h\"\ntemplate\
-    \ <class T>\nstruct Matrix {\n  using vec = vector<T>;\n  int n;\n  vector<vec>\
-    \ a;\n  Matrix(int n = 0) : n(n), a(n, vec(n, 0)) {}\n  Matrix(const vector<vec>&\
-    \ a) : n(sz(a)), a(a) {}\n  vec& operator[](int i) { return a[i]; }\n  const vec&\
-    \ operator[](int i) const { return a[i]; }\n  Matrix operator*(const Matrix& b)\
-    \ const {\n    Matrix res(n);\n    for (int i = 0; i < n; ++i)\n      for (int\
-    \ k = 0; k < n; ++k)\n        for (int j = 0; j < n; ++j)\n          res[i][j]\
-    \ += a[i][k] * b[k][j];\n    return res;\n  }\n  Matrix operator^(u64 k) const\
-    \ {\n    Matrix res(n), b = *this;\n    for (int i = 0; i < n; ++i) res[i][i]\
-    \ = 1;\n    while (k) {\n      if (k & 1) res = res * b;\n      b = b * b, k >>=\
-    \ 1;\n    }\n    return res;\n  }\n  vec operator*(const vec& v) const {  // b(v)\n\
-    \    vec c(n);\n    for (int i = 0; i < n; ++i)\n      for (int j = 0; j < n;\
-    \ ++j) c[i] += a[i][j] * v[j];\n    return c;\n  }\n};\n#line 6 \"tests/Pow_of_Matrix.test.cpp\"\
-    \n\nusing Fp = modint<998244353>;\n\nvoid solve() {\n  int n;\n  u64 k;\n  cin\
-    \ >> n >> k;\n  Matrix<Fp> a(n);\n  for (int i = 0; i < n; ++i)\n    for (int\
-    \ j = 0; j < n; ++j) cin >> a[i][j];\n\n  a = a ^ k;\n  for (int i = 0; i < n;\
-    \ ++i)\n    for (int j = 0; j < n; ++j) cout << a[i][j] << \" \\n\"[j + 1 == n];\n\
-    }\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
+    \ <class T>\nstruct Matrix {\n  int r, c;\n  vector<vector<T>> a;\n  Matrix(int\
+    \ n) : Matrix(n, n) {}\n  Matrix(int r, int c) : r(r), c(c), a(r, vector<T>(c,\
+    \ T(0))) {}\n  Matrix(const vector<vector<T>>& v) : r(sz(v)), c(v.empty() ? 0\
+    \ : sz(v[0])), a(v) {}\n  vector<T>& operator[](int i) { return a[i]; }\n  const\
+    \ vector<T>& operator[](int i) const { return a[i]; }\n  static Matrix eye(int\
+    \ n) {\n    Matrix res(n);\n    for (int i = 0; i < n; ++i) res[i][i] = 1;\n \
+    \   return res;\n  }\n  Matrix operator*(const Matrix& b) const {\n    Matrix\
+    \ res(r, b.c);\n    for (int i = 0; i < r; ++i)\n      for (int k = 0; k < c;\
+    \ ++k)\n        if (a[i][k] != T(0))\n          for (int j = 0; j < b.c; ++j)\
+    \ res[i][j] += a[i][k] * b[k][j];\n    return res;\n  }\n  Matrix pow(u64 k) const\
+    \ {\n    Matrix res = eye(r), b = *this;\n    while (k) {\n      if (k & 1) res\
+    \ = res * b;\n      b = b * b, k >>= 1;\n    }\n    return res;\n  }\n  // destructive\n\
+    \  pair<T, int> gauss() {\n    int rank = 0;\n    T det = 1;\n    for (int j =\
+    \ 0; j < c && rank < r; ++j) {\n      int k = rank;\n      while (k < r && a[k][j]\
+    \ == T(0)) k++;\n      if (k == r) {\n        det = 0;\n        continue;\n  \
+    \    }\n      swap(a[rank], a[k]);\n      if (rank != k) det = -det;\n      det\
+    \ *= a[rank][j];\n      T inv = T(1) / a[rank][j];\n      for (int l = j; l <\
+    \ c; ++l) a[rank][l] *= inv;\n      for (int i = 0; i < r; ++i)\n        if (i\
+    \ != rank && a[i][j] != T(0)) {\n          T fac = a[i][j];\n          for (int\
+    \ l = j; l < c; ++l) a[i][l] -= a[rank][l] * fac;\n        }\n      rank++;\n\
+    \    }\n    return {det, rank};\n  }\n  pair<vector<T>, vector<vector<T>>> solve(const\
+    \ Matrix& b) const {\n    if (r != b.r || b.c != 1) return {{}, {}};\n    Matrix\
+    \ mat(r, c + 1);\n    for (int i = 0; i < r; ++i) {\n      for (int j = 0; j <\
+    \ c; ++j) mat[i][j] = a[i][j];\n      mat[i][c] = b[i][0];\n    }\n    int rank\
+    \ = mat.gauss().second;\n    vector<T> sol(c, T(0));\n    vector<int> piv;\n \
+    \   vector<bool> is_free(c, 1);\n    for (int i = 0; i < rank; ++i) {\n      int\
+    \ j = 0;\n      while (j <= c && mat[i][j] == T(0)) j++;\n      if (j == c) return\
+    \ {{}, {}};\n      piv.push_back(j);\n      is_free[j] = 0;\n      sol[j] = mat[i][c];\n\
+    \    }\n    for (int i = rank; i < r; ++i)\n      if (mat[i][c] != T(0)) return\
+    \ {{}, {}};\n    vector<vector<T>> ker;\n    for (int j = 0; j < c; ++j) {\n \
+    \     if (is_free[j]) {\n        vector<T> v(c, T(0));\n        v[j] = T(1);\n\
+    \        for (int i = 0; i < sz(piv); ++i) v[piv[i]] = T(0) - mat[i][j];\n   \
+    \     ker.push_back(v);\n      }\n    }\n    return {sol, ker};\n  }\n  T det()\
+    \ const {\n    if (r != c) return T(0);\n    Matrix tmp = *this;\n    auto [d,\
+    \ rank] = tmp.gauss();\n    return (rank == r) ? d : T(0);\n  }\n  int rank()\
+    \ const {\n    Matrix tmp = *this;\n    return tmp.gauss().second;\n  }\n  Matrix\
+    \ inv() const {\n    if (r != c) return Matrix(0, 0);\n    Matrix tmp(r, 2 * c);\n\
+    \    for (int i = 0; i < r; ++i) {\n      for (int j = 0; j < c; ++j) tmp[i][j]\
+    \ = a[i][j];\n      tmp[i][i + c] = 1;\n    }\n    auto [d, rank] = tmp.gauss();\n\
+    \    if (rank != r) return Matrix(0, 0);\n    Matrix res(r, c);\n    for (int\
+    \ i = 0; i < r; ++i)\n      for (int j = 0; j < c; ++j) res[i][j] = tmp[i][j +\
+    \ c];\n    return res;\n  }\n};\n#line 6 \"tests/Pow_of_Matrix.test.cpp\"\n\n\
+    using Fp = modint<998244353>;\n\nvoid solve() {\n  int n;\n  u64 k;\n  cin >>\
+    \ n >> k;\n  Matrix<Fp> a(n);\n  for (int i = 0; i < n; ++i)\n    for (int j =\
+    \ 0; j < n; ++j) cin >> a[i][j];\n\n  a = a ^ k;\n  for (int i = 0; i < n; ++i)\n\
+    \    for (int j = 0; j < n; ++j) cout << a[i][j] << \" \\n\"[j + 1 == n];\n}\n\
+    \nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
     \  int tc = 1;\n  // cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n\
     \  }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/pow_of_matrix\"\n\n#include\
@@ -100,8 +130,8 @@ data:
   isVerificationFile: true
   path: tests/Pow_of_Matrix.test.cpp
   requiredBy: []
-  timestamp: '2025-11-26 18:05:06+07:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-11-27 09:59:02+07:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: tests/Pow_of_Matrix.test.cpp
 layout: document

@@ -3,19 +3,16 @@ data:
   libraryCategories:
   - name: ds
     pages:
-    - icon: ':warning:'
-      path: ds/AuxiliaryTree.h
-      title: ds/AuxiliaryTree.h
     - icon: ':heavy_check_mark:'
       path: ds/DSU.h
       title: ds/DSU.h
     - icon: ':heavy_check_mark:'
       path: ds/DSURollback.h
       title: ds/DSURollback.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: ds/Fenwick.h
       title: ds/Fenwick.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: ds/HLD.h
       title: ds/HLD.h
     - icon: ':heavy_check_mark:'
@@ -42,6 +39,9 @@ data:
     - icon: ':warning:'
       path: ds/Treap.h
       title: ds/Treap.h
+    - icon: ':warning:'
+      path: ds/VirtualTree.h
+      title: ds/VirtualTree.h
     - icon: ':warning:'
       path: ds/WaveletTree.h
       title: ds/WaveletTree.h
@@ -207,13 +207,13 @@ data:
     - icon: ':warning:'
       path: math/Lagrange.h
       title: math/Lagrange.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/Matrix.h
       title: math/Matrix.h
     - icon: ':heavy_check_mark:'
       path: math/MillerRabin.h
       title: math/MillerRabin.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/ModInt.h
       title: math/ModInt.h
     - icon: ':heavy_check_mark:'
@@ -272,7 +272,7 @@ data:
     - icon: ':warning:'
       path: misc/SOSDP.cpp
       title: misc/SOSDP.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: misc/macros.h
       title: misc/macros.h
     - icon: ':warning:'
@@ -388,6 +388,18 @@ data:
       path: tests/Matching_on_Bipartite_Graph_HopcroftKarp.test.cpp
       title: tests/Matching_on_Bipartite_Graph_HopcroftKarp.test.cpp
     - icon: ':heavy_check_mark:'
+      path: tests/Matrix_Det.test.cpp
+      title: tests/Matrix_Det.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: tests/Matrix_Inv.test.cpp
+      title: tests/Matrix_Inv.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: tests/Matrix_Product.test.cpp
+      title: tests/Matrix_Product.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: tests/Matrix_Solve_Linear.test.cpp
+      title: tests/Matrix_Solve_Linear.test.cpp
+    - icon: ':heavy_check_mark:'
       path: tests/Maximum_Independent_Set.test.cpp
       title: tests/Maximum_Independent_Set.test.cpp
     - icon: ':heavy_check_mark:'
@@ -414,7 +426,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Pow_of_FPS.test.cpp
       title: tests/Pow_of_FPS.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Pow_of_Matrix.test.cpp
       title: tests/Pow_of_Matrix.test.cpp
     - icon: ':heavy_check_mark:'
@@ -462,7 +474,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Unionfind.test.cpp
       title: tests/Unionfind.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Vertex_Add_Path_Sum.test.cpp
       title: tests/Vertex_Add_Path_Sum.test.cpp
     - icon: ':heavy_check_mark:'

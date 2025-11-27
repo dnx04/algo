@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: ds/RMQ.h
     title: ds/RMQ.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
   - icon: ':heavy_check_mark:'

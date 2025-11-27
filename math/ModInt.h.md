@@ -43,6 +43,18 @@ data:
     path: tests/Inv_of_FPS.test.cpp
     title: tests/Inv_of_FPS.test.cpp
   - icon: ':heavy_check_mark:'
+    path: tests/Matrix_Det.test.cpp
+    title: tests/Matrix_Det.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Matrix_Inv.test.cpp
+    title: tests/Matrix_Inv.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Matrix_Product.test.cpp
+    title: tests/Matrix_Product.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Matrix_Solve_Linear.test.cpp
+    title: tests/Matrix_Solve_Linear.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/Number_of_Subsequences.test.cpp
     title: tests/Number_of_Subsequences.test.cpp
   - icon: ':heavy_check_mark:'
@@ -54,7 +66,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Pow_of_FPS.test.cpp
     title: tests/Pow_of_FPS.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Pow_of_Matrix.test.cpp
     title: tests/Pow_of_Matrix.test.cpp
   - icon: ':heavy_check_mark:'
@@ -78,9 +90,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
     title: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/ModInt.h\"\n\ntemplate <int mod>\nstruct modint {\n\
@@ -141,9 +153,10 @@ data:
   - math/Poly.h
   - math/Factor.h
   timestamp: '2025-11-26 18:05:06+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - tests/Bitwise_Xor_Convolution.test.cpp
+  - tests/Matrix_Inv.test.cpp
   - tests/Sum_of_Exponential_times_Polynomial.test.cpp
   - tests/Pow_of_FPS.test.cpp
   - tests/Enumerate_Triangles.test.cpp
@@ -152,7 +165,9 @@ data:
   - tests/Range_Affine_Point_Get.test.cpp
   - tests/Factorize.test.cpp
   - tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
+  - tests/Matrix_Product.test.cpp
   - tests/Find_Linear_Recurrence.test.cpp
+  - tests/Matrix_Solve_Linear.test.cpp
   - tests/Inv_of_FPS.test.cpp
   - tests/Primality_Test.test.cpp
   - tests/Sqrt_Mod.test.cpp
@@ -160,6 +175,7 @@ data:
   - tests/Range_Affine_Range_Sum.test.cpp
   - tests/Convolution.test.cpp
   - tests/Enumerate_Cliques.test.cpp
+  - tests/Matrix_Det.test.cpp
   - tests/Point_Set_Range_Composite.test.cpp
   - tests/Point_Set_Range_Composite_Large.test.cpp
   - tests/Bitwise_And_Convolution.test.cpp
