@@ -6,7 +6,7 @@
 void solve() {
   i64 n, m, a, b;
   cin >> n >> m >> a >> b;
-  cout << divsum(b, a, m, n) << '\n';
+  cout << divsum(n, m, a, b) << '\n';
 }
 
 int main() {
