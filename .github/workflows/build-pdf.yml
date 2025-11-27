@@ -32,7 +32,7 @@ jobs:
           fc-cache -fv
 
       - name: Setup Typst
-        uses: typst-community/setup-typst@v0.3.0
+        uses: typst-community/setup-typst@v4
 
       - name: Compile main.typ to PDF
         run: typst compile main.typ notebook.pdf
