@@ -3,24 +3,24 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Matrix_Det.test.cpp
     title: tests/Matrix_Det.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Matrix_Inv.test.cpp
     title: tests/Matrix_Inv.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Matrix_Product.test.cpp
     title: tests/Matrix_Product.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Matrix_Solve_Linear.test.cpp
     title: tests/Matrix_Solve_Linear.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Pow_of_Matrix.test.cpp
     title: tests/Pow_of_Matrix.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"math/Matrix.h\"\ntemplate <class T>\nstruct Matrix {\n \
@@ -112,7 +112,7 @@ data:
   path: math/Matrix.h
   requiredBy: []
   timestamp: '2025-11-27 09:59:02+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - tests/Matrix_Inv.test.cpp
   - tests/Pow_of_Matrix.test.cpp

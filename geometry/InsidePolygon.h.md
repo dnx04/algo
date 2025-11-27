@@ -4,7 +4,7 @@ data:
   - icon: ':warning:'
     path: geometry/OnSegment.h
     title: geometry/OnSegment.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/Point.h
     title: geometry/Point.h
   _extendedRequiredBy: []

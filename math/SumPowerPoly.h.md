@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/ModInt.h
     title: math/ModInt.h
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Sum_of_Exponential_times_Polynomial.test.cpp
     title: tests/Sum_of_Exponential_times_Polynomial.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
     title: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/ModInt.h\"\n\ntemplate <int mod>\nstruct modint {\n\
@@ -98,7 +98,7 @@ data:
   path: math/SumPowerPoly.h
   requiredBy: []
   timestamp: '2025-11-26 18:05:06+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - tests/Sum_of_Exponential_times_Polynomial.test.cpp
   - tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp

@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: misc/MaximumClique.h
     title: misc/MaximumClique.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/maximum_independent_set
@@ -22,45 +22,45 @@ data:
     \n// #pragma GCC optimize(\"Ofast,unroll-loops\")       // unroll long, simple\
     \ loops\n// #pragma GCC target(\"avx2,fma\")                   // vectorizing\
     \ code\n// #pragma GCC target(\"lzcnt,popcnt,abm,bmi,bmi2\")  // for fast bitset\
-    \ operation\n\n#include <bits/extc++.h>\n\n#include <tr2/dynamic_bitset>\n\nusing\
-    \ namespace std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n\
-    // using namespace __gnu_cxx;\n\n// for templates to work\n#define all(s) s.begin(),\
-    \ s.end()\n#define sz(x) (int) (x).size()\n#define pb push_back\n#define eb emplace_back\n\
-    using i32 = int32_t;\nusing u32 = uint32_t;\nusing i64 = int64_t;\nusing u64 =\
-    \ uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\nusing ld = long\
-    \ double;\nusing pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\n// fast map\n\
-    const int RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
+    \ operation\n\n#include <bits/extc++.h>\n\nusing namespace std;\nusing namespace\
+    \ __gnu_pbds;  // ordered_set, gp_hash_table\n// using namespace __gnu_cxx; //\
+    \ rope\n\n// for templates to work\n#define all(s) s.begin(), s.end()\n#define\
+    \ sz(x) (int) (x).size()\n#define pb push_back\n#define eb emplace_back\nusing\
+    \ i32 = int32_t;\nusing u32 = uint32_t;\nusing i64 = int64_t;\nusing u64 = uint64_t;\n\
+    using i128 = __int128_t;\nusing u128 = __uint128_t;\nusing ld = long double;\n\
+    using pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\n// fast map\nconst int\
+    \ RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
     struct chash {  // customize hash function for gp_hash_table\n  int operator()(int\
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
     \ (0-based)\n    order_of_key(k): returns the number of elements in the set that\
     \ are strictly less than k\n*/\ntemplate <class T>\nusing ordered_set = tree<T,\
-    \ null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n// dynamic\
-    \ bitset\nusing bs = tr2::dynamic_bitset<u64>;\n\n/*  rope\n    rope <int> cur\
-    \ = v.substr(l, r - l + 1);\n    v.erase(l, r - l + 1);\n    v.insert(v.mutable_begin(),\
-    \ cur);\n*/\n#line 1 \"misc/MaximumClique.h\"\nstruct Maxclique {\n  ld limit\
-    \ = 0.025, pk = 0;\n  struct Vertex {\n    int i, d = 0;\n  };\n  typedef vector<Vertex>\
-    \ vv;\n  vector<bs> e;\n  vv V;\n  vector<vi> C;\n  vi qmax, q, S, old;  // qmax\
-    \ = vertices in maximum clique, q = current clique\n  void init(vv& r) {\n   \
-    \ for (auto& v : r) v.d = 0;\n    for (auto& v : r) {\n      for (auto j : r)\
-    \ v.d += e[v.i][j.i];\n    }\n    sort(all(r), [](auto a, auto b) { return a.d\
-    \ > b.d; });\n    int mxD = r[0].d;\n    for (int i = 0; i < sz(r); ++i) r[i].d\
-    \ = min(i, mxD) + 1;\n  }\n  void expand(vv& R, int lev = 1) {\n    S[lev] +=\
-    \ S[lev - 1] - old[lev];\n    old[lev] = S[lev - 1];\n    while (sz(R)) {\n  \
-    \    if (sz(q) + R.back().d <= sz(qmax)) return;\n      q.push_back(R.back().i);\n\
-    \      vv T;\n      for (auto v : R)\n        if (e[R.back().i][v.i]) T.push_back({v.i});\n\
-    \      if (sz(T)) {\n        if (S[lev]++ / ++pk < limit) init(T);\n        int\
-    \ j = 0, mxk = 1, mnk = max(sz(qmax) - sz(q) + 1, 1);\n        C[1].clear(), C[2].clear();\n\
-    \        for (auto v : T) {\n          int k = 1;\n          auto f = [&](int\
-    \ i) { return e[v.i][i]; };\n          while (any_of(all(C[k]), f)) k++;\n   \
-    \       if (k > mxk) mxk = k, C[mxk + 1].clear();\n          if (k < mnk) T[j++].i\
-    \ = v.i;\n          C[k].push_back(v.i);\n        }\n        if (j > 0) T[j -\
-    \ 1].d = 0;\n        for (int k = mnk; k <= mxk; ++k) {\n          for (int i\
-    \ : C[k]) T[j].i = i, T[j++].d = k;\n        }\n        expand(T, lev + 1);\n\
-    \      } else if (sz(q) > sz(qmax))\n        qmax = q;\n      q.pop_back(), R.pop_back();\n\
-    \    }\n  }\n  vi maxClique() {\n    init(V), expand(V);\n    return qmax;\n \
-    \ }\n  Maxclique(vector<bs> conn) : e(conn), C(sz(e) + 1), S(sz(C)), old(S) {\n\
-    \    for (int i = 0; i < sz(e); ++i) V.push_back({i});\n  }\n};\n#line 5 \"tests/Maximum_Independent_Set.test.cpp\"\
+    \ null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n/* \
+    \ rope\n    rope <int> cur = v.substr(l, r - l + 1);\n    v.erase(l, r - l + 1);\n\
+    \    v.insert(v.mutable_begin(), cur);\n*/\n#line 1 \"misc/MaximumClique.h\"\n\
+    struct Maxclique {\n  ld limit = 0.025, pk = 0;\n  struct Vertex {\n    int i,\
+    \ d = 0;\n  };\n  typedef vector<Vertex> vv;\n  vector<bs> e;\n  vv V;\n  vector<vi>\
+    \ C;\n  vi qmax, q, S, old;  // qmax = vertices in maximum clique, q = current\
+    \ clique\n  void init(vv& r) {\n    for (auto& v : r) v.d = 0;\n    for (auto&\
+    \ v : r) {\n      for (auto j : r) v.d += e[v.i][j.i];\n    }\n    sort(all(r),\
+    \ [](auto a, auto b) { return a.d > b.d; });\n    int mxD = r[0].d;\n    for (int\
+    \ i = 0; i < sz(r); ++i) r[i].d = min(i, mxD) + 1;\n  }\n  void expand(vv& R,\
+    \ int lev = 1) {\n    S[lev] += S[lev - 1] - old[lev];\n    old[lev] = S[lev -\
+    \ 1];\n    while (sz(R)) {\n      if (sz(q) + R.back().d <= sz(qmax)) return;\n\
+    \      q.push_back(R.back().i);\n      vv T;\n      for (auto v : R)\n       \
+    \ if (e[R.back().i][v.i]) T.push_back({v.i});\n      if (sz(T)) {\n        if\
+    \ (S[lev]++ / ++pk < limit) init(T);\n        int j = 0, mxk = 1, mnk = max(sz(qmax)\
+    \ - sz(q) + 1, 1);\n        C[1].clear(), C[2].clear();\n        for (auto v :\
+    \ T) {\n          int k = 1;\n          auto f = [&](int i) { return e[v.i][i];\
+    \ };\n          while (any_of(all(C[k]), f)) k++;\n          if (k > mxk) mxk\
+    \ = k, C[mxk + 1].clear();\n          if (k < mnk) T[j++].i = v.i;\n         \
+    \ C[k].push_back(v.i);\n        }\n        if (j > 0) T[j - 1].d = 0;\n      \
+    \  for (int k = mnk; k <= mxk; ++k) {\n          for (int i : C[k]) T[j].i = i,\
+    \ T[j++].d = k;\n        }\n        expand(T, lev + 1);\n      } else if (sz(q)\
+    \ > sz(qmax))\n        qmax = q;\n      q.pop_back(), R.pop_back();\n    }\n \
+    \ }\n  vi maxClique() {\n    init(V), expand(V);\n    return qmax;\n  }\n  Maxclique(vector<bs>\
+    \ conn) : e(conn), C(sz(e) + 1), S(sz(C)), old(S) {\n    for (int i = 0; i < sz(e);\
+    \ ++i) V.push_back({i});\n  }\n};\n#line 5 \"tests/Maximum_Independent_Set.test.cpp\"\
     \n\nsigned main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
     \  int n, m;\n  cin >> n >> m;\n  vector<bs> eds(n, bs(n));\n  for (int i = 0;\
     \ i < m; ++i) {\n    int u, v;\n    cin >> u >> v;\n    eds[u][v] = eds[v][u]\
@@ -81,8 +81,8 @@ data:
   isVerificationFile: true
   path: tests/Maximum_Independent_Set.test.cpp
   requiredBy: []
-  timestamp: '2025-11-21 16:12:02+07:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-11-28 00:00:09+07:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: tests/Maximum_Independent_Set.test.cpp
 layout: document

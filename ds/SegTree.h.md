@@ -6,12 +6,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/LIS.test.cpp
     title: tests/LIS.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Point_Set_Range_Composite.test.cpp
     title: tests/Point_Set_Range_Composite.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"ds/SegTree.h\"\n// 0-indexed\ntemplate <class T, class F>\n\
@@ -68,7 +68,7 @@ data:
   path: ds/SegTree.h
   requiredBy: []
   timestamp: '2025-11-21 16:12:02+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - tests/LIS.test.cpp
   - tests/Point_Set_Range_Composite.test.cpp

@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/ModLog.h
     title: math/ModLog.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
@@ -22,28 +22,27 @@ data:
     \n// #pragma GCC optimize(\"Ofast,unroll-loops\")       // unroll long, simple\
     \ loops\n// #pragma GCC target(\"avx2,fma\")                   // vectorizing\
     \ code\n// #pragma GCC target(\"lzcnt,popcnt,abm,bmi,bmi2\")  // for fast bitset\
-    \ operation\n\n#include <bits/extc++.h>\n\n#include <tr2/dynamic_bitset>\n\nusing\
-    \ namespace std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n\
-    // using namespace __gnu_cxx;\n\n// for templates to work\n#define all(s) s.begin(),\
-    \ s.end()\n#define sz(x) (int) (x).size()\n#define pb push_back\n#define eb emplace_back\n\
-    using i32 = int32_t;\nusing u32 = uint32_t;\nusing i64 = int64_t;\nusing u64 =\
-    \ uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\nusing ld = long\
-    \ double;\nusing pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\n// fast map\n\
-    const int RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
+    \ operation\n\n#include <bits/extc++.h>\n\nusing namespace std;\nusing namespace\
+    \ __gnu_pbds;  // ordered_set, gp_hash_table\n// using namespace __gnu_cxx; //\
+    \ rope\n\n// for templates to work\n#define all(s) s.begin(), s.end()\n#define\
+    \ sz(x) (int) (x).size()\n#define pb push_back\n#define eb emplace_back\nusing\
+    \ i32 = int32_t;\nusing u32 = uint32_t;\nusing i64 = int64_t;\nusing u64 = uint64_t;\n\
+    using i128 = __int128_t;\nusing u128 = __uint128_t;\nusing ld = long double;\n\
+    using pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\n// fast map\nconst int\
+    \ RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
     struct chash {  // customize hash function for gp_hash_table\n  int operator()(int\
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
     \ (0-based)\n    order_of_key(k): returns the number of elements in the set that\
     \ are strictly less than k\n*/\ntemplate <class T>\nusing ordered_set = tree<T,\
-    \ null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n// dynamic\
-    \ bitset\nusing bs = tr2::dynamic_bitset<u64>;\n\n/*  rope\n    rope <int> cur\
-    \ = v.substr(l, r - l + 1);\n    v.erase(l, r - l + 1);\n    v.insert(v.mutable_begin(),\
-    \ cur);\n*/\n#line 1 \"math/ModLog.h\"\ni64 modLog(i64 a, i64 b, i64 m) {\n  i64\
-    \ n = (i64) sqrt(m) + 1, e = 1, f = 1, j = 1;\n  unordered_map<i64, i64> A;\n\
-    \  while (j <= n && (e = f = e * a % m) != b % m) A[e * b % m] = j++;\n  if (e\
-    \ == b % m) return j;\n  if (gcd(m, e) == gcd(m, b)) {\n    for (int i = 2; i\
-    \ < n + 2; ++i) {\n      if (A.count(e = e * f % m)) return n * i - A[e];\n  \
-    \  }\n  }\n  return -1;\n}\n#line 5 \"tests/Discrete_Logarithm.test.cpp\"\n\n\
+    \ null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n/* \
+    \ rope\n    rope <int> cur = v.substr(l, r - l + 1);\n    v.erase(l, r - l + 1);\n\
+    \    v.insert(v.mutable_begin(), cur);\n*/\n#line 1 \"math/ModLog.h\"\ni64 modLog(i64\
+    \ a, i64 b, i64 m) {\n  i64 n = (i64) sqrt(m) + 1, e = 1, f = 1, j = 1;\n  unordered_map<i64,\
+    \ i64> A;\n  while (j <= n && (e = f = e * a % m) != b % m) A[e * b % m] = j++;\n\
+    \  if (e == b % m) return j;\n  if (gcd(m, e) == gcd(m, b)) {\n    for (int i\
+    \ = 2; i < n + 2; ++i) {\n      if (A.count(e = e * f % m)) return n * i - A[e];\n\
+    \    }\n  }\n  return -1;\n}\n#line 5 \"tests/Discrete_Logarithm.test.cpp\"\n\n\
     void solve() {\n  i64 a, b, m;\n  cin >> a >> b >> m;\n  if (m == 1 || b == 1)\
     \ {  // because of the bs nonnegative and 0^0 = 1\n    cout << 0 << '\\n';\n \
     \   return;\n  }\n  cout << modLog(a, b, m) << '\\n';\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n\
@@ -62,7 +61,7 @@ data:
   isVerificationFile: true
   path: tests/Discrete_Logarithm.test.cpp
   requiredBy: []
-  timestamp: '2025-11-21 16:12:02+07:00'
+  timestamp: '2025-11-28 00:00:09+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Discrete_Logarithm.test.cpp

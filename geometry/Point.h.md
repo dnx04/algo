@@ -14,13 +14,13 @@ data:
   - icon: ':warning:'
     path: geometry/CircleTangents.h
     title: geometry/CircleTangents.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/Circumcircle.h
     title: geometry/Circumcircle.h
   - icon: ':heavy_check_mark:'
     path: geometry/ClosestPair.h
     title: geometry/ClosestPair.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/ConvexHull.h
     title: geometry/ConvexHull.h
   - icon: ':warning:'
@@ -47,7 +47,7 @@ data:
   - icon: ':warning:'
     path: geometry/LinearTransformation.h
     title: geometry/LinearTransformation.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/MinimumEnclosingCircle.h
     title: geometry/MinimumEnclosingCircle.h
   - icon: ':warning:'
@@ -87,18 +87,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Furthest_Pair_of_Points.test.cpp
     title: tests/Furthest_Pair_of_Points.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Minimum_Enclosing_Circle.test.cpp
     title: tests/Minimum_Enclosing_Circle.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Sort_Points_by_Argument.test.cpp
     title: tests/Sort_Points_by_Argument.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Static_Convex_Hull.test.cpp
     title: tests/Static_Convex_Hull.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/Point.h\"\n\ntemplate <class T>\nint sgn(T x) {\
@@ -167,7 +167,7 @@ data:
   - geometry/LineDistance.h
   - geometry/LinearTransformation.h
   timestamp: '2025-11-21 16:12:02+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - tests/Static_Convex_Hull.test.cpp
   - tests/Minimum_Enclosing_Circle.test.cpp

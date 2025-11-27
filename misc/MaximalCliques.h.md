@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Enumerate_Cliques.test.cpp
     title: tests/Enumerate_Cliques.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"misc/MaximalCliques.h\"\n// Usage: cliques(g, [&](const\
@@ -31,7 +31,7 @@ data:
   path: misc/MaximalCliques.h
   requiredBy: []
   timestamp: '2025-11-14 00:13:37+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - tests/Enumerate_Cliques.test.cpp
 documentation_of: misc/MaximalCliques.h

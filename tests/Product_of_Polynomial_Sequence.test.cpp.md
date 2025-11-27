@@ -12,18 +12,19 @@ data:
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/exp_of_formal_power_series
+    PROBLEM: https://judge.yosupo.jp/problem/product_of_polynomial_sequence
     links:
-    - https://judge.yosupo.jp/problem/exp_of_formal_power_series
-  bundledCode: "#line 1 \"tests/Exp_of_FPS.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/exp_of_formal_power_series\"\
-    \n\n#line 1 \"misc/macros.h\"\n// #pragma GCC optimize(\"Ofast,unroll-loops\"\
-    )       // unroll long, simple loops\n// #pragma GCC target(\"avx2,fma\")    \
-    \               // vectorizing code\n// #pragma GCC target(\"lzcnt,popcnt,abm,bmi,bmi2\"\
+    - https://judge.yosupo.jp/problem/product_of_polynomial_sequence
+  bundledCode: "#line 1 \"tests/Product_of_Polynomial_Sequence.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/product_of_polynomial_sequence\"\n\
+    \n#line 1 \"misc/macros.h\"\n// #pragma GCC optimize(\"Ofast,unroll-loops\") \
+    \      // unroll long, simple loops\n// #pragma GCC target(\"avx2,fma\")     \
+    \              // vectorizing code\n// #pragma GCC target(\"lzcnt,popcnt,abm,bmi,bmi2\"\
     )  // for fast bitset operation\n\n#include <bits/extc++.h>\n\nusing namespace\
     \ std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n// using namespace\
     \ __gnu_cxx; // rope\n\n// for templates to work\n#define all(s) s.begin(), s.end()\n\
@@ -113,31 +114,40 @@ data:
     \ * Fp(k)).exp(limit);\n    a = a * lead.pow(k);\n    Poly res(shift, 0);\n  \
     \  res.insert(res.end(), a.begin(), a.end());\n    res.resize(n);\n    return\
     \ res;\n  }\n  friend ostream& operator<<(ostream& os, const Poly& p) {\n    for\
-    \ (auto x : p) os << x << \" \";\n    return os;\n  }\n};\n#line 5 \"tests/Exp_of_FPS.test.cpp\"\
-    \n\nusing namespace std;\n\nvoid solve() {\n  int n;\n  cin >> n;\n  Poly f(n);\n\
-    \  for (auto& i : f) cin >> i;\n  auto g = f.exp(n);\n  for (auto i : g) cout\
-    \ << i << ' ';\n}\n\nsigned main() {\n  ios::sync_with_stdio(false);\n  cin.tie(0);\n\
-    \  solve();\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/exp_of_formal_power_series\"\
-    \n\n#include \"../misc/macros.h\"\n#include \"../math/Poly.h\"\n\nusing namespace\
-    \ std;\n\nvoid solve() {\n  int n;\n  cin >> n;\n  Poly f(n);\n  for (auto& i\
-    \ : f) cin >> i;\n  auto g = f.exp(n);\n  for (auto i : g) cout << i << ' ';\n\
-    }\n\nsigned main() {\n  ios::sync_with_stdio(false);\n  cin.tie(0);\n  solve();\n\
-    }"
+    \ (auto x : p) os << x << \" \";\n    return os;\n  }\n};\n#line 5 \"tests/Product_of_Polynomial_Sequence.test.cpp\"\
+    \n\nvoid solve() {\n  int n;\n  cin >> n;\n  if (n == 0) {\n    cout << 1;\n \
+    \   return;\n  }\n  deque<Poly> dq;\n  for (int i = 0; i < n; ++i) {\n    int\
+    \ d;\n    cin >> d;\n    Poly p;\n    for (int j = 0; j <= d; ++j) {\n      int\
+    \ c;\n      cin >> c;\n      p.eb(c);\n    }\n    dq.push_back(p);\n  }\n  for\
+    \ (int i = 0; i < n - 1; ++i) {\n    auto f = dq.front();\n    dq.pop_front();\n\
+    \    auto g = dq.front();\n    dq.pop_front();\n    dq.eb(f * g);\n  }\n  auto\
+    \ ans = dq.front();\n  for (auto v : ans) cout << v << ' ';\n}\n\nsigned main()\
+    \ {\n  ios::sync_with_stdio(false);\n  cin.tie(0);\n  int tc = 1;\n  // cin >>\
+    \ tc;\n  while (tc--) solve();\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/product_of_polynomial_sequence\"\
+    \n\n#include \"../misc/macros.h\"\n#include \"../math/Poly.h\"\n\nvoid solve()\
+    \ {\n  int n;\n  cin >> n;\n  if (n == 0) {\n    cout << 1;\n    return;\n  }\n\
+    \  deque<Poly> dq;\n  for (int i = 0; i < n; ++i) {\n    int d;\n    cin >> d;\n\
+    \    Poly p;\n    for (int j = 0; j <= d; ++j) {\n      int c;\n      cin >> c;\n\
+    \      p.eb(c);\n    }\n    dq.push_back(p);\n  }\n  for (int i = 0; i < n - 1;\
+    \ ++i) {\n    auto f = dq.front();\n    dq.pop_front();\n    auto g = dq.front();\n\
+    \    dq.pop_front();\n    dq.eb(f * g);\n  }\n  auto ans = dq.front();\n  for\
+    \ (auto v : ans) cout << v << ' ';\n}\n\nsigned main() {\n  ios::sync_with_stdio(false);\n\
+    \  cin.tie(0);\n  int tc = 1;\n  // cin >> tc;\n  while (tc--) solve();\n}"
   dependsOn:
   - misc/macros.h
   - math/Poly.h
   - math/ModInt.h
   isVerificationFile: true
-  path: tests/Exp_of_FPS.test.cpp
+  path: tests/Product_of_Polynomial_Sequence.test.cpp
   requiredBy: []
   timestamp: '2025-11-28 00:00:09+07:00'
-  verificationStatus: TEST_ACCEPTED
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: tests/Exp_of_FPS.test.cpp
+documentation_of: tests/Product_of_Polynomial_Sequence.test.cpp
 layout: document
 redirect_from:
-- /verify/tests/Exp_of_FPS.test.cpp
-- /verify/tests/Exp_of_FPS.test.cpp.html
-title: tests/Exp_of_FPS.test.cpp
+- /verify/tests/Product_of_Polynomial_Sequence.test.cpp
+- /verify/tests/Product_of_Polynomial_Sequence.test.cpp.html
+title: tests/Product_of_Polynomial_Sequence.test.cpp
 ---

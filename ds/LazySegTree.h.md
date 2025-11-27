@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Range_Affine_Point_Get.test.cpp
     title: tests/Range_Affine_Point_Get.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Range_Affine_Range_Sum.test.cpp
     title: tests/Range_Affine_Range_Sum.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"ds/LazySegTree.h\"\n// 0-indexed\ntemplate <class T, class\
@@ -68,7 +68,7 @@ data:
   path: ds/LazySegTree.h
   requiredBy: []
   timestamp: '2025-11-20 17:14:03+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - tests/Range_Affine_Point_Get.test.cpp
   - tests/Range_Affine_Range_Sum.test.cpp

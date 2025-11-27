@@ -4,7 +4,7 @@ data:
   - icon: ':warning:'
     path: geometry/Line.h
     title: geometry/Line.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/Point.h
     title: geometry/Point.h
   _extendedRequiredBy:

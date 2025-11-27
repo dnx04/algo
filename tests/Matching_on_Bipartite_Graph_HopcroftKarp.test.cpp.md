@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/HopcroftKarp.h
     title: graph/HopcroftKarp.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/bipartitematching
@@ -22,10 +22,10 @@ data:
     \ 1 \"misc/macros.h\"\n// #pragma GCC optimize(\"Ofast,unroll-loops\")       //\
     \ unroll long, simple loops\n// #pragma GCC target(\"avx2,fma\")             \
     \      // vectorizing code\n// #pragma GCC target(\"lzcnt,popcnt,abm,bmi,bmi2\"\
-    )  // for fast bitset operation\n\n#include <bits/extc++.h>\n\n#include <tr2/dynamic_bitset>\n\
-    \nusing namespace std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n\
-    // using namespace __gnu_cxx;\n\n// for templates to work\n#define all(s) s.begin(),\
-    \ s.end()\n#define sz(x) (int) (x).size()\n#define pb push_back\n#define eb emplace_back\n\
+    )  // for fast bitset operation\n\n#include <bits/extc++.h>\n\nusing namespace\
+    \ std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n// using namespace\
+    \ __gnu_cxx; // rope\n\n// for templates to work\n#define all(s) s.begin(), s.end()\n\
+    #define sz(x) (int) (x).size()\n#define pb push_back\n#define eb emplace_back\n\
     using i32 = int32_t;\nusing u32 = uint32_t;\nusing i64 = int64_t;\nusing u64 =\
     \ uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\nusing ld = long\
     \ double;\nusing pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\n// fast map\n\
@@ -35,27 +35,26 @@ data:
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
     \ (0-based)\n    order_of_key(k): returns the number of elements in the set that\
     \ are strictly less than k\n*/\ntemplate <class T>\nusing ordered_set = tree<T,\
-    \ null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n// dynamic\
-    \ bitset\nusing bs = tr2::dynamic_bitset<u64>;\n\n/*  rope\n    rope <int> cur\
-    \ = v.substr(l, r - l + 1);\n    v.erase(l, r - l + 1);\n    v.insert(v.mutable_begin(),\
-    \ cur);\n*/\n#line 1 \"graph/HopcroftKarp.h\"\nbool dfs(int a, int L, vector<vi>&\
-    \ g, vi& btoa, vi& A, vi& B) {\n  if (A[a] != L) return 0;\n  A[a] = -1;\n  for\
-    \ (int b : g[a]) {\n    if (B[b] == L + 1) {\n      B[b] = 0;\n      if (btoa[b]\
-    \ == -1 || dfs(btoa[b], L + 1, g, btoa, A, B)) return btoa[b] = a, 1;\n    }\n\
-    \  }\n  return 0;\n}\n\nint hopcroftKarp(vector<vi>& g, vi& btoa) {\n  int res\
-    \ = 0;\n  vi A(g.size()), B(btoa.size()), cur, next;\n  for (;;) {\n    fill(all(A),\
-    \ 0);\n    fill(all(B), 0);\n    /// Find the starting nodes for BFS (i.e. layer\
-    \ 0).\n    cur.clear();\n    for (int a : btoa)\n      if (a != -1) A[a] = -1;\n\
-    \    for (int a = 0; a < sz(g); ++a)\n      if (A[a] == 0) cur.push_back(a);\n\
-    \    /// Find all layers using bfs.\n    for (int lay = 1;; lay++) {\n      bool\
-    \ islast = 0;\n      next.clear();\n      for (int a : cur)\n        for (int\
-    \ b : g[a]) {\n          if (btoa[b] == -1) {\n            B[b] = lay;\n     \
-    \       islast = 1;\n          } else if (btoa[b] != a && !B[b]) {\n         \
-    \   B[b] = lay;\n            next.push_back(btoa[b]);\n          }\n        }\n\
-    \      if (islast) break;\n      if (next.empty()) return res;\n      for (int\
-    \ a : next) A[a] = lay;\n      cur.swap(next);\n    }\n    /// Use DFS to scan\
-    \ for augmenting paths.\n    for (int a = 0; a < sz(g); ++a) res += dfs(a, 0,\
-    \ g, btoa, A, B);\n  }\n}\n#line 5 \"tests/Matching_on_Bipartite_Graph_HopcroftKarp.test.cpp\"\
+    \ null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n/* \
+    \ rope\n    rope <int> cur = v.substr(l, r - l + 1);\n    v.erase(l, r - l + 1);\n\
+    \    v.insert(v.mutable_begin(), cur);\n*/\n#line 1 \"graph/HopcroftKarp.h\"\n\
+    bool dfs(int a, int L, vector<vi>& g, vi& btoa, vi& A, vi& B) {\n  if (A[a] !=\
+    \ L) return 0;\n  A[a] = -1;\n  for (int b : g[a]) {\n    if (B[b] == L + 1) {\n\
+    \      B[b] = 0;\n      if (btoa[b] == -1 || dfs(btoa[b], L + 1, g, btoa, A, B))\
+    \ return btoa[b] = a, 1;\n    }\n  }\n  return 0;\n}\n\nint hopcroftKarp(vector<vi>&\
+    \ g, vi& btoa) {\n  int res = 0;\n  vi A(g.size()), B(btoa.size()), cur, next;\n\
+    \  for (;;) {\n    fill(all(A), 0);\n    fill(all(B), 0);\n    /// Find the starting\
+    \ nodes for BFS (i.e. layer 0).\n    cur.clear();\n    for (int a : btoa)\n  \
+    \    if (a != -1) A[a] = -1;\n    for (int a = 0; a < sz(g); ++a)\n      if (A[a]\
+    \ == 0) cur.push_back(a);\n    /// Find all layers using bfs.\n    for (int lay\
+    \ = 1;; lay++) {\n      bool islast = 0;\n      next.clear();\n      for (int\
+    \ a : cur)\n        for (int b : g[a]) {\n          if (btoa[b] == -1) {\n   \
+    \         B[b] = lay;\n            islast = 1;\n          } else if (btoa[b] !=\
+    \ a && !B[b]) {\n            B[b] = lay;\n            next.push_back(btoa[b]);\n\
+    \          }\n        }\n      if (islast) break;\n      if (next.empty()) return\
+    \ res;\n      for (int a : next) A[a] = lay;\n      cur.swap(next);\n    }\n \
+    \   /// Use DFS to scan for augmenting paths.\n    for (int a = 0; a < sz(g);\
+    \ ++a) res += dfs(a, 0, g, btoa, A, B);\n  }\n}\n#line 5 \"tests/Matching_on_Bipartite_Graph_HopcroftKarp.test.cpp\"\
     \n\nvoid solve() {\n  int l, r, m;\n  cin >> l >> r >> m;\n  vector<vi> g(l);\n\
     \  vi btoa(r, -1);\n  for (int i = 0; i < m; ++i) {\n    int a, b;\n    cin >>\
     \ a >> b;\n    g[a].push_back(b);\n  }\n  cout << hopcroftKarp(g, btoa) << '\\\
@@ -78,8 +77,8 @@ data:
   isVerificationFile: true
   path: tests/Matching_on_Bipartite_Graph_HopcroftKarp.test.cpp
   requiredBy: []
-  timestamp: '2025-11-21 16:12:02+07:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-11-28 00:00:09+07:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: tests/Matching_on_Bipartite_Graph_HopcroftKarp.test.cpp
 layout: document

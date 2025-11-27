@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Maximum_Independent_Set.test.cpp
     title: tests/Maximum_Independent_Set.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"misc/MaximumClique.h\"\nstruct Maxclique {\n  ld limit =\
@@ -62,7 +62,7 @@ data:
   path: misc/MaximumClique.h
   requiredBy: []
   timestamp: '2025-11-18 16:58:39+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - tests/Maximum_Independent_Set.test.cpp
 documentation_of: misc/MaximumClique.h

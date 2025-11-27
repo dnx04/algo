@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/MinAssignment.h
     title: graph/MinAssignment.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
@@ -22,22 +22,21 @@ data:
     \ #pragma GCC optimize(\"Ofast,unroll-loops\")       // unroll long, simple loops\n\
     // #pragma GCC target(\"avx2,fma\")                   // vectorizing code\n//\
     \ #pragma GCC target(\"lzcnt,popcnt,abm,bmi,bmi2\")  // for fast bitset operation\n\
-    \n#include <bits/extc++.h>\n\n#include <tr2/dynamic_bitset>\n\nusing namespace\
-    \ std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n// using namespace\
-    \ __gnu_cxx;\n\n// for templates to work\n#define all(s) s.begin(), s.end()\n\
-    #define sz(x) (int) (x).size()\n#define pb push_back\n#define eb emplace_back\n\
-    using i32 = int32_t;\nusing u32 = uint32_t;\nusing i64 = int64_t;\nusing u64 =\
-    \ uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\nusing ld = long\
-    \ double;\nusing pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\n// fast map\n\
-    const int RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
-    struct chash {  // customize hash function for gp_hash_table\n  int operator()(int\
-    \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
-    \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
-    \ (0-based)\n    order_of_key(k): returns the number of elements in the set that\
-    \ are strictly less than k\n*/\ntemplate <class T>\nusing ordered_set = tree<T,\
-    \ null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n// dynamic\
-    \ bitset\nusing bs = tr2::dynamic_bitset<u64>;\n\n/*  rope\n    rope <int> cur\
-    \ = v.substr(l, r - l + 1);\n    v.erase(l, r - l + 1);\n    v.insert(v.mutable_begin(),\
+    \n#include <bits/extc++.h>\n\nusing namespace std;\nusing namespace __gnu_pbds;\
+    \  // ordered_set, gp_hash_table\n// using namespace __gnu_cxx; // rope\n\n//\
+    \ for templates to work\n#define all(s) s.begin(), s.end()\n#define sz(x) (int)\
+    \ (x).size()\n#define pb push_back\n#define eb emplace_back\nusing i32 = int32_t;\n\
+    using u32 = uint32_t;\nusing i64 = int64_t;\nusing u64 = uint64_t;\nusing i128\
+    \ = __int128_t;\nusing u128 = __uint128_t;\nusing ld = long double;\nusing pii\
+    \ = pair<i32, i32>;\nusing vi = vector<i32>;\n\n// fast map\nconst int RANDOM\
+    \ = chrono::high_resolution_clock::now().time_since_epoch().count();\nstruct chash\
+    \ {  // customize hash function for gp_hash_table\n  int operator()(int x) const\
+    \ { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\n/* ordered\
+    \ set\n    find_by_order(k): returns an iterator to the k-th element (0-based)\n\
+    \    order_of_key(k): returns the number of elements in the set that are strictly\
+    \ less than k\n*/\ntemplate <class T>\nusing ordered_set = tree<T, null_type,\
+    \ less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n/*  rope\n    rope\
+    \ <int> cur = v.substr(l, r - l + 1);\n    v.erase(l, r - l + 1);\n    v.insert(v.mutable_begin(),\
     \ cur);\n*/\n#line 1 \"graph/MinAssignment.h\"\npair<i64, vector<int>> MinAssignment(const\
     \ vector<vector<i64>>& W) {\n  int n = W.size(), m = W[0].size();  // assert(n\
     \ <= m);\n  vector<i64> v(m), dist(m);           // v: potential\n  vector<int>\
@@ -79,7 +78,7 @@ data:
   isVerificationFile: true
   path: tests/Assignment_Problem.test.cpp
   requiredBy: []
-  timestamp: '2025-11-21 16:12:02+07:00'
+  timestamp: '2025-11-28 00:00:09+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Assignment_Problem.test.cpp
