@@ -68,15 +68,10 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 #file("math/DivModSum.h", description: [
   Tính $sum_(i = 0)^(n - 1) (a + i times d) / m$ và $sum_(i = 0)^(n - 1) (a + i times d) mod m$. Độ phức tạp $O(log N)$
 ])
-// #file("math/FFT.h", description: [
-//   FFT trên $RR$
-// ])
-// #file("math/NTT.h", description: [
-//   FFT modulo nguyên tố *bất kỳ*.
-// ])
 #file("math/FST.h", description: [
   Tính tích chập AND, OR, XOR.
 ])
+#file("math/ZetaMobius.h")
 #file("math/Poly.h", description: [
   Các phép toán trên đa thức + NTT.
 ])
@@ -168,6 +163,10 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 #file("graph/GlobalMinCut.h", description: [
   Tìm lát cắt cực tiểu trong đồ thị vô hướng trong $O(V^3)$.
 ])
+#file(
+  "graph/EnumCliques.h",
+  description: [Duyệt qua tất cả các clique của một đồ thị trong $O(3^(n/3))$.],
+)
 // #file("graph/DirectedMST.h", description: [
 //   Trả về giá trị và các cạnh của cây khung nhỏ nhất trên đồ thị có hướng với đỉnh nguồn cho trước trong $O(E log V)$. Nếu không tồn tại in ra `-1`.
 // ])
@@ -221,22 +220,6 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 #file("misc/maxHist.h", description: [
   Hình chữ nhật lớn nhất.
 ])
-// #file("misc/ContinuedFraction.h", description: [
-//   Cho $N$ và số thực $x > 0$, tính xấp xỉ hữu tỉ $p/q$ của $x$ với $p, q <= N$ trong $O(log N)$. Đảm bảo $abs(p/q - x) < 1/q$.
-
-#file(
-  "misc/MaximalCliques.h",
-  description: [Chạy một hàm nào đó duyệt qua tất cả các clique của một đồ thị trong $O(3^(n/3))$.],
-)
-#file(
-  "misc/MaximumClique.h",
-  description: [Tìm nhanh một clique lớn nhất. Dùng để giải Maximum Independent Set bằng cách tính maximum clique của phần bù.],
-)
-#file(
-  "misc/Frievalds.cpp",
-  description: [Kiểm tra xác suất tích ma trận $A B = C$ trong $O(T n^2)$. Xác suất sai là $2^(-T)$.],
-)
-
 
 = Hình
 
@@ -290,5 +273,5 @@ Các thuật toán hình có đa giác, nếu không chú thích gì, thì hoạ
 // #file(
 //   "geometry/HalfplaneSet.h",
 //   description: [Tìm bao lồi giao của nửa mặt phẳng trong $O(n log n)$. Nửa mặt phẳng được định nghĩa bằng $a x + b y <= c$],
-)
+// )
 

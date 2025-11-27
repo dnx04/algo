@@ -1,41 +1,31 @@
-vector<int> DomTree(vector<vector<int>>& graph, int src) {
-  int n = graph.size();
-  vector<vector<int>> tree(n), trans(n), buck(n);
-  vector<int> semi(n), par(n), dom(n), label(n), atob(n, -1), btoa(n, -1), link(n, -1);
-
-  function<int(int, int)> find = [&](int u, int d) {
-    if (link[u] == -1) return d ? -1 : u;
-    int v = find(link[u], d + 1);
-    if (v < 0) return u;
-    if (semi[label[link[u]]] < semi[label[u]]) label[u] = label[link[u]];
-    link[u] = v;
-    return d ? v : label[u];
-  };
-  int t = 0;
-  function<void(int)> dfs = [&](int u) {
-    atob[u] = t;
-    btoa[t] = u;
-    label[t] = semi[t] = t;
-    t++;
-    for (auto v : graph[u]) {
-      if (atob[v] == -1) dfs(v), par[atob[v]] = atob[u];
-      trans[atob[v]].push_back(atob[u]);
+vector<int> DomTree(const vector<vi>& g, int s) {
+  int n = sz(g), t = 0;
+  vector<int> arr(n, -1), rev(n), par(n), sdom(n), dom(n), dsu(n), lab(n), res(n, -1);
+  vector<vi> rg(n), buck(n);
+  auto dfs = [&](auto&& self, int u) -> void {
+    arr[u] = t, rev[t] = u, lab[t] = sdom[t] = dsu[t] = t, t++;
+    for (int v : g[u]) {
+      if (arr[v] == -1) self(self, v), par[arr[v]] = arr[u];
+      rg[arr[v]].pb(arr[u]);
     }
   };
-  dfs(src);
-  for (int u = t - 1; u >= 0; --u) {
-    for (auto v : trans[u]) semi[u] = min(semi[u], semi[find(v, 0)]);
-    if (u) buck[semi[u]].push_back(u);
-    for (auto w : buck[u]) {
-      int v = find(w, 0);
-      dom[w] = semi[v] == semi[w] ? semi[w] : v;
-    }
-    if (u) link[u] = par[u];
+  dfs(dfs, s);
+  auto find = [&](auto&& self, int u) -> int {
+    if (u == dsu[u]) return u;
+    int v = self(self, dsu[u]);
+    if (sdom[lab[dsu[u]]] < sdom[lab[u]]) lab[u] = lab[dsu[u]];
+    return dsu[u] = v;
+  };
+  for (int i = t - 1; i; --i) {
+    for (int v : rg[i]) find(find, v), sdom[i] = min(sdom[i], sdom[lab[v]]);
+    buck[sdom[i]].pb(i);
+    int p = par[i]; dsu[i] = p;
+    for (int v : buck[p]) find(find, v), dom[v] = (sdom[lab[v]] == sdom[v] ? p : lab[v]);
+    buck[p].clear();
   }
-  vector<int> ret(n, -1);
-  for (int u = 1; u < t; ++u) {
-    if (dom[u] != semi[u]) dom[u] = dom[dom[u]];
-    ret[btoa[u]] = btoa[dom[u]];
+  for (int i = 1; i < t; ++i) {
+    if (dom[i] != sdom[i]) dom[i] = dom[dom[i]];
+    res[rev[i]] = rev[dom[i]];
   }
-  return ret;
+  return res;
 }

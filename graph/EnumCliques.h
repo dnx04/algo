@@ -1,4 +1,5 @@
 // Usage: cliques(g, [&](const bs &clique) { callback }, ~bs(n), bs(n), bs(n));
+using bs = tr2::dynamic_bitset<u64>;
 
 template <class F>
 void cliques(vector<bs>& eds, F f, bs P, bs X, bs R) {

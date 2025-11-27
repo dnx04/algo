@@ -2,7 +2,7 @@
 
 #include "../misc/macros.h"
 #include "../math/ModInt.h"
-#include "../misc/MaximalCliques.h"
+#include "../graph/EnumCliques.h"
 
 using Fp = modint<998244353>;
 
