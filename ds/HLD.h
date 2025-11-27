@@ -1,95 +1,48 @@
 template <class G>
 struct HLD {
- private:
-  void dfs_sz(int cur) {
-    size[cur] = 1;
-    for (auto& dst : g[cur]) {
-      if (dst == par[cur]) {
-        if (g[cur].size() >= 2 && int(dst) == int(g[cur][0]))
-          swap(g[cur][0], g[cur][1]);
-        else
-          continue;
-      }
-      depth[dst] = depth[cur] + 1;
-      par[dst] = cur;
-      dfs_sz(dst);
-      size[cur] += size[dst];
-      if (size[dst] > size[g[cur][0]]) swap(dst, g[cur][0]);
-    }
-  }
-
-  void dfs_hld(int cur) {
-    down[cur] = id++;
-    for (auto dst : g[cur]) {
-      if (dst == par[cur]) continue;
-      nxt[dst] = (int(dst) == int(g[cur][0]) ? nxt[cur] : int(dst));
-      dfs_hld(dst);
-    }
-    up[cur] = id;
-  }
-
-  // [u, v)
-  vector<pii> ascend(int u, int v) const {
-    vector<pii> res;
-    while (nxt[u] != nxt[v]) res.eb(down[u], down[nxt[u]]), u = par[nxt[u]];
-    if (u != v) res.eb(down[u], down[v] + 1);
-    return res;
-  }
-
-  // (u, v]
-  vector<pii> descend(int u, int v) const {
-    if (u == v) return {};
-    if (nxt[u] == nxt[v]) return {{down[u] + 1, down[v]}};
-    auto res = descend(u, par[nxt[v]]);
-    res.eb(down[nxt[v]], down[v]);
-    return res;
-  }
-
- public:
-  G& g;
-  int root, id;
-  vi size, depth, down, up, nxt, par;
-  HLD(G& g, int root = 0) : g(g), root(root), id(0), size(sz(g), 0), depth(sz(g), 0), down(sz(g), -1), up(sz(g), -1), nxt(sz(g), root), par(sz(g), root) {
+  const G& g;
+  int n, t = 0;
+  vi sz, dep, par, head, pos, heavy;
+  HLD(const G& g, int root = 0) : g(g), n(sz(g)), sz(n), dep(n), par(n), head(n), pos(n), heavy(n, -1) {
+    par[root] = -1;
     dfs_sz(root);
-    dfs_hld(root);
+    dfs_hld(root, root);
   }
-
-  pii idx(int i) const { return make_pair(down[i], up[i]); }
-
-  template <class F>
-  void path_query(int u, int v, bool vertex, const F& f) {
-    int l = lca(u, v);
-    for (auto&& [a, b] : ascend(u, l)) {
-      int s = a + 1, t = b;
-      s > t ? f(t, s) : f(s, t);
+  void dfs_sz(int u) {
+    sz[u] = 1;
+    for (int v : g[u])
+      if (v != par[u]) {
+        dep[v] = dep[u] + 1, par[v] = u;
+        dfs_sz(v);
+        sz[u] += sz[v];
+        if (heavy[u] == -1 || sz[v] > sz[heavy[u]]) heavy[u] = v;
+      }
+  }
+  void dfs_hld(int u, int h) {
+    head[u] = h, pos[u] = ++t;
+    if (heavy[u] != -1) dfs_hld(heavy[u], h);
+    for (int v : g[u])
+      if (v != par[u] && v != heavy[u]) dfs_hld(v, v);
+  }
+  pii query_subtree(int u) { return {pos[u], pos[u] + sz[u] - 1}; }
+  // Trả về vector các đoạn [L, R].
+  // L > R: đi lên (u -> LCA). L <= R: đi xuống (LCA -> v).
+  vector<pii> query_path(int u, int v) {
+    vector<pii> l, r;
+    for (; head[u] != head[v]; u = par[head[u]]) {
+      if (dep[head[u]] > dep[head[v]]) l.pb({pos[u], pos[head[u]]});
+      else r.pb({pos[head[v]], pos[v]}), v = par[head[v]];
     }
-    if (vertex) f(down[l], down[l] + 1);
-    for (auto&& [a, b] : descend(l, v)) {
-      int s = a, t = b + 1;
-      s > t ? f(t, s) : f(s, t);
-    }
+    if (dep[u] > dep[v]) l.pb({pos[u], pos[v]});
+    else r.pb({pos[u], pos[v]});
+    reverse(all(r));
+    l.insert(l.end(), all(r));
+    return l;
   }
 
-  template <class F>
-  void path_noncommutative_query(int u, int v, bool vertex, const F& f) {
-    int l = lca(u, v);
-    for (auto&& [a, b] : ascend(u, l)) f(a + 1, b);
-    if (vertex) f(down[l], down[l] + 1);
-    for (auto&& [a, b] : descend(l, v)) f(a, b + 1);
+  int lca(int u, int v) {
+    for (; head[u] != head[v]; u = par[head[u]])
+      if (dep[head[u]] < dep[head[v]]) swap(u, v);
+    return dep[u] < dep[v] ? u : v;
   }
-
-  template <class F>
-  void subtree_query(int u, bool vertex, const F& f) {
-    f(down[u] + int(!vertex), up[u]);
-  }
-
-  int lca(int a, int b) {
-    while (nxt[a] != nxt[b]) {
-      if (down[a] < down[b]) swap(a, b);
-      a = par[nxt[a]];
-    }
-    return depth[a] < depth[b] ? a : b;
-  }
-
-  int dist(int a, int b) { return depth[a] + depth[b] - depth[lca(a, b)] * 2; }
 };

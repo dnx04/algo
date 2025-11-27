@@ -1,23 +1,9 @@
-#import "@preview/codly:1.3.0": *
-// #import "@preview/outrageous:0.3.0"
-#import "@preview/cheq:0.3.0": checklist
 #import "icpc.typ": *
-
-#set outline(indent: auto, depth: 4)
-
-#show: codly-init.with()
-// #show outline.entry: outrageous.show-entry.with()
-#show: checklist
-
-#codly(number-format: none)
-#codly(display-icon: true)
 
 #show: doc => icpc(
   team: [Quattuorvigintillion - University of Engineering and Technology, VNU],
   doc,
 )
-
-#pagebreak()
 
 // #file("misc/macros.h", hash: false)
 // #file("misc/c_cpp_properties.json")
@@ -26,34 +12,15 @@
 
 = Notes
 
-== Chuỗi Taylor
-
-$
-  f(x) & = sum_(n=0)^infinity (f^((n))(a)) / n! (x - a)^n \
-       & = f(a) + f'(a)(x - a) + (f''(a)) / 2! (x - a)^2 + ...
-$
-
-Với $alpha$ là số thực bất kì, $k$ là số nguyên:
-
-$
-  binom(alpha, k) = cases(
-    1 & "nếu" k = 0,
-    (alpha (alpha - 1) ... (alpha - k + 1)) / k! & "nếu" k > 0
-  )
-$
-
-// $
-//   sin(a plus.minus b) &= sin a cos b plus.minus cos a sin b \
-//   cos(a plus.minus b) &= cos a cos b minus.plus sin a sin b \
-//   tan(a plus.minus b) &= (tan a plus.minus tan b) / (1 minus.plus tan a tan b) \
-//   sin 2a &= 2 sin a cos a \
-//   cos 2a &= cos^2 a - sin^2 a = 2cos^2 a - 1 = 1 - 2sin^2 a \
-//   tan 2a &= (2 tan a) / (1 - tan^2 a)
-// $
-
 == Catalan
 
 $ C_n = 1 / (n + 1) binom(2n, n), C_(n + 1) = sum_(i=0)^n C_i C_(n - i) $
+
+- Số lượng cây nhị phân (có gốc) mà mỗi nút có đúng 0 hoặc 2 con (không có nút 1 con), và tổng cộng có $n+1$ lá.
+- Số cách chia một đa giác lồi có $n+2$ cạnh thành $n$ tam giác bằng cách vẽ các đường chéo không cắt nhau.
+- Số lượng hoán vị của ${1, dots, n}$ không tồn tại các chỉ số $i < j < k$ sao cho $a_j < a_k < a_i$.
+- Số cách vẽ các dây cung không cắt nhau nối $2n$ điểm trên đường tròn.
+- Số lượng dãy số nguyên $a_1, a_2, dots, a_n$ thỏa mãn $a_i <= i$.
 
 == Lucas
 
@@ -73,16 +40,6 @@ Cho một đa giác có các điểm nguyên. Gọi $i$ là số điểm nguyên
 
 $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 
-== Super interpretation of kth powers
-
-The square of the size of a set is equal to the number of ordered pairs of elements in the set. So we iterate over pairs and for each we compute the contribution to the answer.
-
-Similarly, the $k$-th power is equal to the number of sequences (tuples) of length $k$.
-
-$ E(X^2) = E(\#"ordered pairs"), E(X^k) = E(\#"ordered tuples") $
-
-If you want to maintain the sum of $k$-th powers, it might help to also maintain the sum of smaller powers. For example, if the sum of $0$-th, $1$-th and $2$-nd powers is $S_0$, $S_1$ and $S_2$, and we increase all elements by $x$, the new sums are $S_0$, $S_1 + S_0 x$ and $S_2 + 2x S_1 + x^2 S_0$.
-
 == Nhận xét
 
 1. Cho 2 xâu $S$, $T$. Số xâu phân biệt của prefix(S) + suffix(T) = $|S| * |T|$ - số kí tự giống nhau của S và T, không tính $S_0$ và $T_(n)$.
@@ -96,7 +53,7 @@ If you want to maintain the sum of $k$-th powers, it might help to also maintain
   Kiểm tra số nguyên tố nhanh, *chắc chắn* đúng trong `unsigned long long`.
 ])
 #file("math/Matrix.h", description: [
-  Ma trận vuông, hỗ trợ nhân và luỹ thừa.
+  Ma trận vuông, hỗ trợ nhân, luỹ thừa, khử Gauss, định thức và nghịch đảo.
 ])
 #file("math/ModLog.h", description: [
   Tìm $x > 0$ nhỏ nhất sao cho $a^x = b mod m$, hoặc $-1$. `modLog(a,1,m)` trả về order của $a$ trong $ZZ^*_m$. Độ phức tạp $O(sqrt(m))$.
@@ -122,9 +79,9 @@ If you want to maintain the sum of $k$-th powers, it might help to also maintain
 #file("math/FST.h", description: [
   Tính tích chập AND, OR, XOR.
 ])
-// #file("math/Poly.h", description: [
-//   Các phép toán trên đa thức + NTT.
-// ])
+#file("math/Poly.h", description: [
+  Các phép toán trên đa thức + NTT.
+])
 #file("math/BerlekampMassey.h", description: [
   Phục hồi một dãy truy hồi cấp $n$ từ $2n$ số hạng đầu tiên trong $O(n^2)$.
 ])
@@ -133,7 +90,6 @@ If you want to maintain the sum of $k$-th powers, it might help to also maintain
 ])
 #file("math/SumPowerPoly.h")
 #file("math/XorBasis.h", description: [])
-
 
 = Cấu trúc dữ liệu
 
@@ -146,10 +102,10 @@ If you want to maintain the sum of $k$-th powers, it might help to also maintain
 #file("ds/HLD.h", description: [
   HLD cho phép truy vấn cả đường đi và cây con trong $O(log N)$.
   1. `pos(x)`: trả về vị trí của đỉnh `x` trong quá trình duyệt DFS.
-  2. `subtree(x)`: trả về đoạn `[l, r)` tương ứng với cây con của `x`.
-  3. `path_query(a, b, f)`: phân hoạch đường đi từ `a` đến `b` thành các đoạn liên tiếp trong mảng DFS. Hàm `f` có thể được dùng để truy vấn/cập nhật Segment Tree.
+  2. `query_subtree(x)`: trả về đoạn `[l, r)` tương ứng với cây con của `x`.
+  3. `query_path(a, b)`: phân hoạch đường đi từ `a` đến `b` thành các đoạn liên tiếp trong mảng DFS. Sau đó duyệt qua từng đoạn này để cập nhật Segment Tree. 
 ])
-#file("ds/AuxiliaryTree.h")
+#file("ds/VirtualTree.h")
 #file("ds/PersistentSegTree.h")
 #file("ds/DSURollback.h")
 #file(
@@ -159,6 +115,7 @@ If you want to maintain the sum of $k$-th powers, it might help to also maintain
 )
 #file("ds/SWAD.h")
 #file("ds/Mo.h")
+#file("ds/Treap.h")
 // #file("ds/WaveletTree.h")
 
 = Đồ thị
@@ -192,9 +149,6 @@ If you want to maintain the sum of $k$-th powers, it might help to also maintain
 //   Tìm tất cả thành phân song liên thông trong $O(E + V)$, và với mỗi thành phần chạy callback cho mỗi cạnh.
 // ])
 #file("graph/2SAT.h")
-// #file("graph/EdgeColoring.h", description: [
-//   Cho đồ thị $N$ đỉnh có bậc lớn nhất $D$, tô không quá $D + 1$ màu vào cạnh sao cho 2 cạnh kề nhau khác màu trong $O(N M)$.
-// ])
 #file(
   "graph/Dominator.h",
   description: [Dựng Dominator Tree cho đồ thị có hướng khi đặt gốc là $s$. $u$ là cha của $v$ nếu mọi đường đi từ $s$ đến $v$ đều phải đi qua $u$. Độ phức tạp $O(M log N)$ hằng số thấp.
