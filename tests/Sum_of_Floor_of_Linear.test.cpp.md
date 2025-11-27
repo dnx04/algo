@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/DivModSum.h
     title: math/DivModSum.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/sum_of_floor_of_linear
@@ -54,14 +54,14 @@ data:
     \ mid = (lo + hi) / 2;\n    auto cnt = divsum(n, m, a, b) - divsum(n, m, a, b\
     \ - mid - 1);\n    if (cnt > 0) ans = mid, hi = mid - 1;\n    else lo = mid +\
     \ 1;\n  }\n  return ans;\n}\n#line 5 \"tests/Sum_of_Floor_of_Linear.test.cpp\"\
-    \n\nvoid solve() {\n  i64 n, m, a, b;\n  cin >> n >> m >> a >> b;\n  cout << divsum(b,\
-    \ a, m, n) << '\\n';\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n \
+    \n\nvoid solve() {\n  i64 n, m, a, b;\n  cin >> n >> m >> a >> b;\n  cout << divsum(n,\
+    \ m, a, b) << '\\n';\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n \
     \ cin.exceptions(cin.failbit);\n  int tc = 1;\n  cin >> tc;\n  for (int i = 1;\
     \ i <= tc; ++i) {\n    solve();\n  }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/sum_of_floor_of_linear\"\
     \n\n#include \"../misc/macros.h\"\n#include \"../math/DivModSum.h\"\n\nvoid solve()\
-    \ {\n  i64 n, m, a, b;\n  cin >> n >> m >> a >> b;\n  cout << divsum(b, a, m,\
-    \ n) << '\\n';\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
+    \ {\n  i64 n, m, a, b;\n  cin >> n >> m >> a >> b;\n  cout << divsum(n, m, a,\
+    \ b) << '\\n';\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
     \  int tc = 1;\n  cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n\
     \  }\n}\n"
   dependsOn:
@@ -70,8 +70,8 @@ data:
   isVerificationFile: true
   path: tests/Sum_of_Floor_of_Linear.test.cpp
   requiredBy: []
-  timestamp: '2025-11-27 11:47:17+07:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2025-11-27 11:51:39+07:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Sum_of_Floor_of_Linear.test.cpp
 layout: document

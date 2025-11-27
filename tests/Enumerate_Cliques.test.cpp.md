@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: misc/MaximalCliques.h
     title: misc/MaximalCliques.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []

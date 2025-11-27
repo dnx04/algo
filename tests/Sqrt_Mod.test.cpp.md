@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/ModSQRT.h
     title: math/ModSQRT.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
