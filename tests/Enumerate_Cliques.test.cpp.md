@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: graph/EnumCliques.h
+    title: graph/EnumCliques.h
   - icon: ':question:'
     path: math/ModInt.h
     title: math/ModInt.h
-  - icon: ':x:'
-    path: misc/MaximalCliques.h
-    title: misc/MaximalCliques.h
   - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/enumerate_cliques
@@ -24,14 +24,14 @@ data:
     \n\n#line 1 \"misc/macros.h\"\n// #pragma GCC optimize(\"Ofast,unroll-loops\"\
     )       // unroll long, simple loops\n// #pragma GCC target(\"avx2,fma\")    \
     \               // vectorizing code\n// #pragma GCC target(\"lzcnt,popcnt,abm,bmi,bmi2\"\
-    )  // for fast bitset operation\n\n#include <bits/extc++.h>\n\nusing namespace\
-    \ std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n// using namespace\
-    \ __gnu_cxx; // rope\n\n// for templates to work\n#define all(s) s.begin(), s.end()\n\
-    #define sz(x) (int) (x).size()\n#define pb push_back\n#define eb emplace_back\n\
-    using i32 = int32_t;\nusing u32 = uint32_t;\nusing i64 = int64_t;\nusing u64 =\
-    \ uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\nusing ld = long\
-    \ double;\nusing pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\n// fast map\n\
-    const int RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
+    )  // for fast bitset operation\n\n#include <bits/extc++.h>\n#include <tr2/dynamic_bitset>\n\
+    \nusing namespace std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n\
+    // using namespace __gnu_cxx; // rope\n\n// for templates to work\n#define all(x)\
+    \ (x).begin(), (x).end()\n#define sz(x) (int) (x).size()\n#define pb push_back\n\
+    #define eb emplace_back\nusing i32 = int32_t;\nusing u32 = uint32_t;\nusing i64\
+    \ = int64_t;\nusing u64 = uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
+    using ld = long double;\nusing pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\
+    \n// fast map\nconst int RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
     struct chash {  // customize hash function for gp_hash_table\n  int operator()(int\
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
@@ -64,25 +64,25 @@ data:
     };\n\nu64 modmul(u64 x, u64 y, u64 m) { return u128(x) * y % m; }\nu64 modpow(u64\
     \ x, u64 k, u64 m) {\n  u64 res = 1;\n  while (k) {\n    if (k & 1) res = modmul(res,\
     \ x, m);\n    x = modmul(x, x, m);\n    k >>= 1;\n  }\n  return res;\n}\n#line\
-    \ 1 \"misc/MaximalCliques.h\"\n// Usage: cliques(g, [&](const bs &clique) { callback\
-    \ }, ~bs(n), bs(n), bs(n));\n\ntemplate <class F>\nvoid cliques(vector<bs>& eds,\
-    \ F f, bs P, bs X, bs R) {\n  f(R);\n  if (!P.any() && !X.any()) return;\n  //\
-    \ if only need to find all maximal cliques\n  // auto q = (P | X).find_first();\n\
-    \  // auto cands = P & ~eds[q];\n  for (int i = 0; i < sz(eds); ++i) {\n    if\
-    \ (P[i]) {\n      R[i] = 1;\n      cliques(eds, f, P & eds[i], X & eds[i], R);\n\
-    \      R[i] = P[i] = 0, X[i] = 1;\n    }\n  }\n}\n#line 6 \"tests/Enumerate_Cliques.test.cpp\"\
-    \n\nusing Fp = modint<998244353>;\n\nvoid solve() {\n  int n, m;\n  cin >> n >>\
-    \ m;\n  vector<Fp> x(n);\n  for (int i = 0; i < n; ++i) cin >> x[i];\n  vector<bs>\
-    \ g(n, bs(n));\n  for (int i = 0; i < m; ++i) {\n    int u, v;\n    cin >> u >>\
-    \ v;\n    g[u][v] = g[v][u] = 1;\n  }\n  Fp ans = 0;\n  cliques(g, [&](const bs&\
-    \ clique) {\n    if(!clique.any()) return;\n    Fp prod = 1;\n    for(int i =\
-    \ clique.find_first(); i < n; i = clique.find_next(i)) prod *= x[i];\n    ans\
-    \ += prod; }, ~bs(n), bs(n), bs(n));\n  cout << ans << '\\n';\n}\n\nint main()\
-    \ {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n  int\
-    \ tc = 1;\n  //   cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n\
+    \ 1 \"graph/EnumCliques.h\"\n// Usage: cliques(g, [&](const bs &clique) { callback\
+    \ }, ~bs(n), bs(n), bs(n));\nusing bs = tr2::dynamic_bitset<u64>;\n\ntemplate\
+    \ <class F>\nvoid cliques(vector<bs>& eds, F f, bs P, bs X, bs R) {\n  f(R);\n\
+    \  if (!P.any() && !X.any()) return;\n  // if only need to find all maximal cliques\n\
+    \  // auto q = (P | X).find_first();\n  // auto cands = P & ~eds[q];\n  for (int\
+    \ i = 0; i < sz(eds); ++i) {\n    if (P[i]) {\n      R[i] = 1;\n      cliques(eds,\
+    \ f, P & eds[i], X & eds[i], R);\n      R[i] = P[i] = 0, X[i] = 1;\n    }\n  }\n\
+    }\n#line 6 \"tests/Enumerate_Cliques.test.cpp\"\n\nusing Fp = modint<998244353>;\n\
+    \nvoid solve() {\n  int n, m;\n  cin >> n >> m;\n  vector<Fp> x(n);\n  for (int\
+    \ i = 0; i < n; ++i) cin >> x[i];\n  vector<bs> g(n, bs(n));\n  for (int i = 0;\
+    \ i < m; ++i) {\n    int u, v;\n    cin >> u >> v;\n    g[u][v] = g[v][u] = 1;\n\
+    \  }\n  Fp ans = 0;\n  cliques(g, [&](const bs& clique) {\n    if(!clique.any())\
+    \ return;\n    Fp prod = 1;\n    for(int i = clique.find_first(); i < n; i = clique.find_next(i))\
+    \ prod *= x[i];\n    ans += prod; }, ~bs(n), bs(n), bs(n));\n  cout << ans <<\
+    \ '\\n';\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
+    \  int tc = 1;\n  //   cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n\
     \  }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/enumerate_cliques\"\n\n\
-    #include \"../misc/macros.h\"\n#include \"../math/ModInt.h\"\n#include \"../misc/MaximalCliques.h\"\
+    #include \"../misc/macros.h\"\n#include \"../math/ModInt.h\"\n#include \"../graph/EnumCliques.h\"\
     \n\nusing Fp = modint<998244353>;\n\nvoid solve() {\n  int n, m;\n  cin >> n >>\
     \ m;\n  vector<Fp> x(n);\n  for (int i = 0; i < n; ++i) cin >> x[i];\n  vector<bs>\
     \ g(n, bs(n));\n  for (int i = 0; i < m; ++i) {\n    int u, v;\n    cin >> u >>\
@@ -96,12 +96,12 @@ data:
   dependsOn:
   - misc/macros.h
   - math/ModInt.h
-  - misc/MaximalCliques.h
+  - graph/EnumCliques.h
   isVerificationFile: true
   path: tests/Enumerate_Cliques.test.cpp
   requiredBy: []
-  timestamp: '2025-11-28 00:00:09+07:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2025-11-28 02:09:51+07:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Enumerate_Cliques.test.cpp
 layout: document

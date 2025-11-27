@@ -33,7 +33,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: ds/SWAD.h
       title: ds/SWAD.h
-    - icon: ':question:'
+    - icon: ':x:'
       path: ds/SegTree.h
       title: ds/SegTree.h
     - icon: ':warning:'
@@ -149,6 +149,9 @@ data:
       path: graph/EdgeColoring.h
       title: graph/EdgeColoring.h
     - icon: ':heavy_check_mark:'
+      path: graph/EnumCliques.h
+      title: graph/EnumCliques.h
+    - icon: ':heavy_check_mark:'
       path: graph/EnumTriangles.h
       title: graph/EnumTriangles.h
     - icon: ':heavy_check_mark:'
@@ -234,6 +237,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/XorBasis.h
       title: math/XorBasis.h
+    - icon: ':question:'
+      path: math/ZetaMobius.h
+      title: math/ZetaMobius.h
   - name: misc
     pages:
     - icon: ':warning:'
@@ -242,7 +248,7 @@ data:
     - icon: ':warning:'
       path: misc/CDQ.h
       title: misc/CDQ.h
-    - icon: ':question:'
+    - icon: ':x:'
       path: misc/Compressor.h
       title: misc/Compressor.h
     - icon: ':x:'
@@ -252,9 +258,6 @@ data:
       path: misc/DnCDP.h
       title: misc/DnCDP.h
     - icon: ':warning:'
-      path: misc/Frievalds.cpp
-      title: misc/Frievalds.cpp
-    - icon: ':warning:'
       path: misc/GrayCode.h
       title: misc/GrayCode.h
     - icon: ':warning:'
@@ -263,9 +266,6 @@ data:
     - icon: ':warning:'
       path: misc/Knuth.h
       title: misc/Knuth.h
-    - icon: ':x:'
-      path: misc/MaximalCliques.h
-      title: misc/MaximalCliques.h
     - icon: ':x:'
       path: misc/MaximumClique.h
       title: misc/MaximumClique.h
@@ -334,7 +334,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Dominator_Tree.test.cpp
       title: tests/Dominator_Tree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Enumerate_Cliques.test.cpp
       title: tests/Enumerate_Cliques.test.cpp
     - icon: ':heavy_check_mark:'
@@ -362,6 +362,9 @@ data:
       path: tests/Furthest_Pair_of_Points.test.cpp
       title: tests/Furthest_Pair_of_Points.test.cpp
     - icon: ':heavy_check_mark:'
+      path: tests/GCD_Convolution.test.cpp
+      title: tests/GCD_Convolution.test.cpp
+    - icon: ':heavy_check_mark:'
       path: tests/General_Matching.test.cpp
       title: tests/General_Matching.test.cpp
     - icon: ':heavy_check_mark:'
@@ -373,7 +376,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/LCA.test.cpp
       title: tests/LCA.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
+      path: tests/LCM_Convolution.test.cpp
+      title: tests/LCM_Convolution.test.cpp
+    - icon: ':x:'
       path: tests/LIS.test.cpp
       title: tests/LIS.test.cpp
     - icon: ':x:'

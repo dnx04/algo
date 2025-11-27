@@ -6,7 +6,7 @@ data:
     path: misc/CountSubseq.h
     title: misc/CountSubseq.h
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/LIS.test.cpp
     title: tests/LIS.test.cpp
   - icon: ':x:'
@@ -14,7 +14,7 @@ data:
     title: tests/Number_of_Subsequences.test.cpp
   _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"misc/Compressor.h\"\ntemplate <class T>\nvi compressor(vector<T>&\
@@ -30,7 +30,7 @@ data:
   requiredBy:
   - misc/CountSubseq.h
   timestamp: '2025-11-21 16:12:02+07:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - tests/LIS.test.cpp
   - tests/Number_of_Subsequences.test.cpp

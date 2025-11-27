@@ -24,7 +24,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Deque_Operate_All_Composite.test.cpp
     title: tests/Deque_Operate_All_Composite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Enumerate_Cliques.test.cpp
     title: tests/Enumerate_Cliques.test.cpp
   - icon: ':heavy_check_mark:'
@@ -40,8 +40,14 @@ data:
     path: tests/Find_Linear_Recurrence.test.cpp
     title: tests/Find_Linear_Recurrence.test.cpp
   - icon: ':heavy_check_mark:'
+    path: tests/GCD_Convolution.test.cpp
+    title: tests/GCD_Convolution.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/Inv_of_FPS.test.cpp
     title: tests/Inv_of_FPS.test.cpp
+  - icon: ':x:'
+    path: tests/LCM_Convolution.test.cpp
+    title: tests/LCM_Convolution.test.cpp
   - icon: ':x:'
     path: tests/Matrix_Det.test.cpp
     title: tests/Matrix_Det.test.cpp
@@ -170,6 +176,7 @@ data:
   - tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
   - tests/Matrix_Product.test.cpp
   - tests/Product_of_Polynomial_Sequence.test.cpp
+  - tests/LCM_Convolution.test.cpp
   - tests/Find_Linear_Recurrence.test.cpp
   - tests/Matrix_Solve_Linear.test.cpp
   - tests/Inv_of_FPS.test.cpp
@@ -181,6 +188,7 @@ data:
   - tests/Enumerate_Cliques.test.cpp
   - tests/Matrix_Det.test.cpp
   - tests/Point_Set_Range_Composite.test.cpp
+  - tests/GCD_Convolution.test.cpp
   - tests/Point_Set_Range_Composite_Large.test.cpp
   - tests/Bitwise_And_Convolution.test.cpp
   - tests/Primitive_Root.test.cpp

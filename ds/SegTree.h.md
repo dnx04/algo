@@ -3,7 +3,7 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/LIS.test.cpp
     title: tests/LIS.test.cpp
   - icon: ':x:'
@@ -11,7 +11,7 @@ data:
     title: tests/Point_Set_Range_Composite.test.cpp
   _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"ds/SegTree.h\"\n// 0-indexed\ntemplate <class T, class F>\n\
@@ -68,7 +68,7 @@ data:
   path: ds/SegTree.h
   requiredBy: []
   timestamp: '2025-11-21 16:12:02+07:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - tests/LIS.test.cpp
   - tests/Point_Set_Range_Composite.test.cpp

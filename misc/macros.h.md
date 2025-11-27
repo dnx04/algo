@@ -39,7 +39,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Dominator_Tree.test.cpp
     title: tests/Dominator_Tree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Enumerate_Cliques.test.cpp
     title: tests/Enumerate_Cliques.test.cpp
   - icon: ':heavy_check_mark:'
@@ -67,6 +67,9 @@ data:
     path: tests/Furthest_Pair_of_Points.test.cpp
     title: tests/Furthest_Pair_of_Points.test.cpp
   - icon: ':heavy_check_mark:'
+    path: tests/GCD_Convolution.test.cpp
+    title: tests/GCD_Convolution.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/General_Matching.test.cpp
     title: tests/General_Matching.test.cpp
   - icon: ':heavy_check_mark:'
@@ -78,7 +81,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/LCA.test.cpp
     title: tests/LCA.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
+    path: tests/LCM_Convolution.test.cpp
+    title: tests/LCM_Convolution.test.cpp
+  - icon: ':x:'
     path: tests/LIS.test.cpp
     title: tests/LIS.test.cpp
   - icon: ':x:'
@@ -203,14 +209,14 @@ data:
   bundledCode: "#line 1 \"misc/macros.h\"\n// #pragma GCC optimize(\"Ofast,unroll-loops\"\
     )       // unroll long, simple loops\n// #pragma GCC target(\"avx2,fma\")    \
     \               // vectorizing code\n// #pragma GCC target(\"lzcnt,popcnt,abm,bmi,bmi2\"\
-    )  // for fast bitset operation\n\n#include <bits/extc++.h>\n\nusing namespace\
-    \ std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n// using namespace\
-    \ __gnu_cxx; // rope\n\n// for templates to work\n#define all(s) s.begin(), s.end()\n\
-    #define sz(x) (int) (x).size()\n#define pb push_back\n#define eb emplace_back\n\
-    using i32 = int32_t;\nusing u32 = uint32_t;\nusing i64 = int64_t;\nusing u64 =\
-    \ uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\nusing ld = long\
-    \ double;\nusing pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\n// fast map\n\
-    const int RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
+    )  // for fast bitset operation\n\n#include <bits/extc++.h>\n#include <tr2/dynamic_bitset>\n\
+    \nusing namespace std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n\
+    // using namespace __gnu_cxx; // rope\n\n// for templates to work\n#define all(x)\
+    \ (x).begin(), (x).end()\n#define sz(x) (int) (x).size()\n#define pb push_back\n\
+    #define eb emplace_back\nusing i32 = int32_t;\nusing u32 = uint32_t;\nusing i64\
+    \ = int64_t;\nusing u64 = uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
+    using ld = long double;\nusing pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\
+    \n// fast map\nconst int RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
     struct chash {  // customize hash function for gp_hash_table\n  int operator()(int\
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
@@ -222,14 +228,14 @@ data:
   code: "// #pragma GCC optimize(\"Ofast,unroll-loops\")       // unroll long, simple\
     \ loops\n// #pragma GCC target(\"avx2,fma\")                   // vectorizing\
     \ code\n// #pragma GCC target(\"lzcnt,popcnt,abm,bmi,bmi2\")  // for fast bitset\
-    \ operation\n\n#include <bits/extc++.h>\n\nusing namespace std;\nusing namespace\
-    \ __gnu_pbds;  // ordered_set, gp_hash_table\n// using namespace __gnu_cxx; //\
-    \ rope\n\n// for templates to work\n#define all(s) s.begin(), s.end()\n#define\
-    \ sz(x) (int) (x).size()\n#define pb push_back\n#define eb emplace_back\nusing\
-    \ i32 = int32_t;\nusing u32 = uint32_t;\nusing i64 = int64_t;\nusing u64 = uint64_t;\n\
-    using i128 = __int128_t;\nusing u128 = __uint128_t;\nusing ld = long double;\n\
-    using pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\n// fast map\nconst int\
-    \ RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
+    \ operation\n\n#include <bits/extc++.h>\n#include <tr2/dynamic_bitset>\n\nusing\
+    \ namespace std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n\
+    // using namespace __gnu_cxx; // rope\n\n// for templates to work\n#define all(x)\
+    \ (x).begin(), (x).end()\n#define sz(x) (int) (x).size()\n#define pb push_back\n\
+    #define eb emplace_back\nusing i32 = int32_t;\nusing u32 = uint32_t;\nusing i64\
+    \ = int64_t;\nusing u64 = uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
+    using ld = long double;\nusing pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\
+    \n// fast map\nconst int RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
     struct chash {  // customize hash function for gp_hash_table\n  int operator()(int\
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
@@ -242,7 +248,7 @@ data:
   isVerificationFile: false
   path: misc/macros.h
   requiredBy: []
-  timestamp: '2025-11-28 00:00:09+07:00'
+  timestamp: '2025-11-28 02:09:51+07:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - tests/Bitwise_Xor_Convolution.test.cpp
@@ -274,6 +280,7 @@ data:
   - tests/Static_RMQ.test.cpp
   - tests/Persistent_Unionfind.test.cpp
   - tests/Furthest_Pair_of_Points.test.cpp
+  - tests/LCM_Convolution.test.cpp
   - tests/Eulerian_Trail_Undirected.test.cpp
   - tests/Enumerate_Quotients.test.cpp
   - tests/Matching_on_Bipartite_Graph_HopcroftKarp.test.cpp
@@ -296,6 +303,7 @@ data:
   - tests/Count_Points_in_Triangle.test.cpp
   - tests/Matrix_Det.test.cpp
   - tests/Point_Set_Range_Composite.test.cpp
+  - tests/GCD_Convolution.test.cpp
   - tests/Unionfind.test.cpp
   - tests/Assignment_Problem.test.cpp
   - tests/Point_Set_Range_Composite_Large.test.cpp

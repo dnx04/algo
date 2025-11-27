@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':x:'
     path: misc/Compressor.h
     title: misc/Compressor.h
   _extendedRequiredBy: []
