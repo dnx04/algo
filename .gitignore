@@ -1,5 +1,6 @@
 .cph
 *.gch
+*.pdf
 input.txt
 output.txt
 main*

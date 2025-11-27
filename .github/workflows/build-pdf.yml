@@ -1,0 +1,50 @@
+name: build-pdf
+
+on:
+  push:
+    branches:
+      - main
+  pull_request: # Chạy cả khi PR để kiểm tra xem file .typ có lỗi biên dịch không
+  workflow_dispatch: # Cho phép chạy thủ công từ tab Actions
+
+permissions:
+  contents: write # Cấp quyền ghi để upload file lên Release
+
+jobs:
+  build-pdf:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install JetBrains Mono Nerd Font
+        run: |
+          # Tải font JetBrains Mono bản Nerd Font (v3.3.0)
+          wget -q https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/JetBrainsMono.zip
+          unzip -q JetBrainsMono.zip -d JetBrainsMono
+
+          # Tạo thư mục font người dùng và cài đặt
+          mkdir -p ~/.local/share/fonts
+          mv JetBrainsMono/*.ttf ~/.local/share/fonts/
+
+          # Cập nhật cache font
+          fc-cache -fv
+
+      - name: Setup Typst
+        uses: typst-community/setup-typst@v0.3.0
+
+      - name: Compile main.typ to PDF
+        run: typst compile main.typ notebook.pdf
+
+      - name: Upload PDF to Release
+        # Chỉ chạy bước này khi push vào nhánh main (bỏ qua khi chạy trên PR)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: Latest Notebook Build
+          files: notebook.pdf
+          draft: false
+          prerelease: false
+          make_latest: true

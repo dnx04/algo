@@ -89,6 +89,9 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 #file("math/SumPowerPoly.h", description: [
   Tính $sum_(i = 0)^infinity r^i i^d$ và $sum_(i = 0)^(n - 1) r^i i^d$.
 ])
+#file("math/SternBrocot.h", description: [
+  Các hàm để duyệt phân số và chặt nhị phân phân số.
+])
 #file("math/XorBasis.h", description: [])
 
 = Cấu trúc dữ liệu
@@ -218,9 +221,6 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 #file("misc/maxHist.h", description: [
   Hình chữ nhật lớn nhất.
 ])
-#file("misc/FracBinarySearch.h", description: [
-  Tìm phân số $p/q$ nhỏ nhất trong đoạn $[0, 1]$ sao cho $f(p/q)$ là đúng, với $p <= m_p, q <= m_q$
-])
 // #file("misc/ContinuedFraction.h", description: [
 //   Cho $N$ và số thực $x > 0$, tính xấp xỉ hữu tỉ $p/q$ của $x$ với $p, q <= N$ trong $O(log N)$. Đảm bảo $abs(p/q - x) < 1/q$.
 
@@ -259,7 +259,7 @@ Các thuật toán hình có đa giác, nếu không chú thích gì, thì hoạ
   "geometry/LineProjectionReflection.h",
   description: [Trả về chân đường vuông góc/điểm đối xứng (tuỳ vào `refl=false/true`) của điểm `p` qua đường `ab`. Các điểm phải là số thực, cẩn thận tràn số.],
 )
-#file("geometry/CircleLine.h", description: [Định nghĩa của đường thẳng dạng $a x + b y = c$ với $a, b, c in ZZ/RR$])
+#file("geometry/CircleLine.h")
 #file("geometry/CircleIntersection.h")
 #file("geometry/CircleTangents.h", description: [
   Tìm các tiếp tuyến ngoài của hai hình tròn, hoặc các tiếp tuyến trong nếu `r2` âm.
