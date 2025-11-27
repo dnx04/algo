@@ -15,12 +15,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Matrix_Solve_Linear.test.cpp
     title: tests/Matrix_Solve_Linear.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Pow_of_Matrix.test.cpp
     title: tests/Pow_of_Matrix.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"math/Matrix.h\"\ntemplate <class T>\nstruct Matrix {\n \
@@ -112,7 +112,7 @@ data:
   path: math/Matrix.h
   requiredBy: []
   timestamp: '2025-11-27 09:59:02+07:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - tests/Matrix_Inv.test.cpp
   - tests/Pow_of_Matrix.test.cpp

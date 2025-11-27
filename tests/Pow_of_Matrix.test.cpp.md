@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/Matrix.h
     title: math/Matrix.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/ModInt.h
     title: math/ModInt.h
   - icon: ':question:'
@@ -12,9 +12,9 @@ data:
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/pow_of_matrix
@@ -109,7 +109,7 @@ data:
     \ c];\n    return res;\n  }\n};\n#line 6 \"tests/Pow_of_Matrix.test.cpp\"\n\n\
     using Fp = modint<998244353>;\n\nvoid solve() {\n  int n;\n  u64 k;\n  cin >>\
     \ n >> k;\n  Matrix<Fp> a(n);\n  for (int i = 0; i < n; ++i)\n    for (int j =\
-    \ 0; j < n; ++j) cin >> a[i][j];\n\n  a = a ^ k;\n  for (int i = 0; i < n; ++i)\n\
+    \ 0; j < n; ++j) cin >> a[i][j];\n  a = a.pow(k);\n  for (int i = 0; i < n; ++i)\n\
     \    for (int j = 0; j < n; ++j) cout << a[i][j] << \" \\n\"[j + 1 == n];\n}\n\
     \nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
     \  int tc = 1;\n  // cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n\
@@ -118,7 +118,7 @@ data:
     \ \"../misc/macros.h\"\n#include \"../math/ModInt.h\"\n#include \"../math/Matrix.h\"\
     \n\nusing Fp = modint<998244353>;\n\nvoid solve() {\n  int n;\n  u64 k;\n  cin\
     \ >> n >> k;\n  Matrix<Fp> a(n);\n  for (int i = 0; i < n; ++i)\n    for (int\
-    \ j = 0; j < n; ++j) cin >> a[i][j];\n\n  a = a ^ k;\n  for (int i = 0; i < n;\
+    \ j = 0; j < n; ++j) cin >> a[i][j];\n  a = a.pow(k);\n  for (int i = 0; i < n;\
     \ ++i)\n    for (int j = 0; j < n; ++j) cout << a[i][j] << \" \\n\"[j + 1 == n];\n\
     }\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
     \  int tc = 1;\n  // cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n\
@@ -130,8 +130,8 @@ data:
   isVerificationFile: true
   path: tests/Pow_of_Matrix.test.cpp
   requiredBy: []
-  timestamp: '2025-11-27 09:59:02+07:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2025-11-27 11:47:17+07:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Pow_of_Matrix.test.cpp
 layout: document

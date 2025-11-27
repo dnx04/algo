@@ -76,6 +76,9 @@ data:
     path: tests/Inv_of_FPS.test.cpp
     title: tests/Inv_of_FPS.test.cpp
   - icon: ':heavy_check_mark:'
+    path: tests/LCA.test.cpp
+    title: tests/LCA.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/LIS.test.cpp
     title: tests/LIS.test.cpp
   - icon: ':heavy_check_mark:'
@@ -103,6 +106,9 @@ data:
     path: tests/Maximum_Independent_Set.test.cpp
     title: tests/Maximum_Independent_Set.test.cpp
   - icon: ':heavy_check_mark:'
+    path: tests/Min_of_Mod_of_Linear.test.cpp
+    title: tests/Min_of_Mod_of_Linear.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/Minimum_Enclosing_Circle.test.cpp
     title: tests/Minimum_Enclosing_Circle.test.cpp
   - icon: ':heavy_check_mark:'
@@ -126,7 +132,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Pow_of_FPS.test.cpp
     title: tests/Pow_of_FPS.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Pow_of_Matrix.test.cpp
     title: tests/Pow_of_Matrix.test.cpp
   - icon: ':heavy_check_mark:'
@@ -168,13 +174,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
     title: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Sum_of_Floor_of_Linear.test.cpp
     title: tests/Sum_of_Floor_of_Linear.test.cpp
   - icon: ':heavy_check_mark:'
     path: tests/Unionfind.test.cpp
     title: tests/Unionfind.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Vertex_Add_Path_Sum.test.cpp
     title: tests/Vertex_Add_Path_Sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -246,6 +252,7 @@ data:
   - tests/Deque.test.cpp
   - tests/Minimum_Enclosing_Circle.test.cpp
   - tests/Pow_of_Matrix.test.cpp
+  - tests/Min_of_Mod_of_Linear.test.cpp
   - tests/Range_Affine_Point_Get.test.cpp
   - tests/Factorize.test.cpp
   - tests/Line_Add_Get_Min.test.cpp
@@ -284,6 +291,7 @@ data:
   - tests/Assignment_Problem.test.cpp
   - tests/Point_Set_Range_Composite_Large.test.cpp
   - tests/Bitwise_And_Convolution.test.cpp
+  - tests/LCA.test.cpp
   - tests/Point_Add_Range_Sum.test.cpp
   - tests/Suffix_Array.test.cpp
   - tests/Derangement.test.cpp

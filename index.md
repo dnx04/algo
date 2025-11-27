@@ -9,10 +9,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: ds/DSURollback.h
       title: ds/DSURollback.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: ds/Fenwick.h
       title: ds/Fenwick.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: ds/HLD.h
       title: ds/HLD.h
     - icon: ':heavy_check_mark:'
@@ -189,7 +189,7 @@ data:
     - icon: ':warning:'
       path: math/CRT.h
       title: math/CRT.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/DivModSum.h
       title: math/DivModSum.h
     - icon: ':heavy_check_mark:'
@@ -207,13 +207,13 @@ data:
     - icon: ':warning:'
       path: math/Lagrange.h
       title: math/Lagrange.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/Matrix.h
       title: math/Matrix.h
     - icon: ':heavy_check_mark:'
       path: math/MillerRabin.h
       title: math/MillerRabin.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/ModInt.h
       title: math/ModInt.h
     - icon: ':heavy_check_mark:'
@@ -376,6 +376,9 @@ data:
       path: tests/Inv_of_FPS.test.cpp
       title: tests/Inv_of_FPS.test.cpp
     - icon: ':heavy_check_mark:'
+      path: tests/LCA.test.cpp
+      title: tests/LCA.test.cpp
+    - icon: ':heavy_check_mark:'
       path: tests/LIS.test.cpp
       title: tests/LIS.test.cpp
     - icon: ':heavy_check_mark:'
@@ -403,6 +406,9 @@ data:
       path: tests/Maximum_Independent_Set.test.cpp
       title: tests/Maximum_Independent_Set.test.cpp
     - icon: ':heavy_check_mark:'
+      path: tests/Min_of_Mod_of_Linear.test.cpp
+      title: tests/Min_of_Mod_of_Linear.test.cpp
+    - icon: ':heavy_check_mark:'
       path: tests/Minimum_Enclosing_Circle.test.cpp
       title: tests/Minimum_Enclosing_Circle.test.cpp
     - icon: ':heavy_check_mark:'
@@ -426,7 +432,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Pow_of_FPS.test.cpp
       title: tests/Pow_of_FPS.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Pow_of_Matrix.test.cpp
       title: tests/Pow_of_Matrix.test.cpp
     - icon: ':heavy_check_mark:'
@@ -468,13 +474,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
       title: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tests/Sum_of_Floor_of_Linear.test.cpp
       title: tests/Sum_of_Floor_of_Linear.test.cpp
     - icon: ':heavy_check_mark:'
       path: tests/Unionfind.test.cpp
       title: tests/Unionfind.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Vertex_Add_Path_Sum.test.cpp
       title: tests/Vertex_Add_Path_Sum.test.cpp
     - icon: ':heavy_check_mark:'

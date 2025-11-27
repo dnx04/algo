@@ -9,16 +9,16 @@ data:
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/sum_of_floor_of_linear
+    PROBLEM: https://judge.yosupo.jp/problem/min_of_mod_of_linear
     links:
-    - https://judge.yosupo.jp/problem/sum_of_floor_of_linear
-  bundledCode: "#line 1 \"tests/Sum_of_Floor_of_Linear.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/problem/sum_of_floor_of_linear\"\n\n#line 1 \"misc/macros.h\"\
+    - https://judge.yosupo.jp/problem/min_of_mod_of_linear
+  bundledCode: "#line 1 \"tests/Min_of_Mod_of_Linear.test.cpp\"\n#define PROBLEM \"\
+    https://judge.yosupo.jp/problem/min_of_mod_of_linear\"\n\n#line 1 \"misc/macros.h\"\
     \n// #pragma GCC optimize(\"Ofast,unroll-loops\")       // unroll long, simple\
     \ loops\n// #pragma GCC target(\"avx2,fma\")                   // vectorizing\
     \ code\n// #pragma GCC target(\"lzcnt,popcnt,abm,bmi,bmi2\")  // for fast bitset\
@@ -53,30 +53,28 @@ data:
     \ a, i64 b) {\n  i64 lo = 0, hi = m - 1, ans = b;\n  while (lo <= hi) {\n    auto\
     \ mid = (lo + hi) / 2;\n    auto cnt = divsum(n, m, a, b) - divsum(n, m, a, b\
     \ - mid - 1);\n    if (cnt > 0) ans = mid, hi = mid - 1;\n    else lo = mid +\
-    \ 1;\n  }\n  return ans;\n}\n#line 5 \"tests/Sum_of_Floor_of_Linear.test.cpp\"\
-    \n\nvoid solve() {\n  i64 n, m, a, b;\n  cin >> n >> m >> a >> b;\n  cout << divsum(b,\
-    \ a, m, n) << '\\n';\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n \
-    \ cin.exceptions(cin.failbit);\n  int tc = 1;\n  cin >> tc;\n  for (int i = 1;\
-    \ i <= tc; ++i) {\n    solve();\n  }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/sum_of_floor_of_linear\"\
-    \n\n#include \"../misc/macros.h\"\n#include \"../math/DivModSum.h\"\n\nvoid solve()\
-    \ {\n  i64 n, m, a, b;\n  cin >> n >> m >> a >> b;\n  cout << divsum(b, a, m,\
-    \ n) << '\\n';\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
-    \  int tc = 1;\n  cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n\
-    \  }\n}\n"
+    \ 1;\n  }\n  return ans;\n}\n#line 5 \"tests/Min_of_Mod_of_Linear.test.cpp\"\n\
+    \nvoid solve() {\n  int n, m, a, b;\n  cin >> n >> m >> a >> b;\n  cout << minmod(n,\
+    \ m, a, b) << '\\n';\n}\n\nsigned main() {\n  ios::sync_with_stdio(false);\n \
+    \ cin.tie(0);\n  int tc;\n  cin >> tc;\n  while (tc--) solve();\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/min_of_mod_of_linear\"\n\
+    \n#include \"../misc/macros.h\"\n#include \"../math/DivModSum.h\"\n\nvoid solve()\
+    \ {\n  int n, m, a, b;\n  cin >> n >> m >> a >> b;\n  cout << minmod(n, m, a,\
+    \ b) << '\\n';\n}\n\nsigned main() {\n  ios::sync_with_stdio(false);\n  cin.tie(0);\n\
+    \  int tc;\n  cin >> tc;\n  while (tc--) solve();\n}"
   dependsOn:
   - misc/macros.h
   - math/DivModSum.h
   isVerificationFile: true
-  path: tests/Sum_of_Floor_of_Linear.test.cpp
+  path: tests/Min_of_Mod_of_Linear.test.cpp
   requiredBy: []
   timestamp: '2025-11-27 11:47:17+07:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: tests/Sum_of_Floor_of_Linear.test.cpp
+documentation_of: tests/Min_of_Mod_of_Linear.test.cpp
 layout: document
 redirect_from:
-- /verify/tests/Sum_of_Floor_of_Linear.test.cpp
-- /verify/tests/Sum_of_Floor_of_Linear.test.cpp.html
-title: tests/Sum_of_Floor_of_Linear.test.cpp
+- /verify/tests/Min_of_Mod_of_Linear.test.cpp
+- /verify/tests/Min_of_Mod_of_Linear.test.cpp.html
+title: tests/Min_of_Mod_of_Linear.test.cpp
 ---
