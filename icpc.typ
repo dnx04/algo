@@ -35,7 +35,7 @@
   minified
 }
 
-#let file(filename, hash: true, description: none) = {
+#let file(filename, hash: false, description: none) = {
   heading(depth: 2, [#filename.split("/").at(1).split(".").at(0)])
   let content = read(filename)
   description

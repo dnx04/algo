@@ -46,11 +46,9 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 
 = Toán
 
-#file("math/ModInt.h", description: [
-  Biểu diễn số nguyên modulo sử dụng Montgomery.
-])
+#file("math/ModInt.h")
 #file("math/MillerRabin.h", description: [
-  Kiểm tra số nguyên tố nhanh, *chắc chắn* đúng trong `unsigned long long`.
+  Kiểm tra số nguyên tố nhanh, *chắc chắn* đúng trong số nguyên 64 bit.
 ])
 #file("math/Matrix.h", description: [
   Ma trận vuông, hỗ trợ nhân, luỹ thừa, khử Gauss, định thức và nghịch đảo.
@@ -88,7 +86,9 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 #file("math/Lagrange.h", description: [
   Tìm đa thức bậc $n - 1$ qua $n$ điểm trong $O(n^2)$. Vẫn đúng trong trường modulo.
 ])
-#file("math/SumPowerPoly.h")
+#file("math/SumPowerPoly.h", description: [
+  Tính $sum_(i = 0)^infinity r^i i^d$ và $sum_(i = 0)^(n - 1) r^i i^d$.
+])
 #file("math/XorBasis.h", description: [])
 
 = Cấu trúc dữ liệu
@@ -97,13 +97,13 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 // #file("ds/DSU.h")
 #file("ds/RMQ.h")
 // #file("ds/Fenwick.h")
-// #file("ds/SegTree.h")
+#file("ds/SegTree.h")
 // #file("ds/LazySegTree.h")
 #file("ds/HLD.h", description: [
-  HLD cho phép truy vấn cả đường đi và cây con trong $O(log N)$.
-  1. `pos(x)`: trả về vị trí của đỉnh `x` trong quá trình duyệt DFS.
+  HLD cho phép truy vấn cả đường đi và cây con cùng lúc.
+  1. `idx(x)`: trả về vị trí của đỉnh `x` trong quá trình duyệt DFS.
   2. `query_subtree(x)`: trả về đoạn `[l, r)` tương ứng với cây con của `x`.
-  3. `query_path(a, b)`: phân hoạch đường đi từ `a` đến `b` thành các đoạn liên tiếp trong mảng DFS. Sau đó duyệt qua từng đoạn này để cập nhật Segment Tree. 
+  3. `query_path(a, b)`: phân hoạch đường đi từ `a` đến `b` thành các đoạn liên tiếp trong mảng DFS. Sau đó duyệt qua từng đoạn này để cập nhật Segment Tree.
 ])
 #file("ds/VirtualTree.h")
 #file("ds/PersistentSegTree.h")
@@ -184,6 +184,8 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 // ])
 
 = Quy hoạch động
+
+== DP thứ tự từ điển
 
 #file("misc/CountSubseq.h")
 #file(

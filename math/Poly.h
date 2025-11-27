@@ -2,6 +2,7 @@
 
 using Fp = modint<998244353>;
 namespace ntt {
+const Fp G = 3;
 void ntt(vector<Fp>& a, bool inv) {
   int n = sz(a);
   for (int i = 1, j = 0; i < n; i++) {
@@ -11,7 +12,7 @@ void ntt(vector<Fp>& a, bool inv) {
     if (i < j) swap(a[i], a[j]);
   }
   for (int len = 1; len < n; len <<= 1) {
-    Fp wlen = Fp(3).pow((Fp::modulo - 1) / (2 * len));
+    Fp wlen = G.pow((Fp::modulo - 1) / (2 * len));
     if (inv) wlen = wlen.inv();
     for (int i = 0; i < n; i += 2 * len) {
       Fp w = 1;
@@ -85,8 +86,7 @@ struct Poly : vector<Fp> {
   Poly inv(int n) const {
     Poly b = {data()[0].inv()};
     for (int k = 1; k < n; k <<= 1) {
-      Poly a = cut(2 * k);
-      Poly prod = b * b * a;
+      Poly a = cut(2 * k), prod = b * b * a;
       b.resize(2 * k);
       for (int i = 0; i < 2 * k; ++i) {
         b[i] = b[i] * 2 - (i < sz(prod) ? prod[i] : Fp(0));
@@ -100,11 +100,8 @@ struct Poly : vector<Fp> {
   Poly exp(int n) const {
     Poly b = {1};
     for (int k = 1; k < n; k <<= 1) {
-      Poly ln_b = b.log(2 * k);
-      Poly a = cut(2 * k);
-      Poly diff = a - ln_b;
-      diff[0] += 1;
-      b = (b * diff).cut(2 * k);
+      Poly ln_b = b.log(2 * k), a = cut(2 * k), diff = a - ln_b;
+      diff[0] += 1, b = (b * diff).cut(2 * k);
     }
     return b.cut(n);
   }

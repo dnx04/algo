@@ -1,7 +1,7 @@
 {
     "editor.tabSize": 2,
     "C_Cpp.default.forcedInclude": [ "${workspaceFolder}/misc/macros.h" ],
-    "editor.formatOnSave": true,
+    // "editor.formatOnSave": true,
     "files.associations": {
         "random": "cpp",
         "iostream": "cpp",

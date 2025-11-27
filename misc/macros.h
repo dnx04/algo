@@ -4,11 +4,9 @@
 
 #include <bits/extc++.h>
 
-#include <tr2/dynamic_bitset>
-
 using namespace std;
 using namespace __gnu_pbds;  // ordered_set, gp_hash_table
-// using namespace __gnu_cxx;
+// using namespace __gnu_cxx; // rope
 
 // for templates to work
 #define all(s) s.begin(), s.end()
@@ -38,9 +36,6 @@ gp_hash_table<int, int, chash> table;
 */
 template <class T>
 using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
-
-// dynamic bitset
-using bs = tr2::dynamic_bitset<u64>;
 
 /*  rope
     rope <int> cur = v.substr(l, r - l + 1);
