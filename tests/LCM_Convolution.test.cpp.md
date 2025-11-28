@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: math/ModInt.h
     title: math/ModInt.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/ZetaMobius.h
     title: math/ZetaMobius.h
   - icon: ':question:'
@@ -12,9 +12,9 @@ data:
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/lcm_convolution
@@ -102,7 +102,7 @@ data:
   path: tests/LCM_Convolution.test.cpp
   requiredBy: []
   timestamp: '2025-11-28 02:09:51+07:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/LCM_Convolution.test.cpp
 layout: document

@@ -6,12 +6,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/GCD_Convolution.test.cpp
     title: tests/GCD_Convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/LCM_Convolution.test.cpp
     title: tests/LCM_Convolution.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"math/ZetaMobius.h\"\nconstexpr int MAXN = 1e6 + 5;\nvector<int>\
@@ -51,7 +51,7 @@ data:
   path: math/ZetaMobius.h
   requiredBy: []
   timestamp: '2025-11-28 02:09:51+07:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - tests/LCM_Convolution.test.cpp
   - tests/GCD_Convolution.test.cpp

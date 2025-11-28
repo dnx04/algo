@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: ds/Fenwick.h
     title: ds/Fenwick.h
   - icon: ':question:'

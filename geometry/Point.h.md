@@ -14,7 +14,7 @@ data:
   - icon: ':warning:'
     path: geometry/CircleTangents.h
     title: geometry/CircleTangents.h
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/Circumcircle.h
     title: geometry/Circumcircle.h
   - icon: ':heavy_check_mark:'
@@ -47,7 +47,7 @@ data:
   - icon: ':warning:'
     path: geometry/LinearTransformation.h
     title: geometry/LinearTransformation.h
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: geometry/MinimumEnclosingCircle.h
     title: geometry/MinimumEnclosingCircle.h
   - icon: ':warning:'
@@ -87,7 +87,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Furthest_Pair_of_Points.test.cpp
     title: tests/Furthest_Pair_of_Points.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Minimum_Enclosing_Circle.test.cpp
     title: tests/Minimum_Enclosing_Circle.test.cpp
   - icon: ':x:'

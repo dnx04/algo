@@ -13,6 +13,9 @@ data:
     title: math/SumPowerPoly.h
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: math/Sum_of_Multiplicative_Function.test.cpp
+    title: math/Sum_of_Multiplicative_Function.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/Bitwise_And_Convolution.test.cpp
     title: tests/Bitwise_And_Convolution.test.cpp
   - icon: ':heavy_check_mark:'
@@ -45,31 +48,31 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Inv_of_FPS.test.cpp
     title: tests/Inv_of_FPS.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/LCM_Convolution.test.cpp
     title: tests/LCM_Convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Matrix_Det.test.cpp
     title: tests/Matrix_Det.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Matrix_Inv.test.cpp
     title: tests/Matrix_Inv.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Matrix_Product.test.cpp
     title: tests/Matrix_Product.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Matrix_Solve_Linear.test.cpp
     title: tests/Matrix_Solve_Linear.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Number_of_Subsequences.test.cpp
     title: tests/Number_of_Subsequences.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Point_Set_Range_Composite.test.cpp
     title: tests/Point_Set_Range_Composite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Point_Set_Range_Composite_Large.test.cpp
     title: tests/Point_Set_Range_Composite_Large.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Pow_of_FPS.test.cpp
     title: tests/Pow_of_FPS.test.cpp
   - icon: ':x:'
@@ -164,6 +167,7 @@ data:
   timestamp: '2025-11-26 18:05:06+07:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - math/Sum_of_Multiplicative_Function.test.cpp
   - tests/Bitwise_Xor_Convolution.test.cpp
   - tests/Matrix_Inv.test.cpp
   - tests/Sum_of_Exponential_times_Polynomial.test.cpp

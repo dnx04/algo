@@ -7,7 +7,7 @@ data:
   - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
-  - icon: ':x:'
+  - icon: ':question:'
     path: strings/SuffixArray.h
     title: strings/SuffixArray.h
   _extendedRequiredBy: []

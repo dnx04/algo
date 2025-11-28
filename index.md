@@ -6,10 +6,10 @@ data:
     - icon: ':x:'
       path: ds/DSU.h
       title: ds/DSU.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: ds/DSURollback.h
       title: ds/DSURollback.h
-    - icon: ':x:'
+    - icon: ':question:'
       path: ds/Fenwick.h
       title: ds/Fenwick.h
     - icon: ':question:'
@@ -18,13 +18,13 @@ data:
     - icon: ':x:'
       path: ds/LazySegTree.h
       title: ds/LazySegTree.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: ds/LineContainer.h
       title: ds/LineContainer.h
     - icon: ':warning:'
       path: ds/Mo.h
       title: ds/Mo.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: ds/PersistentSegTree.h
       title: ds/PersistentSegTree.h
     - icon: ':x:'
@@ -33,7 +33,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: ds/SWAD.h
       title: ds/SWAD.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: ds/SegTree.h
       title: ds/SegTree.h
     - icon: ':warning:'
@@ -59,7 +59,7 @@ data:
     - icon: ':warning:'
       path: geometry/CircleTangents.h
       title: geometry/CircleTangents.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: geometry/Circumcircle.h
       title: geometry/Circumcircle.h
     - icon: ':heavy_check_mark:'
@@ -95,7 +95,7 @@ data:
     - icon: ':warning:'
       path: geometry/LinearTransformation.h
       title: geometry/LinearTransformation.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: geometry/MinimumEnclosingCircle.h
       title: geometry/MinimumEnclosingCircle.h
     - icon: ':warning:'
@@ -139,7 +139,7 @@ data:
     - icon: ':warning:'
       path: graph/CentroidDecomposition.h
       title: graph/CentroidDecomposition.h
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: graph/Dinic.h
       title: graph/Dinic.h
     - icon: ':heavy_check_mark:'
@@ -166,7 +166,7 @@ data:
     - icon: ':warning:'
       path: graph/GomoryHu.h
       title: graph/GomoryHu.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/HopcroftKarp.h
       title: graph/HopcroftKarp.h
     - icon: ':warning:'
@@ -183,7 +183,7 @@ data:
       title: graph/SCC.h
   - name: math
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/Affine.h
       title: math/Affine.h
     - icon: ':heavy_check_mark:'
@@ -192,7 +192,7 @@ data:
     - icon: ':warning:'
       path: math/CRT.h
       title: math/CRT.h
-    - icon: ':x:'
+    - icon: ':question:'
       path: math/DivModSum.h
       title: math/DivModSum.h
     - icon: ':heavy_check_mark:'
@@ -210,12 +210,15 @@ data:
     - icon: ':warning:'
       path: math/Lagrange.h
       title: math/Lagrange.h
-    - icon: ':x:'
+    - icon: ':question:'
       path: math/Matrix.h
       title: math/Matrix.h
     - icon: ':question:'
       path: math/MillerRabin.h
       title: math/MillerRabin.h
+    - icon: ':heavy_check_mark:'
+      path: math/Min25.h
+      title: math/Min25.h
     - icon: ':question:'
       path: math/ModInt.h
       title: math/ModInt.h
@@ -237,7 +240,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/XorBasis.h
       title: math/XorBasis.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/ZetaMobius.h
       title: math/ZetaMobius.h
   - name: misc
@@ -248,10 +251,10 @@ data:
     - icon: ':warning:'
       path: misc/CDQ.h
       title: misc/CDQ.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: misc/Compressor.h
       title: misc/Compressor.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: misc/CountSubseq.h
       title: misc/CountSubseq.h
     - icon: ':warning:'
@@ -289,13 +292,18 @@ data:
     - icon: ':warning:'
       path: strings/PalindromeTree.h
       title: strings/PalindromeTree.h
-    - icon: ':x:'
+    - icon: ':question:'
       path: strings/SuffixArray.h
       title: strings/SuffixArray.h
     - icon: ':x:'
       path: strings/Z.h
       title: strings/Z.h
   verificationCategories:
+  - name: math
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: math/Sum_of_Multiplicative_Function.test.cpp
+      title: math/Sum_of_Multiplicative_Function.test.cpp
   - name: tests
     pages:
     - icon: ':heavy_check_mark:'
@@ -304,6 +312,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Assignment_Problem.test.cpp
       title: tests/Assignment_Problem.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: tests/Bipartite_Matching_Dinic.test.cpp
+      title: tests/Bipartite_Matching_Dinic.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: tests/Bipartite_Matching_HopcroftKarp.test.cpp
+      title: tests/Bipartite_Matching_HopcroftKarp.test.cpp
     - icon: ':heavy_check_mark:'
       path: tests/Bitwise_And_Convolution.test.cpp
       title: tests/Bitwise_And_Convolution.test.cpp
@@ -319,6 +333,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Count_Points_in_Triangle.test.cpp
       title: tests/Count_Points_in_Triangle.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: tests/Counting_Primes.test.cpp
+      title: tests/Counting_Primes.test.cpp
     - icon: ':heavy_check_mark:'
       path: tests/Deque.test.cpp
       title: tests/Deque.test.cpp
@@ -376,61 +393,58 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/LCA.test.cpp
       title: tests/LCA.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/LCM_Convolution.test.cpp
       title: tests/LCM_Convolution.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/LIS.test.cpp
       title: tests/LIS.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Line_Add_Get_Min.test.cpp
       title: tests/Line_Add_Get_Min.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Longest_Common_Substring.test.cpp
       title: tests/Longest_Common_Substring.test.cpp
-    - icon: ':x:'
-      path: tests/Matching_on_Bipartite_Graph_HopcroftKarp.test.cpp
-      title: tests/Matching_on_Bipartite_Graph_HopcroftKarp.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Matrix_Det.test.cpp
       title: tests/Matrix_Det.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Matrix_Inv.test.cpp
       title: tests/Matrix_Inv.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Matrix_Product.test.cpp
       title: tests/Matrix_Product.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Matrix_Solve_Linear.test.cpp
       title: tests/Matrix_Solve_Linear.test.cpp
     - icon: ':x:'
       path: tests/Maximum_Independent_Set.test.cpp
       title: tests/Maximum_Independent_Set.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Min_of_Mod_of_Linear.test.cpp
       title: tests/Min_of_Mod_of_Linear.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Minimum_Enclosing_Circle.test.cpp
       title: tests/Minimum_Enclosing_Circle.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Number_of_Subsequences.test.cpp
       title: tests/Number_of_Subsequences.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Number_of_Substrings.test.cpp
       title: tests/Number_of_Substrings.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Persistent_Unionfind.test.cpp
       title: tests/Persistent_Unionfind.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Point_Add_Range_Sum.test.cpp
       title: tests/Point_Add_Range_Sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Point_Set_Range_Composite.test.cpp
       title: tests/Point_Set_Range_Composite.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Point_Set_Range_Composite_Large.test.cpp
       title: tests/Point_Set_Range_Composite_Large.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Pow_of_FPS.test.cpp
       title: tests/Pow_of_FPS.test.cpp
     - icon: ':x:'

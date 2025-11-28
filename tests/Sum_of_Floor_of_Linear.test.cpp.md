@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: math/DivModSum.h
     title: math/DivModSum.h
   - icon: ':question:'

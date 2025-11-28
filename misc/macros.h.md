@@ -4,11 +4,20 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: math/Sum_of_Multiplicative_Function.test.cpp
+    title: math/Sum_of_Multiplicative_Function.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/2_Sat.test.cpp
     title: tests/2_Sat.test.cpp
   - icon: ':heavy_check_mark:'
     path: tests/Assignment_Problem.test.cpp
     title: tests/Assignment_Problem.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Bipartite_Matching_Dinic.test.cpp
+    title: tests/Bipartite_Matching_Dinic.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Bipartite_Matching_HopcroftKarp.test.cpp
+    title: tests/Bipartite_Matching_HopcroftKarp.test.cpp
   - icon: ':heavy_check_mark:'
     path: tests/Bitwise_And_Convolution.test.cpp
     title: tests/Bitwise_And_Convolution.test.cpp
@@ -24,6 +33,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Count_Points_in_Triangle.test.cpp
     title: tests/Count_Points_in_Triangle.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Counting_Primes.test.cpp
+    title: tests/Counting_Primes.test.cpp
   - icon: ':heavy_check_mark:'
     path: tests/Deque.test.cpp
     title: tests/Deque.test.cpp
@@ -81,61 +93,58 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/LCA.test.cpp
     title: tests/LCA.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/LCM_Convolution.test.cpp
     title: tests/LCM_Convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/LIS.test.cpp
     title: tests/LIS.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Line_Add_Get_Min.test.cpp
     title: tests/Line_Add_Get_Min.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Longest_Common_Substring.test.cpp
     title: tests/Longest_Common_Substring.test.cpp
-  - icon: ':x:'
-    path: tests/Matching_on_Bipartite_Graph_HopcroftKarp.test.cpp
-    title: tests/Matching_on_Bipartite_Graph_HopcroftKarp.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Matrix_Det.test.cpp
     title: tests/Matrix_Det.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Matrix_Inv.test.cpp
     title: tests/Matrix_Inv.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Matrix_Product.test.cpp
     title: tests/Matrix_Product.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Matrix_Solve_Linear.test.cpp
     title: tests/Matrix_Solve_Linear.test.cpp
   - icon: ':x:'
     path: tests/Maximum_Independent_Set.test.cpp
     title: tests/Maximum_Independent_Set.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Min_of_Mod_of_Linear.test.cpp
     title: tests/Min_of_Mod_of_Linear.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Minimum_Enclosing_Circle.test.cpp
     title: tests/Minimum_Enclosing_Circle.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Number_of_Subsequences.test.cpp
     title: tests/Number_of_Subsequences.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Number_of_Substrings.test.cpp
     title: tests/Number_of_Substrings.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Persistent_Unionfind.test.cpp
     title: tests/Persistent_Unionfind.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Point_Add_Range_Sum.test.cpp
     title: tests/Point_Add_Range_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Point_Set_Range_Composite.test.cpp
     title: tests/Point_Set_Range_Composite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Point_Set_Range_Composite_Large.test.cpp
     title: tests/Point_Set_Range_Composite_Large.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Pow_of_FPS.test.cpp
     title: tests/Pow_of_FPS.test.cpp
   - icon: ':x:'
@@ -251,6 +260,7 @@ data:
   timestamp: '2025-11-28 02:09:51+07:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - math/Sum_of_Multiplicative_Function.test.cpp
   - tests/Bitwise_Xor_Convolution.test.cpp
   - tests/Matrix_Inv.test.cpp
   - tests/Sum_of_Exponential_times_Polynomial.test.cpp
@@ -269,9 +279,12 @@ data:
   - tests/Min_of_Mod_of_Linear.test.cpp
   - tests/Range_Affine_Point_Get.test.cpp
   - tests/Factorize.test.cpp
+  - tests/Bipartite_Matching_HopcroftKarp.test.cpp
   - tests/Line_Add_Get_Min.test.cpp
   - tests/Longest_Common_Substring.test.cpp
+  - tests/Counting_Primes.test.cpp
   - tests/General_Matching.test.cpp
+  - tests/Bipartite_Matching_Dinic.test.cpp
   - tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
   - tests/Maximum_Independent_Set.test.cpp
   - tests/Matrix_Product.test.cpp
@@ -283,7 +296,6 @@ data:
   - tests/LCM_Convolution.test.cpp
   - tests/Eulerian_Trail_Undirected.test.cpp
   - tests/Enumerate_Quotients.test.cpp
-  - tests/Matching_on_Bipartite_Graph_HopcroftKarp.test.cpp
   - tests/Closest_Pair_of_Points.test.cpp
   - tests/Find_Linear_Recurrence.test.cpp
   - tests/Matrix_Solve_Linear.test.cpp

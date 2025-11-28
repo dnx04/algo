@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: math/Matrix.h
     title: math/Matrix.h
   - icon: ':question:'

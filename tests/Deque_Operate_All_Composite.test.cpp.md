@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: ds/SWAD.h
     title: ds/SWAD.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/Affine.h
     title: math/Affine.h
   - icon: ':question:'

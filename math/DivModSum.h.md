@@ -3,7 +3,7 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Min_of_Mod_of_Linear.test.cpp
     title: tests/Min_of_Mod_of_Linear.test.cpp
   - icon: ':x:'
@@ -11,7 +11,7 @@ data:
     title: tests/Sum_of_Floor_of_Linear.test.cpp
   _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"math/DivModSum.h\"\n// T\xEDnh sum_{x=0}^{n-1} floor((a*x\
@@ -50,7 +50,7 @@ data:
   path: math/DivModSum.h
   requiredBy: []
   timestamp: '2025-11-27 11:47:17+07:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - tests/Min_of_Mod_of_Linear.test.cpp
   - tests/Sum_of_Floor_of_Linear.test.cpp
