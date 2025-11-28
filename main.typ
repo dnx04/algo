@@ -153,8 +153,8 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
   Tìm lát cắt cực tiểu trong đồ thị vô hướng trong $O(V^3)$.
 ])
 #file(
-  "graph/EnumCliques.h",
-  description: [Duyệt qua tất cả các clique của một đồ thị trong $O(3^(n/3))$.],
+  "graph/Cliques.h",
+  description: [Duyệt clique hoặc tìm nhanh clique lớn nhất để giải MIS của phần bù trong $O(3^(n/3))$.],
 )
 // #file("graph/DirectedMST.h", description: [
 //   Trả về giá trị và các cạnh của cây khung nhỏ nhất trên đồ thị có hướng với đỉnh nguồn cho trước trong $O(E log V)$. Nếu không tồn tại in ra `-1`.
@@ -183,13 +183,13 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 == DP thứ tự từ điển
 
 #file("misc/CountSubseq.h")
-#file(
-  "misc/SOSDP.cpp",
-  description: [
-    Toàn bộ implementation SOS DP của VNOI.
-  ],
-  hash: false,
-)
+// #file(
+//   "misc/SOSDP.cpp",
+//   description: [
+//     Toàn bộ implementation SOS DP của VNOI.
+//   ],
+//   hash: false,
+// )
 #file(
   "misc/1D1D.h",
   description: [

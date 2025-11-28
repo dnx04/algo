@@ -1,25 +1,27 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/maximum_independent_set"
 
 #include "../misc/macros.h"
-#include "../misc/MaximumClique.h"
+#include "../graph/Cliques.h"
 
 signed main() {
   cin.tie(0)->sync_with_stdio(0);
   cin.exceptions(cin.failbit);
   int n, m;
   cin >> n >> m;
-  vector<bs> eds(n, bs(n));
+  vector<bs> adj(n, bs(n));
   for (int i = 0; i < m; ++i) {
     int u, v;
     cin >> u >> v;
-    eds[u][v] = eds[v][u] = 1;
+    adj[u][v] = adj[v][u] = 1;
   }
   for (int i = 0; i < n; ++i) {
-    eds[i].flip();
-    eds[i][i] = 0;
+    adj[i].set(), adj[i][i] = 0;
   }
-  Maxclique mc(eds);
-  auto ans = mc.maxClique();
-  cout << sz(ans) << '\n';
-  for (auto i : mc.qmax) cout << i << ' ';
+  bs P(n), R(n), sol(n); 
+  int ans=0; P.set(); 
+  MaxClique(adj, P, R, sol, ans);
+  cout << ans << '\n';
+  // for (int i = sol.find_first(); i != bs::npos; i = sol.find_next(i)) {
+  //   cout << i << ' ';
+  // }
 }

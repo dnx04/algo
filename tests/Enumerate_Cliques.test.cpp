@@ -2,7 +2,7 @@
 
 #include "../misc/macros.h"
 #include "../math/ModInt.h"
-#include "../graph/EnumCliques.h"
+#include "../graph/Cliques.h"
 
 using Fp = modint<998244353>;
 
@@ -18,7 +18,7 @@ void solve() {
     g[u][v] = g[v][u] = 1;
   }
   Fp ans = 0;
-  cliques(g, [&](const bs& clique) {
+  EnumClique(g, [&](const bs& clique) {
     if(!clique.any()) return;
     Fp prod = 1;
     for(int i = clique.find_first(); i < n; i = clique.find_next(i)) prod *= x[i];

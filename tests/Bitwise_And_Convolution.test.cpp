@@ -2,10 +2,10 @@
 
 #include "../misc/macros.h"
 #include "../math/ModInt.h"
-
-using Fp = modint<998244353>;
-
 #include "../math/FST.h"
+
+using namespace FST;
+using Fp = modint<998244353>;
 
 void solve() {
   int n;
@@ -13,7 +13,7 @@ void solve() {
   vector<Fp> a(1 << n), b(1 << n);
   for (int i = 0; i < (1 << n); ++i) cin >> a[i];
   for (int i = 0; i < (1 << n); ++i) cin >> b[i];
-  auto c = conv(a, b, "and");
+  auto c = conv(a, b, AND);
   for (int i = 0; i < (1 << n); ++i) cout << c[i] << " \n"[i == (1 << n) - 1];
 }
 
