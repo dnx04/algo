@@ -9,19 +9,20 @@ signed main() {
   int n, m;
   cin >> n >> m;
   vector<bs> adj(n, bs(n));
+  for (int i = 0; i < n; ++i) {
+    adj[i].set();     // Full 1
+    adj[i][i] = 0;    // QUAN TRỌNG: Tắt self-loop
+  }
   for (int i = 0; i < m; ++i) {
     int u, v;
     cin >> u >> v;
-    adj[u][v] = adj[v][u] = 1;
-  }
-  for (int i = 0; i < n; ++i) {
-    adj[i].set(), adj[i][i] = 0;
+    adj[u][v] = adj[v][u] = 0;
   }
   bs P(n), R(n), sol(n); 
-  int ans=0; P.set(); 
+  u32 ans=0; P.set(); 
   MaxClique(adj, P, R, sol, ans);
   cout << ans << '\n';
-  // for (int i = sol.find_first(); i != bs::npos; i = sol.find_next(i)) {
-  //   cout << i << ' ';
-  // }
+  for (int i = sol.find_first(); i < sz(sol); i = sol.find_next(i)) {
+    cout << i << ' ';
+  }
 }
