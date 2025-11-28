@@ -7,6 +7,12 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: tests/Bell_Number.test.cpp
+    title: tests/Bell_Number.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Bernoulli_Number.test.cpp
+    title: tests/Bernoulli_Number.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/Convolution.test.cpp
     title: tests/Convolution.test.cpp
   - icon: ':heavy_check_mark:'
@@ -16,11 +22,26 @@ data:
     path: tests/Inv_of_FPS.test.cpp
     title: tests/Inv_of_FPS.test.cpp
   - icon: ':heavy_check_mark:'
+    path: tests/Partition_Function.test.cpp
+    title: tests/Partition_Function.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/Pow_of_FPS.test.cpp
     title: tests/Pow_of_FPS.test.cpp
   - icon: ':heavy_check_mark:'
     path: tests/Product_of_Polynomial_Sequence.test.cpp
     title: tests/Product_of_Polynomial_Sequence.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Stirling_Number_1st.test.cpp
+    title: tests/Stirling_Number_1st.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Stirling_Number_1st_fixed_K.test.cpp
+    title: tests/Stirling_Number_1st_fixed_K.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Stirling_Number_2nd.test.cpp
+    title: tests/Stirling_Number_2nd.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Stirling_Number_2nd_fixed_K.test.cpp
+    title: tests/Stirling_Number_2nd_fixed_K.test.cpp
   - icon: ':heavy_check_mark:'
     path: tests/p_Subset_Sum.test.cpp
     title: tests/p_Subset_Sum.test.cpp
@@ -161,12 +182,19 @@ data:
   timestamp: '2025-11-28 00:00:09+07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - tests/Bernoulli_Number.test.cpp
+  - tests/Partition_Function.test.cpp
   - tests/Pow_of_FPS.test.cpp
   - tests/p_Subset_Sum.test.cpp
   - tests/Product_of_Polynomial_Sequence.test.cpp
+  - tests/Stirling_Number_1st_fixed_K.test.cpp
   - tests/Inv_of_FPS.test.cpp
   - tests/Exp_of_FPS.test.cpp
+  - tests/Stirling_Number_1st.test.cpp
+  - tests/Stirling_Number_2nd_fixed_K.test.cpp
+  - tests/Stirling_Number_2nd.test.cpp
   - tests/Convolution.test.cpp
+  - tests/Bell_Number.test.cpp
 documentation_of: math/Poly.h
 layout: document
 redirect_from:

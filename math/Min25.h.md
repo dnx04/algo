@@ -4,11 +4,11 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: math/Sum_of_Multiplicative_Function.test.cpp
-    title: math/Sum_of_Multiplicative_Function.test.cpp
-  - icon: ':heavy_check_mark:'
     path: tests/Counting_Primes.test.cpp
     title: tests/Counting_Primes.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Sum_of_Multiplicative_Function.test.cpp
+    title: tests/Sum_of_Multiplicative_Function.test.cpp
   _isVerificationFailed: false
   _pathExtension: h
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -77,8 +77,8 @@ data:
   timestamp: '2025-11-28 10:18:48+07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - math/Sum_of_Multiplicative_Function.test.cpp
   - tests/Counting_Primes.test.cpp
+  - tests/Sum_of_Multiplicative_Function.test.cpp
 documentation_of: math/Min25.h
 layout: document
 redirect_from:

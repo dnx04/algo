@@ -13,8 +13,11 @@ data:
     title: math/SumPowerPoly.h
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: math/Sum_of_Multiplicative_Function.test.cpp
-    title: math/Sum_of_Multiplicative_Function.test.cpp
+    path: tests/Bell_Number.test.cpp
+    title: tests/Bell_Number.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Bernoulli_Number.test.cpp
+    title: tests/Bernoulli_Number.test.cpp
   - icon: ':heavy_check_mark:'
     path: tests/Bitwise_And_Convolution.test.cpp
     title: tests/Bitwise_And_Convolution.test.cpp
@@ -70,6 +73,9 @@ data:
     path: tests/Number_of_Subsequences.test.cpp
     title: tests/Number_of_Subsequences.test.cpp
   - icon: ':heavy_check_mark:'
+    path: tests/Partition_Function.test.cpp
+    title: tests/Partition_Function.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/Point_Set_Range_Composite.test.cpp
     title: tests/Point_Set_Range_Composite.test.cpp
   - icon: ':heavy_check_mark:'
@@ -100,11 +106,26 @@ data:
     path: tests/Sqrt_Mod.test.cpp
     title: tests/Sqrt_Mod.test.cpp
   - icon: ':heavy_check_mark:'
+    path: tests/Stirling_Number_1st.test.cpp
+    title: tests/Stirling_Number_1st.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Stirling_Number_1st_fixed_K.test.cpp
+    title: tests/Stirling_Number_1st_fixed_K.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Stirling_Number_2nd.test.cpp
+    title: tests/Stirling_Number_2nd.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Stirling_Number_2nd_fixed_K.test.cpp
+    title: tests/Stirling_Number_2nd_fixed_K.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/Sum_of_Exponential_times_Polynomial.test.cpp
     title: tests/Sum_of_Exponential_times_Polynomial.test.cpp
   - icon: ':heavy_check_mark:'
     path: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
     title: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Sum_of_Multiplicative_Function.test.cpp
+    title: tests/Sum_of_Multiplicative_Function.test.cpp
   - icon: ':heavy_check_mark:'
     path: tests/p_Subset_Sum.test.cpp
     title: tests/p_Subset_Sum.test.cpp
@@ -173,10 +194,11 @@ data:
   timestamp: '2025-11-26 18:05:06+07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - math/Sum_of_Multiplicative_Function.test.cpp
+  - tests/Bernoulli_Number.test.cpp
   - tests/Bitwise_Xor_Convolution.test.cpp
   - tests/Matrix_Inv.test.cpp
   - tests/Sum_of_Exponential_times_Polynomial.test.cpp
+  - tests/Partition_Function.test.cpp
   - tests/Pow_of_FPS.test.cpp
   - tests/Enumerate_Triangles.test.cpp
   - tests/Bitwise_Subset_Convolution.test.cpp
@@ -190,18 +212,24 @@ data:
   - tests/Product_of_Polynomial_Sequence.test.cpp
   - tests/LCM_Convolution.test.cpp
   - tests/Find_Linear_Recurrence.test.cpp
+  - tests/Stirling_Number_1st_fixed_K.test.cpp
   - tests/Matrix_Solve_Linear.test.cpp
   - tests/Inv_of_FPS.test.cpp
   - tests/Primality_Test.test.cpp
+  - tests/Sum_of_Multiplicative_Function.test.cpp
   - tests/Sqrt_Mod.test.cpp
   - tests/Exp_of_FPS.test.cpp
+  - tests/Stirling_Number_1st.test.cpp
+  - tests/Stirling_Number_2nd_fixed_K.test.cpp
   - tests/Range_Affine_Range_Sum.test.cpp
+  - tests/Stirling_Number_2nd.test.cpp
   - tests/Convolution.test.cpp
   - tests/Enumerate_Cliques.test.cpp
   - tests/Matrix_Det.test.cpp
   - tests/Point_Set_Range_Composite.test.cpp
   - tests/GCD_Convolution.test.cpp
   - tests/Point_Set_Range_Composite_Large.test.cpp
+  - tests/Bell_Number.test.cpp
   - tests/Bitwise_And_Convolution.test.cpp
   - tests/Primitive_Root.test.cpp
   - tests/Number_of_Subsequences.test.cpp

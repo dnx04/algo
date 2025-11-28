@@ -131,6 +131,9 @@ data:
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'
+      path: graph/2CC.h
+      title: graph/2CC.h
+    - icon: ':heavy_check_mark:'
       path: graph/2SAT.h
       title: graph/2SAT.h
     - icon: ':warning:'
@@ -296,11 +299,6 @@ data:
       path: strings/Z.h
       title: strings/Z.h
   verificationCategories:
-  - name: math
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: math/Sum_of_Multiplicative_Function.test.cpp
-      title: math/Sum_of_Multiplicative_Function.test.cpp
   - name: tests
     pages:
     - icon: ':heavy_check_mark:'
@@ -309,6 +307,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Assignment_Problem.test.cpp
       title: tests/Assignment_Problem.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: tests/Bell_Number.test.cpp
+      title: tests/Bell_Number.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: tests/Bernoulli_Number.test.cpp
+      title: tests/Bernoulli_Number.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: tests/Biconnected_Components.test.cpp
+      title: tests/Biconnected_Components.test.cpp
     - icon: ':heavy_check_mark:'
       path: tests/Bipartite_Matching_Dinic.test.cpp
       title: tests/Bipartite_Matching_Dinic.test.cpp
@@ -433,6 +440,9 @@ data:
       path: tests/Number_of_Substrings.test.cpp
       title: tests/Number_of_Substrings.test.cpp
     - icon: ':heavy_check_mark:'
+      path: tests/Partition_Function.test.cpp
+      title: tests/Partition_Function.test.cpp
+    - icon: ':heavy_check_mark:'
       path: tests/Persistent_Unionfind.test.cpp
       title: tests/Persistent_Unionfind.test.cpp
     - icon: ':heavy_check_mark:'
@@ -490,6 +500,18 @@ data:
       path: tests/Stern_Brocot.test.cpp
       title: tests/Stern_Brocot.test.cpp
     - icon: ':heavy_check_mark:'
+      path: tests/Stirling_Number_1st.test.cpp
+      title: tests/Stirling_Number_1st.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: tests/Stirling_Number_1st_fixed_K.test.cpp
+      title: tests/Stirling_Number_1st_fixed_K.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: tests/Stirling_Number_2nd.test.cpp
+      title: tests/Stirling_Number_2nd.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: tests/Stirling_Number_2nd_fixed_K.test.cpp
+      title: tests/Stirling_Number_2nd_fixed_K.test.cpp
+    - icon: ':heavy_check_mark:'
       path: tests/Suffix_Array.test.cpp
       title: tests/Suffix_Array.test.cpp
     - icon: ':heavy_check_mark:'
@@ -501,6 +523,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Sum_of_Floor_of_Linear.test.cpp
       title: tests/Sum_of_Floor_of_Linear.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: tests/Sum_of_Multiplicative_Function.test.cpp
+      title: tests/Sum_of_Multiplicative_Function.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: tests/Two_Edges_CC.test.cpp
+      title: tests/Two_Edges_CC.test.cpp
     - icon: ':heavy_check_mark:'
       path: tests/Unionfind.test.cpp
       title: tests/Unionfind.test.cpp

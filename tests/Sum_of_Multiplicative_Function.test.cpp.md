@@ -20,7 +20,7 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/sum_of_multiplicative_function
     links:
     - https://judge.yosupo.jp/problem/sum_of_multiplicative_function
-  bundledCode: "#line 1 \"math/Sum_of_Multiplicative_Function.test.cpp\"\n#define\
+  bundledCode: "#line 1 \"tests/Sum_of_Multiplicative_Function.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/sum_of_multiplicative_function\"\n\
     \n#line 1 \"misc/macros.h\"\n// #pragma GCC optimize(\"Ofast,unroll-loops\") \
     \      // unroll long, simple loops\n// #pragma GCC target(\"avx2,fma\")     \
@@ -92,7 +92,7 @@ data:
     \ v;\n    a = M(v);\n    return is;\n  }\n};\n\nu64 modmul(u64 x, u64 y, u64 m)\
     \ { return u128(x) * y % m; }\nu64 modpow(u64 x, u64 k, u64 m) {\n  u64 res =\
     \ 1;\n  while (k) {\n    if (k & 1) res = modmul(res, x, m);\n    x = modmul(x,\
-    \ x, m);\n    k >>= 1;\n  }\n  return res;\n}\n#line 6 \"math/Sum_of_Multiplicative_Function.test.cpp\"\
+    \ x, m);\n    k >>= 1;\n  }\n  return res;\n}\n#line 6 \"tests/Sum_of_Multiplicative_Function.test.cpp\"\
     \n\nusing Fp = modint<469762049>;\n\nvoid solve() {\n  Min25<Fp> solver;\n  i64\
     \ n;\n  Fp a, b;\n  cin >> n >> a >> b;\n  solver.init(n);\n  cout << solver.solve(a,\
     \ b, [&](i64 p, int e) {\n    return a * e + b * p;\n  }) << '\\n';\n}\n\nsigned\
@@ -110,15 +110,15 @@ data:
   - math/Min25.h
   - math/ModInt.h
   isVerificationFile: true
-  path: math/Sum_of_Multiplicative_Function.test.cpp
+  path: tests/Sum_of_Multiplicative_Function.test.cpp
   requiredBy: []
-  timestamp: '2025-11-28 10:18:48+07:00'
+  timestamp: '2025-11-28 15:36:49+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: math/Sum_of_Multiplicative_Function.test.cpp
+documentation_of: tests/Sum_of_Multiplicative_Function.test.cpp
 layout: document
 redirect_from:
-- /verify/math/Sum_of_Multiplicative_Function.test.cpp
-- /verify/math/Sum_of_Multiplicative_Function.test.cpp.html
-title: math/Sum_of_Multiplicative_Function.test.cpp
+- /verify/tests/Sum_of_Multiplicative_Function.test.cpp
+- /verify/tests/Sum_of_Multiplicative_Function.test.cpp.html
+title: tests/Sum_of_Multiplicative_Function.test.cpp
 ---

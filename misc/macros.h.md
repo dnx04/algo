@@ -4,14 +4,20 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: math/Sum_of_Multiplicative_Function.test.cpp
-    title: math/Sum_of_Multiplicative_Function.test.cpp
-  - icon: ':heavy_check_mark:'
     path: tests/2_Sat.test.cpp
     title: tests/2_Sat.test.cpp
   - icon: ':heavy_check_mark:'
     path: tests/Assignment_Problem.test.cpp
     title: tests/Assignment_Problem.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Bell_Number.test.cpp
+    title: tests/Bell_Number.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Bernoulli_Number.test.cpp
+    title: tests/Bernoulli_Number.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Biconnected_Components.test.cpp
+    title: tests/Biconnected_Components.test.cpp
   - icon: ':heavy_check_mark:'
     path: tests/Bipartite_Matching_Dinic.test.cpp
     title: tests/Bipartite_Matching_Dinic.test.cpp
@@ -136,6 +142,9 @@ data:
     path: tests/Number_of_Substrings.test.cpp
     title: tests/Number_of_Substrings.test.cpp
   - icon: ':heavy_check_mark:'
+    path: tests/Partition_Function.test.cpp
+    title: tests/Partition_Function.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/Persistent_Unionfind.test.cpp
     title: tests/Persistent_Unionfind.test.cpp
   - icon: ':heavy_check_mark:'
@@ -193,6 +202,18 @@ data:
     path: tests/Stern_Brocot.test.cpp
     title: tests/Stern_Brocot.test.cpp
   - icon: ':heavy_check_mark:'
+    path: tests/Stirling_Number_1st.test.cpp
+    title: tests/Stirling_Number_1st.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Stirling_Number_1st_fixed_K.test.cpp
+    title: tests/Stirling_Number_1st_fixed_K.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Stirling_Number_2nd.test.cpp
+    title: tests/Stirling_Number_2nd.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Stirling_Number_2nd_fixed_K.test.cpp
+    title: tests/Stirling_Number_2nd_fixed_K.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/Suffix_Array.test.cpp
     title: tests/Suffix_Array.test.cpp
   - icon: ':heavy_check_mark:'
@@ -204,6 +225,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Sum_of_Floor_of_Linear.test.cpp
     title: tests/Sum_of_Floor_of_Linear.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Sum_of_Multiplicative_Function.test.cpp
+    title: tests/Sum_of_Multiplicative_Function.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Two_Edges_CC.test.cpp
+    title: tests/Two_Edges_CC.test.cpp
   - icon: ':heavy_check_mark:'
     path: tests/Unionfind.test.cpp
     title: tests/Unionfind.test.cpp
@@ -266,12 +293,13 @@ data:
   timestamp: '2025-11-28 02:09:51+07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - math/Sum_of_Multiplicative_Function.test.cpp
+  - tests/Bernoulli_Number.test.cpp
   - tests/Bitwise_Xor_Convolution.test.cpp
   - tests/Matrix_Inv.test.cpp
   - tests/Sum_of_Exponential_times_Polynomial.test.cpp
   - tests/Rational_Approximation.test.cpp
   - tests/Static_Convex_Hull.test.cpp
+  - tests/Partition_Function.test.cpp
   - tests/SCC.test.cpp
   - tests/Pow_of_FPS.test.cpp
   - tests/Eulerian_Trail_Directed.test.cpp
@@ -306,16 +334,23 @@ data:
   - tests/Enumerate_Quotients.test.cpp
   - tests/Closest_Pair_of_Points.test.cpp
   - tests/Find_Linear_Recurrence.test.cpp
+  - tests/Stirling_Number_1st_fixed_K.test.cpp
+  - tests/Biconnected_Components.test.cpp
   - tests/Matrix_Solve_Linear.test.cpp
   - tests/Inv_of_FPS.test.cpp
   - tests/Primality_Test.test.cpp
+  - tests/Sum_of_Multiplicative_Function.test.cpp
   - tests/Sqrt_Mod.test.cpp
   - tests/Run_Enumerate.test.cpp
   - tests/Vertex_Add_Path_Sum.test.cpp
   - tests/Exp_of_FPS.test.cpp
   - tests/Discrete_Logarithm.test.cpp
+  - tests/Stirling_Number_1st.test.cpp
+  - tests/Stirling_Number_2nd_fixed_K.test.cpp
   - tests/Range_Affine_Range_Sum.test.cpp
   - tests/LIS.test.cpp
+  - tests/Stirling_Number_2nd.test.cpp
+  - tests/Two_Edges_CC.test.cpp
   - tests/Intersection_of_F2_vector_spaces.test.cpp
   - tests/Sort_Points_by_Argument.test.cpp
   - tests/Convolution.test.cpp
@@ -327,6 +362,7 @@ data:
   - tests/Unionfind.test.cpp
   - tests/Assignment_Problem.test.cpp
   - tests/Point_Set_Range_Composite_Large.test.cpp
+  - tests/Bell_Number.test.cpp
   - tests/Bitwise_And_Convolution.test.cpp
   - tests/LCA.test.cpp
   - tests/Point_Add_Range_Sum.test.cpp
