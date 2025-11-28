@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/SternBrocot.h
     title: math/SternBrocot.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []

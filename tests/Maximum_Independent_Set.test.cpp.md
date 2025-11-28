@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/Cliques.h
     title: graph/Cliques.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/maximum_independent_set
@@ -43,40 +43,42 @@ data:
     \ g, F f, bs P, bs X, bs R) {\n  f(R); \n  if (P.none() && X.none()) return;\n\
     \  // if only need to find all maximal cliques\n  // auto q = (P | X).find_first();\n\
     \  // auto cands = P & ~g[q]; // then trav through cands\n  for (auto i = P.find_first();\
-    \ i < P.size(); i = P.find_next(i)) {\n    R[i] = 1;\n    EnumClique(g, f, P &\
-    \ g[i], X & g[i], R);\n    R[i] = 0, P[i] = 0, X[i] = 1;\n  }\n}\n\n// Usage:\
-    \ bs P(n), R(n), sol; u64 ans=0; P.set(); MaxClique(g, P, R, sol, ans);\nvoid\
-    \ MaxClique(vector<bs>& g, bs P, bs R, bs& sol, u32& res) {\n  if (R.count() +\
-    \ P.count() <= res) return;\n  if (P.none()) { res = R.count(), sol = R; return;\
-    \ }\n  auto q = P.find_first(), max_k = u64(0);\n  for (auto i = q; i < P.size();\
-    \ i = P.find_next(i)) {\n    auto k = (P & g[i]).count();\n    if (k > max_k)\
-    \ max_k = k, q = i;\n  }\n  bs cands = P & ~g[q];\n  for (auto i = cands.find_first();\
-    \ i < cands.size(); i = cands.find_next(i)) {\n    R[i] = 1, MaxClique(g, P &\
-    \ g[i], R, sol, res);\n    R[i] = P[i] = 0;\n  }\n}\n#line 5 \"tests/Maximum_Independent_Set.test.cpp\"\
-    \n\nsigned main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
-    \  int n, m;\n  cin >> n >> m;\n  vector<bs> adj(n, bs(n));\n  for (int i = 0;\
-    \ i < m; ++i) {\n    int u, v;\n    cin >> u >> v;\n    adj[u][v] = adj[v][u]\
-    \ = 1;\n  }\n  for (int i = 0; i < n; ++i) {\n    adj[i].set(), adj[i][i] = 0;\n\
-    \  }\n  bs P(n), R(n), sol(n); \n  int ans=0; P.set(); \n  MaxClique(adj, P, R,\
-    \ sol, ans);\n  cout << ans << '\\n';\n  // for (int i = sol.find_first(); i !=\
-    \ bs::npos; i = sol.find_next(i)) {\n  //   cout << i << ' ';\n  // }\n}\n"
+    \ i < sz(P); i = P.find_next(i)) {\n    R[i] = 1;\n    EnumClique(g, f, P & g[i],\
+    \ X & g[i], R);\n    R[i] = 0, P[i] = 0, X[i] = 1;\n  }\n}\n\n// Usage: bs P(n),\
+    \ R(n), sol; u64 ans=0; P.set(); MaxClique(g, P, R, sol, ans);\nvoid MaxClique(vector<bs>&\
+    \ g, bs P, bs R, bs& sol, u32& res) {\n  if (R.count() + P.count() <= res) return;\n\
+    \  if (P.none()) { res = R.count(), sol = R; return; }\n  auto q = P.find_first(),\
+    \ max_k = u64(0);\n  for (auto i = q; i < sz(P); i = P.find_next(i)) {\n    auto\
+    \ k = (P & g[i]).count();\n    if (k > max_k) max_k = k, q = i;\n  }\n  bs cands\
+    \ = P & ~g[q];\n  for (auto i = cands.find_first(); i < sz(cands); i = cands.find_next(i))\
+    \ {\n    R[i] = 1, MaxClique(g, P & g[i], R, sol, res);\n    R[i] = P[i] = 0;\n\
+    \  }\n}\n#line 5 \"tests/Maximum_Independent_Set.test.cpp\"\n\nsigned main() {\n\
+    \  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n  int n, m;\n\
+    \  cin >> n >> m;\n  vector<bs> adj(n, bs(n));\n  for (int i = 0; i < n; ++i)\
+    \ {\n    adj[i].set();     // Full 1\n    adj[i][i] = 0;    // QUAN TR\u1ECCNG:\
+    \ T\u1EAFt self-loop\n  }\n  for (int i = 0; i < m; ++i) {\n    int u, v;\n  \
+    \  cin >> u >> v;\n    adj[u][v] = adj[v][u] = 0;\n  }\n  bs P(n), R(n), sol(n);\
+    \ \n  u32 ans=0; P.set(); \n  MaxClique(adj, P, R, sol, ans);\n  cout << ans <<\
+    \ '\\n';\n  for (int i = sol.find_first(); i < sz(sol); i = sol.find_next(i))\
+    \ {\n    cout << i << ' ';\n  }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/maximum_independent_set\"\
     \n\n#include \"../misc/macros.h\"\n#include \"../graph/Cliques.h\"\n\nsigned main()\
     \ {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n  int\
     \ n, m;\n  cin >> n >> m;\n  vector<bs> adj(n, bs(n));\n  for (int i = 0; i <\
-    \ m; ++i) {\n    int u, v;\n    cin >> u >> v;\n    adj[u][v] = adj[v][u] = 1;\n\
-    \  }\n  for (int i = 0; i < n; ++i) {\n    adj[i].set(), adj[i][i] = 0;\n  }\n\
-    \  bs P(n), R(n), sol(n); \n  int ans=0; P.set(); \n  MaxClique(adj, P, R, sol,\
-    \ ans);\n  cout << ans << '\\n';\n  // for (int i = sol.find_first(); i != bs::npos;\
-    \ i = sol.find_next(i)) {\n  //   cout << i << ' ';\n  // }\n}\n"
+    \ n; ++i) {\n    adj[i].set();     // Full 1\n    adj[i][i] = 0;    // QUAN TR\u1ECC\
+    NG: T\u1EAFt self-loop\n  }\n  for (int i = 0; i < m; ++i) {\n    int u, v;\n\
+    \    cin >> u >> v;\n    adj[u][v] = adj[v][u] = 0;\n  }\n  bs P(n), R(n), sol(n);\
+    \ \n  u32 ans=0; P.set(); \n  MaxClique(adj, P, R, sol, ans);\n  cout << ans <<\
+    \ '\\n';\n  for (int i = sol.find_first(); i < sz(sol); i = sol.find_next(i))\
+    \ {\n    cout << i << ' ';\n  }\n}\n"
   dependsOn:
   - misc/macros.h
   - graph/Cliques.h
   isVerificationFile: true
   path: tests/Maximum_Independent_Set.test.cpp
   requiredBy: []
-  timestamp: '2025-11-28 12:47:29+07:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2025-11-28 13:07:52+07:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Maximum_Independent_Set.test.cpp
 layout: document

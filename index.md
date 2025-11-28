@@ -139,7 +139,7 @@ data:
     - icon: ':warning:'
       path: graph/CentroidDecomposition.h
       title: graph/CentroidDecomposition.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: graph/Cliques.h
       title: graph/Cliques.h
     - icon: ':heavy_check_mark:'
@@ -272,7 +272,7 @@ data:
     - icon: ':warning:'
       path: misc/SOSDP.cpp
       title: misc/SOSDP.cpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: misc/macros.h
       title: misc/macros.h
     - icon: ':warning:'
@@ -417,7 +417,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Matrix_Solve_Linear.test.cpp
       title: tests/Matrix_Solve_Linear.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Maximum_Independent_Set.test.cpp
       title: tests/Maximum_Independent_Set.test.cpp
     - icon: ':heavy_check_mark:'

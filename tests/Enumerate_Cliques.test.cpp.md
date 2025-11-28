@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: graph/Cliques.h
     title: graph/Cliques.h
   - icon: ':heavy_check_mark:'
     path: math/ModInt.h
     title: math/ModInt.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
@@ -69,16 +69,16 @@ data:
     \ <class F>\nvoid EnumClique(vector<bs>& g, F f, bs P, bs X, bs R) {\n  f(R);\
     \ \n  if (P.none() && X.none()) return;\n  // if only need to find all maximal\
     \ cliques\n  // auto q = (P | X).find_first();\n  // auto cands = P & ~g[q]; //\
-    \ then trav through cands\n  for (auto i = P.find_first(); i < P.size(); i = P.find_next(i))\
+    \ then trav through cands\n  for (auto i = P.find_first(); i < sz(P); i = P.find_next(i))\
     \ {\n    R[i] = 1;\n    EnumClique(g, f, P & g[i], X & g[i], R);\n    R[i] = 0,\
     \ P[i] = 0, X[i] = 1;\n  }\n}\n\n// Usage: bs P(n), R(n), sol; u64 ans=0; P.set();\
     \ MaxClique(g, P, R, sol, ans);\nvoid MaxClique(vector<bs>& g, bs P, bs R, bs&\
     \ sol, u32& res) {\n  if (R.count() + P.count() <= res) return;\n  if (P.none())\
     \ { res = R.count(), sol = R; return; }\n  auto q = P.find_first(), max_k = u64(0);\n\
-    \  for (auto i = q; i < P.size(); i = P.find_next(i)) {\n    auto k = (P & g[i]).count();\n\
+    \  for (auto i = q; i < sz(P); i = P.find_next(i)) {\n    auto k = (P & g[i]).count();\n\
     \    if (k > max_k) max_k = k, q = i;\n  }\n  bs cands = P & ~g[q];\n  for (auto\
-    \ i = cands.find_first(); i < cands.size(); i = cands.find_next(i)) {\n    R[i]\
-    \ = 1, MaxClique(g, P & g[i], R, sol, res);\n    R[i] = P[i] = 0;\n  }\n}\n#line\
+    \ i = cands.find_first(); i < sz(cands); i = cands.find_next(i)) {\n    R[i] =\
+    \ 1, MaxClique(g, P & g[i], R, sol, res);\n    R[i] = P[i] = 0;\n  }\n}\n#line\
     \ 6 \"tests/Enumerate_Cliques.test.cpp\"\n\nusing Fp = modint<998244353>;\n\n\
     void solve() {\n  int n, m;\n  cin >> n >> m;\n  vector<Fp> x(n);\n  for (int\
     \ i = 0; i < n; ++i) cin >> x[i];\n  vector<bs> g(n, bs(n));\n  for (int i = 0;\
@@ -108,7 +108,7 @@ data:
   isVerificationFile: true
   path: tests/Enumerate_Cliques.test.cpp
   requiredBy: []
-  timestamp: '2025-11-28 12:47:29+07:00'
+  timestamp: '2025-11-28 13:07:52+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Enumerate_Cliques.test.cpp
