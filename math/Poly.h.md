@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/ModInt.h
     title: math/ModInt.h
   _extendedRequiredBy: []
@@ -18,12 +18,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Pow_of_FPS.test.cpp
     title: tests/Pow_of_FPS.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Product_of_Polynomial_Sequence.test.cpp
     title: tests/Product_of_Polynomial_Sequence.test.cpp
-  _isVerificationFailed: true
+  - icon: ':heavy_check_mark:'
+    path: tests/p_Subset_Sum.test.cpp
+    title: tests/p_Subset_Sum.test.cpp
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/ModInt.h\"\n\ntemplate <int mod>\nstruct modint {\n\
@@ -156,9 +159,10 @@ data:
   path: math/Poly.h
   requiredBy: []
   timestamp: '2025-11-28 00:00:09+07:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - tests/Pow_of_FPS.test.cpp
+  - tests/p_Subset_Sum.test.cpp
   - tests/Product_of_Polynomial_Sequence.test.cpp
   - tests/Inv_of_FPS.test.cpp
   - tests/Exp_of_FPS.test.cpp

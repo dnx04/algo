@@ -3,19 +3,19 @@ data:
   libraryCategories:
   - name: ds
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: ds/DSU.h
       title: ds/DSU.h
     - icon: ':heavy_check_mark:'
       path: ds/DSURollback.h
       title: ds/DSURollback.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: ds/Fenwick.h
       title: ds/Fenwick.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: ds/HLD.h
       title: ds/HLD.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: ds/LazySegTree.h
       title: ds/LazySegTree.h
     - icon: ':heavy_check_mark:'
@@ -27,7 +27,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: ds/PersistentSegTree.h
       title: ds/PersistentSegTree.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: ds/RMQ.h
       title: ds/RMQ.h
     - icon: ':heavy_check_mark:'
@@ -65,7 +65,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: geometry/ClosestPair.h
       title: geometry/ClosestPair.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: geometry/ConvexHull.h
       title: geometry/ConvexHull.h
     - icon: ':warning:'
@@ -104,7 +104,7 @@ data:
     - icon: ':warning:'
       path: geometry/OnSegment.h
       title: geometry/OnSegment.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: geometry/Point.h
       title: geometry/Point.h
     - icon: ':warning:'
@@ -139,6 +139,9 @@ data:
     - icon: ':warning:'
       path: graph/CentroidDecomposition.h
       title: graph/CentroidDecomposition.h
+    - icon: ':question:'
+      path: graph/Cliques.h
+      title: graph/Cliques.h
     - icon: ':heavy_check_mark:'
       path: graph/Dinic.h
       title: graph/Dinic.h
@@ -148,9 +151,6 @@ data:
     - icon: ':warning:'
       path: graph/EdgeColoring.h
       title: graph/EdgeColoring.h
-    - icon: ':heavy_check_mark:'
-      path: graph/EnumCliques.h
-      title: graph/EnumCliques.h
     - icon: ':heavy_check_mark:'
       path: graph/EnumTriangles.h
       title: graph/EnumTriangles.h
@@ -178,7 +178,7 @@ data:
     - icon: ':warning:'
       path: graph/MinCostMaxFlow.h
       title: graph/MinCostMaxFlow.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/SCC.h
       title: graph/SCC.h
   - name: math
@@ -192,7 +192,7 @@ data:
     - icon: ':warning:'
       path: math/CRT.h
       title: math/CRT.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/DivModSum.h
       title: math/DivModSum.h
     - icon: ':heavy_check_mark:'
@@ -204,37 +204,37 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/FST.h
       title: math/FST.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/Factor.h
       title: math/Factor.h
     - icon: ':warning:'
       path: math/Lagrange.h
       title: math/Lagrange.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/Matrix.h
       title: math/Matrix.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/MillerRabin.h
       title: math/MillerRabin.h
     - icon: ':heavy_check_mark:'
       path: math/Min25.h
       title: math/Min25.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/ModInt.h
       title: math/ModInt.h
     - icon: ':heavy_check_mark:'
       path: math/ModLog.h
       title: math/ModLog.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/ModSQRT.h
       title: math/ModSQRT.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/Poly.h
       title: math/Poly.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/SternBrocot.h
       title: math/SternBrocot.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/SumPowerPoly.h
       title: math/SumPowerPoly.h
     - icon: ':heavy_check_mark:'
@@ -269,9 +269,6 @@ data:
     - icon: ':warning:'
       path: misc/Knuth.h
       title: misc/Knuth.h
-    - icon: ':x:'
-      path: misc/MaximumClique.h
-      title: misc/MaximumClique.h
     - icon: ':warning:'
       path: misc/SOSDP.cpp
       title: misc/SOSDP.cpp
@@ -292,10 +289,10 @@ data:
     - icon: ':warning:'
       path: strings/PalindromeTree.h
       title: strings/PalindromeTree.h
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: strings/SuffixArray.h
       title: strings/SuffixArray.h
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: strings/Z.h
       title: strings/Z.h
   verificationCategories:
@@ -321,6 +318,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Bitwise_And_Convolution.test.cpp
       title: tests/Bitwise_And_Convolution.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: tests/Bitwise_Subset_Convolution.test.cpp
+      title: tests/Bitwise_Subset_Convolution.test.cpp
     - icon: ':heavy_check_mark:'
       path: tests/Bitwise_Xor_Convolution.test.cpp
       title: tests/Bitwise_Xor_Convolution.test.cpp
@@ -447,68 +447,71 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/Pow_of_FPS.test.cpp
       title: tests/Pow_of_FPS.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Pow_of_Matrix.test.cpp
       title: tests/Pow_of_Matrix.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Primality_Test.test.cpp
       title: tests/Primality_Test.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Primitive_Root.test.cpp
       title: tests/Primitive_Root.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Product_of_Polynomial_Sequence.test.cpp
       title: tests/Product_of_Polynomial_Sequence.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Range_Affine_Point_Get.test.cpp
       title: tests/Range_Affine_Point_Get.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Range_Affine_Range_Sum.test.cpp
       title: tests/Range_Affine_Range_Sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Rational_Approximation.test.cpp
       title: tests/Rational_Approximation.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Run_Enumerate.test.cpp
       title: tests/Run_Enumerate.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/SCC.test.cpp
       title: tests/SCC.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Sort_Points_by_Argument.test.cpp
       title: tests/Sort_Points_by_Argument.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Sqrt_Mod.test.cpp
       title: tests/Sqrt_Mod.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Static_Convex_Hull.test.cpp
       title: tests/Static_Convex_Hull.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Static_RMQ.test.cpp
       title: tests/Static_RMQ.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Stern_Brocot.test.cpp
       title: tests/Stern_Brocot.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Suffix_Array.test.cpp
       title: tests/Suffix_Array.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Sum_of_Exponential_times_Polynomial.test.cpp
       title: tests/Sum_of_Exponential_times_Polynomial.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
       title: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Sum_of_Floor_of_Linear.test.cpp
       title: tests/Sum_of_Floor_of_Linear.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Unionfind.test.cpp
       title: tests/Unionfind.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Vertex_Add_Path_Sum.test.cpp
       title: tests/Vertex_Add_Path_Sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tests/Z_Algorithm.test.cpp
       title: tests/Z_Algorithm.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: tests/p_Subset_Sum.test.cpp
+      title: tests/p_Subset_Sum.test.cpp
 layout: toppage
 ---

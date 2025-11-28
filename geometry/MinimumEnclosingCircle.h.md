@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/Circumcircle.h
     title: geometry/Circumcircle.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/Point.h
     title: geometry/Point.h
   _extendedRequiredBy: []

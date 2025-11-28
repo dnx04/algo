@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/MinimumEnclosingCircle.h
     title: geometry/MinimumEnclosingCircle.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/Point.h
     title: geometry/Point.h
   - icon: ':question:'

@@ -6,12 +6,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Point_Add_Range_Sum.test.cpp
     title: tests/Point_Add_Range_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Vertex_Add_Path_Sum.test.cpp
     title: tests/Vertex_Add_Path_Sum.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"ds/Fenwick.h\"\ntemplate <class T>\nstruct Fenwick {  //\
@@ -31,7 +31,7 @@ data:
   path: ds/Fenwick.h
   requiredBy: []
   timestamp: '2025-11-21 16:12:02+07:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - tests/Vertex_Add_Path_Sum.test.cpp
   - tests/Point_Add_Range_Sum.test.cpp

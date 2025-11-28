@@ -9,12 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/LCA.test.cpp
     title: tests/LCA.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Vertex_Add_Path_Sum.test.cpp
     title: tests/Vertex_Add_Path_Sum.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"ds/HLD.h\"\ntemplate <class G>\nstruct HLD {\n  const G&\
@@ -62,7 +62,7 @@ data:
   requiredBy:
   - ds/VirtualTree.h
   timestamp: '2025-11-27 11:47:17+07:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - tests/Vertex_Add_Path_Sum.test.cpp
   - tests/LCA.test.cpp

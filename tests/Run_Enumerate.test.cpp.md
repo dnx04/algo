@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: ds/RMQ.h
     title: ds/RMQ.h
   - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: strings/SuffixArray.h
     title: strings/SuffixArray.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/runenumerate
@@ -133,7 +133,7 @@ data:
   path: tests/Run_Enumerate.test.cpp
   requiredBy: []
   timestamp: '2025-11-28 02:09:51+07:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Run_Enumerate.test.cpp
 layout: document

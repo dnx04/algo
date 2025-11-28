@@ -17,11 +17,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/bitwise_xor_convolution
+    PROBLEM: https://judge.yosupo.jp/problem/subset_convolution
     links:
-    - https://judge.yosupo.jp/problem/bitwise_xor_convolution
-  bundledCode: "#line 1 \"tests/Bitwise_Xor_Convolution.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/problem/bitwise_xor_convolution\"\n\n#line 1 \"misc/macros.h\"\
+    - https://judge.yosupo.jp/problem/subset_convolution
+  bundledCode: "#line 1 \"tests/Bitwise_Subset_Convolution.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/subset_convolution\"\n\n#line 1 \"misc/macros.h\"\
     \n// #pragma GCC optimize(\"Ofast,unroll-loops\")       // unroll long, simple\
     \ loops\n// #pragma GCC target(\"avx2,fma\")                   // vectorizing\
     \ code\n// #pragma GCC target(\"lzcnt,popcnt,abm,bmi,bmi2\")  // for fast bitset\
@@ -86,38 +86,35 @@ data:
     \      for (int j = 0; j <= i; ++j)\n        for (int x = 0; x < n; ++x) h[i][x]\
     \ += fa[j][x] * fb[i - j][x];\n    for (int i = 0; i <= k; ++i) fwht(h[i], OR,\
     \ 1);\n    vector<T> res(n);\n    for (int i = 0; i < n; ++i) res[i] = h[pc(i)][i];\n\
-    \    return res;\n  }\n}\n#line 6 \"tests/Bitwise_Xor_Convolution.test.cpp\"\n\
-    \nusing namespace FST;\nusing Fp = modint<998244353>;\n\nvoid solve() {\n  int\
+    \    return res;\n  }\n}\n#line 6 \"tests/Bitwise_Subset_Convolution.test.cpp\"\
+    \n\nusing namespace FST;\nusing Fp = modint<998244353>;\n\nvoid solve() {\n  int\
     \ n;\n  cin >> n;\n  vector<Fp> a(1 << n), b(1 << n);\n  for (int i = 0; i < (1\
     \ << n); ++i) cin >> a[i];\n  for (int i = 0; i < (1 << n); ++i) cin >> b[i];\n\
-    \  auto c = conv(a, b, XOR);\n  for (int i = 0; i < (1 << n); ++i) cout << c[i]\
-    \ << \" \\n\"[i == (1 << n) - 1];\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n\
-    \  cin.exceptions(cin.failbit);\n  int tc = 1;\n  //   cin >> tc;\n  for (int\
-    \ i = 1; i <= tc; ++i) {\n    solve();\n  }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/bitwise_xor_convolution\"\
-    \n\n#include \"../misc/macros.h\"\n#include \"../math/ModInt.h\"\n#include \"\
-    ../math/FST.h\"\n\nusing namespace FST;\nusing Fp = modint<998244353>;\n\nvoid\
-    \ solve() {\n  int n;\n  cin >> n;\n  vector<Fp> a(1 << n), b(1 << n);\n  for\
-    \ (int i = 0; i < (1 << n); ++i) cin >> a[i];\n  for (int i = 0; i < (1 << n);\
-    \ ++i) cin >> b[i];\n  auto c = conv(a, b, XOR);\n  for (int i = 0; i < (1 <<\
-    \ n); ++i) cout << c[i] << \" \\n\"[i == (1 << n) - 1];\n}\n\nint main() {\n \
-    \ cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n  int tc =\
-    \ 1;\n  //   cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n  }\n\
-    }\n"
+    \  auto c = subsetConv(a, b);\n  for(auto e: c) cout << e << ' ';\n}\n\nsigned\
+    \ main() {\n  ios::sync_with_stdio(false);\n  cin.tie(0);\n  int tc = 1;\n  //\
+    \ cin >> tc;\n  while (tc--) solve();\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/subset_convolution\"\n\n\
+    #include \"../misc/macros.h\"\n#include \"../math/ModInt.h\"\n#include \"../math/FST.h\"\
+    \n\nusing namespace FST;\nusing Fp = modint<998244353>;\n\nvoid solve() {\n  int\
+    \ n;\n  cin >> n;\n  vector<Fp> a(1 << n), b(1 << n);\n  for (int i = 0; i < (1\
+    \ << n); ++i) cin >> a[i];\n  for (int i = 0; i < (1 << n); ++i) cin >> b[i];\n\
+    \  auto c = subsetConv(a, b);\n  for(auto e: c) cout << e << ' ';\n}\n\nsigned\
+    \ main() {\n  ios::sync_with_stdio(false);\n  cin.tie(0);\n  int tc = 1;\n  //\
+    \ cin >> tc;\n  while (tc--) solve();\n}"
   dependsOn:
   - misc/macros.h
   - math/ModInt.h
   - math/FST.h
   isVerificationFile: true
-  path: tests/Bitwise_Xor_Convolution.test.cpp
+  path: tests/Bitwise_Subset_Convolution.test.cpp
   requiredBy: []
   timestamp: '2025-11-28 12:47:29+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: tests/Bitwise_Xor_Convolution.test.cpp
+documentation_of: tests/Bitwise_Subset_Convolution.test.cpp
 layout: document
 redirect_from:
-- /verify/tests/Bitwise_Xor_Convolution.test.cpp
-- /verify/tests/Bitwise_Xor_Convolution.test.cpp.html
-title: tests/Bitwise_Xor_Convolution.test.cpp
+- /verify/tests/Bitwise_Subset_Convolution.test.cpp
+- /verify/tests/Bitwise_Subset_Convolution.test.cpp.html
+title: tests/Bitwise_Subset_Convolution.test.cpp
 ---

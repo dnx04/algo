@@ -2,13 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/Factor.h
     title: math/Factor.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/Poly.h
     title: math/Poly.h
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/SumPowerPoly.h
     title: math/SumPowerPoly.h
   _extendedVerifiedWith:
@@ -18,6 +18,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Bitwise_And_Convolution.test.cpp
     title: tests/Bitwise_And_Convolution.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/Bitwise_Subset_Convolution.test.cpp
+    title: tests/Bitwise_Subset_Convolution.test.cpp
   - icon: ':heavy_check_mark:'
     path: tests/Bitwise_Xor_Convolution.test.cpp
     title: tests/Bitwise_Xor_Convolution.test.cpp
@@ -75,36 +78,39 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Pow_of_FPS.test.cpp
     title: tests/Pow_of_FPS.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Pow_of_Matrix.test.cpp
     title: tests/Pow_of_Matrix.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Primality_Test.test.cpp
     title: tests/Primality_Test.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Primitive_Root.test.cpp
     title: tests/Primitive_Root.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Product_of_Polynomial_Sequence.test.cpp
     title: tests/Product_of_Polynomial_Sequence.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Range_Affine_Point_Get.test.cpp
     title: tests/Range_Affine_Point_Get.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Range_Affine_Range_Sum.test.cpp
     title: tests/Range_Affine_Range_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Sqrt_Mod.test.cpp
     title: tests/Sqrt_Mod.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Sum_of_Exponential_times_Polynomial.test.cpp
     title: tests/Sum_of_Exponential_times_Polynomial.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
     title: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
-  _isVerificationFailed: true
+  - icon: ':heavy_check_mark:'
+    path: tests/p_Subset_Sum.test.cpp
+    title: tests/p_Subset_Sum.test.cpp
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/ModInt.h\"\n\ntemplate <int mod>\nstruct modint {\n\
@@ -165,7 +171,7 @@ data:
   - math/Poly.h
   - math/Factor.h
   timestamp: '2025-11-26 18:05:06+07:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - math/Sum_of_Multiplicative_Function.test.cpp
   - tests/Bitwise_Xor_Convolution.test.cpp
@@ -173,11 +179,13 @@ data:
   - tests/Sum_of_Exponential_times_Polynomial.test.cpp
   - tests/Pow_of_FPS.test.cpp
   - tests/Enumerate_Triangles.test.cpp
+  - tests/Bitwise_Subset_Convolution.test.cpp
   - tests/Deque_Operate_All_Composite.test.cpp
   - tests/Pow_of_Matrix.test.cpp
   - tests/Range_Affine_Point_Get.test.cpp
   - tests/Factorize.test.cpp
   - tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
+  - tests/p_Subset_Sum.test.cpp
   - tests/Matrix_Product.test.cpp
   - tests/Product_of_Polynomial_Sequence.test.cpp
   - tests/LCM_Convolution.test.cpp

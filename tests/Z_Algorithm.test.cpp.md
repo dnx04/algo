@@ -4,14 +4,14 @@ data:
   - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: strings/Z.h
     title: strings/Z.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/zalgorithm
@@ -59,7 +59,7 @@ data:
   path: tests/Z_Algorithm.test.cpp
   requiredBy: []
   timestamp: '2025-11-28 02:09:51+07:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Z_Algorithm.test.cpp
 layout: document

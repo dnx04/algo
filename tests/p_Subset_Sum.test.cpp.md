@@ -17,14 +17,13 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/product_of_polynomial_sequence
+    PROBLEM: https://judge.yosupo.jp/problem/sharp_p_subset_sum
     links:
-    - https://judge.yosupo.jp/problem/product_of_polynomial_sequence
-  bundledCode: "#line 1 \"tests/Product_of_Polynomial_Sequence.test.cpp\"\n#define\
-    \ PROBLEM \"https://judge.yosupo.jp/problem/product_of_polynomial_sequence\"\n\
-    \n#line 1 \"misc/macros.h\"\n// #pragma GCC optimize(\"Ofast,unroll-loops\") \
-    \      // unroll long, simple loops\n// #pragma GCC target(\"avx2,fma\")     \
-    \              // vectorizing code\n// #pragma GCC target(\"lzcnt,popcnt,abm,bmi,bmi2\"\
+    - https://judge.yosupo.jp/problem/sharp_p_subset_sum
+  bundledCode: "#line 1 \"tests/p_Subset_Sum.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/sharp_p_subset_sum\"\
+    \n\n#line 1 \"misc/macros.h\"\n// #pragma GCC optimize(\"Ofast,unroll-loops\"\
+    )       // unroll long, simple loops\n// #pragma GCC target(\"avx2,fma\")    \
+    \               // vectorizing code\n// #pragma GCC target(\"lzcnt,popcnt,abm,bmi,bmi2\"\
     )  // for fast bitset operation\n\n#include <bits/extc++.h>\n#include <tr2/dynamic_bitset>\n\
     \nusing namespace std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n\
     // using namespace __gnu_cxx; // rope\n\n// for templates to work\n#define all(x)\
@@ -114,40 +113,55 @@ data:
     \ * Fp(k)).exp(limit);\n    a = a * lead.pow(k);\n    Poly res(shift, 0);\n  \
     \  res.insert(res.end(), a.begin(), a.end());\n    res.resize(n);\n    return\
     \ res;\n  }\n  friend ostream& operator<<(ostream& os, const Poly& p) {\n    for\
-    \ (auto x : p) os << x << \" \";\n    return os;\n  }\n};\n#line 5 \"tests/Product_of_Polynomial_Sequence.test.cpp\"\
-    \n\nvoid solve() {\n  int n;\n  cin >> n;\n  if (n == 0) {\n    cout << 1;\n \
-    \   return;\n  }\n  deque<Poly> dq;\n  for (int i = 0; i < n; ++i) {\n    int\
-    \ d;\n    cin >> d;\n    Poly p;\n    for (int j = 0; j <= d; ++j) {\n      int\
-    \ c;\n      cin >> c;\n      p.eb(c);\n    }\n    dq.push_back(p);\n  }\n  for\
-    \ (int i = 0; i < n - 1; ++i) {\n    auto f = dq.front();\n    dq.pop_front();\n\
-    \    auto g = dq.front();\n    dq.pop_front();\n    dq.eb(f * g);\n  }\n  auto\
-    \ ans = dq.front();\n  for (auto v : ans) cout << v << ' ';\n}\n\nsigned main()\
-    \ {\n  ios::sync_with_stdio(false);\n  cin.tie(0);\n  int tc = 1;\n  // cin >>\
-    \ tc;\n  while (tc--) solve();\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/product_of_polynomial_sequence\"\
-    \n\n#include \"../misc/macros.h\"\n#include \"../math/Poly.h\"\n\nvoid solve()\
-    \ {\n  int n;\n  cin >> n;\n  if (n == 0) {\n    cout << 1;\n    return;\n  }\n\
-    \  deque<Poly> dq;\n  for (int i = 0; i < n; ++i) {\n    int d;\n    cin >> d;\n\
-    \    Poly p;\n    for (int j = 0; j <= d; ++j) {\n      int c;\n      cin >> c;\n\
-    \      p.eb(c);\n    }\n    dq.push_back(p);\n  }\n  for (int i = 0; i < n - 1;\
-    \ ++i) {\n    auto f = dq.front();\n    dq.pop_front();\n    auto g = dq.front();\n\
-    \    dq.pop_front();\n    dq.eb(f * g);\n  }\n  auto ans = dq.front();\n  for\
-    \ (auto v : ans) cout << v << ' ';\n}\n\nsigned main() {\n  ios::sync_with_stdio(false);\n\
-    \  cin.tie(0);\n  int tc = 1;\n  // cin >> tc;\n  while (tc--) solve();\n}"
+    \ (auto x : p) os << x << \" \";\n    return os;\n  }\n};\n#line 6 \"tests/p_Subset_Sum.test.cpp\"\
+    \n\nusing Fp = modint<998244353>;\n\nvoid solve() {\n  int N, T;\n  cin >> N >>\
+    \ T;\n  vector<int> cnt(T + 1, 0);\n  for (int i = 0; i < N; ++i) {\n    int s;\
+    \ cin >> s;\n    if (s <= T) cnt[s]++;\n  }\n\n  // Chu\u1EA9n b\u1ECB m\u1EA3\
+    ng ngh\u1ECBch \u0111\u1EA3o \u0111\u1EC3 t\xEDnh to\xE1n nhanh\n  vector<Fp>\
+    \ inv(T + 1);\n  inv[1] = 1;\n  for (int i = 2; i <= T; i++) \n    inv[i] = Fp(Fp::modulo\
+    \ - Fp::modulo / i) * inv[Fp::modulo % i];\n\n  // X\xE2y d\u1EF1ng Poly ln_P\
+    \ t\u01B0\u01A1ng \u1EE9ng v\u1EDBi ln(P(x))\n  // ln P(x) = sum_{v=1}^T cnt[v]\
+    \ * sum_{k=1} (-1)^(k-1) * x^(kv) / k\n  Poly ln_P(T + 1, 0);\n  \n  for (int\
+    \ v = 1; v <= T; ++v) {\n    if (!cnt[v]) continue;\n    for (int k = 1; k * v\
+    \ <= T; ++k) {\n      Fp term = inv[k] * cnt[v]; // cnt[v] / k\n      if (k %\
+    \ 2 == 1) ln_P[k * v] += term;\n      else            ln_P[k * v] -= term;\n \
+    \   }\n  }\n\n  // P(x) = exp(ln P(x))\n  Poly P = ln_P.exp(T + 1);\n\n  // In\
+    \ k\u1EBFt qu\u1EA3 t\u1EEB 1 \u0111\u1EBFn T\n  for (int i = 1; i <= T; ++i)\
+    \ {\n    cout << P[i] << (i == T ? \"\" : \" \");\n  }\n}\n\nsigned main() {\n\
+    \  ios::sync_with_stdio(false);\n  cin.tie(0);\n  int tc = 1;\n  // cin >> tc;\n\
+    \  while (tc--) solve();\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/sharp_p_subset_sum\"\n\n\
+    #include \"../misc/macros.h\"\n#include \"../math/ModInt.h\"\n#include \"../math/Poly.h\"\
+    \n\nusing Fp = modint<998244353>;\n\nvoid solve() {\n  int N, T;\n  cin >> N >>\
+    \ T;\n  vector<int> cnt(T + 1, 0);\n  for (int i = 0; i < N; ++i) {\n    int s;\
+    \ cin >> s;\n    if (s <= T) cnt[s]++;\n  }\n\n  // Chu\u1EA9n b\u1ECB m\u1EA3\
+    ng ngh\u1ECBch \u0111\u1EA3o \u0111\u1EC3 t\xEDnh to\xE1n nhanh\n  vector<Fp>\
+    \ inv(T + 1);\n  inv[1] = 1;\n  for (int i = 2; i <= T; i++) \n    inv[i] = Fp(Fp::modulo\
+    \ - Fp::modulo / i) * inv[Fp::modulo % i];\n\n  // X\xE2y d\u1EF1ng Poly ln_P\
+    \ t\u01B0\u01A1ng \u1EE9ng v\u1EDBi ln(P(x))\n  // ln P(x) = sum_{v=1}^T cnt[v]\
+    \ * sum_{k=1} (-1)^(k-1) * x^(kv) / k\n  Poly ln_P(T + 1, 0);\n  \n  for (int\
+    \ v = 1; v <= T; ++v) {\n    if (!cnt[v]) continue;\n    for (int k = 1; k * v\
+    \ <= T; ++k) {\n      Fp term = inv[k] * cnt[v]; // cnt[v] / k\n      if (k %\
+    \ 2 == 1) ln_P[k * v] += term;\n      else            ln_P[k * v] -= term;\n \
+    \   }\n  }\n\n  // P(x) = exp(ln P(x))\n  Poly P = ln_P.exp(T + 1);\n\n  // In\
+    \ k\u1EBFt qu\u1EA3 t\u1EEB 1 \u0111\u1EBFn T\n  for (int i = 1; i <= T; ++i)\
+    \ {\n    cout << P[i] << (i == T ? \"\" : \" \");\n  }\n}\n\nsigned main() {\n\
+    \  ios::sync_with_stdio(false);\n  cin.tie(0);\n  int tc = 1;\n  // cin >> tc;\n\
+    \  while (tc--) solve();\n}"
   dependsOn:
   - misc/macros.h
-  - math/Poly.h
   - math/ModInt.h
+  - math/Poly.h
   isVerificationFile: true
-  path: tests/Product_of_Polynomial_Sequence.test.cpp
+  path: tests/p_Subset_Sum.test.cpp
   requiredBy: []
-  timestamp: '2025-11-28 02:09:51+07:00'
+  timestamp: '2025-11-28 12:47:29+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: tests/Product_of_Polynomial_Sequence.test.cpp
+documentation_of: tests/p_Subset_Sum.test.cpp
 layout: document
 redirect_from:
-- /verify/tests/Product_of_Polynomial_Sequence.test.cpp
-- /verify/tests/Product_of_Polynomial_Sequence.test.cpp.html
-title: tests/Product_of_Polynomial_Sequence.test.cpp
+- /verify/tests/p_Subset_Sum.test.cpp
+- /verify/tests/p_Subset_Sum.test.cpp.html
+title: tests/p_Subset_Sum.test.cpp
 ---

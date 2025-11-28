@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: strings/SuffixArray.h
     title: strings/SuffixArray.h
   _extendedRequiredBy: []

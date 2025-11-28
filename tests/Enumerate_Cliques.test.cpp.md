@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: graph/EnumCliques.h
-    title: graph/EnumCliques.h
   - icon: ':question:'
+    path: graph/Cliques.h
+    title: graph/Cliques.h
+  - icon: ':heavy_check_mark:'
     path: math/ModInt.h
     title: math/ModInt.h
   - icon: ':question:'
@@ -64,43 +64,51 @@ data:
     };\n\nu64 modmul(u64 x, u64 y, u64 m) { return u128(x) * y % m; }\nu64 modpow(u64\
     \ x, u64 k, u64 m) {\n  u64 res = 1;\n  while (k) {\n    if (k & 1) res = modmul(res,\
     \ x, m);\n    x = modmul(x, x, m);\n    k >>= 1;\n  }\n  return res;\n}\n#line\
-    \ 1 \"graph/EnumCliques.h\"\n// Usage: cliques(g, [&](const bs &clique) { callback\
-    \ }, ~bs(n), bs(n), bs(n));\nusing bs = tr2::dynamic_bitset<u64>;\n\ntemplate\
-    \ <class F>\nvoid cliques(vector<bs>& eds, F f, bs P, bs X, bs R) {\n  f(R);\n\
-    \  if (!P.any() && !X.any()) return;\n  // if only need to find all maximal cliques\n\
-    \  // auto q = (P | X).find_first();\n  // auto cands = P & ~eds[q];\n  for (int\
-    \ i = 0; i < sz(eds); ++i) {\n    if (P[i]) {\n      R[i] = 1;\n      cliques(eds,\
-    \ f, P & eds[i], X & eds[i], R);\n      R[i] = P[i] = 0, X[i] = 1;\n    }\n  }\n\
-    }\n#line 6 \"tests/Enumerate_Cliques.test.cpp\"\n\nusing Fp = modint<998244353>;\n\
-    \nvoid solve() {\n  int n, m;\n  cin >> n >> m;\n  vector<Fp> x(n);\n  for (int\
+    \ 1 \"graph/Cliques.h\"\nusing bs = tr2::dynamic_bitset<uint64_t>;\n\n// Usage:\
+    \ bs P(n), X(n), R(n); P.set(); EnumClique(g, [&](bs& c){...}, P, X, R);\ntemplate\
+    \ <class F>\nvoid EnumClique(vector<bs>& g, F f, bs P, bs X, bs R) {\n  f(R);\
+    \ \n  if (P.none() && X.none()) return;\n  // if only need to find all maximal\
+    \ cliques\n  // auto q = (P | X).find_first();\n  // auto cands = P & ~g[q]; //\
+    \ then trav through cands\n  for (auto i = P.find_first(); i < P.size(); i = P.find_next(i))\
+    \ {\n    R[i] = 1;\n    EnumClique(g, f, P & g[i], X & g[i], R);\n    R[i] = 0,\
+    \ P[i] = 0, X[i] = 1;\n  }\n}\n\n// Usage: bs P(n), R(n), sol; u64 ans=0; P.set();\
+    \ MaxClique(g, P, R, sol, ans);\nvoid MaxClique(vector<bs>& g, bs P, bs R, bs&\
+    \ sol, u32& res) {\n  if (R.count() + P.count() <= res) return;\n  if (P.none())\
+    \ { res = R.count(), sol = R; return; }\n  auto q = P.find_first(), max_k = u64(0);\n\
+    \  for (auto i = q; i < P.size(); i = P.find_next(i)) {\n    auto k = (P & g[i]).count();\n\
+    \    if (k > max_k) max_k = k, q = i;\n  }\n  bs cands = P & ~g[q];\n  for (auto\
+    \ i = cands.find_first(); i < cands.size(); i = cands.find_next(i)) {\n    R[i]\
+    \ = 1, MaxClique(g, P & g[i], R, sol, res);\n    R[i] = P[i] = 0;\n  }\n}\n#line\
+    \ 6 \"tests/Enumerate_Cliques.test.cpp\"\n\nusing Fp = modint<998244353>;\n\n\
+    void solve() {\n  int n, m;\n  cin >> n >> m;\n  vector<Fp> x(n);\n  for (int\
     \ i = 0; i < n; ++i) cin >> x[i];\n  vector<bs> g(n, bs(n));\n  for (int i = 0;\
     \ i < m; ++i) {\n    int u, v;\n    cin >> u >> v;\n    g[u][v] = g[v][u] = 1;\n\
-    \  }\n  Fp ans = 0;\n  cliques(g, [&](const bs& clique) {\n    if(!clique.any())\
+    \  }\n  Fp ans = 0;\n  EnumClique(g, [&](const bs& clique) {\n    if(!clique.any())\
     \ return;\n    Fp prod = 1;\n    for(int i = clique.find_first(); i < n; i = clique.find_next(i))\
     \ prod *= x[i];\n    ans += prod; }, ~bs(n), bs(n), bs(n));\n  cout << ans <<\
     \ '\\n';\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
     \  int tc = 1;\n  //   cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n\
     \  }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/enumerate_cliques\"\n\n\
-    #include \"../misc/macros.h\"\n#include \"../math/ModInt.h\"\n#include \"../graph/EnumCliques.h\"\
+    #include \"../misc/macros.h\"\n#include \"../math/ModInt.h\"\n#include \"../graph/Cliques.h\"\
     \n\nusing Fp = modint<998244353>;\n\nvoid solve() {\n  int n, m;\n  cin >> n >>\
     \ m;\n  vector<Fp> x(n);\n  for (int i = 0; i < n; ++i) cin >> x[i];\n  vector<bs>\
     \ g(n, bs(n));\n  for (int i = 0; i < m; ++i) {\n    int u, v;\n    cin >> u >>\
-    \ v;\n    g[u][v] = g[v][u] = 1;\n  }\n  Fp ans = 0;\n  cliques(g, [&](const bs&\
-    \ clique) {\n    if(!clique.any()) return;\n    Fp prod = 1;\n    for(int i =\
-    \ clique.find_first(); i < n; i = clique.find_next(i)) prod *= x[i];\n    ans\
-    \ += prod; }, ~bs(n), bs(n), bs(n));\n  cout << ans << '\\n';\n}\n\nint main()\
+    \ v;\n    g[u][v] = g[v][u] = 1;\n  }\n  Fp ans = 0;\n  EnumClique(g, [&](const\
+    \ bs& clique) {\n    if(!clique.any()) return;\n    Fp prod = 1;\n    for(int\
+    \ i = clique.find_first(); i < n; i = clique.find_next(i)) prod *= x[i];\n   \
+    \ ans += prod; }, ~bs(n), bs(n), bs(n));\n  cout << ans << '\\n';\n}\n\nint main()\
     \ {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n  int\
     \ tc = 1;\n  //   cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n\
     \  }\n}\n"
   dependsOn:
   - misc/macros.h
   - math/ModInt.h
-  - graph/EnumCliques.h
+  - graph/Cliques.h
   isVerificationFile: true
   path: tests/Enumerate_Cliques.test.cpp
   requiredBy: []
-  timestamp: '2025-11-28 02:09:51+07:00'
+  timestamp: '2025-11-28 12:47:29+07:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Enumerate_Cliques.test.cpp

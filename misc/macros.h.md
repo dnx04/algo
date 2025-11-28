@@ -22,6 +22,9 @@ data:
     path: tests/Bitwise_And_Convolution.test.cpp
     title: tests/Bitwise_And_Convolution.test.cpp
   - icon: ':heavy_check_mark:'
+    path: tests/Bitwise_Subset_Convolution.test.cpp
+    title: tests/Bitwise_Subset_Convolution.test.cpp
+  - icon: ':heavy_check_mark:'
     path: tests/Bitwise_Xor_Convolution.test.cpp
     title: tests/Bitwise_Xor_Convolution.test.cpp
   - icon: ':heavy_check_mark:'
@@ -147,69 +150,72 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Pow_of_FPS.test.cpp
     title: tests/Pow_of_FPS.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Pow_of_Matrix.test.cpp
     title: tests/Pow_of_Matrix.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Primality_Test.test.cpp
     title: tests/Primality_Test.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Primitive_Root.test.cpp
     title: tests/Primitive_Root.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Product_of_Polynomial_Sequence.test.cpp
     title: tests/Product_of_Polynomial_Sequence.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Range_Affine_Point_Get.test.cpp
     title: tests/Range_Affine_Point_Get.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Range_Affine_Range_Sum.test.cpp
     title: tests/Range_Affine_Range_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Rational_Approximation.test.cpp
     title: tests/Rational_Approximation.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Run_Enumerate.test.cpp
     title: tests/Run_Enumerate.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/SCC.test.cpp
     title: tests/SCC.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Sort_Points_by_Argument.test.cpp
     title: tests/Sort_Points_by_Argument.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Sqrt_Mod.test.cpp
     title: tests/Sqrt_Mod.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Static_Convex_Hull.test.cpp
     title: tests/Static_Convex_Hull.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Static_RMQ.test.cpp
     title: tests/Static_RMQ.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Stern_Brocot.test.cpp
     title: tests/Stern_Brocot.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Suffix_Array.test.cpp
     title: tests/Suffix_Array.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Sum_of_Exponential_times_Polynomial.test.cpp
     title: tests/Sum_of_Exponential_times_Polynomial.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
     title: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Sum_of_Floor_of_Linear.test.cpp
     title: tests/Sum_of_Floor_of_Linear.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Unionfind.test.cpp
     title: tests/Unionfind.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Vertex_Add_Path_Sum.test.cpp
     title: tests/Vertex_Add_Path_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Z_Algorithm.test.cpp
     title: tests/Z_Algorithm.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: tests/p_Subset_Sum.test.cpp
+    title: tests/p_Subset_Sum.test.cpp
   _isVerificationFailed: true
   _pathExtension: h
   _verificationStatusIcon: ':question:'
@@ -272,6 +278,7 @@ data:
   - tests/2_Sat.test.cpp
   - tests/Enumerate_Triangles.test.cpp
   - tests/Z_Algorithm.test.cpp
+  - tests/Bitwise_Subset_Convolution.test.cpp
   - tests/Deque_Operate_All_Composite.test.cpp
   - tests/Deque.test.cpp
   - tests/Minimum_Enclosing_Circle.test.cpp
@@ -287,6 +294,7 @@ data:
   - tests/Bipartite_Matching_Dinic.test.cpp
   - tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
   - tests/Maximum_Independent_Set.test.cpp
+  - tests/p_Subset_Sum.test.cpp
   - tests/Matrix_Product.test.cpp
   - tests/Product_of_Polynomial_Sequence.test.cpp
   - tests/Dominator_Tree.test.cpp

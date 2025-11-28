@@ -20,7 +20,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/ClosestPair.h
     title: geometry/ClosestPair.h
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: geometry/ConvexHull.h
     title: geometry/ConvexHull.h
   - icon: ':warning:'
@@ -90,15 +90,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Minimum_Enclosing_Circle.test.cpp
     title: tests/Minimum_Enclosing_Circle.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Sort_Points_by_Argument.test.cpp
     title: tests/Sort_Points_by_Argument.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tests/Static_Convex_Hull.test.cpp
     title: tests/Static_Convex_Hull.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/Point.h\"\n\ntemplate <class T>\nint sgn(T x) {\
@@ -167,7 +167,7 @@ data:
   - geometry/LineDistance.h
   - geometry/LinearTransformation.h
   timestamp: '2025-11-21 16:12:02+07:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - tests/Static_Convex_Hull.test.cpp
   - tests/Minimum_Enclosing_Circle.test.cpp
