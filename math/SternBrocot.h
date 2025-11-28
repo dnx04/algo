@@ -12,7 +12,6 @@ namespace SternBrocot {
     }
     return res;
   }
-
   // 2. Decode: Path -> Frac
   Frac decode(const Path& path) {
     i64 lp = 0, lq = 1, rp = 1, rq = 0;
@@ -21,7 +20,6 @@ namespace SternBrocot {
       else          lp += k * rp, lq += k * rq;
     return {lp + rp, lq + rq};
   }
-
   // 3. LCA: a/b vs c/d
   Frac lca(i64 a, i64 b, i64 c, i64 d) {
     Path p1 = encode(a, b), p2 = encode(c, d), res;
@@ -30,7 +28,6 @@ namespace SternBrocot {
       p1[i].second == p2[i].second ? 0 : (i = p1.size());
     return decode(res);
   }
-
   // 4. Ancestor: Trả về nút ở độ sâu k trên đường đi từ 1/1 đến p/q
   // k=0 -> 1/1, k=1 -> con trực tiếp của 1/1...
   Frac ancestor(i64 k, i64 p, i64 q) {
@@ -45,7 +42,6 @@ namespace SternBrocot {
     }
     return {-1, -1}; // k lớn hơn độ sâu của p/q
   }
-
   // 5. Range: Tìm khoảng con (L, R) chứa p/q
   pair<Frac, Frac> range(i64 p, i64 q) {
     if (p == 0) return {{0, 1}, {1, 0}};
@@ -57,7 +53,6 @@ namespace SternBrocot {
     }
     return {{lp, lq}, {rp, rq}};
   }
-
   // 6. Bound: Tìm {L, R} sát nhất trên SBT thỏa mãn giới hạn và hàm f
   // f(Frac) -> bool: hàm đơn điệu trên cây (VD: f(x) = x <= target)
   // Trả về {L, R} là 2 phân số kẹp giữa ranh giới T/F của f

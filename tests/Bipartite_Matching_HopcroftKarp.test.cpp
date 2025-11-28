@@ -6,17 +6,16 @@
 void solve() {
   int l, r, m;
   cin >> l >> r >> m;
-  vector<vi> g(l);
-  vi btoa(r, -1);
+  HopcroftKarp g(l, r);
   for (int i = 0; i < m; ++i) {
     int a, b;
     cin >> a >> b;
-    g[a].push_back(b);
+    g.add(a, b);
   }
-  cout << hopcroftKarp(g, btoa) << '\n';
+  cout << g.solve() << '\n';
   for (int i = 0; i < r; ++i) {
-    if (btoa[i] != -1) {
-      cout << btoa[i] << ' ' << i << '\n';
+    if (g.btoa[i] != -1) {
+      cout << g.btoa[i] << ' ' << i << '\n';
     }
   }
 }

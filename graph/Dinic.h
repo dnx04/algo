@@ -8,8 +8,8 @@ struct Dinic {
   vector<vector<Edge>> adj;
   Dinic(int n) : lvl(n), ptr(n), q(n), adj(n) {}
   void addEdge(int a, int b, i64 c, i64 rcap = 0) {
-    adj[a].push_back({b, sz(adj[b]), c, c});
-    adj[b].push_back({a, sz(adj[a]) - 1, rcap, rcap});
+    adj[a].pb({b, sz(adj[b]), c, c});
+    adj[b].pb({a, sz(adj[a]) - 1, rcap, rcap});
   }
   i64 dfs(int v, int t, i64 f) {
     if (v == t || !f) return f;

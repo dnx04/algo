@@ -40,10 +40,6 @@ Cho một đa giác có các điểm nguyên. Gọi $i$ là số điểm nguyên
 
 $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 
-== Nhận xét
-
-1. Cho 2 xâu $S$, $T$. Số xâu phân biệt của prefix(S) + suffix(T) = $|S| * |T|$ - số kí tự giống nhau của S và T, không tính $S_0$ và $T_(n)$.
-
 = Toán
 
 #file("math/ModInt.h")
@@ -84,6 +80,9 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 #file("math/SumPowerPoly.h", description: [
   Tính $sum_(i = 0)^infinity r^i i^d$ và $sum_(i = 0)^(n - 1) r^i i^d$.
 ])
+#file("math/Min25.h", description: [
+  Sàng Min25 với độ phức tạp $O(N^(3/4) log N)$. Có thể dùng để tính $pi (N)$ và tổng tiền tố hàm nhân tính bất kì với $N <= 10^(12)$.
+])
 #file("math/SternBrocot.h", description: [
   Các hàm để duyệt phân số và chặt nhị phân phân số.
 ])
@@ -91,12 +90,11 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 
 = Cấu trúc dữ liệu
 
-
 // #file("ds/DSU.h")
-#file("ds/RMQ.h")
 // #file("ds/Fenwick.h")
-#file("ds/SegTree.h")
+// #file("ds/SegTree.h")
 // #file("ds/LazySegTree.h")
+#file("ds/RMQ.h")
 #file("ds/HLD.h", description: [
   HLD cho phép truy vấn cả đường đi và cây con cùng lúc.
   1. `idx(x)`: trả về vị trí của đỉnh `x` trong quá trình duyệt DFS.
@@ -129,32 +127,23 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
   Duyệt qua tất cả tam giác của đồ thị trong $O(M^(4/3))$
 ])
 #file("graph/Dinic.h", description: [
-  Tìm luồng cực đại bằng Dinic trong với $U$ là luồng tối đa trên một cạnh. Nếu mọi cạnh đều có luồng 1 thì độ phức tạp là $O(min(E^(2/3), V^(1/2)) E)$.
-
-  Với bài cặp ghép 2 phía, độ phức tạp là $O(E sqrt(V))$.
+  Tìm luồng cực đại. Nếu mọi cạnh đều có cap 1 thì độ phức tạp là $O(min(E^(2/3), V^(1/2)) E)$. Có cùng độ phức tạp với HopcroftKarp trong bài cặp ghép 2 phía nhưng chậm hơn 2 lần.
 ])
 #file("graph/HopcroftKarp.h", description: [
   Cặp ghép cực đại trên đồ thị 2 phía trong $O(E sqrt(V))$. 0-indexed.
   Định lý Konig: Trong đồ thị 2 phía, MIS = N - cặp ghép cực đại.
-  *Cách dùng:* `vi btoa(m, -1); hopcroftKarp(g, btoa);`
 ])
 #file("graph/GeneralMatching.h", description: [
   Tìm cặp ghép cực đại trên đồ thị thường trong $O(V^3)$. 0-indexed.
 ])
 #file("graph/MinAssignment.h", description: [ Nhanh hơn Hungarian nhiều. Muốn tìm max cost, đặt cost âm. 0-indexed.])
 #file("graph/CentroidDecomposition.h")
-// #file("graph/Biconnected.h", description: [
-//   Tìm tất cả thành phân song liên thông trong $O(E + V)$, và với mỗi thành phần chạy callback cho mỗi cạnh.
-// ])
 #file("graph/2SAT.h")
 #file(
   "graph/Dominator.h",
   description: [Dựng Dominator Tree cho đồ thị có hướng khi đặt gốc là $s$. $u$ là cha của $v$ nếu mọi đường đi từ $s$ đến $v$ đều phải đi qua $u$. Độ phức tạp $O(M log N)$ hằng số thấp.
   ],
 )
-#file("graph/GomoryHu.h", description: [
-  Dựng cây Gomory-Hu của đồ thị luồng trong $N - 1$ lần chạy luồng. Max flow/min cut giữa 2 đỉnh $u, v$ trên đồ thị luồng là trọng số cạnh nhỏ nhất trên đường đi từ $u$ đến $v$.
-])
 #file("graph/MinCostMaxFlow.h", description: [
   Min-cost max-flow. If costs can be negative, call `setpi` before `maxflow`, not support negative cycle. To obtain the actual flow, look at positive values only.
 
@@ -173,10 +162,12 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 
 = Xâu
 
+1. Cho 2 xâu $S$, $T$. Số xâu phân biệt của prefix(S) + suffix(T) = $|S| * |T|$ - số kí tự giống nhau của S và T, không tính $S_0$ và $T_(n)$.
+
 #file("strings/KMP.h", description: [])
 #file("strings/Z.h")
 #file("strings/MinRotation.h", description: [
-  Tìm cyclic shift của xâu có thứ tự từ điển nhỏ nhất trong $O(n)$.
+  Min cyclic shift trong $O(n)$.
 ])
 // #file("strings/Manacher.h")
 // #file("strings/AhoCorasick.h")
@@ -186,6 +177,8 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 // ])
 
 = Quy hoạch động
+
+== Kadane
 
 == DP thứ tự từ điển
 
@@ -268,7 +261,7 @@ Các thuật toán hình có đa giác, nếu không chú thích gì, thì hoạ
 // )
 #file("geometry/PointInsideHull.h")
 #file("geometry/HullDiameter.h")
-#file("geometry/Minkowski.h", description: [ Tính tổng của 2 bao lồi trong $O(n + m).$])
+// #file("geometry/Minkowski.h", description: [ Tính tổng của 2 bao lồi trong $O(n + m).$])
 // #file("geometry/Line.h", description: [Định nghĩa của đường thẳng dạng $y = k x + m$ với $k, m in ZZ$ hoặc $RR$])
 // #file(
 //   "geometry/HalfplaneSet.h",
