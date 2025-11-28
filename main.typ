@@ -120,7 +120,9 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 //   Tìm luồng cực đại bằng Ford-Fulkerson trong với $U$ là luồng tối đa trên một cạnh. Độ phức tạp $O(E F)$ với $F$ là luồng cực đại.
 // ])
 //
-// #file("graph/LowLink.h")
+#file("graph/2CC.h", description: [
+  Tìm thành phần song liên thông đỉnh (block-cut tree) và song liên thông cạnh (bridge tree).
+])
 #file("graph/SCC.h")
 #file("graph/EulerWalk.h")
 #file("graph/EnumTriangles.h", description: [
