@@ -1,44 +1,34 @@
-struct XorBasis {
-  vector<i64> b;
-  XorBasis() {}
-  void add(int x) {
-    x = this->sift(x);
-    if (x != 0) this->b.pb(x);
-  }
-  i64 sift(i64 x) const {
-    for (i64 b : this->b) {
-      x = min(x, x ^ b);
-      if (x == 0) return 0;
+template <class T>
+struct Basis {
+  int B; vector<T> a; vector<i64> wt;
+  Basis() : B(sizeof(T) * 8), a(B, 0), wt(B, 0) {}
+  void insert(T x, i64 w = 0) {
+    for (int i = B - 1; i >= 0; --i) if (x >> i & 1) {
+      if (!a[i]) { a[i] = x, wt[i] = w; return; }
+      if (wt[i] < w) swap(wt[i], w), swap(a[i], x);
+      x ^= a[i];
     }
-    return x;
   }
-  bool is_indep(i64 x) const {
-    return this->sift(x) != 0;
+  i64 query() {
+    i64 ans = 0;
+    for (auto w : wt) ans += w;
+    return ans;
   }
-  vector<i64> basis() const {
-    return this->b;
+  friend Basis intersect(const Basis& L, const Basis& R) {
+    Basis res, full; int B = L.B; vector<T> mask(B, 0);
+    for (T x : L.a) if (x)
+      for (int j = B - 1; j >= 0; --j) if (x >> j & 1) {
+        if (!full.a[j]) { full.a[j] = x; break; }
+        x ^= full.a[j];
+      }
+    for (T x : R.a) if (x) {
+      T m = x; bool k = 1;
+      for (int j = B - 1; j >= 0; --j) if (x >> j & 1) {
+        if (!full.a[j]) { full.a[j] = x, mask[j] = m, k = 0; break; }
+        x ^= full.a[j], m ^= mask[j];
+      }
+      if (k) res.insert(m);
+    }
+    return res;
   }
 };
-
-vector<i64> XorInter(const vector<i64>& u, const vector<i64>& v) {
-  XorBasis X;
-  for (auto x : u) X.add(x);
-  vector<pair<i64, i64>> basis;
-  XorBasis inter;
-  for (auto x : v) {
-    auto y = X.sift(x), pu = y ^ x, sy = y;
-    for (auto v : basis) {
-      i64 tmp = sy ^ v.second;
-      if (tmp < sy) {
-        sy = tmp;
-        pu ^= v.first;
-      }
-    }
-    if (sy != 0) {
-      basis.pb({pu, sy});
-    } else {
-      inter.add(pu);
-    }
-  }
-  return inter.basis();
-}

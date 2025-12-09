@@ -13,6 +13,8 @@
         "latch": "cpp",
         "limits": "cpp",
         "semaphore": "cpp",
-        "array": "cpp"
+        "array": "cpp",
+        "cmath": "cpp",
+        "iomanip": "cpp"
     },
 }

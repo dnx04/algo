@@ -9,3 +9,5 @@ DerivePointerAlignment: false
 PointerAlignment: Left
 SpaceAfterCStyleCast: true
 SortIncludes: false
+IndentWidth: 2
+TabWidth: 2

@@ -1,27 +1,21 @@
-template <class T>
 struct CRT {
-  T res;
-  CRT() { res = 0, prd = 1; }
-  // Add condition: res % p == r
-  void add(T p, T r) {
-    res += mul(r - res % p + p, euclid(prd, p).first + p, p) * prd;
-    prd *= p;
-    if (res >= prd) res -= prd;
+  i64 res = 0, mod = 1;
+  i64 euclid(i64 a, i64 b, i64 &x, i64 &y) {
+    if (!b) return x = 1, y = 0, a;
+    i64 d = euclid(b, a % b, y, x);
+    return y -= a / b * x, d;
   }
-
- private:
-  T prd;
-  T mul(T a, T b, T p) {
-    a %= p, b %= p;
-    T q = (T) ((ld) a * b / p);
-    T r = a * b - q * p;
-    while (r < 0) r += p;
-    while (r >= p) r -= p;
-    return r;
-  }
-  pair<T, T> euclid(T a, T b) {
-    if (!b) return make_pair(1, 0);
-    pair<T, T> r = euclid(b, a % b);
-    return make_pair(r.second, r.first - a / b * r.second);
+  // Add condition: val % m = a
+  bool add(i64 m, i64 a) {
+    i64 x, y;
+    i64 g = euclid(mod, m, x, y);
+    if ((a - res) % g) return false;  // Incompatible condition
+    i64 m0 = m / g;
+    // k = (a - res) / g * inv(mod / g) mod (m / g)
+    i128 k = (i128)(a - res) / g * x % m0;
+    res += (i64)k * mod;
+    mod *= m0;
+    res = (res % mod + mod) % mod;
+    return true;
   }
 };

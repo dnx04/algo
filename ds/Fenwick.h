@@ -1,3 +1,4 @@
+// for 2d fenwick just add a for
 template <class T>
 struct Fenwick {  // 1-indexed
   int n;

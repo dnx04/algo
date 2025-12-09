@@ -5,14 +5,28 @@
   doc,
 )
 
-// #file("misc/macros.h", hash: false)
 // #file("misc/c_cpp_properties.json")
 // #file("misc/tasks.json")
 // #file("misc/launch.json")
 
 = Notes
 
-== Catalan
+== Lucas
+
+Với $n = n_k p^k + n_(k-1) p^(k-1) + ... + n_0$ và $m = m_k p^k + m_(k-1) p^(k-1) + ... + m_0$. Ta có $binom(n, m) = product_(i=0)^k binom(n_i, m_i) mod p$.
+
+== Pisano
+
+$pi(n)$ là chu kì modulo $n$ của dãy Fibonacci:
+
+1. $pi(a b) = lcm(pi(a), pi(b))$ với $(a, b) = 1$
+2. $pi(p^n) divides p^(n - 1)pi(p)$: duyệt ước
+3. $p > 5, p equiv plus.minus 1 (mod 5)$, thì $pi(p) divides p - 1$
+4. $p > 5, p equiv plus.minus 2 (mod 5)$, thì $pi(p) divides 2(p + 1)$
+
+== Hàm sinh
+
+=== Catalan
 
 $ C_n = 1 / (n + 1) binom(2n, n), C_(n + 1) = sum_(i=0)^n C_i C_(n - i) $
 
@@ -22,9 +36,48 @@ $ C_n = 1 / (n + 1) binom(2n, n), C_(n + 1) = sum_(i=0)^n C_i C_(n - i) $
 - Số cách vẽ các dây cung không cắt nhau nối $2n$ điểm trên đường tròn.
 - Số lượng dãy số nguyên $a_1, a_2, dots, a_n$ thỏa mãn $a_i <= i$.
 
-== Lucas
+=== Bell
 
-Với $n = n_k p^k + n_(k-1) p^(k-1) + ... + n_0$ và $m = m_k p^k + m_(k-1) p^(k-1) + ... + m_0$. Ta có $binom(n, m) = product_(i=0)^k binom(n_i, m_i) mod p$.
+Đếm số cách *phân hoạch một tập hợp* gồm $n$ phần tử dán nhãn (phân biệt) thành các tập con không rỗng rời nhau.
+
+$ E(x) = exp(e^x - 1) = sum_(n=0)^infinity B_n frac(x^n, n!) $
+
+Hàm sinh $exp(e^x - 1)$ thể hiện cấu trúc "tập hợp của các tập hợp" (set of sets).
+
+=== Partition
+
+Đếm số cách *phân hoạch một số nguyên* $n$ thành tổng các số nguyên dương (không quan trọng thứ tự).
+$ P(x) = sum_(n=0)^infinity p(n) x^n = product_(k=1)^infinity frac(1, 1 - x^k) $
+
+Mỗi nhân tử $1/(1-x^k) = 1 + x^k + x^(2k) + ...$ đại diện cho việc chọn số $k$ bao nhiêu lần (0 lần, 1 lần, 2 lần...).
+
+Tính mẫu số bằng định lý ngũ giác Euler:
+
+$ product_(n=1)^infinity (1 - x^n) = sum_(k=-infinity)^infinity (-1)^k x^(k(3k-1) / 2) $
+$ = 1 - x - x^2 + x^5 + x^7 - x^12 - x^15 + ... $
+
+=== Stirling loại 1
+
+- *Không dấu* $|s(n, k)|$: Đếm số hoán vị của $n$ phần tử phân biệt sao cho hoán vị đó có đúng $k$ chu trình.
+- *Có dấu* $s(n, k)$: Là các hệ số của $x(x-1)dots(x-n+1)$ (giai thừa giảm). Dấu $(-1)^(n-k)$ thể hiện tính chẵn lẻ của hoán vị.
+
+- Trường hợp Fixed $n$ (OGF):
+  $ sum_(k=0)^n s(n, k) x^k = (x)_n = x(x-1)(x-2)...(x-n+1) $
+
+- Trường hợp Fixed $k$ (EGF theo $n$):
+$ sum_(n=k)^infinity s(n, k) frac(x^n, n!) = frac((ln(1+x))^k, k!) $
+
+=== Stirling loại 2
+
+Đếm số cách phân hoạch một tập hợp gồm $n$ phần tử *phân biệt* thành đúng $k$ tập con *không rỗng* và *không phân biệt* thứ tự các tập con đó.
+
+- Trường hợp Fixed $n$:
+$
+  sum_(k=0)^n S_2(n, k) x^k = underbrace((sum_(i=0)^infinity frac((-1)^i, i!) x^i), A(x)) dot underbrace((sum_(j=0)^infinity frac(j^n, j!) x^j), B(x))
+$
+
+- Trường hợp Fixed $k$ (EGF):
+$ sum_(n=k)^infinity S_2(n, k) frac(x^n, n!) = frac((e^x - 1)^k, k!) $
 
 == Bổ đề Burnside
 
@@ -48,6 +101,7 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 ])
 #file("math/Matrix.h", description: [
   Ma trận vuông, hỗ trợ nhân, luỹ thừa, khử Gauss, định thức và nghịch đảo.
+  Chú ý rằng nhân ma trận với vector là $O(n^2)$.
 ])
 #file("math/ModLog.h", description: [
   Tìm $x > 0$ nhỏ nhất sao cho $a^x = b mod m$, hoặc $-1$. `modLog(a,1,m)` trả về order của $a$ trong $ZZ^*_m$. Độ phức tạp $O(sqrt(m))$.
@@ -59,7 +113,7 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
   Tìm một ước của $n$ nhanh trong $O(root(4, n) log n)$. Phân tích đệ quy $n$ thành thừa số nguyên tố.
 ])
 #file("math/CRT.h", description: [
-  Duy trì hệ phương trình đồng dư.
+  Duy trì hệ phương trình đồng dư tổng quát (kể cả modulo không nguyên tố cùng nhau).
 ])
 #file("math/DivModSum.h", description: [
   Tính $sum_(i = 0)^(n - 1) (a + i times d) / m$ và $sum_(i = 0)^(n - 1) (a + i times d) mod m$. Độ phức tạp $O(log N)$
@@ -86,12 +140,20 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 #file("math/SternBrocot.h", description: [
   Các hàm để duyệt phân số và chặt nhị phân phân số.
 ])
-#file("math/XorBasis.h", description: [])
+#file("math/XorBasis.h", description: [
+  Duy trì XorBasis có tổng trọng số lớn nhất, và tính giao.
+  1. Số tập con xor khác nhau của mảng = $2^(|S|)$ với $|S|$ là cỡ của basis.
+  2. Tập con có xor lớn nhất: `if ((res ^ basis[b]) > res) res ^= basis[b];`
+])
+
+== Frievalds
+
+Kiểm tra tích 2 ma trận $A, B$ có bằng $C$ không trong $O(k n^2)$ với xác suất $2^(-k)$. Sinh ngẫu nhiên vector cột nhị phân $r$ và kiểm tra xem $A B r - C r$ có bằng vector 0 không.
 
 = Cấu trúc dữ liệu
 
-// #file("ds/DSU.h")
-// #file("ds/Fenwick.h")
+#file("ds/DSU.h")
+#file("ds/Fenwick.h")
 // #file("ds/SegTree.h")
 // #file("ds/LazySegTree.h")
 #file("ds/RMQ.h")
@@ -111,8 +173,7 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 )
 #file("ds/SWAD.h")
 #file("ds/Mo.h")
-#file("ds/Treap.h")
-// #file("ds/WaveletTree.h")
+#file("ds/WaveletTree.h")
 
 = Đồ thị
 
@@ -120,6 +181,9 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 //   Tìm luồng cực đại bằng Ford-Fulkerson trong với $U$ là luồng tối đa trên một cạnh. Độ phức tạp $O(E F)$ với $F$ là luồng cực đại.
 // ])
 //
+#file("graph/LowLink.h", description: [
+  Tarjan tìm khớp cầu của đồ thị.
+])
 #file("graph/2CC.h", description: [
   Tìm thành phần song liên thông đỉnh (block-cut tree) và song liên thông cạnh (bridge tree).
 ])
@@ -172,7 +236,7 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
   Min cyclic shift trong $O(n)$.
 ])
 // #file("strings/Manacher.h")
-// #file("strings/AhoCorasick.h")
+#file("strings/AhoCorasick.h")
 #file("strings/SuffixArray.h")
 // #file("strings/PalindromeTree.h", description: [
 //   Dựng Palindrome Tree. Nó có 2 root, root 0/1 cho xâu đối xứng chẵn/lẻ, mỗi node lưu độ dài xâu đối xứng, số lượng và link đến xâu đó. Xâu độ dài $N$ *chỉ có tối đa $N$ xâu con đối xứng phân biệt*.
@@ -180,41 +244,44 @@ $ g = (F + 1) / 2, quad F = (n - 1)P - sum_{i=1}^n (P / p_i) $
 
 = Quy hoạch động
 
-== Kadane
+== Bất đẳng thức tứ giác
 
-== DP thứ tự từ điển
+Để áp dụng tối ưu hoá QHĐ, ta cần có:
+
+$ w(i, j) + w(i+1, j+1) lt.eq w(i, j+1) + w(i+1, j) $
+
+Ví dụ:
+
+1. $w(i, j) = (j - i)^2$, $w(i, j) = (S[j] - S[i])^2$
+2. $w(i, j) = |S[j] - S[i]|^P$
+3. $w(i, j) = 1 / (j - i)$
+
 
 #file("misc/CountSubseq.h")
-// #file(
-//   "misc/SOSDP.cpp",
-//   description: [
-//     Toàn bộ implementation SOS DP của VNOI.
-//   ],
-//   hash: false,
-// )
 #file(
   "misc/1D1D.h",
   description: [
-    Nếu hàm $w(i, j)$ thoả mãn bất đẳng thức tứ giác: $w(a, c) + w(b, d) <= w(a, d) + w(b, c)$ với mọi $a < b < c < d$, thì ta có thể tính hàm DP 1 chiều: $f(i) = min_(0 <= j < i) f(j) + w(j, i)$ trong $O(n log n)$.
+    Tính hàm DP 1 chiều: $f(i) = min_(0 <= j < i) f(j) + w(j, i)$ trong $O(n log n)$.
   ],
   hash: false,
 )
 #file(
   "misc/Knuth.h",
-  description: [Nếu hàm $w(i, j)$ thoả mãn bất đẳng thức tứ giác: $w(a, c) + w(b, d) <= w(a, d) + w(b, c)$ với mọi $a < b < c < d$, thì ta có thể tính hàm DP: $f(i, j) = min_(i <= k < j) f(i, k) + f(k + 1, j) + w(j, i)$ trong $O(n^2)$.],
+  description: [Tính hàm DP: $f(i, j) = min_(i <= k < j) f(i, k) + f(k + 1, j) + w(j, i)$ trong $O(n^2)$.],
   hash: false,
 )
 #file(
   "misc/DnCDP.h",
-  description: [Nếu hàm $w(i, j)$ thoả mãn bất đẳng thức tứ giác: $w(a, c) + w(b, d) <= w(a, d) + w(b, c)$ với mọi $a < b < c < d$, thì ta có thể tính hàm DP: $f[i][j] = min_{k < j} (f[i-1][k] + w(k+1, j))$ trong $O(n log n)$.],
+  description: [Tính hàm DP: $f[i][j] = min_{k < j} (f[i-1][k] + w(k+1, j))$ trong $O(n log n)$.],
   hash: false,
 )
 
 = Khác
 
-#file("misc/maxHist.h", description: [
-  Hình chữ nhật lớn nhất.
-])
+#file("misc/magics.h")
+// #file("misc/debug.h")
+#file("misc/maxHist.h")
+#file("misc/Knight.h")
 
 = Hình
 
@@ -264,7 +331,6 @@ Các thuật toán hình có đa giác, nếu không chú thích gì, thì hoạ
 #file("geometry/PointInsideHull.h")
 #file("geometry/HullDiameter.h")
 // #file("geometry/Minkowski.h", description: [ Tính tổng của 2 bao lồi trong $O(n + m).$])
-// #file("geometry/Line.h", description: [Định nghĩa của đường thẳng dạng $y = k x + m$ với $k, m in ZZ$ hoặc $RR$])
 // #file(
 //   "geometry/HalfplaneSet.h",
 //   description: [Tìm bao lồi giao của nửa mặt phẳng trong $O(n log n)$. Nửa mặt phẳng được định nghĩa bằng $a x + b y <= c$],
