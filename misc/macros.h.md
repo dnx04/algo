@@ -94,9 +94,6 @@ data:
     path: tests/General_Matching.test.cpp
     title: tests/General_Matching.test.cpp
   - icon: ':heavy_check_mark:'
-    path: tests/Intersection_of_F2_vector_spaces.test.cpp
-    title: tests/Intersection_of_F2_vector_spaces.test.cpp
-  - icon: ':heavy_check_mark:'
     path: tests/Inv_of_FPS.test.cpp
     title: tests/Inv_of_FPS.test.cpp
   - icon: ':heavy_check_mark:'
@@ -351,7 +348,6 @@ data:
   - tests/LIS.test.cpp
   - tests/Stirling_Number_2nd.test.cpp
   - tests/Two_Edges_CC.test.cpp
-  - tests/Intersection_of_F2_vector_spaces.test.cpp
   - tests/Sort_Points_by_Argument.test.cpp
   - tests/Convolution.test.cpp
   - tests/Enumerate_Cliques.test.cpp

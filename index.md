@@ -37,9 +37,6 @@ data:
       path: ds/SegTree.h
       title: ds/SegTree.h
     - icon: ':warning:'
-      path: ds/Treap.h
-      title: ds/Treap.h
-    - icon: ':warning:'
       path: ds/VirtualTree.h
       title: ds/VirtualTree.h
     - icon: ':warning:'
@@ -240,7 +237,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/SumPowerPoly.h
       title: math/SumPowerPoly.h
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: math/XorBasis.h
       title: math/XorBasis.h
     - icon: ':heavy_check_mark:'
@@ -270,19 +267,34 @@ data:
       path: misc/HexGrid.h
       title: misc/HexGrid.h
     - icon: ':warning:'
+      path: misc/Knight.h
+      title: misc/Knight.h
+    - icon: ':warning:'
       path: misc/Knuth.h
       title: misc/Knuth.h
     - icon: ':warning:'
       path: misc/SOSDP.cpp
       title: misc/SOSDP.cpp
+    - icon: ':warning:'
+      path: misc/debug.h
+      title: misc/debug.h
     - icon: ':heavy_check_mark:'
       path: misc/macros.h
       title: misc/macros.h
     - icon: ':warning:'
+      path: misc/magics.h
+      title: misc/magics.h
+    - icon: ':warning:'
       path: misc/maxHist.h
       title: misc/maxHist.h
+    - icon: ':warning:'
+      path: misc/prettyprint.hpp
+      title: misc/prettyprint.hpp
   - name: strings
     pages:
+    - icon: ':warning:'
+      path: strings/AhoCorasick.h
+      title: strings/AhoCorasick.h
     - icon: ':warning:'
       path: strings/KMP.h
       title: strings/KMP.h
@@ -391,9 +403,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: tests/General_Matching.test.cpp
       title: tests/General_Matching.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: tests/Intersection_of_F2_vector_spaces.test.cpp
-      title: tests/Intersection_of_F2_vector_spaces.test.cpp
     - icon: ':heavy_check_mark:'
       path: tests/Inv_of_FPS.test.cpp
       title: tests/Inv_of_FPS.test.cpp

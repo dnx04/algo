@@ -14,23 +14,23 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"ds/Fenwick.h\"\ntemplate <class T>\nstruct Fenwick {  //\
+  bundledCode: "#line 1 \"ds/Fenwick.h\"\n// for 2d fenwick just add a for\ntemplate\
+    \ <class T>\nstruct Fenwick {  // 1-indexed\n  int n;\n  vector<T> t;\n  Fenwick(int\
+    \ n) : n(n), t(n + 1, T(0)) {}\n  void add(int p, T v) {\n    while (p <= n) t[p]\
+    \ += v, p += (p & -p);\n  }\n  T sum(int p) {\n    T res = 0;\n    while (p) res\
+    \ += t[p], p -= (p & -p);\n    return res;\n  }\n  // [l, r)\n  T sum(int l, int\
+    \ r) {\n    if (l > r) return T(0);\n    return sum(r) - sum(l - 1);\n  }\n};\n"
+  code: "// for 2d fenwick just add a for\ntemplate <class T>\nstruct Fenwick {  //\
     \ 1-indexed\n  int n;\n  vector<T> t;\n  Fenwick(int n) : n(n), t(n + 1, T(0))\
     \ {}\n  void add(int p, T v) {\n    while (p <= n) t[p] += v, p += (p & -p);\n\
     \  }\n  T sum(int p) {\n    T res = 0;\n    while (p) res += t[p], p -= (p & -p);\n\
     \    return res;\n  }\n  // [l, r)\n  T sum(int l, int r) {\n    if (l > r) return\
-    \ T(0);\n    return sum(r) - sum(l - 1);\n  }\n};\n"
-  code: "template <class T>\nstruct Fenwick {  // 1-indexed\n  int n;\n  vector<T>\
-    \ t;\n  Fenwick(int n) : n(n), t(n + 1, T(0)) {}\n  void add(int p, T v) {\n \
-    \   while (p <= n) t[p] += v, p += (p & -p);\n  }\n  T sum(int p) {\n    T res\
-    \ = 0;\n    while (p) res += t[p], p -= (p & -p);\n    return res;\n  }\n  //\
-    \ [l, r)\n  T sum(int l, int r) {\n    if (l > r) return T(0);\n    return sum(r)\
-    \ - sum(l - 1);\n  }\n};"
+    \ T(0);\n    return sum(r) - sum(l - 1);\n  }\n};"
   dependsOn: []
   isVerificationFile: false
   path: ds/Fenwick.h
   requiredBy: []
-  timestamp: '2025-11-21 16:12:02+07:00'
+  timestamp: '2025-12-09 07:33:19+07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - tests/Vertex_Add_Path_Sum.test.cpp

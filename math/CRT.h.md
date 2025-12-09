@@ -8,29 +8,27 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"math/CRT.h\"\ntemplate <class T>\nstruct CRT {\n  T res;\n\
-    \  CRT() { res = 0, prd = 1; }\n  // Add condition: res % p == r\n  void add(T\
-    \ p, T r) {\n    res += mul(r - res % p + p, euclid(prd, p).first + p, p) * prd;\n\
-    \    prd *= p;\n    if (res >= prd) res -= prd;\n  }\n\n private:\n  T prd;\n\
-    \  T mul(T a, T b, T p) {\n    a %= p, b %= p;\n    T q = (T) ((ld) a * b / p);\n\
-    \    T r = a * b - q * p;\n    while (r < 0) r += p;\n    while (r >= p) r -=\
-    \ p;\n    return r;\n  }\n  pair<T, T> euclid(T a, T b) {\n    if (!b) return\
-    \ make_pair(1, 0);\n    pair<T, T> r = euclid(b, a % b);\n    return make_pair(r.second,\
-    \ r.first - a / b * r.second);\n  }\n};\n"
-  code: "template <class T>\nstruct CRT {\n  T res;\n  CRT() { res = 0, prd = 1; }\n\
-    \  // Add condition: res % p == r\n  void add(T p, T r) {\n    res += mul(r -\
-    \ res % p + p, euclid(prd, p).first + p, p) * prd;\n    prd *= p;\n    if (res\
-    \ >= prd) res -= prd;\n  }\n\n private:\n  T prd;\n  T mul(T a, T b, T p) {\n\
-    \    a %= p, b %= p;\n    T q = (T) ((ld) a * b / p);\n    T r = a * b - q * p;\n\
-    \    while (r < 0) r += p;\n    while (r >= p) r -= p;\n    return r;\n  }\n \
-    \ pair<T, T> euclid(T a, T b) {\n    if (!b) return make_pair(1, 0);\n    pair<T,\
-    \ T> r = euclid(b, a % b);\n    return make_pair(r.second, r.first - a / b * r.second);\n\
-    \  }\n};"
+  bundledCode: "#line 1 \"math/CRT.h\"\nstruct CRT {\n  i64 res = 0, mod = 1;\n  i64\
+    \ euclid(i64 a, i64 b, i64 &x, i64 &y) {\n    if (!b) return x = 1, y = 0, a;\n\
+    \    i64 d = euclid(b, a % b, y, x);\n    return y -= a / b * x, d;\n  }\n  //\
+    \ Add condition: val % m = a\n  bool add(i64 m, i64 a) {\n    i64 x, y;\n    i64\
+    \ g = euclid(mod, m, x, y);\n    if ((a - res) % g) return false;  // Incompatible\
+    \ condition\n    i64 m0 = m / g;\n    // k = (a - res) / g * inv(mod / g) mod\
+    \ (m / g)\n    i128 k = (i128)(a - res) / g * x % m0;\n    res += (i64)k * mod;\n\
+    \    mod *= m0;\n    res = (res % mod + mod) % mod;\n    return true;\n  }\n};\n"
+  code: "struct CRT {\n  i64 res = 0, mod = 1;\n  i64 euclid(i64 a, i64 b, i64 &x,\
+    \ i64 &y) {\n    if (!b) return x = 1, y = 0, a;\n    i64 d = euclid(b, a % b,\
+    \ y, x);\n    return y -= a / b * x, d;\n  }\n  // Add condition: val % m = a\n\
+    \  bool add(i64 m, i64 a) {\n    i64 x, y;\n    i64 g = euclid(mod, m, x, y);\n\
+    \    if ((a - res) % g) return false;  // Incompatible condition\n    i64 m0 =\
+    \ m / g;\n    // k = (a - res) / g * inv(mod / g) mod (m / g)\n    i128 k = (i128)(a\
+    \ - res) / g * x % m0;\n    res += (i64)k * mod;\n    mod *= m0;\n    res = (res\
+    \ % mod + mod) % mod;\n    return true;\n  }\n};"
   dependsOn: []
   isVerificationFile: false
   path: math/CRT.h
   requiredBy: []
-  timestamp: '2025-11-21 16:12:02+07:00'
+  timestamp: '2025-12-09 07:33:19+07:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: math/CRT.h

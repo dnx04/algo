@@ -2,47 +2,47 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: tests/Intersection_of_F2_vector_spaces.test.cpp
-    title: tests/Intersection_of_F2_vector_spaces.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"math/XorBasis.h\"\nstruct XorBasis {\n  vector<i64> b;\n\
-    \  XorBasis() {}\n  void add(int x) {\n    x = this->sift(x);\n    if (x != 0)\
-    \ this->b.pb(x);\n  }\n  i64 sift(i64 x) const {\n    for (i64 b : this->b) {\n\
-    \      x = min(x, x ^ b);\n      if (x == 0) return 0;\n    }\n    return x;\n\
-    \  }\n  bool is_indep(i64 x) const {\n    return this->sift(x) != 0;\n  }\n  vector<i64>\
-    \ basis() const {\n    return this->b;\n  }\n};\n\nvector<i64> XorInter(const\
-    \ vector<i64>& u, const vector<i64>& v) {\n  XorBasis X;\n  for (auto x : u) X.add(x);\n\
-    \  vector<pair<i64, i64>> basis;\n  XorBasis inter;\n  for (auto x : v) {\n  \
-    \  auto y = X.sift(x), pu = y ^ x, sy = y;\n    for (auto v : basis) {\n     \
-    \ i64 tmp = sy ^ v.second;\n      if (tmp < sy) {\n        sy = tmp;\n       \
-    \ pu ^= v.first;\n      }\n    }\n    if (sy != 0) {\n      basis.pb({pu, sy});\n\
-    \    } else {\n      inter.add(pu);\n    }\n  }\n  return inter.basis();\n}\n"
-  code: "struct XorBasis {\n  vector<i64> b;\n  XorBasis() {}\n  void add(int x) {\n\
-    \    x = this->sift(x);\n    if (x != 0) this->b.pb(x);\n  }\n  i64 sift(i64 x)\
-    \ const {\n    for (i64 b : this->b) {\n      x = min(x, x ^ b);\n      if (x\
-    \ == 0) return 0;\n    }\n    return x;\n  }\n  bool is_indep(i64 x) const {\n\
-    \    return this->sift(x) != 0;\n  }\n  vector<i64> basis() const {\n    return\
-    \ this->b;\n  }\n};\n\nvector<i64> XorInter(const vector<i64>& u, const vector<i64>&\
-    \ v) {\n  XorBasis X;\n  for (auto x : u) X.add(x);\n  vector<pair<i64, i64>>\
-    \ basis;\n  XorBasis inter;\n  for (auto x : v) {\n    auto y = X.sift(x), pu\
-    \ = y ^ x, sy = y;\n    for (auto v : basis) {\n      i64 tmp = sy ^ v.second;\n\
-    \      if (tmp < sy) {\n        sy = tmp;\n        pu ^= v.first;\n      }\n \
-    \   }\n    if (sy != 0) {\n      basis.pb({pu, sy});\n    } else {\n      inter.add(pu);\n\
-    \    }\n  }\n  return inter.basis();\n}"
+  bundledCode: "#line 1 \"math/XorBasis.h\"\ntemplate <class T>\nstruct Basis {\n\
+    \  int B; vector<T> a; vector<i64> wt;\n  Basis() : B(sizeof(T) * 8), a(B, 0),\
+    \ wt(B, 0) {}\n  void insert(T x, i64 w = 0) {\n    for (int i = B - 1; i >= 0;\
+    \ --i) if (x >> i & 1) {\n      if (!a[i]) { a[i] = x, wt[i] = w; return; }\n\
+    \      if (wt[i] < w) swap(wt[i], w), swap(a[i], x);\n      x ^= a[i];\n    }\n\
+    \  }\n  i64 query() {\n    i64 ans = 0;\n    for (auto w : wt) ans += w;\n   \
+    \ return ans;\n  }\n  friend Basis intersect(const Basis& L, const Basis& R) {\n\
+    \    Basis res, full; int B = L.B; vector<T> mask(B, 0);\n    for (T x : L.a)\
+    \ if (x)\n      for (int j = B - 1; j >= 0; --j) if (x >> j & 1) {\n        if\
+    \ (!full.a[j]) { full.a[j] = x; break; }\n        x ^= full.a[j];\n      }\n \
+    \   for (T x : R.a) if (x) {\n      T m = x; bool k = 1;\n      for (int j = B\
+    \ - 1; j >= 0; --j) if (x >> j & 1) {\n        if (!full.a[j]) { full.a[j] = x,\
+    \ mask[j] = m, k = 0; break; }\n        x ^= full.a[j], m ^= mask[j];\n      }\n\
+    \      if (k) res.insert(m);\n    }\n    return res;\n  }\n};\n"
+  code: "template <class T>\nstruct Basis {\n  int B; vector<T> a; vector<i64> wt;\n\
+    \  Basis() : B(sizeof(T) * 8), a(B, 0), wt(B, 0) {}\n  void insert(T x, i64 w\
+    \ = 0) {\n    for (int i = B - 1; i >= 0; --i) if (x >> i & 1) {\n      if (!a[i])\
+    \ { a[i] = x, wt[i] = w; return; }\n      if (wt[i] < w) swap(wt[i], w), swap(a[i],\
+    \ x);\n      x ^= a[i];\n    }\n  }\n  i64 query() {\n    i64 ans = 0;\n    for\
+    \ (auto w : wt) ans += w;\n    return ans;\n  }\n  friend Basis intersect(const\
+    \ Basis& L, const Basis& R) {\n    Basis res, full; int B = L.B; vector<T> mask(B,\
+    \ 0);\n    for (T x : L.a) if (x)\n      for (int j = B - 1; j >= 0; --j) if (x\
+    \ >> j & 1) {\n        if (!full.a[j]) { full.a[j] = x; break; }\n        x ^=\
+    \ full.a[j];\n      }\n    for (T x : R.a) if (x) {\n      T m = x; bool k = 1;\n\
+    \      for (int j = B - 1; j >= 0; --j) if (x >> j & 1) {\n        if (!full.a[j])\
+    \ { full.a[j] = x, mask[j] = m, k = 0; break; }\n        x ^= full.a[j], m ^=\
+    \ mask[j];\n      }\n      if (k) res.insert(m);\n    }\n    return res;\n  }\n\
+    };"
   dependsOn: []
   isVerificationFile: false
   path: math/XorBasis.h
   requiredBy: []
-  timestamp: '2025-11-18 16:58:39+07:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - tests/Intersection_of_F2_vector_spaces.test.cpp
+  timestamp: '2025-12-09 07:33:19+07:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: math/XorBasis.h
 layout: document
 redirect_from:
