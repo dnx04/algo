@@ -15,10 +15,16 @@
         "-fno-sanitize-recover",
         "-fstack-protector"
     ],
-    "clangd.arguments": [
-        "--clang-format-style=file:${workspaceFolder}/algo/.clang-format"
-    ],
     "editor.tabSize": 2,
     "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "cph-ng.languages.cppCompiler": "/usr/bin/g++",
+    "cph-ng.languages.cppCompilerArgs": "-O2 -std=c++20 -g -DLOCAL -fsanitize=address -fsanitize=undefined -fno-sanitize-recover -fhardened",
+    "cph-ng.sidebar.showOobe": false,
+    "cph-ng.run.unlimitedStack": true,
+    "cph-ng.problem.templateFile": "${workspace}/.vscode/template.cpp",
+    "cph-ng.problem.deleteAfterUnzip": true,
+    "cph-ng.comparing.regardPEAsAC": true,
+    "cph-ng.run.useRunner": true,
+    "cph-ng.sidebar.showAcGif": false,
 }
