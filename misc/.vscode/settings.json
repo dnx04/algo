@@ -18,6 +18,7 @@
     "clangd.arguments": [
         "--clang-format-style=file:${workspaceFolder}/algo/.clang-format"
     ],
+    "editor.tabSize": 2,
     "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
     "editor.formatOnSave": true
 }

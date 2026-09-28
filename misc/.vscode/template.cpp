@@ -12,10 +12,10 @@ using namespace std;
 using i64 = long long;
 using u64 = unsigned long long;
 
-void solve(){}
+void solve() {}
 
 signed main() {
-    ios::sync_with_stdio(false);
-    cin.tie(0);
-    solve();
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  solve();
 }
