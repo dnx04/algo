@@ -67,9 +67,9 @@ data:
   timestamp: '2025-11-28 12:47:29+07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - tests/Bitwise_Xor_Convolution.test.cpp
-  - tests/Bitwise_Subset_Convolution.test.cpp
   - tests/Bitwise_And_Convolution.test.cpp
+  - tests/Bitwise_Subset_Convolution.test.cpp
+  - tests/Bitwise_Xor_Convolution.test.cpp
 documentation_of: math/FST.h
 layout: document
 redirect_from:

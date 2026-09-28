@@ -52,8 +52,8 @@ data:
   timestamp: '2025-11-27 11:47:17+07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - tests/Min_of_Mod_of_Linear.test.cpp
   - tests/Sum_of_Floor_of_Linear.test.cpp
+  - tests/Min_of_Mod_of_Linear.test.cpp
 documentation_of: math/DivModSum.h
 layout: document
 redirect_from:

@@ -103,8 +103,8 @@ data:
   timestamp: '2025-11-28 10:18:48+07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - tests/Rational_Approximation.test.cpp
   - tests/Stern_Brocot.test.cpp
+  - tests/Rational_Approximation.test.cpp
 documentation_of: math/SternBrocot.h
 layout: document
 redirect_from:

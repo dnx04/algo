@@ -182,19 +182,19 @@ data:
   timestamp: '2025-11-28 00:00:09+07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - tests/Bernoulli_Number.test.cpp
-  - tests/Partition_Function.test.cpp
-  - tests/Pow_of_FPS.test.cpp
-  - tests/p_Subset_Sum.test.cpp
-  - tests/Product_of_Polynomial_Sequence.test.cpp
-  - tests/Stirling_Number_1st_fixed_K.test.cpp
-  - tests/Inv_of_FPS.test.cpp
-  - tests/Exp_of_FPS.test.cpp
-  - tests/Stirling_Number_1st.test.cpp
   - tests/Stirling_Number_2nd_fixed_K.test.cpp
+  - tests/Bernoulli_Number.test.cpp
+  - tests/Inv_of_FPS.test.cpp
+  - tests/Product_of_Polynomial_Sequence.test.cpp
   - tests/Stirling_Number_2nd.test.cpp
   - tests/Convolution.test.cpp
   - tests/Bell_Number.test.cpp
+  - tests/p_Subset_Sum.test.cpp
+  - tests/Stirling_Number_1st.test.cpp
+  - tests/Pow_of_FPS.test.cpp
+  - tests/Exp_of_FPS.test.cpp
+  - tests/Partition_Function.test.cpp
+  - tests/Stirling_Number_1st_fixed_K.test.cpp
 documentation_of: math/Poly.h
 layout: document
 redirect_from:

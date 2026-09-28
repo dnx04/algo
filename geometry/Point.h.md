@@ -141,40 +141,40 @@ data:
   isVerificationFile: false
   path: geometry/Point.h
   requiredBy:
-  - geometry/InsidePolygon.h
   - geometry/LineIntersection.h
+  - geometry/Minkowski.h
+  - geometry/Circumcircle.h
+  - geometry/HullDiameter.h
+  - geometry/PolygonArea.h
+  - geometry/CircleLine.h
   - geometry/PolygonCenter.h
-  - geometry/OnSegment.h
-  - geometry/SegmentDistance.h
-  - geometry/CirclePolygonIntersection.h
-  - geometry/ClosestPair.h
-  - geometry/HalfplaneSet.h
-  - geometry/LineHullIntersection.h
   - geometry/PointInsideHull.h
+  - geometry/ClosestPair.h
   - geometry/SegmentIntersection.h
   - geometry/SideOf.h
+  - geometry/SegmentDistance.h
+  - geometry/OnSegment.h
+  - geometry/HalfplaneSet.h
+  - geometry/LineHullIntersection.h
   - geometry/LineProjectionReflection.h
-  - geometry/CircleLine.h
-  - geometry/CircleIntersection.h
-  - geometry/Minkowski.h
-  - geometry/PolygonArea.h
-  - geometry/ConvexHull.h
   - geometry/CircleTangents.h
+  - geometry/ConvexHull.h
   - geometry/TrianglePointCount.h
-  - geometry/HullDiameter.h
-  - geometry/Circumcircle.h
-  - geometry/MinimumEnclosingCircle.h
   - geometry/LineDistance.h
+  - geometry/InsidePolygon.h
+  - geometry/CirclePolygonIntersection.h
+  - geometry/MinimumEnclosingCircle.h
   - geometry/LinearTransformation.h
+  - geometry/CircleIntersection.h
   timestamp: '2025-11-21 16:12:02+07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - tests/Static_Convex_Hull.test.cpp
-  - tests/Minimum_Enclosing_Circle.test.cpp
-  - tests/Furthest_Pair_of_Points.test.cpp
-  - tests/Closest_Pair_of_Points.test.cpp
   - tests/Sort_Points_by_Argument.test.cpp
   - tests/Count_Points_in_Triangle.test.cpp
+  - tests/Closest_Pair_of_Points.test.cpp
+  - tests/Minimum_Enclosing_Circle.test.cpp
+  - tests/Static_Convex_Hull.test.cpp
+  - tests/Furthest_Pair_of_Points.test.cpp
 documentation_of: geometry/Point.h
 layout: document
 redirect_from:

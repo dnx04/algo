@@ -290,6 +290,9 @@ data:
     - icon: ':warning:'
       path: misc/prettyprint.hpp
       title: misc/prettyprint.hpp
+    - icon: ':warning:'
+      path: misc/template.cpp
+      title: misc/template.cpp
   - name: strings
     pages:
     - icon: ':warning:'

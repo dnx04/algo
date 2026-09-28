@@ -37,9 +37,9 @@ data:
   timestamp: '2025-11-21 16:12:02+07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - tests/Deque_Operate_All_Composite.test.cpp
-  - tests/Point_Set_Range_Composite.test.cpp
   - tests/Point_Set_Range_Composite_Large.test.cpp
+  - tests/Point_Set_Range_Composite.test.cpp
+  - tests/Deque_Operate_All_Composite.test.cpp
 documentation_of: math/Affine.h
 layout: document
 redirect_from:

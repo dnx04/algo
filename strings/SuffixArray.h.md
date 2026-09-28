@@ -60,9 +60,9 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - tests/Longest_Common_Substring.test.cpp
-  - tests/Run_Enumerate.test.cpp
-  - tests/Suffix_Array.test.cpp
   - tests/Number_of_Substrings.test.cpp
+  - tests/Suffix_Array.test.cpp
+  - tests/Run_Enumerate.test.cpp
 documentation_of: strings/SuffixArray.h
 layout: document
 redirect_from:

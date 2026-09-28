@@ -188,51 +188,51 @@ data:
   isVerificationFile: false
   path: math/ModInt.h
   requiredBy:
-  - math/SumPowerPoly.h
   - math/Poly.h
+  - math/SumPowerPoly.h
   - math/Factor.h
   timestamp: '2025-11-26 18:05:06+07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - tests/Bernoulli_Number.test.cpp
-  - tests/Bitwise_Xor_Convolution.test.cpp
-  - tests/Matrix_Inv.test.cpp
-  - tests/Sum_of_Exponential_times_Polynomial.test.cpp
-  - tests/Partition_Function.test.cpp
-  - tests/Pow_of_FPS.test.cpp
-  - tests/Enumerate_Triangles.test.cpp
-  - tests/Bitwise_Subset_Convolution.test.cpp
-  - tests/Deque_Operate_All_Composite.test.cpp
-  - tests/Pow_of_Matrix.test.cpp
-  - tests/Range_Affine_Point_Get.test.cpp
-  - tests/Factorize.test.cpp
-  - tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
-  - tests/p_Subset_Sum.test.cpp
-  - tests/Matrix_Product.test.cpp
-  - tests/Product_of_Polynomial_Sequence.test.cpp
-  - tests/LCM_Convolution.test.cpp
-  - tests/Find_Linear_Recurrence.test.cpp
-  - tests/Stirling_Number_1st_fixed_K.test.cpp
-  - tests/Matrix_Solve_Linear.test.cpp
-  - tests/Inv_of_FPS.test.cpp
-  - tests/Primality_Test.test.cpp
-  - tests/Sum_of_Multiplicative_Function.test.cpp
-  - tests/Sqrt_Mod.test.cpp
-  - tests/Exp_of_FPS.test.cpp
-  - tests/Stirling_Number_1st.test.cpp
   - tests/Stirling_Number_2nd_fixed_K.test.cpp
-  - tests/Range_Affine_Range_Sum.test.cpp
+  - tests/Matrix_Solve_Linear.test.cpp
+  - tests/Find_Linear_Recurrence.test.cpp
+  - tests/Range_Affine_Point_Get.test.cpp
+  - tests/Matrix_Product.test.cpp
+  - tests/Sum_of_Exponential_times_Polynomial.test.cpp
+  - tests/Point_Set_Range_Composite_Large.test.cpp
+  - tests/Bernoulli_Number.test.cpp
+  - tests/Inv_of_FPS.test.cpp
+  - tests/Bitwise_And_Convolution.test.cpp
+  - tests/Product_of_Polynomial_Sequence.test.cpp
   - tests/Stirling_Number_2nd.test.cpp
   - tests/Convolution.test.cpp
-  - tests/Enumerate_Cliques.test.cpp
-  - tests/Matrix_Det.test.cpp
+  - tests/Range_Affine_Range_Sum.test.cpp
+  - tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
+  - tests/Matrix_Inv.test.cpp
+  - tests/Sum_of_Multiplicative_Function.test.cpp
   - tests/Point_Set_Range_Composite.test.cpp
-  - tests/GCD_Convolution.test.cpp
-  - tests/Point_Set_Range_Composite_Large.test.cpp
+  - tests/Factorize.test.cpp
+  - tests/Enumerate_Triangles.test.cpp
+  - tests/Primality_Test.test.cpp
+  - tests/LCM_Convolution.test.cpp
   - tests/Bell_Number.test.cpp
-  - tests/Bitwise_And_Convolution.test.cpp
-  - tests/Primitive_Root.test.cpp
   - tests/Number_of_Subsequences.test.cpp
+  - tests/Pow_of_Matrix.test.cpp
+  - tests/Deque_Operate_All_Composite.test.cpp
+  - tests/Matrix_Det.test.cpp
+  - tests/Primitive_Root.test.cpp
+  - tests/p_Subset_Sum.test.cpp
+  - tests/Enumerate_Cliques.test.cpp
+  - tests/Stirling_Number_1st.test.cpp
+  - tests/Pow_of_FPS.test.cpp
+  - tests/Exp_of_FPS.test.cpp
+  - tests/Partition_Function.test.cpp
+  - tests/GCD_Convolution.test.cpp
+  - tests/Bitwise_Subset_Convolution.test.cpp
+  - tests/Stirling_Number_1st_fixed_K.test.cpp
+  - tests/Sqrt_Mod.test.cpp
+  - tests/Bitwise_Xor_Convolution.test.cpp
 documentation_of: math/ModInt.h
 layout: document
 redirect_from:

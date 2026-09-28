@@ -114,10 +114,10 @@ data:
   timestamp: '2025-11-27 09:59:02+07:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - tests/Matrix_Solve_Linear.test.cpp
+  - tests/Matrix_Product.test.cpp
   - tests/Matrix_Inv.test.cpp
   - tests/Pow_of_Matrix.test.cpp
-  - tests/Matrix_Product.test.cpp
-  - tests/Matrix_Solve_Linear.test.cpp
   - tests/Matrix_Det.test.cpp
 documentation_of: math/Matrix.h
 layout: document
