@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/Dinic.h
     title: graph/Dinic.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
@@ -22,14 +22,14 @@ data:
     \n// #pragma GCC optimize(\"Ofast,unroll-loops\")       // unroll long, simple\
     \ loops\n// #pragma GCC target(\"avx2,fma\")                   // vectorizing\
     \ code\n// #pragma GCC target(\"lzcnt,popcnt,abm,bmi,bmi2\")  // for fast bitset\
-    \ operation\n\n#include <bits/extc++.h>\n#include <tr2/dynamic_bitset>\n\nusing\
-    \ namespace std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n\
-    // using namespace __gnu_cxx; // rope\n\n// for templates to work\n#define all(x)\
-    \ (x).begin(), (x).end()\n#define sz(x) (int) (x).size()\n#define pb push_back\n\
-    #define eb emplace_back\nusing i32 = int32_t;\nusing u32 = uint32_t;\nusing i64\
-    \ = int64_t;\nusing u64 = uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
-    using ld = long double;\nusing pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\
-    \n// fast map\nconst int RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
+    \ operation\n\n#include <bits/extc++.h>\n\nusing namespace std;\nusing namespace\
+    \ __gnu_pbds;  // ordered_set, gp_hash_table\n// using namespace __gnu_cxx; //\
+    \ rope\n\n// for templates to work\n#define all(x) (x).begin(), (x).end()\n#define\
+    \ len(x) (int) (x).size()\n#define pb push_back\n#define eb emplace_back\nusing\
+    \ i32 = int32_t;\nusing u32 = uint32_t;\nusing i64 = int64_t;\nusing u64 = uint64_t;\n\
+    using i128 = __int128_t;\nusing u128 = __uint128_t;\nusing ld = long double;\n\
+    using pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\n// fast map\nconst int\
+    \ RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
     struct chash {  // customize hash function for gp_hash_table\n  int operator()(int\
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
@@ -41,17 +41,17 @@ data:
     \ Dinic {\n  struct Edge {\n    int to, rev;\n    i64 c, oc;\n    i64 flow() {\
     \ return max(oc - c, i64(0)); }  // if you need flows\n  };\n  vi lvl, ptr, q;\n\
     \  vector<vector<Edge>> adj;\n  Dinic(int n) : lvl(n), ptr(n), q(n), adj(n) {}\n\
-    \  void addEdge(int a, int b, i64 c, i64 rcap = 0) {\n    adj[a].pb({b, sz(adj[b]),\
-    \ c, c});\n    adj[b].pb({a, sz(adj[a]) - 1, rcap, rcap});\n  }\n  i64 dfs(int\
+    \  void addEdge(int a, int b, i64 c, i64 rcap = 0) {\n    adj[a].pb({b, len(adj[b]),\
+    \ c, c});\n    adj[b].pb({a, len(adj[a]) - 1, rcap, rcap});\n  }\n  i64 dfs(int\
     \ v, int t, i64 f) {\n    if (v == t || !f) return f;\n    for (int& i = ptr[v];\
-    \ i < sz(adj[v]); i++) {\n      Edge& e = adj[v][i];\n      if (lvl[e.to] == lvl[v]\
-    \ + 1)\n        if (i64 p = dfs(e.to, t, min(f, e.c))) {\n          e.c -= p,\
-    \ adj[e.to][e.rev].c += p;\n          return p;\n        }\n    }\n    return\
+    \ i < len(adj[v]); i++) {\n      Edge& e = adj[v][i];\n      if (lvl[e.to] ==\
+    \ lvl[v] + 1)\n        if (i64 p = dfs(e.to, t, min(f, e.c))) {\n          e.c\
+    \ -= p, adj[e.to][e.rev].c += p;\n          return p;\n        }\n    }\n    return\
     \ 0;\n  }\n  i64 calc(int s, int t) {\n    i64 flow = 0;\n    q[0] = s;\n    //\
     \ 'int L=30' maybe faster for random data\n    for (int L = 0; L < 31; ++L) {\n\
-    \      do {\n        lvl = ptr = vi(sz(q));\n        int qi = 0, qe = lvl[s] =\
-    \ 1;\n        while (qi < qe && !lvl[t]) {\n          int v = q[qi++];\n     \
-    \     for (Edge e : adj[v])\n            if (!lvl[e.to] && e.c >> (30 - L))\n\
+    \      do {\n        lvl = ptr = vi(len(q));\n        int qi = 0, qe = lvl[s]\
+    \ = 1;\n        while (qi < qe && !lvl[t]) {\n          int v = q[qi++];\n   \
+    \       for (Edge e : adj[v])\n            if (!lvl[e.to] && e.c >> (30 - L))\n\
     \              q[qe++] = e.to, lvl[e.to] = lvl[v] + 1;\n        }\n        while\
     \ (i64 p = dfs(s, t, LLONG_MAX)) flow += p;\n      } while (lvl[t]);\n    }\n\
     \    return flow;\n  }\n  bool leftOfMinCut(int a) { return lvl[a] != 0; }\n};\n\
@@ -94,7 +94,7 @@ data:
   isVerificationFile: true
   path: tests/Bipartite_Matching_Dinic.test.cpp
   requiredBy: []
-  timestamp: '2025-11-28 10:18:48+07:00'
+  timestamp: '2026-10-03 15:27:40+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Bipartite_Matching_Dinic.test.cpp

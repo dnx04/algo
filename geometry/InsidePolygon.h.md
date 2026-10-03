@@ -4,7 +4,7 @@ data:
   - icon: ':warning:'
     path: geometry/OnSegment.h
     title: geometry/OnSegment.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/Point.h
     title: geometry/Point.h
   _extendedRequiredBy: []
@@ -35,12 +35,12 @@ data:
     \ntemplate <class P>\nbool onSegment(P s, P e, P p) {\n  return p.cross(s, e)\
     \ == 0 && (s - p).dot(e - p) <= 0;\n}\n#line 3 \"geometry/InsidePolygon.h\"\n\n\
     template <class P>\nbool inPolygon(vector<P>& p, P a, bool strict = true) {\n\
-    \  int cnt = 0, n = sz(p);\n  for (int i = 0; i < n; ++i) {\n    P q = p[(i +\
+    \  int cnt = 0, n = len(p);\n  for (int i = 0; i < n; ++i) {\n    P q = p[(i +\
     \ 1) % n];\n    if (onSegment(p[i], q, a)) return !strict;\n    // or: if (segDist(p[i],\
     \ q, a) <= eps) return !strict;\n    cnt ^= ((a.y < p[i].y) - (a.y < q.y)) * a.cross(p[i],\
     \ q) > 0;\n  }\n  return cnt;\n}\n"
   code: "#include \"OnSegment.h\"\n#include \"Point.h\"\n\ntemplate <class P>\nbool\
-    \ inPolygon(vector<P>& p, P a, bool strict = true) {\n  int cnt = 0, n = sz(p);\n\
+    \ inPolygon(vector<P>& p, P a, bool strict = true) {\n  int cnt = 0, n = len(p);\n\
     \  for (int i = 0; i < n; ++i) {\n    P q = p[(i + 1) % n];\n    if (onSegment(p[i],\
     \ q, a)) return !strict;\n    // or: if (segDist(p[i], q, a) <= eps) return !strict;\n\
     \    cnt ^= ((a.y < p[i].y) - (a.y < q.y)) * a.cross(p[i], q) > 0;\n  }\n  return\
@@ -51,7 +51,7 @@ data:
   isVerificationFile: false
   path: geometry/InsidePolygon.h
   requiredBy: []
-  timestamp: '2025-11-21 16:12:02+07:00'
+  timestamp: '2026-10-03 15:27:40+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/InsidePolygon.h

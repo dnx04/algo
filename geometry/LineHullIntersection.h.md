@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/Point.h
     title: geometry/Point.h
   _extendedRequiredBy: []
@@ -31,45 +31,46 @@ data:
     \ << p.x << \",\" << p.y << \")\";\n  }\n};\n#line 2 \"geometry/LineHullIntersection.h\"\
     \n\n#define cmp(i, j) sgn(dir.perp().cross(poly[(i) % n] - poly[(j) % n]))\n#define\
     \ extr(i) cmp(i + 1, i) >= 0 && cmp(i, i - 1 + n) < 0\n\ntemplate <class P>\n\
-    int extrVertex(vector<P>& poly, P dir) {\n  int n = sz(poly), lo = 0, hi = n;\n\
+    int extrVertex(vector<P>& poly, P dir) {\n  int n = len(poly), lo = 0, hi = n;\n\
     \  if (extr(0)) return 0;\n  while (lo + 1 < hi) {\n    int m = (lo + hi) / 2;\n\
     \    if (extr(m)) return m;\n    int ls = cmp(lo + 1, lo), ms = cmp(m + 1, m);\n\
     \    (ls < ms || (ls == ms && ls == cmp(lo, m)) ? hi : lo) = m;\n  }\n  return\
     \ lo;\n}\n\n#define cmpL(i) sgn(a.cross(poly[i], b))\ntemplate <class P>\narray<int,\
     \ 2> lineHull(P a, P b, vector<P>& poly) {\n  int endA = extrVertex(poly, (a -\
     \ b).perp());\n  int endB = extrVertex(poly, (b - a).perp());\n  if (cmpL(endA)\
-    \ < 0 || cmpL(endB) > 0) return {-1, -1};\n  array<int, 2> res;\n  for(int i =\
-    \ 0; i < 2; ++i) {\n    int lo = endB, hi = endA, n = sz(poly);\n    while ((lo\
-    \ + 1) % n != hi) {\n      int m = ((lo + hi + (lo < hi ? 0 : n)) / 2) % n;\n\
-    \      (cmpL(m) == cmpL(endB) ? lo : hi) = m;\n    }\n    res[i] = (lo + !cmpL(hi))\
-    \ % n;\n    swap(endA, endB);\n  }\n  if (res[0] == res[1]) return {res[0], -1};\n\
-    \  if (!cmpL(res[0]) && !cmpL(res[1]))\n    switch ((res[0] - res[1] + sz(poly)\
-    \ + 1) % sz(poly)) {\n      case 0: return {res[0], res[0]};\n      case 2: return\
-    \ {res[1], res[1]};\n    }\n  return res;\n}\n"
+    \ < 0 || cmpL(endB) > 0) return {-1, -1};\n  array<int, 2> res;\n  for (int i\
+    \ = 0; i < 2; ++i) {\n    int lo = endB, hi = endA, n = len(poly);\n    while\
+    \ ((lo + 1) % n != hi) {\n      int m = ((lo + hi + (lo < hi ? 0 : n)) / 2) %\
+    \ n;\n      (cmpL(m) == cmpL(endB) ? lo : hi) = m;\n    }\n    res[i] = (lo +\
+    \ !cmpL(hi)) % n;\n    swap(endA, endB);\n  }\n  if (res[0] == res[1]) return\
+    \ {res[0], -1};\n  if (!cmpL(res[0]) && !cmpL(res[1]))\n    switch ((res[0] -\
+    \ res[1] + len(poly) + 1) % len(poly)) {\n      case 0:\n        return {res[0],\
+    \ res[0]};\n      case 2:\n        return {res[1], res[1]};\n    }\n  return res;\n\
+    }\n"
   code: "#include \"Point.h\"\n\n#define cmp(i, j) sgn(dir.perp().cross(poly[(i) %\
     \ n] - poly[(j) % n]))\n#define extr(i) cmp(i + 1, i) >= 0 && cmp(i, i - 1 + n)\
     \ < 0\n\ntemplate <class P>\nint extrVertex(vector<P>& poly, P dir) {\n  int n\
-    \ = sz(poly), lo = 0, hi = n;\n  if (extr(0)) return 0;\n  while (lo + 1 < hi)\
+    \ = len(poly), lo = 0, hi = n;\n  if (extr(0)) return 0;\n  while (lo + 1 < hi)\
     \ {\n    int m = (lo + hi) / 2;\n    if (extr(m)) return m;\n    int ls = cmp(lo\
     \ + 1, lo), ms = cmp(m + 1, m);\n    (ls < ms || (ls == ms && ls == cmp(lo, m))\
     \ ? hi : lo) = m;\n  }\n  return lo;\n}\n\n#define cmpL(i) sgn(a.cross(poly[i],\
     \ b))\ntemplate <class P>\narray<int, 2> lineHull(P a, P b, vector<P>& poly) {\n\
     \  int endA = extrVertex(poly, (a - b).perp());\n  int endB = extrVertex(poly,\
     \ (b - a).perp());\n  if (cmpL(endA) < 0 || cmpL(endB) > 0) return {-1, -1};\n\
-    \  array<int, 2> res;\n  for(int i = 0; i < 2; ++i) {\n    int lo = endB, hi =\
-    \ endA, n = sz(poly);\n    while ((lo + 1) % n != hi) {\n      int m = ((lo +\
-    \ hi + (lo < hi ? 0 : n)) / 2) % n;\n      (cmpL(m) == cmpL(endB) ? lo : hi) =\
-    \ m;\n    }\n    res[i] = (lo + !cmpL(hi)) % n;\n    swap(endA, endB);\n  }\n\
+    \  array<int, 2> res;\n  for (int i = 0; i < 2; ++i) {\n    int lo = endB, hi\
+    \ = endA, n = len(poly);\n    while ((lo + 1) % n != hi) {\n      int m = ((lo\
+    \ + hi + (lo < hi ? 0 : n)) / 2) % n;\n      (cmpL(m) == cmpL(endB) ? lo : hi)\
+    \ = m;\n    }\n    res[i] = (lo + !cmpL(hi)) % n;\n    swap(endA, endB);\n  }\n\
     \  if (res[0] == res[1]) return {res[0], -1};\n  if (!cmpL(res[0]) && !cmpL(res[1]))\n\
-    \    switch ((res[0] - res[1] + sz(poly) + 1) % sz(poly)) {\n      case 0: return\
-    \ {res[0], res[0]};\n      case 2: return {res[1], res[1]};\n    }\n  return res;\n\
-    }"
+    \    switch ((res[0] - res[1] + len(poly) + 1) % len(poly)) {\n      case 0:\n\
+    \        return {res[0], res[0]};\n      case 2:\n        return {res[1], res[1]};\n\
+    \    }\n  return res;\n}"
   dependsOn:
   - geometry/Point.h
   isVerificationFile: false
   path: geometry/LineHullIntersection.h
   requiredBy: []
-  timestamp: '2025-11-26 18:05:06+07:00'
+  timestamp: '2026-10-03 15:27:40+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/LineHullIntersection.h

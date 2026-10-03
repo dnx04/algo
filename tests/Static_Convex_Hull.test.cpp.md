@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/ConvexHull.h
     title: geometry/ConvexHull.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/Point.h
     title: geometry/Point.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/static_convex_hull
@@ -25,14 +25,14 @@ data:
     \n// #pragma GCC optimize(\"Ofast,unroll-loops\")       // unroll long, simple\
     \ loops\n// #pragma GCC target(\"avx2,fma\")                   // vectorizing\
     \ code\n// #pragma GCC target(\"lzcnt,popcnt,abm,bmi,bmi2\")  // for fast bitset\
-    \ operation\n\n#include <bits/extc++.h>\n#include <tr2/dynamic_bitset>\n\nusing\
-    \ namespace std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n\
-    // using namespace __gnu_cxx; // rope\n\n// for templates to work\n#define all(x)\
-    \ (x).begin(), (x).end()\n#define sz(x) (int) (x).size()\n#define pb push_back\n\
-    #define eb emplace_back\nusing i32 = int32_t;\nusing u32 = uint32_t;\nusing i64\
-    \ = int64_t;\nusing u64 = uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
-    using ld = long double;\nusing pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\
-    \n// fast map\nconst int RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
+    \ operation\n\n#include <bits/extc++.h>\n\nusing namespace std;\nusing namespace\
+    \ __gnu_pbds;  // ordered_set, gp_hash_table\n// using namespace __gnu_cxx; //\
+    \ rope\n\n// for templates to work\n#define all(x) (x).begin(), (x).end()\n#define\
+    \ len(x) (int) (x).size()\n#define pb push_back\n#define eb emplace_back\nusing\
+    \ i32 = int32_t;\nusing u32 = uint32_t;\nusing i64 = int64_t;\nusing u64 = uint64_t;\n\
+    using i128 = __int128_t;\nusing u128 = __uint128_t;\nusing ld = long double;\n\
+    using pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\n// fast map\nconst int\
+    \ RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
     struct chash {  // customize hash function for gp_hash_table\n  int operator()(int\
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
@@ -59,15 +59,15 @@ data:
     \ a) const {\n    return P(x * cos(a) - y * sin(a), x * sin(a) + y * cos(a));\n\
     \  }\n  friend ostream& operator<<(ostream& os, P p) {\n    return os << \"(\"\
     \ << p.x << \",\" << p.y << \")\";\n  }\n};\n#line 2 \"geometry/ConvexHull.h\"\
-    \n\ntemplate <class P>\nvector<P> convexHull(vector<P> pts) {\n  if (sz(pts) <=\
-    \ 1) return pts;\n  sort(all(pts));\n  vector<P> h(2 * sz(pts) + 2);\n  int s\
-    \ = 0, t = 0;\n  for (int it = 2; it--; s = --t, reverse(all(pts))) {\n    for\
+    \n\ntemplate <class P>\nvector<P> convexHull(vector<P> pts) {\n  if (len(pts)\
+    \ <= 1) return pts;\n  sort(all(pts));\n  vector<P> h(2 * len(pts) + 2);\n  int\
+    \ s = 0, t = 0;\n  for (int it = 2; it--; s = --t, reverse(all(pts))) {\n    for\
     \ (P p : pts) {\n      while (t >= s + 2 && h[t - 2].cross(h[t - 1], p) <= 0)\
     \ t--;\n      h[t++] = p;\n    }\n  }\n  return {h.begin(), h.begin() + t - (t\
     \ == 2 && h[0] == h[1])};\n}\n#line 6 \"tests/Static_Convex_Hull.test.cpp\"\n\n\
     void solve() {\n  int n;\n  cin >> n;\n  vector<Point<i64>> pts(n);\n  for (int\
     \ i = 0; i < n; ++i) cin >> pts[i].x >> pts[i].y;\n  auto hull = convexHull(pts);\n\
-    \  cout << sz(hull) << '\\n';\n  for (auto p : hull) cout << p.x << ' ' << p.y\
+    \  cout << len(hull) << '\\n';\n  for (auto p : hull) cout << p.x << ' ' << p.y\
     \ << '\\n';\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
     \  int tc = 1;\n  cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n\
     \  }\n}\n"
@@ -75,7 +75,7 @@ data:
     #include \"../misc/macros.h\"\n\n#include \"../geometry/ConvexHull.h\"\n\nvoid\
     \ solve() {\n  int n;\n  cin >> n;\n  vector<Point<i64>> pts(n);\n  for (int i\
     \ = 0; i < n; ++i) cin >> pts[i].x >> pts[i].y;\n  auto hull = convexHull(pts);\n\
-    \  cout << sz(hull) << '\\n';\n  for (auto p : hull) cout << p.x << ' ' << p.y\
+    \  cout << len(hull) << '\\n';\n  for (auto p : hull) cout << p.x << ' ' << p.y\
     \ << '\\n';\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n  cin.exceptions(cin.failbit);\n\
     \  int tc = 1;\n  cin >> tc;\n  for (int i = 1; i <= tc; ++i) {\n    solve();\n\
     \  }\n}\n"
@@ -86,8 +86,8 @@ data:
   isVerificationFile: true
   path: tests/Static_Convex_Hull.test.cpp
   requiredBy: []
-  timestamp: '2025-11-28 02:09:51+07:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-10-03 15:27:40+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: tests/Static_Convex_Hull.test.cpp
 layout: document

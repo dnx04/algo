@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/Matrix.h
     title: math/Matrix.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/ModInt.h
     title: math/ModInt.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/pow_of_matrix
@@ -24,14 +24,14 @@ data:
     \n\n#line 1 \"misc/macros.h\"\n// #pragma GCC optimize(\"Ofast,unroll-loops\"\
     )       // unroll long, simple loops\n// #pragma GCC target(\"avx2,fma\")    \
     \               // vectorizing code\n// #pragma GCC target(\"lzcnt,popcnt,abm,bmi,bmi2\"\
-    )  // for fast bitset operation\n\n#include <bits/extc++.h>\n#include <tr2/dynamic_bitset>\n\
-    \nusing namespace std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n\
-    // using namespace __gnu_cxx; // rope\n\n// for templates to work\n#define all(x)\
-    \ (x).begin(), (x).end()\n#define sz(x) (int) (x).size()\n#define pb push_back\n\
-    #define eb emplace_back\nusing i32 = int32_t;\nusing u32 = uint32_t;\nusing i64\
-    \ = int64_t;\nusing u64 = uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
-    using ld = long double;\nusing pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\
-    \n// fast map\nconst int RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
+    )  // for fast bitset operation\n\n#include <bits/extc++.h>\n\nusing namespace\
+    \ std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n// using namespace\
+    \ __gnu_cxx; // rope\n\n// for templates to work\n#define all(x) (x).begin(),\
+    \ (x).end()\n#define len(x) (int) (x).size()\n#define pb push_back\n#define eb\
+    \ emplace_back\nusing i32 = int32_t;\nusing u32 = uint32_t;\nusing i64 = int64_t;\n\
+    using u64 = uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\nusing\
+    \ ld = long double;\nusing pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\n\
+    // fast map\nconst int RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
     struct chash {  // customize hash function for gp_hash_table\n  int operator()(int\
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
@@ -66,8 +66,8 @@ data:
     \ x, m);\n    x = modmul(x, x, m);\n    k >>= 1;\n  }\n  return res;\n}\n#line\
     \ 1 \"math/Matrix.h\"\ntemplate <class T>\nstruct Matrix {\n  int r, c;\n  vector<vector<T>>\
     \ a;\n  Matrix(int n) : Matrix(n, n) {}\n  Matrix(int r, int c) : r(r), c(c),\
-    \ a(r, vector<T>(c, T(0))) {}\n  Matrix(const vector<vector<T>>& v) : r(sz(v)),\
-    \ c(v.empty() ? 0 : sz(v[0])), a(v) {}\n  vector<T>& operator[](int i) { return\
+    \ a(r, vector<T>(c, T(0))) {}\n  Matrix(const vector<vector<T>>& v) : r(len(v)),\
+    \ c(v.empty() ? 0 : len(v[0])), a(v) {}\n  vector<T>& operator[](int i) { return\
     \ a[i]; }\n  const vector<T>& operator[](int i) const { return a[i]; }\n  static\
     \ Matrix eye(int n) {\n    Matrix res(n);\n    for (int i = 0; i < n; ++i) res[i][i]\
     \ = 1;\n    return res;\n  }\n  Matrix operator*(const Matrix& b) const {\n  \
@@ -95,7 +95,7 @@ data:
     \   sol[j] = mat[i][c];\n    }\n    for (int i = rank; i < r; ++i)\n      if (mat[i][c]\
     \ != T(0)) return {{}, {}};\n    vector<vector<T>> ker;\n    for (int j = 0; j\
     \ < c; ++j) {\n      if (is_free[j]) {\n        vector<T> v(c, T(0));\n      \
-    \  v[j] = T(1);\n        for (int i = 0; i < sz(piv); ++i) v[piv[i]] = T(0) -\
+    \  v[j] = T(1);\n        for (int i = 0; i < len(piv); ++i) v[piv[i]] = T(0) -\
     \ mat[i][j];\n        ker.push_back(v);\n      }\n    }\n    return {sol, ker};\n\
     \  }\n  T det() const {\n    if (r != c) return T(0);\n    Matrix tmp = *this;\n\
     \    auto [d, rank] = tmp.gauss();\n    return (rank == r) ? d : T(0);\n  }\n\
@@ -129,8 +129,8 @@ data:
   isVerificationFile: true
   path: tests/Pow_of_Matrix.test.cpp
   requiredBy: []
-  timestamp: '2025-11-28 02:09:51+07:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-10-03 15:27:40+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: tests/Pow_of_Matrix.test.cpp
 layout: document

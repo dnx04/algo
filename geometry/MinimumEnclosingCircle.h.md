@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: geometry/Circumcircle.h
     title: geometry/Circumcircle.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/Point.h
     title: geometry/Point.h
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Minimum_Enclosing_Circle.test.cpp
     title: tests/Minimum_Enclosing_Circle.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"geometry/Point.h\"\n\ntemplate <class T>\nint sgn(T x) {\
@@ -41,7 +41,7 @@ data:
     \  P b = C - A, c = B - A;\n  return A + (b * c.dist2() - c * b.dist2()).perp()\
     \ / b.cross(c) / 2;\n}\n#line 2 \"geometry/MinimumEnclosingCircle.h\"\n\npair<P,\
     \ ld> mec(vector<P> ps) {\n  shuffle(all(ps), mt19937(time(0)));\n  P o = ps[0];\n\
-    \  ld r = 0, EPS = 1 + 1e-12;\n  for (int i = 0; i < sz(ps); ++i) {\n    if ((o\
+    \  ld r = 0, EPS = 1 + 1e-12;\n  for (int i = 0; i < len(ps); ++i) {\n    if ((o\
     \ - ps[i]).dist() > r * EPS) {\n      o = ps[i], r = 0;\n      for (int j = 0;\
     \ j < i; ++j) {\n        if ((o - ps[j]).dist() > r * EPS) {\n          o = (ps[i]\
     \ + ps[j]) / 2;\n          r = (o - ps[i]).dist();\n          for (int k = 0;\
@@ -51,7 +51,7 @@ data:
     }\n"
   code: "#include \"Circumcircle.h\"\n\npair<P, ld> mec(vector<P> ps) {\n  shuffle(all(ps),\
     \ mt19937(time(0)));\n  P o = ps[0];\n  ld r = 0, EPS = 1 + 1e-12;\n  for (int\
-    \ i = 0; i < sz(ps); ++i) {\n    if ((o - ps[i]).dist() > r * EPS) {\n      o\
+    \ i = 0; i < len(ps); ++i) {\n    if ((o - ps[i]).dist() > r * EPS) {\n      o\
     \ = ps[i], r = 0;\n      for (int j = 0; j < i; ++j) {\n        if ((o - ps[j]).dist()\
     \ > r * EPS) {\n          o = (ps[i] + ps[j]) / 2;\n          r = (o - ps[i]).dist();\n\
     \          for (int k = 0; k < j; ++k) {\n            if ((o - ps[k]).dist() >\
@@ -64,8 +64,8 @@ data:
   isVerificationFile: false
   path: geometry/MinimumEnclosingCircle.h
   requiredBy: []
-  timestamp: '2025-11-21 16:12:02+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-10-03 15:27:40+00:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - tests/Minimum_Enclosing_Circle.test.cpp
 documentation_of: geometry/MinimumEnclosingCircle.h

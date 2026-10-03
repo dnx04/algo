@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Point_Add_Range_Sum.test.cpp
     title: tests/Point_Add_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Vertex_Add_Path_Sum.test.cpp
     title: tests/Vertex_Add_Path_Sum.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"ds/Fenwick.h\"\n// for 2d fenwick just add a for\ntemplate\
@@ -31,7 +31,7 @@ data:
   path: ds/Fenwick.h
   requiredBy: []
   timestamp: '2025-12-09 07:33:19+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - tests/Vertex_Add_Path_Sum.test.cpp
   - tests/Point_Add_Range_Sum.test.cpp

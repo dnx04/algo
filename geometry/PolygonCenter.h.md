@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/Point.h
     title: geometry/Point.h
   _extendedRequiredBy: []
@@ -30,11 +30,11 @@ data:
     \  }\n  friend ostream& operator<<(ostream& os, P p) {\n    return os << \"(\"\
     \ << p.x << \",\" << p.y << \")\";\n  }\n};\n#line 2 \"geometry/PolygonCenter.h\"\
     \n\ntypedef Point<ld> P;\nP polygonCenter(const vector<P>& v) {\n  P res(0, 0);\n\
-    \  ld A = 0;\n  for (int i = 0, j = sz(v) - 1; i < sz(v); j = i++) {\n    res\
+    \  ld A = 0;\n  for (int i = 0, j = len(v) - 1; i < len(v); j = i++) {\n    res\
     \ = res + (v[i] + v[j]) * v[j].cross(v[i]);\n    A += v[j].cross(v[i]);\n  }\n\
     \  return res / A / 3;\n}\n"
   code: "#include \"Point.h\"\n\ntypedef Point<ld> P;\nP polygonCenter(const vector<P>&\
-    \ v) {\n  P res(0, 0);\n  ld A = 0;\n  for (int i = 0, j = sz(v) - 1; i < sz(v);\
+    \ v) {\n  P res(0, 0);\n  ld A = 0;\n  for (int i = 0, j = len(v) - 1; i < len(v);\
     \ j = i++) {\n    res = res + (v[i] + v[j]) * v[j].cross(v[i]);\n    A += v[j].cross(v[i]);\n\
     \  }\n  return res / A / 3;\n}"
   dependsOn:
@@ -42,7 +42,7 @@ data:
   isVerificationFile: false
   path: geometry/PolygonCenter.h
   requiredBy: []
-  timestamp: '2025-11-21 16:12:02+07:00'
+  timestamp: '2026-10-03 15:27:40+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/PolygonCenter.h

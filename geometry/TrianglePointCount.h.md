@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/Point.h
     title: geometry/Point.h
   _extendedRequiredBy: []
@@ -38,11 +38,11 @@ data:
     \  const vector<P>& A;  // Tham chi\u1EBFu t\u1EDBi m\u1EA3ng A \u0111\u1EC3 ki\u1EC3\
     m tra h\u01B0\u1EDBng khi truy v\u1EA5n\n  // Constructor: Th\u1EF1c hi\u1EC7\
     n Precomputation O(N^2 * M)\n  TrianglePointCount(const vector<P>& A, const vector<P>&\
-    \ B)\n      : A(A) {\n    int n = sz(A), m = sz(B);\n    for (int i = 0; i < n;\
-    \ ++i) {\n      for (int j = 0; j < n; ++j) {\n        if (i == j) continue;\n\
-    \        P vecIJ = A[j] - A[i]; // Vector A[i] -> A[j]\n        for (int k = 0;\
-    \ k < m; ++k) {\n          P vecIK = B[k] - A[i]; // Vector A[i] -> B[k]\n   \
-    \       // N\u1EBFu B[k] n\u1EB1m th\u1EF1c s\u1EF1 b\xEAn tr\xE1i A[i]->A[j]\
+    \ B)\n      : A(A) {\n    int n = len(A), m = len(B);\n    for (int i = 0; i <\
+    \ n; ++i) {\n      for (int j = 0; j < n; ++j) {\n        if (i == j) continue;\n\
+    \        P vecIJ = A[j] - A[i];  // Vector A[i] -> A[j]\n        for (int k =\
+    \ 0; k < m; ++k) {\n          P vecIK = B[k] - A[i];  // Vector A[i] -> B[k]\n\
+    \          // N\u1EBFu B[k] n\u1EB1m th\u1EF1c s\u1EF1 b\xEAn tr\xE1i A[i]->A[j]\
     \ (cross product > 0)\n          if (vecIJ.cross(vecIK) > 0) side[i][j][k] = 1;\n\
     \        }\n      }\n    }\n  }\n  // Truy v\u1EA5n: \u0110\u1EBFm s\u1ED1 \u0111\
     i\u1EC3m B n\u1EB1m trong tam gi\xE1c A[a], A[b], A[c]\n  // \u0110\u1ED9 ph\u1EE9\
@@ -61,11 +61,11 @@ data:
     \  const vector<P>& A;  // Tham chi\u1EBFu t\u1EDBi m\u1EA3ng A \u0111\u1EC3 ki\u1EC3\
     m tra h\u01B0\u1EDBng khi truy v\u1EA5n\n  // Constructor: Th\u1EF1c hi\u1EC7\
     n Precomputation O(N^2 * M)\n  TrianglePointCount(const vector<P>& A, const vector<P>&\
-    \ B)\n      : A(A) {\n    int n = sz(A), m = sz(B);\n    for (int i = 0; i < n;\
-    \ ++i) {\n      for (int j = 0; j < n; ++j) {\n        if (i == j) continue;\n\
-    \        P vecIJ = A[j] - A[i]; // Vector A[i] -> A[j]\n        for (int k = 0;\
-    \ k < m; ++k) {\n          P vecIK = B[k] - A[i]; // Vector A[i] -> B[k]\n   \
-    \       // N\u1EBFu B[k] n\u1EB1m th\u1EF1c s\u1EF1 b\xEAn tr\xE1i A[i]->A[j]\
+    \ B)\n      : A(A) {\n    int n = len(A), m = len(B);\n    for (int i = 0; i <\
+    \ n; ++i) {\n      for (int j = 0; j < n; ++j) {\n        if (i == j) continue;\n\
+    \        P vecIJ = A[j] - A[i];  // Vector A[i] -> A[j]\n        for (int k =\
+    \ 0; k < m; ++k) {\n          P vecIK = B[k] - A[i];  // Vector A[i] -> B[k]\n\
+    \          // N\u1EBFu B[k] n\u1EB1m th\u1EF1c s\u1EF1 b\xEAn tr\xE1i A[i]->A[j]\
     \ (cross product > 0)\n          if (vecIJ.cross(vecIK) > 0) side[i][j][k] = 1;\n\
     \        }\n      }\n    }\n  }\n  // Truy v\u1EA5n: \u0110\u1EBFm s\u1ED1 \u0111\
     i\u1EC3m B n\u1EB1m trong tam gi\xE1c A[a], A[b], A[c]\n  // \u0110\u1ED9 ph\u1EE9\
@@ -83,7 +83,7 @@ data:
   isVerificationFile: false
   path: geometry/TrianglePointCount.h
   requiredBy: []
-  timestamp: '2025-11-22 00:26:56+07:00'
+  timestamp: '2026-10-03 15:27:40+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - tests/Count_Points_in_Triangle.test.cpp

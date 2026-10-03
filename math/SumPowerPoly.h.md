@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/ModInt.h
     title: math/ModInt.h
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Sum_of_Exponential_times_Polynomial.test.cpp
     title: tests/Sum_of_Exponential_times_Polynomial.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
     title: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/ModInt.h\"\n\ntemplate <int mod>\nstruct modint {\n\
@@ -47,58 +47,59 @@ data:
     \ i = 1; i <= n; ++i) fac[i] = fac[i - 1] * i;\n  invFac[n] = fac[n].inv();\n\
     \  for (int i = n; i >= 1; --i) invFac[i - 1] = invFac[i] * i;\n}\n\n// Lagrange\
     \ interpolation [0,...,n-1] in O(n)\nFp interpolate(const vector<Fp>& y, i64 n)\
-    \ {\n  int k = sz(y) - 1;\n  if (n <= k) return y[n];\n  vector<Fp> pre(k + 1),\
+    \ {\n  int k = len(y) - 1;\n  if (n <= k) return y[n];\n  vector<Fp> pre(k + 1),\
     \ suf(k + 1);\n  pre[0] = suf[k] = 1;\n  for (int i = 0; i < k; ++i) pre[i + 1]\
     \ = pre[i] * (n - i);\n  for (int i = k; i > 0; --i) suf[i - 1] = suf[i] * (n\
     \ - i);\n  Fp ans = 0;\n  for (int i = 0; i <= k; ++i) {\n    Fp val = pre[i]\
-    \ * suf[i] * y[i] * invFac[i] * invFac[k - i];\n    if ((k - i) & 1) ans -= val;\n\
-    \    else ans += val;\n  }\n  return ans;\n}\n\n// C = sum_{i=0->inf} r^i * fs[i]\
-    \ (r != 1)\nFp sumPolyLimit(Fp r, const vector<Fp>& fs) {\n  int d = fs.size()\
-    \ - 1;\n  if (r.x == 0) return fs[0];\n  vector<Fp> rr(d + 1);\n  rr[0] = 1;\n\
-    \  for (int i = 1; i <= d; ++i) rr[i] = rr[i - 1] * r;\n  Fp ans = 0, S = 0;\n\
-    \  for (int i = 0; i <= d; ++i) {\n    S += rr[i] * fs[i];\n    Fp term = invFac[d\
-    \ - i] * invFac[i + 1] * rr[d - i] * S;\n    if ((d - i) & 1) ans -= term;\n \
-    \   else ans += term;\n  }\n  return ans * fac[d + 1] / (Fp(1) - r).pow(d + 1);\n\
-    }\n\n// Sum_{i=0->n-1} r^i * fs[i]\nFp sumPoly(Fp r, const vector<Fp>& fs, u64\
-    \ n) {\n  if (n == 0) return 0;\n  if (r == 0) return fs[0];\n  int d = sz(fs)\
-    \ - 1;\n  if (r == 1) {\n    vector<Fp> S(d + 2);\n    S[0] = 0;\n    for (int\
-    \ i = 0; i <= d; ++i) S[i + 1] = S[i] + fs[i];\n    return interpolate(S, n);\n\
-    \  }\n  Fp C = sumPolyLimit(r, fs), S_curr = 0, rp = 1, rip = 1, ri = r.inv();\n\
-    \  vector<Fp> g(d + 1);\n  for (int k = 0; k <= d; ++k) {\n    g[k] = (S_curr\
-    \ - C) * rip;\n    S_curr += rp * fs[k], rp *= r, rip *= ri;\n  }\n  return C\
-    \ + r.pow(n) * interpolate(g, n);\n}\n"
+    \ * suf[i] * y[i] * invFac[i] * invFac[k - i];\n    if ((k - i) & 1)\n      ans\
+    \ -= val;\n    else\n      ans += val;\n  }\n  return ans;\n}\n\n// C = sum_{i=0->inf}\
+    \ r^i * fs[i] (r != 1)\nFp sumPolyLimit(Fp r, const vector<Fp>& fs) {\n  int d\
+    \ = fs.size() - 1;\n  if (r.x == 0) return fs[0];\n  vector<Fp> rr(d + 1);\n \
+    \ rr[0] = 1;\n  for (int i = 1; i <= d; ++i) rr[i] = rr[i - 1] * r;\n  Fp ans\
+    \ = 0, S = 0;\n  for (int i = 0; i <= d; ++i) {\n    S += rr[i] * fs[i];\n   \
+    \ Fp term = invFac[d - i] * invFac[i + 1] * rr[d - i] * S;\n    if ((d - i) &\
+    \ 1)\n      ans -= term;\n    else\n      ans += term;\n  }\n  return ans * fac[d\
+    \ + 1] / (Fp(1) - r).pow(d + 1);\n}\n\n// Sum_{i=0->n-1} r^i * fs[i]\nFp sumPoly(Fp\
+    \ r, const vector<Fp>& fs, u64 n) {\n  if (n == 0) return 0;\n  if (r == 0) return\
+    \ fs[0];\n  int d = len(fs) - 1;\n  if (r == 1) {\n    vector<Fp> S(d + 2);\n\
+    \    S[0] = 0;\n    for (int i = 0; i <= d; ++i) S[i + 1] = S[i] + fs[i];\n  \
+    \  return interpolate(S, n);\n  }\n  Fp C = sumPolyLimit(r, fs), S_curr = 0, rp\
+    \ = 1, rip = 1, ri = r.inv();\n  vector<Fp> g(d + 1);\n  for (int k = 0; k <=\
+    \ d; ++k) {\n    g[k] = (S_curr - C) * rip;\n    S_curr += rp * fs[k], rp *= r,\
+    \ rip *= ri;\n  }\n  return C + r.pow(n) * interpolate(g, n);\n}\n"
   code: "#include \"ModInt.h\"\n\nusing Fp = modint<998244353>;\n\nvector<Fp> fac,\
     \ invFac;\nvoid prepareFac(int n) {\n  fac.resize(n + 1);\n  invFac.resize(n +\
     \ 1);\n  fac[0] = 1;\n  for (int i = 1; i <= n; ++i) fac[i] = fac[i - 1] * i;\n\
     \  invFac[n] = fac[n].inv();\n  for (int i = n; i >= 1; --i) invFac[i - 1] = invFac[i]\
     \ * i;\n}\n\n// Lagrange interpolation [0,...,n-1] in O(n)\nFp interpolate(const\
-    \ vector<Fp>& y, i64 n) {\n  int k = sz(y) - 1;\n  if (n <= k) return y[n];\n\
+    \ vector<Fp>& y, i64 n) {\n  int k = len(y) - 1;\n  if (n <= k) return y[n];\n\
     \  vector<Fp> pre(k + 1), suf(k + 1);\n  pre[0] = suf[k] = 1;\n  for (int i =\
     \ 0; i < k; ++i) pre[i + 1] = pre[i] * (n - i);\n  for (int i = k; i > 0; --i)\
     \ suf[i - 1] = suf[i] * (n - i);\n  Fp ans = 0;\n  for (int i = 0; i <= k; ++i)\
     \ {\n    Fp val = pre[i] * suf[i] * y[i] * invFac[i] * invFac[k - i];\n    if\
-    \ ((k - i) & 1) ans -= val;\n    else ans += val;\n  }\n  return ans;\n}\n\n//\
-    \ C = sum_{i=0->inf} r^i * fs[i] (r != 1)\nFp sumPolyLimit(Fp r, const vector<Fp>&\
-    \ fs) {\n  int d = fs.size() - 1;\n  if (r.x == 0) return fs[0];\n  vector<Fp>\
-    \ rr(d + 1);\n  rr[0] = 1;\n  for (int i = 1; i <= d; ++i) rr[i] = rr[i - 1] *\
-    \ r;\n  Fp ans = 0, S = 0;\n  for (int i = 0; i <= d; ++i) {\n    S += rr[i] *\
-    \ fs[i];\n    Fp term = invFac[d - i] * invFac[i + 1] * rr[d - i] * S;\n    if\
-    \ ((d - i) & 1) ans -= term;\n    else ans += term;\n  }\n  return ans * fac[d\
-    \ + 1] / (Fp(1) - r).pow(d + 1);\n}\n\n// Sum_{i=0->n-1} r^i * fs[i]\nFp sumPoly(Fp\
-    \ r, const vector<Fp>& fs, u64 n) {\n  if (n == 0) return 0;\n  if (r == 0) return\
-    \ fs[0];\n  int d = sz(fs) - 1;\n  if (r == 1) {\n    vector<Fp> S(d + 2);\n \
-    \   S[0] = 0;\n    for (int i = 0; i <= d; ++i) S[i + 1] = S[i] + fs[i];\n   \
-    \ return interpolate(S, n);\n  }\n  Fp C = sumPolyLimit(r, fs), S_curr = 0, rp\
-    \ = 1, rip = 1, ri = r.inv();\n  vector<Fp> g(d + 1);\n  for (int k = 0; k <=\
-    \ d; ++k) {\n    g[k] = (S_curr - C) * rip;\n    S_curr += rp * fs[k], rp *= r,\
-    \ rip *= ri;\n  }\n  return C + r.pow(n) * interpolate(g, n);\n}"
+    \ ((k - i) & 1)\n      ans -= val;\n    else\n      ans += val;\n  }\n  return\
+    \ ans;\n}\n\n// C = sum_{i=0->inf} r^i * fs[i] (r != 1)\nFp sumPolyLimit(Fp r,\
+    \ const vector<Fp>& fs) {\n  int d = fs.size() - 1;\n  if (r.x == 0) return fs[0];\n\
+    \  vector<Fp> rr(d + 1);\n  rr[0] = 1;\n  for (int i = 1; i <= d; ++i) rr[i] =\
+    \ rr[i - 1] * r;\n  Fp ans = 0, S = 0;\n  for (int i = 0; i <= d; ++i) {\n   \
+    \ S += rr[i] * fs[i];\n    Fp term = invFac[d - i] * invFac[i + 1] * rr[d - i]\
+    \ * S;\n    if ((d - i) & 1)\n      ans -= term;\n    else\n      ans += term;\n\
+    \  }\n  return ans * fac[d + 1] / (Fp(1) - r).pow(d + 1);\n}\n\n// Sum_{i=0->n-1}\
+    \ r^i * fs[i]\nFp sumPoly(Fp r, const vector<Fp>& fs, u64 n) {\n  if (n == 0)\
+    \ return 0;\n  if (r == 0) return fs[0];\n  int d = len(fs) - 1;\n  if (r == 1)\
+    \ {\n    vector<Fp> S(d + 2);\n    S[0] = 0;\n    for (int i = 0; i <= d; ++i)\
+    \ S[i + 1] = S[i] + fs[i];\n    return interpolate(S, n);\n  }\n  Fp C = sumPolyLimit(r,\
+    \ fs), S_curr = 0, rp = 1, rip = 1, ri = r.inv();\n  vector<Fp> g(d + 1);\n  for\
+    \ (int k = 0; k <= d; ++k) {\n    g[k] = (S_curr - C) * rip;\n    S_curr += rp\
+    \ * fs[k], rp *= r, rip *= ri;\n  }\n  return C + r.pow(n) * interpolate(g, n);\n\
+    }"
   dependsOn:
   - math/ModInt.h
   isVerificationFile: false
   path: math/SumPowerPoly.h
   requiredBy: []
-  timestamp: '2025-11-26 18:05:06+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-10-03 15:27:40+00:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - tests/Sum_of_Exponential_times_Polynomial.test.cpp
   - tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp

@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Rational_Approximation.test.cpp
     title: tests/Rational_Approximation.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Stern_Brocot.test.cpp
     title: tests/Stern_Brocot.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"math/SternBrocot.h\"\nstruct Frac { i64 p, q; };\nusing\
@@ -101,7 +101,7 @@ data:
   path: math/SternBrocot.h
   requiredBy: []
   timestamp: '2025-11-28 10:18:48+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - tests/Stern_Brocot.test.cpp
   - tests/Rational_Approximation.test.cpp

@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/FST.h
     title: math/FST.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/ModInt.h
     title: math/ModInt.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
@@ -25,14 +25,14 @@ data:
     \n// #pragma GCC optimize(\"Ofast,unroll-loops\")       // unroll long, simple\
     \ loops\n// #pragma GCC target(\"avx2,fma\")                   // vectorizing\
     \ code\n// #pragma GCC target(\"lzcnt,popcnt,abm,bmi,bmi2\")  // for fast bitset\
-    \ operation\n\n#include <bits/extc++.h>\n#include <tr2/dynamic_bitset>\n\nusing\
-    \ namespace std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n\
-    // using namespace __gnu_cxx; // rope\n\n// for templates to work\n#define all(x)\
-    \ (x).begin(), (x).end()\n#define sz(x) (int) (x).size()\n#define pb push_back\n\
-    #define eb emplace_back\nusing i32 = int32_t;\nusing u32 = uint32_t;\nusing i64\
-    \ = int64_t;\nusing u64 = uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
-    using ld = long double;\nusing pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\
-    \n// fast map\nconst int RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
+    \ operation\n\n#include <bits/extc++.h>\n\nusing namespace std;\nusing namespace\
+    \ __gnu_pbds;  // ordered_set, gp_hash_table\n// using namespace __gnu_cxx; //\
+    \ rope\n\n// for templates to work\n#define all(x) (x).begin(), (x).end()\n#define\
+    \ len(x) (int) (x).size()\n#define pb push_back\n#define eb emplace_back\nusing\
+    \ i32 = int32_t;\nusing u32 = uint32_t;\nusing i64 = int64_t;\nusing u64 = uint64_t;\n\
+    using i128 = __int128_t;\nusing u128 = __uint128_t;\nusing ld = long double;\n\
+    using pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\n// fast map\nconst int\
+    \ RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
     struct chash {  // customize hash function for gp_hash_table\n  int operator()(int\
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
@@ -65,32 +65,32 @@ data:
     };\n\nu64 modmul(u64 x, u64 y, u64 m) { return u128(x) * y % m; }\nu64 modpow(u64\
     \ x, u64 k, u64 m) {\n  u64 res = 1;\n  while (k) {\n    if (k & 1) res = modmul(res,\
     \ x, m);\n    x = modmul(x, x, m);\n    k >>= 1;\n  }\n  return res;\n}\n#line\
-    \ 1 \"math/FST.h\"\n#define pc __builtin_popcount\n\nnamespace FST {\n  enum {\
-    \ OR, AND, XOR };\n  template<class T>\n  void fwht(vector<T>& a, int op, int\
-    \ inv) {\n    int n = sz(a);\n    for (int l = 1; l < n; l <<= 1)\n      for (int\
-    \ i = 0; i < n; i += 2 * l)\n        for (int j = 0; j < l; ++j) {\n         \
-    \ T u = a[i + j], v = a[i + j + l];\n          if (op == OR) a[i + j + l] += inv\
-    \ ? -u : u;\n          else if (op == AND) a[i + j] += inv ? -v : v;\n       \
-    \   else a[i + j] = u + v, a[i + j + l] = u - v;\n        }\n    if (op == XOR\
-    \ && inv) {\n      T in = T(1) / n;\n      for (auto& x : a) x *= in;\n    }\n\
-    \  }\n  template<class T>\n  vector<T> conv(vector<T> a, vector<T> b, int op)\
-    \ {\n    int n = 1; while (n < max(sz(a), sz(b))) n <<= 1;\n    a.resize(n), b.resize(n);\n\
-    \    fwht(a, op, 0), fwht(b, op, 0);\n    for (int i = 0; i < n; ++i) a[i] *=\
-    \ b[i];\n    fwht(a, op, 1);\n    return a;\n  }\n  template<class T>\n  vector<T>\
-    \ subsetConv(const vector<T>& a, const vector<T>& b) {\n    int n = 1, k = 0;\n\
-    \    while (n < max(sz(a), sz(b))) n <<= 1, k++;\n    vector<vector<T>> fa(k +\
-    \ 1, vector<T>(n)), fb(k + 1, vector<T>(n)), h(k + 1, vector<T>(n));\n    for\
-    \ (int i = 0; i < n; ++i) {\n      if (i < sz(a)) fa[pc(i)][i] = a[i];\n     \
-    \ if (i < sz(b)) fb[pc(i)][i] = b[i];\n    }\n    for (int i = 0; i <= k; ++i)\
-    \ fwht(fa[i], OR, 0), fwht(fb[i], OR, 0);\n    for (int i = 0; i <= k; ++i)\n\
-    \      for (int j = 0; j <= i; ++j)\n        for (int x = 0; x < n; ++x) h[i][x]\
-    \ += fa[j][x] * fb[i - j][x];\n    for (int i = 0; i <= k; ++i) fwht(h[i], OR,\
-    \ 1);\n    vector<T> res(n);\n    for (int i = 0; i < n; ++i) res[i] = h[pc(i)][i];\n\
-    \    return res;\n  }\n}\n#line 6 \"tests/Bitwise_Subset_Convolution.test.cpp\"\
-    \n\nusing namespace FST;\nusing Fp = modint<998244353>;\n\nvoid solve() {\n  int\
-    \ n;\n  cin >> n;\n  vector<Fp> a(1 << n), b(1 << n);\n  for (int i = 0; i < (1\
-    \ << n); ++i) cin >> a[i];\n  for (int i = 0; i < (1 << n); ++i) cin >> b[i];\n\
-    \  auto c = subsetConv(a, b);\n  for(auto e: c) cout << e << ' ';\n}\n\nsigned\
+    \ 1 \"math/FST.h\"\n#define pc __builtin_popcount\n\nnamespace FST {\nenum { OR,\n\
+    \       AND,\n       XOR };\ntemplate <class T>\nvoid fwht(vector<T>& a, int op,\
+    \ int inv) {\n  int n = len(a);\n  for (int l = 1; l < n; l <<= 1)\n    for (int\
+    \ i = 0; i < n; i += 2 * l)\n      for (int j = 0; j < l; ++j) {\n        T u\
+    \ = a[i + j], v = a[i + j + l];\n        if (op == OR)\n          a[i + j + l]\
+    \ += inv ? -u : u;\n        else if (op == AND)\n          a[i + j] += inv ? -v\
+    \ : v;\n        else\n          a[i + j] = u + v, a[i + j + l] = u - v;\n    \
+    \  }\n  if (op == XOR && inv) {\n    T in = T(1) / n;\n    for (auto& x : a) x\
+    \ *= in;\n  }\n}\ntemplate <class T>\nvector<T> conv(vector<T> a, vector<T> b,\
+    \ int op) {\n  int n = 1;\n  while (n < max(len(a), len(b))) n <<= 1;\n  a.resize(n),\
+    \ b.resize(n);\n  fwht(a, op, 0), fwht(b, op, 0);\n  for (int i = 0; i < n; ++i)\
+    \ a[i] *= b[i];\n  fwht(a, op, 1);\n  return a;\n}\ntemplate <class T>\nvector<T>\
+    \ subsetConv(const vector<T>& a, const vector<T>& b) {\n  int n = 1, k = 0;\n\
+    \  while (n < max(len(a), len(b))) n <<= 1, k++;\n  vector<vector<T>> fa(k + 1,\
+    \ vector<T>(n)), fb(k + 1, vector<T>(n)), h(k + 1, vector<T>(n));\n  for (int\
+    \ i = 0; i < n; ++i) {\n    if (i < len(a)) fa[pc(i)][i] = a[i];\n    if (i <\
+    \ len(b)) fb[pc(i)][i] = b[i];\n  }\n  for (int i = 0; i <= k; ++i) fwht(fa[i],\
+    \ OR, 0), fwht(fb[i], OR, 0);\n  for (int i = 0; i <= k; ++i)\n    for (int j\
+    \ = 0; j <= i; ++j)\n      for (int x = 0; x < n; ++x) h[i][x] += fa[j][x] * fb[i\
+    \ - j][x];\n  for (int i = 0; i <= k; ++i) fwht(h[i], OR, 1);\n  vector<T> res(n);\n\
+    \  for (int i = 0; i < n; ++i) res[i] = h[pc(i)][i];\n  return res;\n}\n}  //\
+    \ namespace FST\n#line 6 \"tests/Bitwise_Subset_Convolution.test.cpp\"\n\nusing\
+    \ namespace FST;\nusing Fp = modint<998244353>;\n\nvoid solve() {\n  int n;\n\
+    \  cin >> n;\n  vector<Fp> a(1 << n), b(1 << n);\n  for (int i = 0; i < (1 <<\
+    \ n); ++i) cin >> a[i];\n  for (int i = 0; i < (1 << n); ++i) cin >> b[i];\n \
+    \ auto c = subsetConv(a, b);\n  for(auto e: c) cout << e << ' ';\n}\n\nsigned\
     \ main() {\n  ios::sync_with_stdio(false);\n  cin.tie(0);\n  int tc = 1;\n  //\
     \ cin >> tc;\n  while (tc--) solve();\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/subset_convolution\"\n\n\
@@ -108,7 +108,7 @@ data:
   isVerificationFile: true
   path: tests/Bitwise_Subset_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2025-11-28 12:47:29+07:00'
+  timestamp: '2026-10-03 15:27:40+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Bitwise_Subset_Convolution.test.cpp

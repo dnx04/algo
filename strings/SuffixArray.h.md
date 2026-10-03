@@ -3,21 +3,21 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Longest_Common_Substring.test.cpp
     title: tests/Longest_Common_Substring.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Number_of_Substrings.test.cpp
     title: tests/Number_of_Substrings.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Run_Enumerate.test.cpp
     title: tests/Run_Enumerate.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Suffix_Array.test.cpp
     title: tests/Suffix_Array.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"strings/SuffixArray.h\"\nstruct SuffixArray {\n  vector<int>\
@@ -57,7 +57,7 @@ data:
   path: strings/SuffixArray.h
   requiredBy: []
   timestamp: '2025-11-22 00:26:56+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - tests/Longest_Common_Substring.test.cpp
   - tests/Number_of_Substrings.test.cpp

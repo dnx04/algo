@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: strings/SuffixArray.h
     title: strings/SuffixArray.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/longest_common_substring
@@ -22,14 +22,14 @@ data:
     \n// #pragma GCC optimize(\"Ofast,unroll-loops\")       // unroll long, simple\
     \ loops\n// #pragma GCC target(\"avx2,fma\")                   // vectorizing\
     \ code\n// #pragma GCC target(\"lzcnt,popcnt,abm,bmi,bmi2\")  // for fast bitset\
-    \ operation\n\n#include <bits/extc++.h>\n#include <tr2/dynamic_bitset>\n\nusing\
-    \ namespace std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n\
-    // using namespace __gnu_cxx; // rope\n\n// for templates to work\n#define all(x)\
-    \ (x).begin(), (x).end()\n#define sz(x) (int) (x).size()\n#define pb push_back\n\
-    #define eb emplace_back\nusing i32 = int32_t;\nusing u32 = uint32_t;\nusing i64\
-    \ = int64_t;\nusing u64 = uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
-    using ld = long double;\nusing pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\
-    \n// fast map\nconst int RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
+    \ operation\n\n#include <bits/extc++.h>\n\nusing namespace std;\nusing namespace\
+    \ __gnu_pbds;  // ordered_set, gp_hash_table\n// using namespace __gnu_cxx; //\
+    \ rope\n\n// for templates to work\n#define all(x) (x).begin(), (x).end()\n#define\
+    \ len(x) (int) (x).size()\n#define pb push_back\n#define eb emplace_back\nusing\
+    \ i32 = int32_t;\nusing u32 = uint32_t;\nusing i64 = int64_t;\nusing u64 = uint64_t;\n\
+    using i128 = __int128_t;\nusing u128 = __uint128_t;\nusing ld = long double;\n\
+    using pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\n// fast map\nconst int\
+    \ RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
     struct chash {  // customize hash function for gp_hash_table\n  int operator()(int\
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
@@ -55,23 +55,23 @@ data:
     \ 0, j; i < n - 1; lcp[rank[i++]] = k)\n      for (k && k--, j = sa[rank[i] -\
     \ 1]; s[i + k] == s[j + k]; k++);\n  }\n};\n#line 5 \"tests/Longest_Common_Substring.test.cpp\"\
     \n\nvoid solve() {\n  string S, T;\n  cin >> S >> T;\n  SuffixArray sa(S + '$'\
-    \ + T);  // N\u1ED1i chu\u1ED7i\n  int n = sz(S);\n  int maxL = 0, pS = -1, pT\
+    \ + T);  // N\u1ED1i chu\u1ED7i\n  int n = len(S);\n  int maxL = 0, pS = -1, pT\
     \ = -1;\n\n  // Duy\u1EC7t m\u1EA3ng LCP \u0111\u1EC3 t\xECm max\n  for (int i\
-    \ = 1; i < sz(sa.lcp); ++i) {\n    int u = sa.sa[i], v = sa.sa[i - 1];\n\n   \
-    \ // Ki\u1EC3m tra u, v c\xF3 n\u1EB1m \u1EDF 2 x\xE2u kh\xE1c nhau kh\xF4ng (m\u1ED9\
-    t c\xE1i < n, m\u1ED9t c\xE1i > n)\n    if ((u < n) != (v < n)) {\n      if (sa.lcp[i]\
-    \ > maxL) {\n        maxL = sa.lcp[i];\n        pS = (u < n ? u : v);        \
-    \  // V\u1ECB tr\xED b\xEAn S\n        pT = (u > n ? u : v) - n - 1;  // V\u1ECB\
-    \ tr\xED b\xEAn T (tr\u1EEB \u0111\u1ED9 d\xE0i S v\xE0 d\u1EA5u $)\n      }\n\
-    \    }\n  }\n\n  if (maxL > 0) {\n    cout << pS << \" \" << pS + maxL << \" \"\
-    \ << pT << \" \" << pT + maxL;\n  } else {\n    cout << \"0 0 0 0\";\n  }\n}\n\
-    \nint main() {\n  solve();\n}\n"
+    \ = 1; i < len(sa.lcp); ++i) {\n    int u = sa.sa[i], v = sa.sa[i - 1];\n\n  \
+    \  // Ki\u1EC3m tra u, v c\xF3 n\u1EB1m \u1EDF 2 x\xE2u kh\xE1c nhau kh\xF4ng\
+    \ (m\u1ED9t c\xE1i < n, m\u1ED9t c\xE1i > n)\n    if ((u < n) != (v < n)) {\n\
+    \      if (sa.lcp[i] > maxL) {\n        maxL = sa.lcp[i];\n        pS = (u < n\
+    \ ? u : v);          // V\u1ECB tr\xED b\xEAn S\n        pT = (u > n ? u : v)\
+    \ - n - 1;  // V\u1ECB tr\xED b\xEAn T (tr\u1EEB \u0111\u1ED9 d\xE0i S v\xE0 d\u1EA5\
+    u $)\n      }\n    }\n  }\n\n  if (maxL > 0) {\n    cout << pS << \" \" << pS\
+    \ + maxL << \" \" << pT << \" \" << pT + maxL;\n  } else {\n    cout << \"0 0\
+    \ 0 0\";\n  }\n}\n\nint main() {\n  solve();\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/longest_common_substring\"\
     \n\n#include \"../misc/macros.h\"\n#include \"../strings/SuffixArray.h\"\n\nvoid\
     \ solve() {\n  string S, T;\n  cin >> S >> T;\n  SuffixArray sa(S + '$' + T);\
-    \  // N\u1ED1i chu\u1ED7i\n  int n = sz(S);\n  int maxL = 0, pS = -1, pT = -1;\n\
+    \  // N\u1ED1i chu\u1ED7i\n  int n = len(S);\n  int maxL = 0, pS = -1, pT = -1;\n\
     \n  // Duy\u1EC7t m\u1EA3ng LCP \u0111\u1EC3 t\xECm max\n  for (int i = 1; i <\
-    \ sz(sa.lcp); ++i) {\n    int u = sa.sa[i], v = sa.sa[i - 1];\n\n    // Ki\u1EC3\
+    \ len(sa.lcp); ++i) {\n    int u = sa.sa[i], v = sa.sa[i - 1];\n\n    // Ki\u1EC3\
     m tra u, v c\xF3 n\u1EB1m \u1EDF 2 x\xE2u kh\xE1c nhau kh\xF4ng (m\u1ED9t c\xE1\
     i < n, m\u1ED9t c\xE1i > n)\n    if ((u < n) != (v < n)) {\n      if (sa.lcp[i]\
     \ > maxL) {\n        maxL = sa.lcp[i];\n        pS = (u < n ? u : v);        \
@@ -86,8 +86,8 @@ data:
   isVerificationFile: true
   path: tests/Longest_Common_Substring.test.cpp
   requiredBy: []
-  timestamp: '2025-11-28 02:09:51+07:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-10-03 15:27:40+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: tests/Longest_Common_Substring.test.cpp
 layout: document

@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: ds/RMQ.h
     title: ds/RMQ.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: strings/SuffixArray.h
     title: strings/SuffixArray.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/runenumerate
@@ -24,14 +24,14 @@ data:
     \n\n#line 1 \"misc/macros.h\"\n// #pragma GCC optimize(\"Ofast,unroll-loops\"\
     )       // unroll long, simple loops\n// #pragma GCC target(\"avx2,fma\")    \
     \               // vectorizing code\n// #pragma GCC target(\"lzcnt,popcnt,abm,bmi,bmi2\"\
-    )  // for fast bitset operation\n\n#include <bits/extc++.h>\n#include <tr2/dynamic_bitset>\n\
-    \nusing namespace std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n\
-    // using namespace __gnu_cxx; // rope\n\n// for templates to work\n#define all(x)\
-    \ (x).begin(), (x).end()\n#define sz(x) (int) (x).size()\n#define pb push_back\n\
-    #define eb emplace_back\nusing i32 = int32_t;\nusing u32 = uint32_t;\nusing i64\
-    \ = int64_t;\nusing u64 = uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
-    using ld = long double;\nusing pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\
-    \n// fast map\nconst int RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
+    )  // for fast bitset operation\n\n#include <bits/extc++.h>\n\nusing namespace\
+    \ std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n// using namespace\
+    \ __gnu_cxx; // rope\n\n// for templates to work\n#define all(x) (x).begin(),\
+    \ (x).end()\n#define len(x) (int) (x).size()\n#define pb push_back\n#define eb\
+    \ emplace_back\nusing i32 = int32_t;\nusing u32 = uint32_t;\nusing i64 = int64_t;\n\
+    using u64 = uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\nusing\
+    \ ld = long double;\nusing pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\n\
+    // fast map\nconst int RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
     struct chash {  // customize hash function for gp_hash_table\n  int operator()(int\
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
@@ -42,8 +42,8 @@ data:
     \    v.insert(v.mutable_begin(), cur);\n*/\n#line 1 \"ds/RMQ.h\"\ntemplate <class\
     \ T, class F>\nstruct RMQ {\n  vector<vector<T>> jmp;\n  const F f;\n  RMQ(const\
     \ vector<T>& V, F f) : jmp(1, V), f(f) {\n    for (int pw = 1, k = 1; pw * 2 <=\
-    \ sz(V); pw *= 2, ++k) {\n      jmp.eb(sz(V) - pw * 2 + 1);\n      for (int j\
-    \ = 0; j < sz(jmp[k]); ++j) jmp[k][j] = f(jmp[k - 1][j], jmp[k - 1][j + pw]);\n\
+    \ len(V); pw *= 2, ++k) {\n      jmp.eb(len(V) - pw * 2 + 1);\n      for (int\
+    \ j = 0; j < len(jmp[k]); ++j) jmp[k][j] = f(jmp[k - 1][j], jmp[k - 1][j + pw]);\n\
     \    }\n  }\n  // [a, b)\n  T query(int a, int b) {\n    assert(a < b);\n    int\
     \ dep = 31 - __builtin_clz(b - a);\n    return f(jmp[dep][a], jmp[dep][b - (1\
     \ << dep)]);\n  }\n};\n#line 1 \"strings/SuffixArray.h\"\nstruct SuffixArray {\n\
@@ -71,10 +71,10 @@ data:
     \u1EDDng l\xE0 t, l, r)\n  static bool compareOutput(const Run& a, const Run&\
     \ b) {\n    if (a.t != b.t) return a.t < b.t;\n    if (a.l != b.l) return a.l\
     \ < b.l;\n    return a.r < b.r;\n  }\n};\n\ntemplate <class R>\nint get_lcp(const\
-    \ SuffixArray& sa, R& rmq, int i, int j) {\n  if (i == j) return sz(sa.sa) - 1\
-    \ - i;\n  int l = sa.rank[i], r = sa.rank[j];\n  if (l > r) swap(l, r);\n  return\
+    \ SuffixArray& sa, R& rmq, int i, int j) {\n  if (i == j) return len(sa.sa) -\
+    \ 1 - i;\n  int l = sa.rank[i], r = sa.rank[j];\n  if (l > r) swap(l, r);\n  return\
     \ rmq.query(l + 1, r + 1);\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n\
-    \  string s;\n  cin >> s;\n  int n = sz(s);\n\n  auto min_func = [](int a, int\
+    \  string s;\n  cin >> s;\n  int n = len(s);\n\n  auto min_func = [](int a, int\
     \ b) { return min(a, b); };\n\n  SuffixArray sa(s);\n  RMQ rmq(sa.lcp, min_func);\n\
     \n  string s_rev = s;\n  reverse(all(s_rev));\n  SuffixArray sa_rev(s_rev);\n\
     \  RMQ rmq_rev(sa_rev.lcp, min_func);\n\n  vector<Run> candidates;\n\n  for (int\
@@ -90,7 +90,7 @@ data:
     \ run.l && last.r == run.r) continue;  // \u0110\xE3 c\xF3 run c\xF9ng l,r v\u1EDB\
     i t nh\u1ECF h\u01A1n -> B\u1ECF qua\n    }\n    result.push_back(run);\n  }\n\
     \n  // B\u01AF\u1EDAC 3: Sort k\u1EBFt qu\u1EA3 theo (t, l, r) \u0111\u1EC3 in\
-    \ ra\n  sort(all(result), Run::compareOutput);\n\n  cout << sz(result) << \"\\\
+    \ ra\n  sort(all(result), Run::compareOutput);\n\n  cout << len(result) << \"\\\
     n\";\n  for (auto& run : result) {\n    cout << run.t << \" \" << run.l << \"\
     \ \" << run.r << \"\\n\";\n  }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/runenumerate\"\n\n#include\
@@ -104,9 +104,9 @@ data:
     \ a, const Run& b) {\n    if (a.t != b.t) return a.t < b.t;\n    if (a.l != b.l)\
     \ return a.l < b.l;\n    return a.r < b.r;\n  }\n};\n\ntemplate <class R>\nint\
     \ get_lcp(const SuffixArray& sa, R& rmq, int i, int j) {\n  if (i == j) return\
-    \ sz(sa.sa) - 1 - i;\n  int l = sa.rank[i], r = sa.rank[j];\n  if (l > r) swap(l,\
+    \ len(sa.sa) - 1 - i;\n  int l = sa.rank[i], r = sa.rank[j];\n  if (l > r) swap(l,\
     \ r);\n  return rmq.query(l + 1, r + 1);\n}\n\nint main() {\n  cin.tie(0)->sync_with_stdio(0);\n\
-    \  string s;\n  cin >> s;\n  int n = sz(s);\n\n  auto min_func = [](int a, int\
+    \  string s;\n  cin >> s;\n  int n = len(s);\n\n  auto min_func = [](int a, int\
     \ b) { return min(a, b); };\n\n  SuffixArray sa(s);\n  RMQ rmq(sa.lcp, min_func);\n\
     \n  string s_rev = s;\n  reverse(all(s_rev));\n  SuffixArray sa_rev(s_rev);\n\
     \  RMQ rmq_rev(sa_rev.lcp, min_func);\n\n  vector<Run> candidates;\n\n  for (int\
@@ -122,7 +122,7 @@ data:
     \ run.l && last.r == run.r) continue;  // \u0110\xE3 c\xF3 run c\xF9ng l,r v\u1EDB\
     i t nh\u1ECF h\u01A1n -> B\u1ECF qua\n    }\n    result.push_back(run);\n  }\n\
     \n  // B\u01AF\u1EDAC 3: Sort k\u1EBFt qu\u1EA3 theo (t, l, r) \u0111\u1EC3 in\
-    \ ra\n  sort(all(result), Run::compareOutput);\n\n  cout << sz(result) << \"\\\
+    \ ra\n  sort(all(result), Run::compareOutput);\n\n  cout << len(result) << \"\\\
     n\";\n  for (auto& run : result) {\n    cout << run.t << \" \" << run.l << \"\
     \ \" << run.r << \"\\n\";\n  }\n}"
   dependsOn:
@@ -132,8 +132,8 @@ data:
   isVerificationFile: true
   path: tests/Run_Enumerate.test.cpp
   requiredBy: []
-  timestamp: '2025-11-28 02:09:51+07:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-10-03 15:27:40+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: tests/Run_Enumerate.test.cpp
 layout: document

@@ -21,8 +21,8 @@ data:
     \ N++;\n  }\n  void either(int f, int j) {\n    f = max(2 * f, -1 - 2 * f), j\
     \ = max(2 * j, -1 - 2 * j);\n    gr[f].eb(j ^ 1), gr[j].eb(f ^ 1);\n  }\n  void\
     \ setValue(int x) { either(x, x); }\n  void atMostOne(const vi& li) {  // (optional)\n\
-    \    if (sz(li) <= 1) return;\n    int cur = ~li[0];\n    for (int i = 2; i <\
-    \ sz(li); ++i) {\n      int next = addVar();\n      either(cur, ~li[i]), either(cur,\
+    \    if (len(li) <= 1) return;\n    int cur = ~li[0];\n    for (int i = 2; i <\
+    \ len(li); ++i) {\n      int next = addVar();\n      either(cur, ~li[i]), either(cur,\
     \ next), either(~li[i], next);\n      cur = ~next;\n    }\n    either(cur, ~li[1]);\n\
     \  }\n  vi val, comp, z;\n  int time = 0;\n  int dfs(int i) {\n    int low = val[i]\
     \ = ++time, x;\n    z.push_back(i);\n    for (int e : gr[i]) {\n      if (!comp[e])\
@@ -42,9 +42,9 @@ data:
     \ {  // (optional)\n    gr.eb(), gr.eb();\n    return N++;\n  }\n  void either(int\
     \ f, int j) {\n    f = max(2 * f, -1 - 2 * f), j = max(2 * j, -1 - 2 * j);\n \
     \   gr[f].eb(j ^ 1), gr[j].eb(f ^ 1);\n  }\n  void setValue(int x) { either(x,\
-    \ x); }\n  void atMostOne(const vi& li) {  // (optional)\n    if (sz(li) <= 1)\
-    \ return;\n    int cur = ~li[0];\n    for (int i = 2; i < sz(li); ++i) {\n   \
-    \   int next = addVar();\n      either(cur, ~li[i]), either(cur, next), either(~li[i],\
+    \ x); }\n  void atMostOne(const vi& li) {  // (optional)\n    if (len(li) <= 1)\
+    \ return;\n    int cur = ~li[0];\n    for (int i = 2; i < len(li); ++i) {\n  \
+    \    int next = addVar();\n      either(cur, ~li[i]), either(cur, next), either(~li[i],\
     \ next);\n      cur = ~next;\n    }\n    either(cur, ~li[1]);\n  }\n  vi val,\
     \ comp, z;\n  int time = 0;\n  int dfs(int i) {\n    int low = val[i] = ++time,\
     \ x;\n    z.push_back(i);\n    for (int e : gr[i]) {\n      if (!comp[e]) low\
@@ -59,7 +59,7 @@ data:
   isVerificationFile: false
   path: graph/2SAT.h
   requiredBy: []
-  timestamp: '2025-11-20 10:20:22+07:00'
+  timestamp: '2026-10-03 15:27:40+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - tests/2_Sat.test.cpp

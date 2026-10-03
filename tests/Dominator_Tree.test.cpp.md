@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/Dominator.h
     title: graph/Dominator.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
@@ -21,14 +21,14 @@ data:
     \n\n#line 1 \"misc/macros.h\"\n// #pragma GCC optimize(\"Ofast,unroll-loops\"\
     )       // unroll long, simple loops\n// #pragma GCC target(\"avx2,fma\")    \
     \               // vectorizing code\n// #pragma GCC target(\"lzcnt,popcnt,abm,bmi,bmi2\"\
-    )  // for fast bitset operation\n\n#include <bits/extc++.h>\n#include <tr2/dynamic_bitset>\n\
-    \nusing namespace std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n\
-    // using namespace __gnu_cxx; // rope\n\n// for templates to work\n#define all(x)\
-    \ (x).begin(), (x).end()\n#define sz(x) (int) (x).size()\n#define pb push_back\n\
-    #define eb emplace_back\nusing i32 = int32_t;\nusing u32 = uint32_t;\nusing i64\
-    \ = int64_t;\nusing u64 = uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
-    using ld = long double;\nusing pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\
-    \n// fast map\nconst int RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
+    )  // for fast bitset operation\n\n#include <bits/extc++.h>\n\nusing namespace\
+    \ std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n// using namespace\
+    \ __gnu_cxx; // rope\n\n// for templates to work\n#define all(x) (x).begin(),\
+    \ (x).end()\n#define len(x) (int) (x).size()\n#define pb push_back\n#define eb\
+    \ emplace_back\nusing i32 = int32_t;\nusing u32 = uint32_t;\nusing i64 = int64_t;\n\
+    using u64 = uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\nusing\
+    \ ld = long double;\nusing pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\n\
+    // fast map\nconst int RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
     struct chash {  // customize hash function for gp_hash_table\n  int operator()(int\
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
@@ -37,7 +37,7 @@ data:
     \ null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;\n\n/* \
     \ rope\n    rope <int> cur = v.substr(l, r - l + 1);\n    v.erase(l, r - l + 1);\n\
     \    v.insert(v.mutable_begin(), cur);\n*/\n#line 1 \"graph/Dominator.h\"\nvector<int>\
-    \ DomTree(const vector<vi>& g, int s) {\n  int n = sz(g), t = 0;\n  vector<int>\
+    \ DomTree(const vector<vi>& g, int s) {\n  int n = len(g), t = 0;\n  vector<int>\
     \ arr(n, -1), rev(n), par(n), sdom(n), dom(n), dsu(n), lab(n), res(n, -1);\n \
     \ vector<vi> rg(n), buck(n);\n  auto dfs = [&](auto&& self, int u) -> void {\n\
     \    arr[u] = t, rev[t] = u, lab[t] = sdom[t] = dsu[t] = t, t++;\n    for (int\
@@ -47,9 +47,9 @@ data:
     \ dsu[u]);\n    if (sdom[lab[dsu[u]]] < sdom[lab[u]]) lab[u] = lab[dsu[u]];\n\
     \    return dsu[u] = v;\n  };\n  for (int i = t - 1; i; --i) {\n    for (int v\
     \ : rg[i]) find(find, v), sdom[i] = min(sdom[i], sdom[lab[v]]);\n    buck[sdom[i]].pb(i);\n\
-    \    int p = par[i]; dsu[i] = p;\n    for (int v : buck[p]) find(find, v), dom[v]\
-    \ = (sdom[lab[v]] == sdom[v] ? p : lab[v]);\n    buck[p].clear();\n  }\n  for\
-    \ (int i = 1; i < t; ++i) {\n    if (dom[i] != sdom[i]) dom[i] = dom[dom[i]];\n\
+    \    int p = par[i];\n    dsu[i] = p;\n    for (int v : buck[p]) find(find, v),\
+    \ dom[v] = (sdom[lab[v]] == sdom[v] ? p : lab[v]);\n    buck[p].clear();\n  }\n\
+    \  for (int i = 1; i < t; ++i) {\n    if (dom[i] != sdom[i]) dom[i] = dom[dom[i]];\n\
     \    res[rev[i]] = rev[dom[i]];\n  }\n  return res;\n}\n#line 5 \"tests/Dominator_Tree.test.cpp\"\
     \n\nvoid solve() {\n  int n, m, s;\n  cin >> n >> m >> s;\n  vector<vi> g(n);\n\
     \  for (int i = 0; i < m; ++i) {\n    int u, v;\n    cin >> u >> v;\n    g[u].pb(v);\n\
@@ -71,7 +71,7 @@ data:
   isVerificationFile: true
   path: tests/Dominator_Tree.test.cpp
   requiredBy: []
-  timestamp: '2025-11-28 02:09:51+07:00'
+  timestamp: '2026-10-03 15:27:40+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Dominator_Tree.test.cpp

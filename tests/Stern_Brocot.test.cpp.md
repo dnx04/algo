@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/SternBrocot.h
     title: math/SternBrocot.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/stern_brocot_tree
@@ -21,14 +21,14 @@ data:
     \n\n#line 1 \"misc/macros.h\"\n// #pragma GCC optimize(\"Ofast,unroll-loops\"\
     )       // unroll long, simple loops\n// #pragma GCC target(\"avx2,fma\")    \
     \               // vectorizing code\n// #pragma GCC target(\"lzcnt,popcnt,abm,bmi,bmi2\"\
-    )  // for fast bitset operation\n\n#include <bits/extc++.h>\n#include <tr2/dynamic_bitset>\n\
-    \nusing namespace std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n\
-    // using namespace __gnu_cxx; // rope\n\n// for templates to work\n#define all(x)\
-    \ (x).begin(), (x).end()\n#define sz(x) (int) (x).size()\n#define pb push_back\n\
-    #define eb emplace_back\nusing i32 = int32_t;\nusing u32 = uint32_t;\nusing i64\
-    \ = int64_t;\nusing u64 = uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
-    using ld = long double;\nusing pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\
-    \n// fast map\nconst int RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
+    )  // for fast bitset operation\n\n#include <bits/extc++.h>\n\nusing namespace\
+    \ std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n// using namespace\
+    \ __gnu_cxx; // rope\n\n// for templates to work\n#define all(x) (x).begin(),\
+    \ (x).end()\n#define len(x) (int) (x).size()\n#define pb push_back\n#define eb\
+    \ emplace_back\nusing i32 = int32_t;\nusing u32 = uint32_t;\nusing i64 = int64_t;\n\
+    using u64 = uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\nusing\
+    \ ld = long double;\nusing pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\n\
+    // fast map\nconst int RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
     struct chash {  // customize hash function for gp_hash_table\n  int operator()(int\
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
@@ -77,36 +77,36 @@ data:
     \      cur.p += k * del.p, cur.q += k * del.q;\n      m = {l.p + r.p, l.q + r.q};\n\
     \      if (m.p > maxp || m.q > maxq) break;\n      if (f(m)) l = m, dir = 1; else\
     \ r = m, dir = 0;\n    }\n    return {l, r};\n  }\n}\n#line 5 \"tests/Stern_Brocot.test.cpp\"\
-    \n\nvoid solve() {\n  string cmd;\n  cin >> cmd;\n  if(cmd == \"ENCODE_PATH\"\
+    \n\nvoid solve() {\n  string cmd;\n  cin >> cmd;\n  if (cmd == \"ENCODE_PATH\"\
     ) {\n    int a, b;\n    cin >> a >> b;\n    auto res = SternBrocot::encode(a,\
-    \ b);\n    cout << sz(res) << ' ';\n    for(auto [ch, mv]: res) cout << ch <<\
-    \ ' ' << mv << ' ';\n    cout << '\\n';\n  } else if(cmd == \"DECODE_PATH\") {\n\
-    \    Path p;\n    int k;\n    cin >> k;\n    while(k--) {\n      char ch;\n  \
-    \    int mv;\n      cin >> ch >> mv;\n      p.eb(ch, mv);\n    }\n    auto res\
+    \ b);\n    cout << len(res) << ' ';\n    for (auto [ch, mv] : res) cout << ch\
+    \ << ' ' << mv << ' ';\n    cout << '\\n';\n  } else if (cmd == \"DECODE_PATH\"\
+    ) {\n    Path p;\n    int k;\n    cin >> k;\n    while (k--) {\n      char ch;\n\
+    \      int mv;\n      cin >> ch >> mv;\n      p.eb(ch, mv);\n    }\n    auto res\
     \ = SternBrocot::decode(p);\n    cout << res.p << ' ' << res.q << '\\n';\n  }\
-    \ else if(cmd == \"LCA\") {\n    int a, b, c, d;\n    cin >> a >> b >> c >> d;\n\
+    \ else if (cmd == \"LCA\") {\n    int a, b, c, d;\n    cin >> a >> b >> c >> d;\n\
     \    auto res = SternBrocot::lca(a, b, c, d);\n    cout << res.p << ' ' << res.q\
-    \ << '\\n';\n  } else if(cmd == \"ANCESTOR\") {\n    int k, a, b;\n    cin >>\
-    \ k >> a >> b;\n    auto res = SternBrocot::ancestor(k, a, b);\n    if(res.p ==\
-    \ -1) {\n      cout << -1 << '\\n';\n      return;\n    }\n    cout << res.p <<\
-    \ ' ' << res.q << '\\n';\n  } else {\n    int a, b;\n    cin >> a >> b;\n    auto\
-    \ [lo, hi] = SternBrocot::range(a, b);\n    cout << lo.p << ' ' << lo.q << ' '\
-    \ << hi.p << ' ' << hi.q << '\\n';\n  }\n}\n\nsigned main() {\n  ios::sync_with_stdio(false);\n\
+    \ << '\\n';\n  } else if (cmd == \"ANCESTOR\") {\n    int k, a, b;\n    cin >>\
+    \ k >> a >> b;\n    auto res = SternBrocot::ancestor(k, a, b);\n    if (res.p\
+    \ == -1) {\n      cout << -1 << '\\n';\n      return;\n    }\n    cout << res.p\
+    \ << ' ' << res.q << '\\n';\n  } else {\n    int a, b;\n    cin >> a >> b;\n \
+    \   auto [lo, hi] = SternBrocot::range(a, b);\n    cout << lo.p << ' ' << lo.q\
+    \ << ' ' << hi.p << ' ' << hi.q << '\\n';\n  }\n}\n\nsigned main() {\n  ios::sync_with_stdio(false);\n\
     \  cin.tie(0);\n  int tc = 1;\n  cin >> tc;\n  while (tc--) solve();\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/stern_brocot_tree\"\n\n\
     #include \"../misc/macros.h\"\n#include \"../math/SternBrocot.h\"\n\nvoid solve()\
-    \ {\n  string cmd;\n  cin >> cmd;\n  if(cmd == \"ENCODE_PATH\") {\n    int a,\
+    \ {\n  string cmd;\n  cin >> cmd;\n  if (cmd == \"ENCODE_PATH\") {\n    int a,\
     \ b;\n    cin >> a >> b;\n    auto res = SternBrocot::encode(a, b);\n    cout\
-    \ << sz(res) << ' ';\n    for(auto [ch, mv]: res) cout << ch << ' ' << mv << '\
-    \ ';\n    cout << '\\n';\n  } else if(cmd == \"DECODE_PATH\") {\n    Path p;\n\
-    \    int k;\n    cin >> k;\n    while(k--) {\n      char ch;\n      int mv;\n\
+    \ << len(res) << ' ';\n    for (auto [ch, mv] : res) cout << ch << ' ' << mv <<\
+    \ ' ';\n    cout << '\\n';\n  } else if (cmd == \"DECODE_PATH\") {\n    Path p;\n\
+    \    int k;\n    cin >> k;\n    while (k--) {\n      char ch;\n      int mv;\n\
     \      cin >> ch >> mv;\n      p.eb(ch, mv);\n    }\n    auto res = SternBrocot::decode(p);\n\
-    \    cout << res.p << ' ' << res.q << '\\n';\n  } else if(cmd == \"LCA\") {\n\
+    \    cout << res.p << ' ' << res.q << '\\n';\n  } else if (cmd == \"LCA\") {\n\
     \    int a, b, c, d;\n    cin >> a >> b >> c >> d;\n    auto res = SternBrocot::lca(a,\
-    \ b, c, d);\n    cout << res.p << ' ' << res.q << '\\n';\n  } else if(cmd == \"\
-    ANCESTOR\") {\n    int k, a, b;\n    cin >> k >> a >> b;\n    auto res = SternBrocot::ancestor(k,\
-    \ a, b);\n    if(res.p == -1) {\n      cout << -1 << '\\n';\n      return;\n \
-    \   }\n    cout << res.p << ' ' << res.q << '\\n';\n  } else {\n    int a, b;\n\
+    \ b, c, d);\n    cout << res.p << ' ' << res.q << '\\n';\n  } else if (cmd ==\
+    \ \"ANCESTOR\") {\n    int k, a, b;\n    cin >> k >> a >> b;\n    auto res = SternBrocot::ancestor(k,\
+    \ a, b);\n    if (res.p == -1) {\n      cout << -1 << '\\n';\n      return;\n\
+    \    }\n    cout << res.p << ' ' << res.q << '\\n';\n  } else {\n    int a, b;\n\
     \    cin >> a >> b;\n    auto [lo, hi] = SternBrocot::range(a, b);\n    cout <<\
     \ lo.p << ' ' << lo.q << ' ' << hi.p << ' ' << hi.q << '\\n';\n  }\n}\n\nsigned\
     \ main() {\n  ios::sync_with_stdio(false);\n  cin.tie(0);\n  int tc = 1;\n  cin\
@@ -117,8 +117,8 @@ data:
   isVerificationFile: true
   path: tests/Stern_Brocot.test.cpp
   requiredBy: []
-  timestamp: '2025-11-28 10:18:48+07:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-10-03 15:27:40+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: tests/Stern_Brocot.test.cpp
 layout: document

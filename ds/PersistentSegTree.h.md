@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Point_Set_Range_Composite_Large.test.cpp
     title: tests/Point_Set_Range_Composite_Large.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://cses.fi/problemset/task/1737/
@@ -47,7 +47,7 @@ data:
   path: ds/PersistentSegTree.h
   requiredBy: []
   timestamp: '2025-11-19 14:43:55+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - tests/Point_Set_Range_Composite_Large.test.cpp
 documentation_of: ds/PersistentSegTree.h

@@ -3,30 +3,30 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Matrix_Det.test.cpp
     title: tests/Matrix_Det.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Matrix_Inv.test.cpp
     title: tests/Matrix_Inv.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Matrix_Product.test.cpp
     title: tests/Matrix_Product.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Matrix_Solve_Linear.test.cpp
     title: tests/Matrix_Solve_Linear.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Pow_of_Matrix.test.cpp
     title: tests/Pow_of_Matrix.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"math/Matrix.h\"\ntemplate <class T>\nstruct Matrix {\n \
     \ int r, c;\n  vector<vector<T>> a;\n  Matrix(int n) : Matrix(n, n) {}\n  Matrix(int\
     \ r, int c) : r(r), c(c), a(r, vector<T>(c, T(0))) {}\n  Matrix(const vector<vector<T>>&\
-    \ v) : r(sz(v)), c(v.empty() ? 0 : sz(v[0])), a(v) {}\n  vector<T>& operator[](int\
+    \ v) : r(len(v)), c(v.empty() ? 0 : len(v[0])), a(v) {}\n  vector<T>& operator[](int\
     \ i) { return a[i]; }\n  const vector<T>& operator[](int i) const { return a[i];\
     \ }\n  static Matrix eye(int n) {\n    Matrix res(n);\n    for (int i = 0; i <\
     \ n; ++i) res[i][i] = 1;\n    return res;\n  }\n  Matrix operator*(const Matrix&\
@@ -54,7 +54,7 @@ data:
     \   sol[j] = mat[i][c];\n    }\n    for (int i = rank; i < r; ++i)\n      if (mat[i][c]\
     \ != T(0)) return {{}, {}};\n    vector<vector<T>> ker;\n    for (int j = 0; j\
     \ < c; ++j) {\n      if (is_free[j]) {\n        vector<T> v(c, T(0));\n      \
-    \  v[j] = T(1);\n        for (int i = 0; i < sz(piv); ++i) v[piv[i]] = T(0) -\
+    \  v[j] = T(1);\n        for (int i = 0; i < len(piv); ++i) v[piv[i]] = T(0) -\
     \ mat[i][j];\n        ker.push_back(v);\n      }\n    }\n    return {sol, ker};\n\
     \  }\n  T det() const {\n    if (r != c) return T(0);\n    Matrix tmp = *this;\n\
     \    auto [d, rank] = tmp.gauss();\n    return (rank == r) ? d : T(0);\n  }\n\
@@ -67,8 +67,8 @@ data:
     \ = tmp[i][j + c];\n    return res;\n  }\n};\n"
   code: "template <class T>\nstruct Matrix {\n  int r, c;\n  vector<vector<T>> a;\n\
     \  Matrix(int n) : Matrix(n, n) {}\n  Matrix(int r, int c) : r(r), c(c), a(r,\
-    \ vector<T>(c, T(0))) {}\n  Matrix(const vector<vector<T>>& v) : r(sz(v)), c(v.empty()\
-    \ ? 0 : sz(v[0])), a(v) {}\n  vector<T>& operator[](int i) { return a[i]; }\n\
+    \ vector<T>(c, T(0))) {}\n  Matrix(const vector<vector<T>>& v) : r(len(v)), c(v.empty()\
+    \ ? 0 : len(v[0])), a(v) {}\n  vector<T>& operator[](int i) { return a[i]; }\n\
     \  const vector<T>& operator[](int i) const { return a[i]; }\n  static Matrix\
     \ eye(int n) {\n    Matrix res(n);\n    for (int i = 0; i < n; ++i) res[i][i]\
     \ = 1;\n    return res;\n  }\n  Matrix operator*(const Matrix& b) const {\n  \
@@ -96,7 +96,7 @@ data:
     \   sol[j] = mat[i][c];\n    }\n    for (int i = rank; i < r; ++i)\n      if (mat[i][c]\
     \ != T(0)) return {{}, {}};\n    vector<vector<T>> ker;\n    for (int j = 0; j\
     \ < c; ++j) {\n      if (is_free[j]) {\n        vector<T> v(c, T(0));\n      \
-    \  v[j] = T(1);\n        for (int i = 0; i < sz(piv); ++i) v[piv[i]] = T(0) -\
+    \  v[j] = T(1);\n        for (int i = 0; i < len(piv); ++i) v[piv[i]] = T(0) -\
     \ mat[i][j];\n        ker.push_back(v);\n      }\n    }\n    return {sol, ker};\n\
     \  }\n  T det() const {\n    if (r != c) return T(0);\n    Matrix tmp = *this;\n\
     \    auto [d, rank] = tmp.gauss();\n    return (rank == r) ? d : T(0);\n  }\n\
@@ -111,8 +111,8 @@ data:
   isVerificationFile: false
   path: math/Matrix.h
   requiredBy: []
-  timestamp: '2025-11-27 09:59:02+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-10-03 15:27:40+00:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - tests/Matrix_Solve_Linear.test.cpp
   - tests/Matrix_Product.test.cpp

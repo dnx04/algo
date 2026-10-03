@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/ModInt.h
     title: math/ModInt.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: misc/Compressor.h
     title: misc/Compressor.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: misc/CountSubseq.h
     title: misc/CountSubseq.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/number_of_subsequences
@@ -28,14 +28,14 @@ data:
     \n// #pragma GCC optimize(\"Ofast,unroll-loops\")       // unroll long, simple\
     \ loops\n// #pragma GCC target(\"avx2,fma\")                   // vectorizing\
     \ code\n// #pragma GCC target(\"lzcnt,popcnt,abm,bmi,bmi2\")  // for fast bitset\
-    \ operation\n\n#include <bits/extc++.h>\n#include <tr2/dynamic_bitset>\n\nusing\
-    \ namespace std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n\
-    // using namespace __gnu_cxx; // rope\n\n// for templates to work\n#define all(x)\
-    \ (x).begin(), (x).end()\n#define sz(x) (int) (x).size()\n#define pb push_back\n\
-    #define eb emplace_back\nusing i32 = int32_t;\nusing u32 = uint32_t;\nusing i64\
-    \ = int64_t;\nusing u64 = uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
-    using ld = long double;\nusing pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\
-    \n// fast map\nconst int RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
+    \ operation\n\n#include <bits/extc++.h>\n\nusing namespace std;\nusing namespace\
+    \ __gnu_pbds;  // ordered_set, gp_hash_table\n// using namespace __gnu_cxx; //\
+    \ rope\n\n// for templates to work\n#define all(x) (x).begin(), (x).end()\n#define\
+    \ len(x) (int) (x).size()\n#define pb push_back\n#define eb emplace_back\nusing\
+    \ i32 = int32_t;\nusing u32 = uint32_t;\nusing i64 = int64_t;\nusing u64 = uint64_t;\n\
+    using i128 = __int128_t;\nusing u128 = __uint128_t;\nusing ld = long double;\n\
+    using pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\n// fast map\nconst int\
+    \ RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
     struct chash {  // customize hash function for gp_hash_table\n  int operator()(int\
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
@@ -72,8 +72,8 @@ data:
     \  auto cv = v;\n  sort(all(cv));\n  cv.erase(unique(all(cv)), cv.end());\n  for\
     \ (auto& e : v) e = lower_bound(all(cv), e) - cv.begin();\n  return v;\n}\n#line\
     \ 2 \"misc/CountSubseq.h\"\n\ntemplate <class T, class Fp>\nFp CountSubseq(vector<T>\
-    \ a) {\n  a = compressor<T>(a);\n  vi last(sz(a) + 1, -1);\n  vector<Fp> f(sz(a)\
-    \ + 1);\n  f[0] = 1;\n  for (int i = 0; i < sz(a); ++i) {\n    f[i + 1] = f[i]\
+    \ a) {\n  a = compressor<T>(a);\n  vi last(len(a) + 1, -1);\n  vector<Fp> f(len(a)\
+    \ + 1);\n  f[0] = 1;\n  for (int i = 0; i < len(a); ++i) {\n    f[i + 1] = f[i]\
     \ * 2;\n    if (last[a[i]] >= 0) f[i + 1] -= f[last[a[i]]];\n    last[a[i]] =\
     \ i;\n  }\n  return f.back() - 1;\n}\n#line 6 \"tests/Number_of_Subsequences.test.cpp\"\
     \n\nusing Fp = modint<998244353>;\n\nsigned main() {\n  ios::sync_with_stdio(false);\n\
@@ -92,8 +92,8 @@ data:
   isVerificationFile: true
   path: tests/Number_of_Subsequences.test.cpp
   requiredBy: []
-  timestamp: '2025-11-28 02:09:51+07:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-10-03 15:27:40+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: tests/Number_of_Subsequences.test.cpp
 layout: document

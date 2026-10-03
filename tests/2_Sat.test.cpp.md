@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/2SAT.h
     title: graph/2SAT.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
@@ -21,14 +21,14 @@ data:
     \n\n#line 1 \"misc/macros.h\"\n// #pragma GCC optimize(\"Ofast,unroll-loops\"\
     )       // unroll long, simple loops\n// #pragma GCC target(\"avx2,fma\")    \
     \               // vectorizing code\n// #pragma GCC target(\"lzcnt,popcnt,abm,bmi,bmi2\"\
-    )  // for fast bitset operation\n\n#include <bits/extc++.h>\n#include <tr2/dynamic_bitset>\n\
-    \nusing namespace std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n\
-    // using namespace __gnu_cxx; // rope\n\n// for templates to work\n#define all(x)\
-    \ (x).begin(), (x).end()\n#define sz(x) (int) (x).size()\n#define pb push_back\n\
-    #define eb emplace_back\nusing i32 = int32_t;\nusing u32 = uint32_t;\nusing i64\
-    \ = int64_t;\nusing u64 = uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
-    using ld = long double;\nusing pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\
-    \n// fast map\nconst int RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
+    )  // for fast bitset operation\n\n#include <bits/extc++.h>\n\nusing namespace\
+    \ std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n// using namespace\
+    \ __gnu_cxx; // rope\n\n// for templates to work\n#define all(x) (x).begin(),\
+    \ (x).end()\n#define len(x) (int) (x).size()\n#define pb push_back\n#define eb\
+    \ emplace_back\nusing i32 = int32_t;\nusing u32 = uint32_t;\nusing i64 = int64_t;\n\
+    using u64 = uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\nusing\
+    \ ld = long double;\nusing pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\n\
+    // fast map\nconst int RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
     struct chash {  // customize hash function for gp_hash_table\n  int operator()(int\
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
@@ -46,9 +46,9 @@ data:
     \   gr.eb(), gr.eb();\n    return N++;\n  }\n  void either(int f, int j) {\n \
     \   f = max(2 * f, -1 - 2 * f), j = max(2 * j, -1 - 2 * j);\n    gr[f].eb(j ^\
     \ 1), gr[j].eb(f ^ 1);\n  }\n  void setValue(int x) { either(x, x); }\n  void\
-    \ atMostOne(const vi& li) {  // (optional)\n    if (sz(li) <= 1) return;\n   \
-    \ int cur = ~li[0];\n    for (int i = 2; i < sz(li); ++i) {\n      int next =\
-    \ addVar();\n      either(cur, ~li[i]), either(cur, next), either(~li[i], next);\n\
+    \ atMostOne(const vi& li) {  // (optional)\n    if (len(li) <= 1) return;\n  \
+    \  int cur = ~li[0];\n    for (int i = 2; i < len(li); ++i) {\n      int next\
+    \ = addVar();\n      either(cur, ~li[i]), either(cur, next), either(~li[i], next);\n\
     \      cur = ~next;\n    }\n    either(cur, ~li[1]);\n  }\n  vi val, comp, z;\n\
     \  int time = 0;\n  int dfs(int i) {\n    int low = val[i] = ++time, x;\n    z.push_back(i);\n\
     \    for (int e : gr[i]) {\n      if (!comp[e]) low = min(low, val[e] ?: dfs(e));\n\
@@ -87,7 +87,7 @@ data:
   isVerificationFile: true
   path: tests/2_Sat.test.cpp
   requiredBy: []
-  timestamp: '2025-11-28 02:09:51+07:00'
+  timestamp: '2026-10-03 15:27:40+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/2_Sat.test.cpp

@@ -60,7 +60,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Dominator_Tree.test.cpp
     title: tests/Dominator_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Enumerate_Cliques.test.cpp
     title: tests/Enumerate_Cliques.test.cpp
   - icon: ':heavy_check_mark:'
@@ -87,175 +87,175 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Furthest_Pair_of_Points.test.cpp
     title: tests/Furthest_Pair_of_Points.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/GCD_Convolution.test.cpp
     title: tests/GCD_Convolution.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/General_Matching.test.cpp
     title: tests/General_Matching.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Inv_of_FPS.test.cpp
     title: tests/Inv_of_FPS.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/LCA.test.cpp
     title: tests/LCA.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/LCM_Convolution.test.cpp
     title: tests/LCM_Convolution.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/LIS.test.cpp
     title: tests/LIS.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Line_Add_Get_Min.test.cpp
     title: tests/Line_Add_Get_Min.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Longest_Common_Substring.test.cpp
     title: tests/Longest_Common_Substring.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Matrix_Det.test.cpp
     title: tests/Matrix_Det.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Matrix_Inv.test.cpp
     title: tests/Matrix_Inv.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Matrix_Product.test.cpp
     title: tests/Matrix_Product.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Matrix_Solve_Linear.test.cpp
     title: tests/Matrix_Solve_Linear.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Maximum_Independent_Set.test.cpp
     title: tests/Maximum_Independent_Set.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Min_of_Mod_of_Linear.test.cpp
     title: tests/Min_of_Mod_of_Linear.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Minimum_Enclosing_Circle.test.cpp
     title: tests/Minimum_Enclosing_Circle.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Number_of_Subsequences.test.cpp
     title: tests/Number_of_Subsequences.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Number_of_Substrings.test.cpp
     title: tests/Number_of_Substrings.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Partition_Function.test.cpp
     title: tests/Partition_Function.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Persistent_Unionfind.test.cpp
     title: tests/Persistent_Unionfind.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Point_Add_Range_Sum.test.cpp
     title: tests/Point_Add_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Point_Set_Range_Composite.test.cpp
     title: tests/Point_Set_Range_Composite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Point_Set_Range_Composite_Large.test.cpp
     title: tests/Point_Set_Range_Composite_Large.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Pow_of_FPS.test.cpp
     title: tests/Pow_of_FPS.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Pow_of_Matrix.test.cpp
     title: tests/Pow_of_Matrix.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Primality_Test.test.cpp
     title: tests/Primality_Test.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Primitive_Root.test.cpp
     title: tests/Primitive_Root.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Product_of_Polynomial_Sequence.test.cpp
     title: tests/Product_of_Polynomial_Sequence.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Range_Affine_Point_Get.test.cpp
     title: tests/Range_Affine_Point_Get.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Range_Affine_Range_Sum.test.cpp
     title: tests/Range_Affine_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Rational_Approximation.test.cpp
     title: tests/Rational_Approximation.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Run_Enumerate.test.cpp
     title: tests/Run_Enumerate.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/SCC.test.cpp
     title: tests/SCC.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Sort_Points_by_Argument.test.cpp
     title: tests/Sort_Points_by_Argument.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Sqrt_Mod.test.cpp
     title: tests/Sqrt_Mod.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Static_Convex_Hull.test.cpp
     title: tests/Static_Convex_Hull.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Static_RMQ.test.cpp
     title: tests/Static_RMQ.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Stern_Brocot.test.cpp
     title: tests/Stern_Brocot.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Stirling_Number_1st.test.cpp
     title: tests/Stirling_Number_1st.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Stirling_Number_1st_fixed_K.test.cpp
     title: tests/Stirling_Number_1st_fixed_K.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Stirling_Number_2nd.test.cpp
     title: tests/Stirling_Number_2nd.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Stirling_Number_2nd_fixed_K.test.cpp
     title: tests/Stirling_Number_2nd_fixed_K.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Suffix_Array.test.cpp
     title: tests/Suffix_Array.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Sum_of_Exponential_times_Polynomial.test.cpp
     title: tests/Sum_of_Exponential_times_Polynomial.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
     title: tests/Sum_of_Exponential_times_Polynomial_limit.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Sum_of_Floor_of_Linear.test.cpp
     title: tests/Sum_of_Floor_of_Linear.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Sum_of_Multiplicative_Function.test.cpp
     title: tests/Sum_of_Multiplicative_Function.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Two_Edges_CC.test.cpp
     title: tests/Two_Edges_CC.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Unionfind.test.cpp
     title: tests/Unionfind.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Vertex_Add_Path_Sum.test.cpp
     title: tests/Vertex_Add_Path_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Z_Algorithm.test.cpp
     title: tests/Z_Algorithm.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/p_Subset_Sum.test.cpp
     title: tests/p_Subset_Sum.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"misc/macros.h\"\n// #pragma GCC optimize(\"Ofast,unroll-loops\"\
     )       // unroll long, simple loops\n// #pragma GCC target(\"avx2,fma\")    \
     \               // vectorizing code\n// #pragma GCC target(\"lzcnt,popcnt,abm,bmi,bmi2\"\
-    )  // for fast bitset operation\n\n#include <bits/extc++.h>\n#include <tr2/dynamic_bitset>\n\
-    \nusing namespace std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n\
-    // using namespace __gnu_cxx; // rope\n\n// for templates to work\n#define all(x)\
-    \ (x).begin(), (x).end()\n#define sz(x) (int) (x).size()\n#define pb push_back\n\
-    #define eb emplace_back\nusing i32 = int32_t;\nusing u32 = uint32_t;\nusing i64\
-    \ = int64_t;\nusing u64 = uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
-    using ld = long double;\nusing pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\
-    \n// fast map\nconst int RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
+    )  // for fast bitset operation\n\n#include <bits/extc++.h>\n\nusing namespace\
+    \ std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n// using namespace\
+    \ __gnu_cxx; // rope\n\n// for templates to work\n#define all(x) (x).begin(),\
+    \ (x).end()\n#define len(x) (int) (x).size()\n#define pb push_back\n#define eb\
+    \ emplace_back\nusing i32 = int32_t;\nusing u32 = uint32_t;\nusing i64 = int64_t;\n\
+    using u64 = uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\nusing\
+    \ ld = long double;\nusing pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\n\
+    // fast map\nconst int RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
     struct chash {  // customize hash function for gp_hash_table\n  int operator()(int\
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
@@ -267,14 +267,14 @@ data:
   code: "// #pragma GCC optimize(\"Ofast,unroll-loops\")       // unroll long, simple\
     \ loops\n// #pragma GCC target(\"avx2,fma\")                   // vectorizing\
     \ code\n// #pragma GCC target(\"lzcnt,popcnt,abm,bmi,bmi2\")  // for fast bitset\
-    \ operation\n\n#include <bits/extc++.h>\n#include <tr2/dynamic_bitset>\n\nusing\
-    \ namespace std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n\
-    // using namespace __gnu_cxx; // rope\n\n// for templates to work\n#define all(x)\
-    \ (x).begin(), (x).end()\n#define sz(x) (int) (x).size()\n#define pb push_back\n\
-    #define eb emplace_back\nusing i32 = int32_t;\nusing u32 = uint32_t;\nusing i64\
-    \ = int64_t;\nusing u64 = uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
-    using ld = long double;\nusing pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\
-    \n// fast map\nconst int RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
+    \ operation\n\n#include <bits/extc++.h>\n\nusing namespace std;\nusing namespace\
+    \ __gnu_pbds;  // ordered_set, gp_hash_table\n// using namespace __gnu_cxx; //\
+    \ rope\n\n// for templates to work\n#define all(x) (x).begin(), (x).end()\n#define\
+    \ len(x) (int) (x).size()\n#define pb push_back\n#define eb emplace_back\nusing\
+    \ i32 = int32_t;\nusing u32 = uint32_t;\nusing i64 = int64_t;\nusing u64 = uint64_t;\n\
+    using i128 = __int128_t;\nusing u128 = __uint128_t;\nusing ld = long double;\n\
+    using pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\n// fast map\nconst int\
+    \ RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
     struct chash {  // customize hash function for gp_hash_table\n  int operator()(int\
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
@@ -287,8 +287,8 @@ data:
   isVerificationFile: false
   path: misc/macros.h
   requiredBy: []
-  timestamp: '2025-11-28 02:09:51+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-10-03 15:27:40+00:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - tests/Stirling_Number_2nd_fixed_K.test.cpp
   - tests/Longest_Common_Substring.test.cpp

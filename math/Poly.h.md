@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/ModInt.h
     title: math/ModInt.h
   _extendedRequiredBy: []
@@ -18,36 +18,36 @@ data:
   - icon: ':heavy_check_mark:'
     path: tests/Exp_of_FPS.test.cpp
     title: tests/Exp_of_FPS.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Inv_of_FPS.test.cpp
     title: tests/Inv_of_FPS.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Partition_Function.test.cpp
     title: tests/Partition_Function.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Pow_of_FPS.test.cpp
     title: tests/Pow_of_FPS.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Product_of_Polynomial_Sequence.test.cpp
     title: tests/Product_of_Polynomial_Sequence.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Stirling_Number_1st.test.cpp
     title: tests/Stirling_Number_1st.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Stirling_Number_1st_fixed_K.test.cpp
     title: tests/Stirling_Number_1st_fixed_K.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Stirling_Number_2nd.test.cpp
     title: tests/Stirling_Number_2nd.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/Stirling_Number_2nd_fixed_K.test.cpp
     title: tests/Stirling_Number_2nd_fixed_K.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: tests/p_Subset_Sum.test.cpp
     title: tests/p_Subset_Sum.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: h
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/ModInt.h\"\n\ntemplate <int mod>\nstruct modint {\n\
@@ -76,8 +76,8 @@ data:
     \ 1;\n  while (k) {\n    if (k & 1) res = modmul(res, x, m);\n    x = modmul(x,\
     \ x, m);\n    k >>= 1;\n  }\n  return res;\n}\n#line 2 \"math/Poly.h\"\n\nusing\
     \ Fp = modint<998244353>;\nnamespace ntt {\nconst Fp G = 3;\nvoid ntt(vector<Fp>&\
-    \ a, bool inv) {\n  int n = sz(a);\n  for (int i = 1, j = 0; i < n; i++) {\n \
-    \   int bit = n >> 1;\n    for (; j & bit; bit >>= 1) j ^= bit;\n    j ^= bit;\n\
+    \ a, bool inv) {\n  int n = len(a);\n  for (int i = 1, j = 0; i < n; i++) {\n\
+    \    int bit = n >> 1;\n    for (; j & bit; bit >>= 1) j ^= bit;\n    j ^= bit;\n\
     \    if (i < j) swap(a[i], a[j]);\n  }\n  for (int len = 1; len < n; len <<= 1)\
     \ {\n    Fp wlen = G.pow((Fp::modulo - 1) / (2 * len));\n    if (inv) wlen = wlen.inv();\n\
     \    for (int i = 0; i < n; i += 2 * len) {\n      Fp w = 1;\n      for (int j\
@@ -85,47 +85,47 @@ data:
     \     a[i + j] = u + v, a[i + j + len] = u - v;\n        w *= wlen;\n      }\n\
     \    }\n  }\n  if (inv) {\n    Fp n_inv = Fp(n).inv();\n    for (auto& x : a)\
     \ x *= n_inv;\n  }\n}\nvector<Fp> conv(vector<Fp> a, vector<Fp> b) {\n  if (a.empty()\
-    \ || b.empty()) return {};\n  int s = sz(a) + sz(b) - 1, n = 1;\n  while (n <\
-    \ s) n <<= 1;\n  a.resize(n), b.resize(n);\n  ntt(a, 0), ntt(b, 0);\n  for (int\
+    \ || b.empty()) return {};\n  int s = len(a) + len(b) - 1, n = 1;\n  while (n\
+    \ < s) n <<= 1;\n  a.resize(n), b.resize(n);\n  ntt(a, 0), ntt(b, 0);\n  for (int\
     \ i = 0; i < n; i++) a[i] *= b[i];\n  ntt(a, 1), a.resize(s);\n  return a;\n}\n\
     }  // namespace ntt\n\nstruct Poly : vector<Fp> {\n  using vector::vector;\n \
     \ Poly(const vector<Fp>& v) : vector(v) {}\n\n  Poly cut(int n) const {\n    Poly\
     \ res = *this;\n    res.resize(n);\n    return res;\n  }\n\n  Poly operator+(const\
-    \ Poly& r) const {\n    Poly res = *this;\n    res.resize(max(sz(*this), sz(r)));\n\
-    \    for (int i = 0; i < sz(r); ++i) res[i] += r[i];\n    return res;\n  }\n \
-    \ Poly operator-(const Poly& r) const {\n    Poly res = *this;\n    res.resize(max(sz(*this),\
-    \ sz(r)));\n    for (int i = 0; i < sz(r); ++i) res[i] -= r[i];\n    return res;\n\
-    \  }\n  Poly operator*(const Poly& r) const { return ntt::conv(*this, r); }\n\
-    \  Poly operator*(Fp v) const {\n    Poly res = *this;\n    for (auto& x : res)\
-    \ x *= v;\n    return res;\n  }\n  Poly& operator+=(const Poly& r) { return *this\
-    \ = *this + r; }\n  Poly& operator-=(const Poly& r) { return *this = *this - r;\
-    \ }\n  Poly& operator*=(const Poly& r) { return *this = *this * r; }\n\n  Poly\
-    \ deriv() const {\n    if (empty()) return {};\n    Poly res(sz(*this) - 1);\n\
-    \    for (int i = 1; i < sz(*this); ++i) res[i - 1] = data()[i] * i;\n    return\
-    \ res;\n  }\n  Poly integ() const {\n    Poly res(sz(*this) + 1);\n    for (int\
-    \ i = 0; i < sz(*this); ++i) res[i + 1] = data()[i] * Fp(i + 1).inv();\n    return\
-    \ res;\n  }\n  Poly inv(int n) const {\n    Poly b = {data()[0].inv()};\n    for\
-    \ (int k = 1; k < n; k <<= 1) {\n      Poly a = cut(2 * k), prod = b * b * a;\n\
-    \      b.resize(2 * k);\n      for (int i = 0; i < 2 * k; ++i) {\n        b[i]\
-    \ = b[i] * 2 - (i < sz(prod) ? prod[i] : Fp(0));\n      }\n    }\n    return b.cut(n);\n\
-    \  }\n\n  Poly log(int n) const { return (deriv() * inv(n)).integ().cut(n); }\n\
-    \n  Poly exp(int n) const {\n    Poly b = {1};\n    for (int k = 1; k < n; k <<=\
-    \ 1) {\n      Poly ln_b = b.log(2 * k), a = cut(2 * k), diff = a - ln_b;\n   \
-    \   diff[0] += 1, b = (b * diff).cut(2 * k);\n    }\n    return b.cut(n);\n  }\n\
-    \n  Poly pow(i64 k, int n) const {\n    if (n == 0) return {};\n    if (k == 0)\
-    \ {\n      Poly res = {1};\n      res.resize(n);\n      return res;\n    }\n \
-    \   int i = 0;\n    while (i < sz(*this) && data()[i].x == 0) i++;\n    if (i\
-    \ == sz(*this) || (i > 0 && k >= n / i + 2)) {\n      Poly res;\n      res.resize(n);\n\
-    \      return res;\n    }\n    i64 shift = (i64) i * k;\n    if (shift >= n) {\n\
-    \      Poly res;\n      res.resize(n);\n      return res;\n    }\n    Poly a =\
-    \ {begin() + i, end()};\n    int limit = n - shift;\n    a.resize(limit);\n  \
-    \  Fp lead = a[0];\n    Fp inv_lead = lead.inv();\n    a = a * inv_lead;\n   \
-    \ a = (a.log(limit) * Fp(k)).exp(limit);\n    a = a * lead.pow(k);\n    Poly res(shift,\
-    \ 0);\n    res.insert(res.end(), a.begin(), a.end());\n    res.resize(n);\n  \
-    \  return res;\n  }\n  friend ostream& operator<<(ostream& os, const Poly& p)\
+    \ Poly& r) const {\n    Poly res = *this;\n    res.resize(max(len(*this), len(r)));\n\
+    \    for (int i = 0; i < len(r); ++i) res[i] += r[i];\n    return res;\n  }\n\
+    \  Poly operator-(const Poly& r) const {\n    Poly res = *this;\n    res.resize(max(len(*this),\
+    \ len(r)));\n    for (int i = 0; i < len(r); ++i) res[i] -= r[i];\n    return\
+    \ res;\n  }\n  Poly operator*(const Poly& r) const { return ntt::conv(*this, r);\
+    \ }\n  Poly operator*(Fp v) const {\n    Poly res = *this;\n    for (auto& x :\
+    \ res) x *= v;\n    return res;\n  }\n  Poly& operator+=(const Poly& r) { return\
+    \ *this = *this + r; }\n  Poly& operator-=(const Poly& r) { return *this = *this\
+    \ - r; }\n  Poly& operator*=(const Poly& r) { return *this = *this * r; }\n\n\
+    \  Poly deriv() const {\n    if (empty()) return {};\n    Poly res(len(*this)\
+    \ - 1);\n    for (int i = 1; i < len(*this); ++i) res[i - 1] = data()[i] * i;\n\
+    \    return res;\n  }\n  Poly integ() const {\n    Poly res(len(*this) + 1);\n\
+    \    for (int i = 0; i < len(*this); ++i) res[i + 1] = data()[i] * Fp(i + 1).inv();\n\
+    \    return res;\n  }\n  Poly inv(int n) const {\n    Poly b = {data()[0].inv()};\n\
+    \    for (int k = 1; k < n; k <<= 1) {\n      Poly a = cut(2 * k), prod = b *\
+    \ b * a;\n      b.resize(2 * k);\n      for (int i = 0; i < 2 * k; ++i) {\n  \
+    \      b[i] = b[i] * 2 - (i < len(prod) ? prod[i] : Fp(0));\n      }\n    }\n\
+    \    return b.cut(n);\n  }\n\n  Poly log(int n) const { return (deriv() * inv(n)).integ().cut(n);\
+    \ }\n\n  Poly exp(int n) const {\n    Poly b = {1};\n    for (int k = 1; k < n;\
+    \ k <<= 1) {\n      Poly ln_b = b.log(2 * k), a = cut(2 * k), diff = a - ln_b;\n\
+    \      diff[0] += 1, b = (b * diff).cut(2 * k);\n    }\n    return b.cut(n);\n\
+    \  }\n\n  Poly pow(i64 k, int n) const {\n    if (n == 0) return {};\n    if (k\
+    \ == 0) {\n      Poly res = {1};\n      res.resize(n);\n      return res;\n  \
+    \  }\n    int i = 0;\n    while (i < len(*this) && data()[i].x == 0) i++;\n  \
+    \  if (i == len(*this) || (i > 0 && k >= n / i + 2)) {\n      Poly res;\n    \
+    \  res.resize(n);\n      return res;\n    }\n    i64 shift = (i64) i * k;\n  \
+    \  if (shift >= n) {\n      Poly res;\n      res.resize(n);\n      return res;\n\
+    \    }\n    Poly a = {begin() + i, end()};\n    int limit = n - shift;\n    a.resize(limit);\n\
+    \    Fp lead = a[0];\n    Fp inv_lead = lead.inv();\n    a = a * inv_lead;\n \
+    \   a = (a.log(limit) * Fp(k)).exp(limit);\n    a = a * lead.pow(k);\n    Poly\
+    \ res(shift, 0);\n    res.insert(res.end(), a.begin(), a.end());\n    res.resize(n);\n\
+    \    return res;\n  }\n  friend ostream& operator<<(ostream& os, const Poly& p)\
     \ {\n    for (auto x : p) os << x << \" \";\n    return os;\n  }\n};\n"
   code: "#include \"ModInt.h\"\n\nusing Fp = modint<998244353>;\nnamespace ntt {\n\
-    const Fp G = 3;\nvoid ntt(vector<Fp>& a, bool inv) {\n  int n = sz(a);\n  for\
+    const Fp G = 3;\nvoid ntt(vector<Fp>& a, bool inv) {\n  int n = len(a);\n  for\
     \ (int i = 1, j = 0; i < n; i++) {\n    int bit = n >> 1;\n    for (; j & bit;\
     \ bit >>= 1) j ^= bit;\n    j ^= bit;\n    if (i < j) swap(a[i], a[j]);\n  }\n\
     \  for (int len = 1; len < n; len <<= 1) {\n    Fp wlen = G.pow((Fp::modulo -\
@@ -135,52 +135,52 @@ data:
     \ + j + len] = u - v;\n        w *= wlen;\n      }\n    }\n  }\n  if (inv) {\n\
     \    Fp n_inv = Fp(n).inv();\n    for (auto& x : a) x *= n_inv;\n  }\n}\nvector<Fp>\
     \ conv(vector<Fp> a, vector<Fp> b) {\n  if (a.empty() || b.empty()) return {};\n\
-    \  int s = sz(a) + sz(b) - 1, n = 1;\n  while (n < s) n <<= 1;\n  a.resize(n),\
+    \  int s = len(a) + len(b) - 1, n = 1;\n  while (n < s) n <<= 1;\n  a.resize(n),\
     \ b.resize(n);\n  ntt(a, 0), ntt(b, 0);\n  for (int i = 0; i < n; i++) a[i] *=\
     \ b[i];\n  ntt(a, 1), a.resize(s);\n  return a;\n}\n}  // namespace ntt\n\nstruct\
     \ Poly : vector<Fp> {\n  using vector::vector;\n  Poly(const vector<Fp>& v) :\
     \ vector(v) {}\n\n  Poly cut(int n) const {\n    Poly res = *this;\n    res.resize(n);\n\
     \    return res;\n  }\n\n  Poly operator+(const Poly& r) const {\n    Poly res\
-    \ = *this;\n    res.resize(max(sz(*this), sz(r)));\n    for (int i = 0; i < sz(r);\
-    \ ++i) res[i] += r[i];\n    return res;\n  }\n  Poly operator-(const Poly& r)\
-    \ const {\n    Poly res = *this;\n    res.resize(max(sz(*this), sz(r)));\n   \
-    \ for (int i = 0; i < sz(r); ++i) res[i] -= r[i];\n    return res;\n  }\n  Poly\
-    \ operator*(const Poly& r) const { return ntt::conv(*this, r); }\n  Poly operator*(Fp\
-    \ v) const {\n    Poly res = *this;\n    for (auto& x : res) x *= v;\n    return\
-    \ res;\n  }\n  Poly& operator+=(const Poly& r) { return *this = *this + r; }\n\
-    \  Poly& operator-=(const Poly& r) { return *this = *this - r; }\n  Poly& operator*=(const\
-    \ Poly& r) { return *this = *this * r; }\n\n  Poly deriv() const {\n    if (empty())\
-    \ return {};\n    Poly res(sz(*this) - 1);\n    for (int i = 1; i < sz(*this);\
-    \ ++i) res[i - 1] = data()[i] * i;\n    return res;\n  }\n  Poly integ() const\
-    \ {\n    Poly res(sz(*this) + 1);\n    for (int i = 0; i < sz(*this); ++i) res[i\
-    \ + 1] = data()[i] * Fp(i + 1).inv();\n    return res;\n  }\n  Poly inv(int n)\
-    \ const {\n    Poly b = {data()[0].inv()};\n    for (int k = 1; k < n; k <<= 1)\
-    \ {\n      Poly a = cut(2 * k), prod = b * b * a;\n      b.resize(2 * k);\n  \
-    \    for (int i = 0; i < 2 * k; ++i) {\n        b[i] = b[i] * 2 - (i < sz(prod)\
-    \ ? prod[i] : Fp(0));\n      }\n    }\n    return b.cut(n);\n  }\n\n  Poly log(int\
-    \ n) const { return (deriv() * inv(n)).integ().cut(n); }\n\n  Poly exp(int n)\
-    \ const {\n    Poly b = {1};\n    for (int k = 1; k < n; k <<= 1) {\n      Poly\
-    \ ln_b = b.log(2 * k), a = cut(2 * k), diff = a - ln_b;\n      diff[0] += 1, b\
-    \ = (b * diff).cut(2 * k);\n    }\n    return b.cut(n);\n  }\n\n  Poly pow(i64\
-    \ k, int n) const {\n    if (n == 0) return {};\n    if (k == 0) {\n      Poly\
-    \ res = {1};\n      res.resize(n);\n      return res;\n    }\n    int i = 0;\n\
-    \    while (i < sz(*this) && data()[i].x == 0) i++;\n    if (i == sz(*this) ||\
-    \ (i > 0 && k >= n / i + 2)) {\n      Poly res;\n      res.resize(n);\n      return\
-    \ res;\n    }\n    i64 shift = (i64) i * k;\n    if (shift >= n) {\n      Poly\
-    \ res;\n      res.resize(n);\n      return res;\n    }\n    Poly a = {begin()\
-    \ + i, end()};\n    int limit = n - shift;\n    a.resize(limit);\n    Fp lead\
-    \ = a[0];\n    Fp inv_lead = lead.inv();\n    a = a * inv_lead;\n    a = (a.log(limit)\
-    \ * Fp(k)).exp(limit);\n    a = a * lead.pow(k);\n    Poly res(shift, 0);\n  \
-    \  res.insert(res.end(), a.begin(), a.end());\n    res.resize(n);\n    return\
-    \ res;\n  }\n  friend ostream& operator<<(ostream& os, const Poly& p) {\n    for\
-    \ (auto x : p) os << x << \" \";\n    return os;\n  }\n};"
+    \ = *this;\n    res.resize(max(len(*this), len(r)));\n    for (int i = 0; i <\
+    \ len(r); ++i) res[i] += r[i];\n    return res;\n  }\n  Poly operator-(const Poly&\
+    \ r) const {\n    Poly res = *this;\n    res.resize(max(len(*this), len(r)));\n\
+    \    for (int i = 0; i < len(r); ++i) res[i] -= r[i];\n    return res;\n  }\n\
+    \  Poly operator*(const Poly& r) const { return ntt::conv(*this, r); }\n  Poly\
+    \ operator*(Fp v) const {\n    Poly res = *this;\n    for (auto& x : res) x *=\
+    \ v;\n    return res;\n  }\n  Poly& operator+=(const Poly& r) { return *this =\
+    \ *this + r; }\n  Poly& operator-=(const Poly& r) { return *this = *this - r;\
+    \ }\n  Poly& operator*=(const Poly& r) { return *this = *this * r; }\n\n  Poly\
+    \ deriv() const {\n    if (empty()) return {};\n    Poly res(len(*this) - 1);\n\
+    \    for (int i = 1; i < len(*this); ++i) res[i - 1] = data()[i] * i;\n    return\
+    \ res;\n  }\n  Poly integ() const {\n    Poly res(len(*this) + 1);\n    for (int\
+    \ i = 0; i < len(*this); ++i) res[i + 1] = data()[i] * Fp(i + 1).inv();\n    return\
+    \ res;\n  }\n  Poly inv(int n) const {\n    Poly b = {data()[0].inv()};\n    for\
+    \ (int k = 1; k < n; k <<= 1) {\n      Poly a = cut(2 * k), prod = b * b * a;\n\
+    \      b.resize(2 * k);\n      for (int i = 0; i < 2 * k; ++i) {\n        b[i]\
+    \ = b[i] * 2 - (i < len(prod) ? prod[i] : Fp(0));\n      }\n    }\n    return\
+    \ b.cut(n);\n  }\n\n  Poly log(int n) const { return (deriv() * inv(n)).integ().cut(n);\
+    \ }\n\n  Poly exp(int n) const {\n    Poly b = {1};\n    for (int k = 1; k < n;\
+    \ k <<= 1) {\n      Poly ln_b = b.log(2 * k), a = cut(2 * k), diff = a - ln_b;\n\
+    \      diff[0] += 1, b = (b * diff).cut(2 * k);\n    }\n    return b.cut(n);\n\
+    \  }\n\n  Poly pow(i64 k, int n) const {\n    if (n == 0) return {};\n    if (k\
+    \ == 0) {\n      Poly res = {1};\n      res.resize(n);\n      return res;\n  \
+    \  }\n    int i = 0;\n    while (i < len(*this) && data()[i].x == 0) i++;\n  \
+    \  if (i == len(*this) || (i > 0 && k >= n / i + 2)) {\n      Poly res;\n    \
+    \  res.resize(n);\n      return res;\n    }\n    i64 shift = (i64) i * k;\n  \
+    \  if (shift >= n) {\n      Poly res;\n      res.resize(n);\n      return res;\n\
+    \    }\n    Poly a = {begin() + i, end()};\n    int limit = n - shift;\n    a.resize(limit);\n\
+    \    Fp lead = a[0];\n    Fp inv_lead = lead.inv();\n    a = a * inv_lead;\n \
+    \   a = (a.log(limit) * Fp(k)).exp(limit);\n    a = a * lead.pow(k);\n    Poly\
+    \ res(shift, 0);\n    res.insert(res.end(), a.begin(), a.end());\n    res.resize(n);\n\
+    \    return res;\n  }\n  friend ostream& operator<<(ostream& os, const Poly& p)\
+    \ {\n    for (auto x : p) os << x << \" \";\n    return os;\n  }\n};"
   dependsOn:
   - math/ModInt.h
   isVerificationFile: false
   path: math/Poly.h
   requiredBy: []
-  timestamp: '2025-11-28 00:00:09+07:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2026-10-03 15:27:40+00:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - tests/Stirling_Number_2nd_fixed_K.test.cpp
   - tests/Bernoulli_Number.test.cpp

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/Point.h
     title: geometry/Point.h
   _extendedRequiredBy: []
@@ -30,17 +30,17 @@ data:
     \  }\n  friend ostream& operator<<(ostream& os, P p) {\n    return os << \"(\"\
     \ << p.x << \",\" << p.y << \")\";\n  }\n};\n#line 2 \"geometry/PolygonArea.h\"\
     \n\ntemplate <class T>\nT polygonArea2(vector<Point<T>>& v) {\n  T a = v.back().cross(v[0]);\n\
-    \  for (int i = 0; i < n; ++i)i, 0, sz(v) - 1) a += v[i].cross(v[i + 1]);\n  return\
-    \ a;\n}\n"
+    \  for (int i = 0; i < n; ++i)i, 0, len(v) - 1) a += v[i].cross(v[i + 1]);\n \
+    \ return a;\n}\n"
   code: "#include \"Point.h\"\n\ntemplate <class T>\nT polygonArea2(vector<Point<T>>&\
-    \ v) {\n  T a = v.back().cross(v[0]);\n  for (int i = 0; i < n; ++i)i, 0, sz(v)\
+    \ v) {\n  T a = v.back().cross(v[0]);\n  for (int i = 0; i < n; ++i)i, 0, len(v)\
     \ - 1) a += v[i].cross(v[i + 1]);\n  return a;\n}"
   dependsOn:
   - geometry/Point.h
   isVerificationFile: false
   path: geometry/PolygonArea.h
   requiredBy: []
-  timestamp: '2025-11-21 16:12:02+07:00'
+  timestamp: '2026-10-03 15:27:40+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/PolygonArea.h

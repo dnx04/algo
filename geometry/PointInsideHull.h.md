@@ -4,7 +4,7 @@ data:
   - icon: ':warning:'
     path: geometry/OnSegment.h
     title: geometry/OnSegment.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/Point.h
     title: geometry/Point.h
   - icon: ':warning:'
@@ -42,18 +42,18 @@ data:
     \  auto a = (e - s).cross(p - s);\n  ld l = (e - s).dist() * eps;\n  return (a\
     \ > l) - (a < -l);\n}\n#line 4 \"geometry/PointInsideHull.h\"\n\ntypedef Point<ll>\
     \ P;\n\nbool inHull(const vector<P>& l, P p, bool strict = true) {\n  int a =\
-    \ 1, b = sz(l) - 1, r = !strict;\n  if (sz(l) < 3) return r && onSegment(l[0],\
+    \ 1, b = len(l) - 1, r = !strict;\n  if (len(l) < 3) return r && onSegment(l[0],\
     \ l.back(), p);\n  if (sideOf(l[0], l[a], l[b]) > 0) swap(a, b);\n  if (sideOf(l[0],\
     \ l[a], p) >= r || sideOf(l[0], l[b], p) <= -r) return false;\n  while (abs(a\
     \ - b) > 1) {\n    int c = (a + b) / 2;\n    (sideOf(l[0], l[c], p) > 0 ? b :\
     \ a) = c;\n  }\n  return sgn(l[a].cross(l[b], p)) < r;\n}\n"
   code: "#include \"OnSegment.h\"\n#include \"Point.h\"\n#include \"SideOf.h\"\n\n\
     typedef Point<ll> P;\n\nbool inHull(const vector<P>& l, P p, bool strict = true)\
-    \ {\n  int a = 1, b = sz(l) - 1, r = !strict;\n  if (sz(l) < 3) return r && onSegment(l[0],\
-    \ l.back(), p);\n  if (sideOf(l[0], l[a], l[b]) > 0) swap(a, b);\n  if (sideOf(l[0],\
-    \ l[a], p) >= r || sideOf(l[0], l[b], p) <= -r) return false;\n  while (abs(a\
-    \ - b) > 1) {\n    int c = (a + b) / 2;\n    (sideOf(l[0], l[c], p) > 0 ? b :\
-    \ a) = c;\n  }\n  return sgn(l[a].cross(l[b], p)) < r;\n}"
+    \ {\n  int a = 1, b = len(l) - 1, r = !strict;\n  if (len(l) < 3) return r &&\
+    \ onSegment(l[0], l.back(), p);\n  if (sideOf(l[0], l[a], l[b]) > 0) swap(a, b);\n\
+    \  if (sideOf(l[0], l[a], p) >= r || sideOf(l[0], l[b], p) <= -r) return false;\n\
+    \  while (abs(a - b) > 1) {\n    int c = (a + b) / 2;\n    (sideOf(l[0], l[c],\
+    \ p) > 0 ? b : a) = c;\n  }\n  return sgn(l[a].cross(l[b], p)) < r;\n}"
   dependsOn:
   - geometry/OnSegment.h
   - geometry/Point.h
@@ -61,7 +61,7 @@ data:
   isVerificationFile: false
   path: geometry/PointInsideHull.h
   requiredBy: []
-  timestamp: '2025-11-21 16:12:02+07:00'
+  timestamp: '2026-10-03 15:27:40+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: geometry/PointInsideHull.h

@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: geometry/ClosestPair.h
     title: geometry/ClosestPair.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/Point.h
     title: geometry/Point.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
@@ -25,14 +25,14 @@ data:
     \n// #pragma GCC optimize(\"Ofast,unroll-loops\")       // unroll long, simple\
     \ loops\n// #pragma GCC target(\"avx2,fma\")                   // vectorizing\
     \ code\n// #pragma GCC target(\"lzcnt,popcnt,abm,bmi,bmi2\")  // for fast bitset\
-    \ operation\n\n#include <bits/extc++.h>\n#include <tr2/dynamic_bitset>\n\nusing\
-    \ namespace std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n\
-    // using namespace __gnu_cxx; // rope\n\n// for templates to work\n#define all(x)\
-    \ (x).begin(), (x).end()\n#define sz(x) (int) (x).size()\n#define pb push_back\n\
-    #define eb emplace_back\nusing i32 = int32_t;\nusing u32 = uint32_t;\nusing i64\
-    \ = int64_t;\nusing u64 = uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
-    using ld = long double;\nusing pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\
-    \n// fast map\nconst int RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
+    \ operation\n\n#include <bits/extc++.h>\n\nusing namespace std;\nusing namespace\
+    \ __gnu_pbds;  // ordered_set, gp_hash_table\n// using namespace __gnu_cxx; //\
+    \ rope\n\n// for templates to work\n#define all(x) (x).begin(), (x).end()\n#define\
+    \ len(x) (int) (x).size()\n#define pb push_back\n#define eb emplace_back\nusing\
+    \ i32 = int32_t;\nusing u32 = uint32_t;\nusing i64 = int64_t;\nusing u64 = uint64_t;\n\
+    using i128 = __int128_t;\nusing u128 = __uint128_t;\nusing ld = long double;\n\
+    using pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\n// fast map\nconst int\
+    \ RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
     struct chash {  // customize hash function for gp_hash_table\n  int operator()(int\
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
@@ -59,9 +59,9 @@ data:
     \ x * sin(a) + y * cos(a));\n  }\n  friend ostream& operator<<(ostream& os, P\
     \ p) {\n    return os << \"(\" << p.x << \",\" << p.y << \")\";\n  }\n};\n#line\
     \ 2 \"geometry/ClosestPair.h\"\n\ntypedef Point<i64> P;\npair<P, P> closest(vector<P>\
-    \ v) {\n  assert(sz(v) > 1);\n  set<P> S;\n  sort(all(v), [](P a, P b) { return\
+    \ v) {\n  assert(len(v) > 1);\n  set<P> S;\n  sort(all(v), [](P a, P b) { return\
     \ a.y < b.y; });\n  pair<i64, pair<P, P>> ret{LLONG_MAX, {P(), P()}};\n  int j\
-    \ = 0;\n  for (P p : v) {\n    P d{1 + (i64)sqrt(ret.first), 0};\n    while (v[j].y\
+    \ = 0;\n  for (P p : v) {\n    P d{1 + (i64) sqrt(ret.first), 0};\n    while (v[j].y\
     \ <= p.y - d.x) S.erase(v[j++]);\n    auto lo = S.lower_bound(p - d), hi = S.upper_bound(p\
     \ + d);\n    for (; lo != hi; ++lo) ret = min(ret, {(*lo - p).dist2(), {*lo, p}});\n\
     \    S.insert(p);\n  }\n  return ret.second;\n}\n#line 5 \"tests/Closest_Pair_of_Points.test.cpp\"\
@@ -90,7 +90,7 @@ data:
   isVerificationFile: true
   path: tests/Closest_Pair_of_Points.test.cpp
   requiredBy: []
-  timestamp: '2025-11-28 02:09:51+07:00'
+  timestamp: '2026-10-03 15:27:40+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: tests/Closest_Pair_of_Points.test.cpp

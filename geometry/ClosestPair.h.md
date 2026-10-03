@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: geometry/Point.h
     title: geometry/Point.h
   _extendedRequiredBy: []
@@ -32,17 +32,17 @@ data:
     \ a) const {\n    return P(x * cos(a) - y * sin(a), x * sin(a) + y * cos(a));\n\
     \  }\n  friend ostream& operator<<(ostream& os, P p) {\n    return os << \"(\"\
     \ << p.x << \",\" << p.y << \")\";\n  }\n};\n#line 2 \"geometry/ClosestPair.h\"\
-    \n\ntypedef Point<i64> P;\npair<P, P> closest(vector<P> v) {\n  assert(sz(v) >\
-    \ 1);\n  set<P> S;\n  sort(all(v), [](P a, P b) { return a.y < b.y; });\n  pair<i64,\
+    \n\ntypedef Point<i64> P;\npair<P, P> closest(vector<P> v) {\n  assert(len(v)\
+    \ > 1);\n  set<P> S;\n  sort(all(v), [](P a, P b) { return a.y < b.y; });\n  pair<i64,\
     \ pair<P, P>> ret{LLONG_MAX, {P(), P()}};\n  int j = 0;\n  for (P p : v) {\n \
-    \   P d{1 + (i64)sqrt(ret.first), 0};\n    while (v[j].y <= p.y - d.x) S.erase(v[j++]);\n\
+    \   P d{1 + (i64) sqrt(ret.first), 0};\n    while (v[j].y <= p.y - d.x) S.erase(v[j++]);\n\
     \    auto lo = S.lower_bound(p - d), hi = S.upper_bound(p + d);\n    for (; lo\
     \ != hi; ++lo) ret = min(ret, {(*lo - p).dist2(), {*lo, p}});\n    S.insert(p);\n\
     \  }\n  return ret.second;\n}\n"
   code: "#include \"Point.h\"\n\ntypedef Point<i64> P;\npair<P, P> closest(vector<P>\
-    \ v) {\n  assert(sz(v) > 1);\n  set<P> S;\n  sort(all(v), [](P a, P b) { return\
+    \ v) {\n  assert(len(v) > 1);\n  set<P> S;\n  sort(all(v), [](P a, P b) { return\
     \ a.y < b.y; });\n  pair<i64, pair<P, P>> ret{LLONG_MAX, {P(), P()}};\n  int j\
-    \ = 0;\n  for (P p : v) {\n    P d{1 + (i64)sqrt(ret.first), 0};\n    while (v[j].y\
+    \ = 0;\n  for (P p : v) {\n    P d{1 + (i64) sqrt(ret.first), 0};\n    while (v[j].y\
     \ <= p.y - d.x) S.erase(v[j++]);\n    auto lo = S.lower_bound(p - d), hi = S.upper_bound(p\
     \ + d);\n    for (; lo != hi; ++lo) ret = min(ret, {(*lo - p).dist2(), {*lo, p}});\n\
     \    S.insert(p);\n  }\n  return ret.second;\n}"
@@ -51,7 +51,7 @@ data:
   isVerificationFile: false
   path: geometry/ClosestPair.h
   requiredBy: []
-  timestamp: '2025-11-21 16:12:02+07:00'
+  timestamp: '2026-10-03 15:27:40+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - tests/Closest_Pair_of_Points.test.cpp

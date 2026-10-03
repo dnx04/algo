@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: ds/HLD.h
     title: ds/HLD.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/lca
@@ -21,14 +21,14 @@ data:
     \n\n#line 1 \"misc/macros.h\"\n// #pragma GCC optimize(\"Ofast,unroll-loops\"\
     )       // unroll long, simple loops\n// #pragma GCC target(\"avx2,fma\")    \
     \               // vectorizing code\n// #pragma GCC target(\"lzcnt,popcnt,abm,bmi,bmi2\"\
-    )  // for fast bitset operation\n\n#include <bits/extc++.h>\n#include <tr2/dynamic_bitset>\n\
-    \nusing namespace std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n\
-    // using namespace __gnu_cxx; // rope\n\n// for templates to work\n#define all(x)\
-    \ (x).begin(), (x).end()\n#define sz(x) (int) (x).size()\n#define pb push_back\n\
-    #define eb emplace_back\nusing i32 = int32_t;\nusing u32 = uint32_t;\nusing i64\
-    \ = int64_t;\nusing u64 = uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
-    using ld = long double;\nusing pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\
-    \n// fast map\nconst int RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
+    )  // for fast bitset operation\n\n#include <bits/extc++.h>\n\nusing namespace\
+    \ std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n// using namespace\
+    \ __gnu_cxx; // rope\n\n// for templates to work\n#define all(x) (x).begin(),\
+    \ (x).end()\n#define len(x) (int) (x).size()\n#define pb push_back\n#define eb\
+    \ emplace_back\nusing i32 = int32_t;\nusing u32 = uint32_t;\nusing i64 = int64_t;\n\
+    using u64 = uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\nusing\
+    \ ld = long double;\nusing pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\n\
+    // fast map\nconst int RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
     struct chash {  // customize hash function for gp_hash_table\n  int operator()(int\
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
@@ -38,7 +38,7 @@ data:
     \ rope\n    rope <int> cur = v.substr(l, r - l + 1);\n    v.erase(l, r - l + 1);\n\
     \    v.insert(v.mutable_begin(), cur);\n*/\n#line 1 \"ds/HLD.h\"\ntemplate <class\
     \ G>\nstruct HLD {\n  const G& g;\n  int n, t = 0;\n  vi sub, dep, par, head,\
-    \ pos, heavy;\n  HLD(const G& g, int root = 0) : g(g), n(sz(g)), sub(n), dep(n),\
+    \ pos, heavy;\n  HLD(const G& g, int root = 0) : g(g), n(len(g)), sub(n), dep(n),\
     \ par(n), head(n), pos(n), heavy(n, -1) {\n    par[root] = -1;\n    dfs_sub(root);\n\
     \    dfs_hld(root, root);\n  }\n  void dfs_sub(int u) {\n    sub[u] = 1;\n   \
     \ for (int v : g[u])\n      if (v != par[u]) {\n        dep[v] = dep[u] + 1, par[v]\
@@ -51,11 +51,11 @@ data:
     \ int v) {\n    vector<pii> l, r;\n    while (head[u] != head[v]) {\n      if\
     \ (dep[head[u]] > dep[head[v]]) {\n        l.pb({pos[u], pos[head[u]]});\n   \
     \     u = par[head[u]];\n      } else {\n        r.pb({pos[head[v]], pos[v]});\n\
-    \        v = par[head[v]];\n      }\n    }\n    if (dep[u] > dep[v]) l.pb({pos[u],\
-    \ pos[v]});\n    else r.pb({pos[u], pos[v]});\n    reverse(all(r));\n    l.insert(l.end(),\
-    \ all(r));\n    return l;\n  }\n  int lca(int u, int v) {\n    for (; head[u]\
-    \ != head[v]; u = par[head[u]])\n      if (dep[head[u]] < dep[head[v]]) swap(u,\
-    \ v);\n    return dep[u] < dep[v] ? u : v;\n  }\n};\n#line 5 \"tests/LCA.test.cpp\"\
+    \        v = par[head[v]];\n      }\n    }\n    if (dep[u] > dep[v])\n      l.pb({pos[u],\
+    \ pos[v]});\n    else\n      r.pb({pos[u], pos[v]});\n    reverse(all(r));\n \
+    \   l.insert(l.end(), all(r));\n    return l;\n  }\n  int lca(int u, int v) {\n\
+    \    for (; head[u] != head[v]; u = par[head[u]])\n      if (dep[head[u]] < dep[head[v]])\
+    \ swap(u, v);\n    return dep[u] < dep[v] ? u : v;\n  }\n};\n#line 5 \"tests/LCA.test.cpp\"\
     \n\nsigned main() {\n  ios::sync_with_stdio(false);\n  cin.tie(0);\n  int n, q;\n\
     \  cin >> n >> q;\n  vector<i64> a(n);\n  vector<vi> g(n);\n  for (int i = 1;\
     \ i < n; ++i) {\n    int p;\n    cin >> p;\n    g[p].eb(i), g[i].eb(p);\n  }\n\
@@ -73,8 +73,8 @@ data:
   isVerificationFile: true
   path: tests/LCA.test.cpp
   requiredBy: []
-  timestamp: '2025-11-28 02:09:51+07:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-10-03 15:27:40+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: tests/LCA.test.cpp
 layout: document

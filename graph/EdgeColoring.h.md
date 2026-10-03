@@ -9,7 +9,7 @@ data:
   attributes:
     links: []
   bundledCode: "#line 1 \"graph/EdgeColoring.h\"\nvi edgeColoring(int N, vector<pii>\
-    \ eds) {\n  vi cc(N + 1), ret(sz(eds)), fan(N), free(N), loc;\n  for (pii e :\
+    \ eds) {\n  vi cc(N + 1), ret(len(eds)), fan(N), free(N), loc;\n  for (pii e :\
     \ eds) ++cc[e.first], ++cc[e.second];\n  int u, v, ncols = *max_element(all(cc))\
     \ + 1;\n  vector<vi> adj(N, vi(ncols, -1));\n  for (pii e : eds) {\n    tie(u,\
     \ v) = e;\n    fan[0] = v;\n    loc.assign(ncols, 0);\n    int at = u, end = u,\
@@ -21,9 +21,9 @@ data:
     \ = u;\n      adj[right][e] = -1;\n      free[right] = e;\n    }\n    adj[u][d]\
     \ = fan[i];\n    adj[fan[i]][d] = u;\n    for (int y : {fan[0], u, end})\n   \
     \   for (int& z = free[y] = 0; adj[y][z] != -1; z++);\n  }\n  for (int i = 0;\
-    \ i < sz(eds); ++i)\n    for (tie(u, v) = eds[i]; adj[u][ret[i]] != v;) ++ret[i];\n\
+    \ i < len(eds); ++i)\n    for (tie(u, v) = eds[i]; adj[u][ret[i]] != v;) ++ret[i];\n\
     \  return ret;\n}\n"
-  code: "vi edgeColoring(int N, vector<pii> eds) {\n  vi cc(N + 1), ret(sz(eds)),\
+  code: "vi edgeColoring(int N, vector<pii> eds) {\n  vi cc(N + 1), ret(len(eds)),\
     \ fan(N), free(N), loc;\n  for (pii e : eds) ++cc[e.first], ++cc[e.second];\n\
     \  int u, v, ncols = *max_element(all(cc)) + 1;\n  vector<vi> adj(N, vi(ncols,\
     \ -1));\n  for (pii e : eds) {\n    tie(u, v) = e;\n    fan[0] = v;\n    loc.assign(ncols,\
@@ -35,13 +35,13 @@ data:
     \ e = cc[i];\n      adj[u][e] = left;\n      adj[left][e] = u;\n      adj[right][e]\
     \ = -1;\n      free[right] = e;\n    }\n    adj[u][d] = fan[i];\n    adj[fan[i]][d]\
     \ = u;\n    for (int y : {fan[0], u, end})\n      for (int& z = free[y] = 0; adj[y][z]\
-    \ != -1; z++);\n  }\n  for (int i = 0; i < sz(eds); ++i)\n    for (tie(u, v) =\
-    \ eds[i]; adj[u][ret[i]] != v;) ++ret[i];\n  return ret;\n}"
+    \ != -1; z++);\n  }\n  for (int i = 0; i < len(eds); ++i)\n    for (tie(u, v)\
+    \ = eds[i]; adj[u][ret[i]] != v;) ++ret[i];\n  return ret;\n}"
   dependsOn: []
   isVerificationFile: false
   path: graph/EdgeColoring.h
   requiredBy: []
-  timestamp: '2025-11-14 00:13:37+07:00'
+  timestamp: '2026-10-03 15:27:40+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: graph/EdgeColoring.h

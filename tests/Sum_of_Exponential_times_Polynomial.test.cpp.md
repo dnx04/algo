@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/ModInt.h
     title: math/ModInt.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/SumPowerPoly.h
     title: math/SumPowerPoly.h
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: misc/macros.h
     title: misc/macros.h
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/sum_of_exponential_times_polynomial
@@ -25,14 +25,14 @@ data:
     \n\n#line 1 \"misc/macros.h\"\n// #pragma GCC optimize(\"Ofast,unroll-loops\"\
     )       // unroll long, simple loops\n// #pragma GCC target(\"avx2,fma\")    \
     \               // vectorizing code\n// #pragma GCC target(\"lzcnt,popcnt,abm,bmi,bmi2\"\
-    )  // for fast bitset operation\n\n#include <bits/extc++.h>\n#include <tr2/dynamic_bitset>\n\
-    \nusing namespace std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n\
-    // using namespace __gnu_cxx; // rope\n\n// for templates to work\n#define all(x)\
-    \ (x).begin(), (x).end()\n#define sz(x) (int) (x).size()\n#define pb push_back\n\
-    #define eb emplace_back\nusing i32 = int32_t;\nusing u32 = uint32_t;\nusing i64\
-    \ = int64_t;\nusing u64 = uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
-    using ld = long double;\nusing pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\
-    \n// fast map\nconst int RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
+    )  // for fast bitset operation\n\n#include <bits/extc++.h>\n\nusing namespace\
+    \ std;\nusing namespace __gnu_pbds;  // ordered_set, gp_hash_table\n// using namespace\
+    \ __gnu_cxx; // rope\n\n// for templates to work\n#define all(x) (x).begin(),\
+    \ (x).end()\n#define len(x) (int) (x).size()\n#define pb push_back\n#define eb\
+    \ emplace_back\nusing i32 = int32_t;\nusing u32 = uint32_t;\nusing i64 = int64_t;\n\
+    using u64 = uint64_t;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\nusing\
+    \ ld = long double;\nusing pii = pair<i32, i32>;\nusing vi = vector<i32>;\n\n\
+    // fast map\nconst int RANDOM = chrono::high_resolution_clock::now().time_since_epoch().count();\n\
     struct chash {  // customize hash function for gp_hash_table\n  int operator()(int\
     \ x) const { return x ^ RANDOM; }\n};\ngp_hash_table<int, int, chash> table;\n\
     \n/* ordered set\n    find_by_order(k): returns an iterator to the k-th element\
@@ -70,35 +70,35 @@ data:
     \ 1);\n  fac[0] = 1;\n  for (int i = 1; i <= n; ++i) fac[i] = fac[i - 1] * i;\n\
     \  invFac[n] = fac[n].inv();\n  for (int i = n; i >= 1; --i) invFac[i - 1] = invFac[i]\
     \ * i;\n}\n\n// Lagrange interpolation [0,...,n-1] in O(n)\nFp interpolate(const\
-    \ vector<Fp>& y, i64 n) {\n  int k = sz(y) - 1;\n  if (n <= k) return y[n];\n\
+    \ vector<Fp>& y, i64 n) {\n  int k = len(y) - 1;\n  if (n <= k) return y[n];\n\
     \  vector<Fp> pre(k + 1), suf(k + 1);\n  pre[0] = suf[k] = 1;\n  for (int i =\
     \ 0; i < k; ++i) pre[i + 1] = pre[i] * (n - i);\n  for (int i = k; i > 0; --i)\
     \ suf[i - 1] = suf[i] * (n - i);\n  Fp ans = 0;\n  for (int i = 0; i <= k; ++i)\
     \ {\n    Fp val = pre[i] * suf[i] * y[i] * invFac[i] * invFac[k - i];\n    if\
-    \ ((k - i) & 1) ans -= val;\n    else ans += val;\n  }\n  return ans;\n}\n\n//\
-    \ C = sum_{i=0->inf} r^i * fs[i] (r != 1)\nFp sumPolyLimit(Fp r, const vector<Fp>&\
-    \ fs) {\n  int d = fs.size() - 1;\n  if (r.x == 0) return fs[0];\n  vector<Fp>\
-    \ rr(d + 1);\n  rr[0] = 1;\n  for (int i = 1; i <= d; ++i) rr[i] = rr[i - 1] *\
-    \ r;\n  Fp ans = 0, S = 0;\n  for (int i = 0; i <= d; ++i) {\n    S += rr[i] *\
-    \ fs[i];\n    Fp term = invFac[d - i] * invFac[i + 1] * rr[d - i] * S;\n    if\
-    \ ((d - i) & 1) ans -= term;\n    else ans += term;\n  }\n  return ans * fac[d\
-    \ + 1] / (Fp(1) - r).pow(d + 1);\n}\n\n// Sum_{i=0->n-1} r^i * fs[i]\nFp sumPoly(Fp\
-    \ r, const vector<Fp>& fs, u64 n) {\n  if (n == 0) return 0;\n  if (r == 0) return\
-    \ fs[0];\n  int d = sz(fs) - 1;\n  if (r == 1) {\n    vector<Fp> S(d + 2);\n \
-    \   S[0] = 0;\n    for (int i = 0; i <= d; ++i) S[i + 1] = S[i] + fs[i];\n   \
-    \ return interpolate(S, n);\n  }\n  Fp C = sumPolyLimit(r, fs), S_curr = 0, rp\
-    \ = 1, rip = 1, ri = r.inv();\n  vector<Fp> g(d + 1);\n  for (int k = 0; k <=\
-    \ d; ++k) {\n    g[k] = (S_curr - C) * rip;\n    S_curr += rp * fs[k], rp *= r,\
-    \ rip *= ri;\n  }\n  return C + r.pow(n) * interpolate(g, n);\n}\n#line 5 \"tests/Sum_of_Exponential_times_Polynomial.test.cpp\"\
-    \n\n// calculate pws(i) = i^d for 0 <= i < n using sieve\nvector<Fp> getMonomials(int\
-    \ n, int d) {\n  vector<Fp> pws(n);\n  vector<int> primes, lpf(n);\n  pws[1] =\
-    \ 1, pws[0] = (d == 0 ? 1 : 0);\n  for (int i = 2; i < n; ++i) {\n    if (lpf[i]\
-    \ == 0) lpf[i] = i, primes.eb(i), pws[i] = Fp(i).pow(d);\n    for (auto p : primes)\
-    \ {\n      if (p > lpf[i] || i * p >= n) break;\n      lpf[i * p] = p;\n     \
-    \ pws[i * p] = pws[i] * pws[p];\n    }\n  }\n  return pws;\n}\n\nvoid solve()\
-    \ {\n  int r, d;\n  u64 n;\n  cin >> r >> d >> n;\n  prepareFac(d + 2);\n  cout\
-    \ << sumPoly(Fp(r), getMonomials(d + 1, d), n);\n}\n\nint main() {\n  solve();\n\
-    }\n"
+    \ ((k - i) & 1)\n      ans -= val;\n    else\n      ans += val;\n  }\n  return\
+    \ ans;\n}\n\n// C = sum_{i=0->inf} r^i * fs[i] (r != 1)\nFp sumPolyLimit(Fp r,\
+    \ const vector<Fp>& fs) {\n  int d = fs.size() - 1;\n  if (r.x == 0) return fs[0];\n\
+    \  vector<Fp> rr(d + 1);\n  rr[0] = 1;\n  for (int i = 1; i <= d; ++i) rr[i] =\
+    \ rr[i - 1] * r;\n  Fp ans = 0, S = 0;\n  for (int i = 0; i <= d; ++i) {\n   \
+    \ S += rr[i] * fs[i];\n    Fp term = invFac[d - i] * invFac[i + 1] * rr[d - i]\
+    \ * S;\n    if ((d - i) & 1)\n      ans -= term;\n    else\n      ans += term;\n\
+    \  }\n  return ans * fac[d + 1] / (Fp(1) - r).pow(d + 1);\n}\n\n// Sum_{i=0->n-1}\
+    \ r^i * fs[i]\nFp sumPoly(Fp r, const vector<Fp>& fs, u64 n) {\n  if (n == 0)\
+    \ return 0;\n  if (r == 0) return fs[0];\n  int d = len(fs) - 1;\n  if (r == 1)\
+    \ {\n    vector<Fp> S(d + 2);\n    S[0] = 0;\n    for (int i = 0; i <= d; ++i)\
+    \ S[i + 1] = S[i] + fs[i];\n    return interpolate(S, n);\n  }\n  Fp C = sumPolyLimit(r,\
+    \ fs), S_curr = 0, rp = 1, rip = 1, ri = r.inv();\n  vector<Fp> g(d + 1);\n  for\
+    \ (int k = 0; k <= d; ++k) {\n    g[k] = (S_curr - C) * rip;\n    S_curr += rp\
+    \ * fs[k], rp *= r, rip *= ri;\n  }\n  return C + r.pow(n) * interpolate(g, n);\n\
+    }\n#line 5 \"tests/Sum_of_Exponential_times_Polynomial.test.cpp\"\n\n// calculate\
+    \ pws(i) = i^d for 0 <= i < n using sieve\nvector<Fp> getMonomials(int n, int\
+    \ d) {\n  vector<Fp> pws(n);\n  vector<int> primes, lpf(n);\n  pws[1] = 1, pws[0]\
+    \ = (d == 0 ? 1 : 0);\n  for (int i = 2; i < n; ++i) {\n    if (lpf[i] == 0) lpf[i]\
+    \ = i, primes.eb(i), pws[i] = Fp(i).pow(d);\n    for (auto p : primes) {\n   \
+    \   if (p > lpf[i] || i * p >= n) break;\n      lpf[i * p] = p;\n      pws[i *\
+    \ p] = pws[i] * pws[p];\n    }\n  }\n  return pws;\n}\n\nvoid solve() {\n  int\
+    \ r, d;\n  u64 n;\n  cin >> r >> d >> n;\n  prepareFac(d + 2);\n  cout << sumPoly(Fp(r),\
+    \ getMonomials(d + 1, d), n);\n}\n\nint main() {\n  solve();\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/sum_of_exponential_times_polynomial\"\
     \n\n#include \"../misc/macros.h\"\n#include \"../math/SumPowerPoly.h\"\n\n// calculate\
     \ pws(i) = i^d for 0 <= i < n using sieve\nvector<Fp> getMonomials(int n, int\
@@ -116,8 +116,8 @@ data:
   isVerificationFile: true
   path: tests/Sum_of_Exponential_times_Polynomial.test.cpp
   requiredBy: []
-  timestamp: '2025-11-28 02:09:51+07:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2026-10-03 15:27:40+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: tests/Sum_of_Exponential_times_Polynomial.test.cpp
 layout: document
