@@ -1,32 +1,32 @@
-void dfs_sz(int u, int p) {
-    sub_sz[u] = 1;
-    for (int v : adj[u]) {
-        if (v != p && !removed[v]) {
-            dfs_sz(v, u);
-            sub_sz[u] += sub_sz[v];
-        }
+void dfs_len(int u, int p) {
+  sub_len[u] = 1;
+  for (int v : adj[u]) {
+    if (v != p && !removed[v]) {
+      dfs_len(v, u);
+      sub_len[u] += sub_len[v];
     }
+  }
 }
- 
+
 int find_centroid(int u, int p, int total) {
-    for (int v : adj[u]) {
-        if (v != p && !removed[v] && sub_sz[v] > total / 2) {
-            return find_centroid(v, u, total);
-        }
+  for (int v : adj[u]) {
+    if (v != p && !removed[v] && sub_len[v] > total / 2) {
+      return find_centroid(v, u, total);
     }
-    return u;
+  }
+  return u;
 }
- 
+
 void decompose(int u, int p) {
-    dfs_sz(u, -1);
-    int centroid = find_centroid(u, -1, sub_sz[u]);
-    
-    par_centroid[centroid] = p;
-    removed[centroid] = true;
-    
-    for (int v : adj[centroid]) {
-        if (!removed[v]) {
-            decompose(v, centroid);
-        }
+  dfs_len(u, -1);
+  int centroid = find_centroid(u, -1, sub_len[u]);
+
+  par_centroid[centroid] = p;
+  removed[centroid] = true;
+
+  for (int v : adj[centroid]) {
+    if (!removed[v]) {
+      decompose(v, centroid);
     }
+  }
 }

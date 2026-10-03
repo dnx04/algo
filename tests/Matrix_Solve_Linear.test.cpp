@@ -22,7 +22,7 @@ void solve() {
   if (sol.empty()) {
     cout << -1;
   } else {
-    cout << sz(ker) << '\n';
+    cout << len(ker) << '\n';
     for (auto e : sol) cout << e << ' ';
     cout << '\n';
     for (auto v : ker) {

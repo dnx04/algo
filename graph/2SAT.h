@@ -21,9 +21,9 @@ struct TwoSat {
   }
   void setValue(int x) { either(x, x); }
   void atMostOne(const vi& li) {  // (optional)
-    if (sz(li) <= 1) return;
+    if (len(li) <= 1) return;
     int cur = ~li[0];
-    for (int i = 2; i < sz(li); ++i) {
+    for (int i = 2; i < len(li); ++i) {
       int next = addVar();
       either(cur, ~li[i]), either(cur, next), either(~li[i], next);
       cur = ~next;

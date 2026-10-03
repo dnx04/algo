@@ -4,7 +4,7 @@ using Fp = modint<998244353>;
 namespace ntt {
 const Fp G = 3;
 void ntt(vector<Fp>& a, bool inv) {
-  int n = sz(a);
+  int n = len(a);
   for (int i = 1, j = 0; i < n; i++) {
     int bit = n >> 1;
     for (; j & bit; bit >>= 1) j ^= bit;
@@ -30,7 +30,7 @@ void ntt(vector<Fp>& a, bool inv) {
 }
 vector<Fp> conv(vector<Fp> a, vector<Fp> b) {
   if (a.empty() || b.empty()) return {};
-  int s = sz(a) + sz(b) - 1, n = 1;
+  int s = len(a) + len(b) - 1, n = 1;
   while (n < s) n <<= 1;
   a.resize(n), b.resize(n);
   ntt(a, 0), ntt(b, 0);
@@ -52,14 +52,14 @@ struct Poly : vector<Fp> {
 
   Poly operator+(const Poly& r) const {
     Poly res = *this;
-    res.resize(max(sz(*this), sz(r)));
-    for (int i = 0; i < sz(r); ++i) res[i] += r[i];
+    res.resize(max(len(*this), len(r)));
+    for (int i = 0; i < len(r); ++i) res[i] += r[i];
     return res;
   }
   Poly operator-(const Poly& r) const {
     Poly res = *this;
-    res.resize(max(sz(*this), sz(r)));
-    for (int i = 0; i < sz(r); ++i) res[i] -= r[i];
+    res.resize(max(len(*this), len(r)));
+    for (int i = 0; i < len(r); ++i) res[i] -= r[i];
     return res;
   }
   Poly operator*(const Poly& r) const { return ntt::conv(*this, r); }
@@ -74,13 +74,13 @@ struct Poly : vector<Fp> {
 
   Poly deriv() const {
     if (empty()) return {};
-    Poly res(sz(*this) - 1);
-    for (int i = 1; i < sz(*this); ++i) res[i - 1] = data()[i] * i;
+    Poly res(len(*this) - 1);
+    for (int i = 1; i < len(*this); ++i) res[i - 1] = data()[i] * i;
     return res;
   }
   Poly integ() const {
-    Poly res(sz(*this) + 1);
-    for (int i = 0; i < sz(*this); ++i) res[i + 1] = data()[i] * Fp(i + 1).inv();
+    Poly res(len(*this) + 1);
+    for (int i = 0; i < len(*this); ++i) res[i + 1] = data()[i] * Fp(i + 1).inv();
     return res;
   }
   Poly inv(int n) const {
@@ -89,7 +89,7 @@ struct Poly : vector<Fp> {
       Poly a = cut(2 * k), prod = b * b * a;
       b.resize(2 * k);
       for (int i = 0; i < 2 * k; ++i) {
-        b[i] = b[i] * 2 - (i < sz(prod) ? prod[i] : Fp(0));
+        b[i] = b[i] * 2 - (i < len(prod) ? prod[i] : Fp(0));
       }
     }
     return b.cut(n);
@@ -114,8 +114,8 @@ struct Poly : vector<Fp> {
       return res;
     }
     int i = 0;
-    while (i < sz(*this) && data()[i].x == 0) i++;
-    if (i == sz(*this) || (i > 0 && k >= n / i + 2)) {
+    while (i < len(*this) && data()[i].x == 0) i++;
+    if (i == len(*this) || (i > 0 && k >= n / i + 2)) {
       Poly res;
       res.resize(n);
       return res;

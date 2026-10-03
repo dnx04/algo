@@ -7,7 +7,7 @@ void solve() {
   string s;
   cin >> s;
   auto sa = SuffixArray(s);
-  for (int i = 1; i < sz(sa.sa); ++i) cout << sa.sa[i] << ' ';
+  for (int i = 1; i < len(sa.sa); ++i) cout << sa.sa[i] << ' ';
 }
 
 int main() {

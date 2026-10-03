@@ -7,8 +7,8 @@ void solve() {
   string s;
   cin >> s;
   auto z = Z(s);
-  cout << sz(s) << ' ';
-  for (int i = 1; i < sz(z); ++i) cout << z[i] << ' ';
+  cout << len(s) << ' ';
+  for (int i = 1; i < len(z); ++i) cout << z[i] << ' ';
 }
 
 int main() {

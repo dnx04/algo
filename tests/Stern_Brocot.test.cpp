@@ -6,18 +6,18 @@
 void solve() {
   string cmd;
   cin >> cmd;
-  if(cmd == "ENCODE_PATH") {
+  if (cmd == "ENCODE_PATH") {
     int a, b;
     cin >> a >> b;
     auto res = SternBrocot::encode(a, b);
-    cout << sz(res) << ' ';
-    for(auto [ch, mv]: res) cout << ch << ' ' << mv << ' ';
+    cout << len(res) << ' ';
+    for (auto [ch, mv] : res) cout << ch << ' ' << mv << ' ';
     cout << '\n';
-  } else if(cmd == "DECODE_PATH") {
+  } else if (cmd == "DECODE_PATH") {
     Path p;
     int k;
     cin >> k;
-    while(k--) {
+    while (k--) {
       char ch;
       int mv;
       cin >> ch >> mv;
@@ -25,16 +25,16 @@ void solve() {
     }
     auto res = SternBrocot::decode(p);
     cout << res.p << ' ' << res.q << '\n';
-  } else if(cmd == "LCA") {
+  } else if (cmd == "LCA") {
     int a, b, c, d;
     cin >> a >> b >> c >> d;
     auto res = SternBrocot::lca(a, b, c, d);
     cout << res.p << ' ' << res.q << '\n';
-  } else if(cmd == "ANCESTOR") {
+  } else if (cmd == "ANCESTOR") {
     int k, a, b;
     cin >> k >> a >> b;
     auto res = SternBrocot::ancestor(k, a, b);
-    if(res.p == -1) {
+    if (res.p == -1) {
       cout << -1 << '\n';
       return;
     }

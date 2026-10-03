@@ -4,7 +4,7 @@ pair<P, ld> mec(vector<P> ps) {
   shuffle(all(ps), mt19937(time(0)));
   P o = ps[0];
   ld r = 0, EPS = 1 + 1e-12;
-  for (int i = 0; i < sz(ps); ++i) {
+  for (int i = 0; i < len(ps); ++i) {
     if ((o - ps[i]).dist() > r * EPS) {
       o = ps[i], r = 0;
       for (int j = 0; j < i; ++j) {

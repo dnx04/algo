@@ -7,11 +7,11 @@ void solve() {
   string S, T;
   cin >> S >> T;
   SuffixArray sa(S + '$' + T);  // Nối chuỗi
-  int n = sz(S);
+  int n = len(S);
   int maxL = 0, pS = -1, pT = -1;
 
   // Duyệt mảng LCP để tìm max
-  for (int i = 1; i < sz(sa.lcp); ++i) {
+  for (int i = 1; i < len(sa.lcp); ++i) {
     int u = sa.sa[i], v = sa.sa[i - 1];
 
     // Kiểm tra u, v có nằm ở 2 xâu khác nhau không (một cái < n, một cái > n)

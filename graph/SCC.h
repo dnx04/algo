@@ -2,7 +2,7 @@ template <class G>
 struct SCC {
  public:
   vector<vi> dag;
-  SCC(G& g) : g(g), used(sz(g), 0) { build(); }
+  SCC(G& g) : g(g), used(len(g), 0) { build(); }
   int operator[](int k) { return comp[k]; }
   vi& belong(int i) { return blng[i]; }
 
@@ -25,12 +25,12 @@ struct SCC {
     for (int to : rg[idx]) rdfs(to, cnt);
   }
   void build() {
-    for (int i = 0; i < sz(g); i++) dfs(i);
+    for (int i = 0; i < len(g); i++) dfs(i);
     reverse(all(ord));
     used.clear(), used.shrink_to_fit();
-    comp.resize(sz(g), -1);
-    rg.resize(sz(g));
-    for (int i = 0; i < sz(g); i++) {
+    comp.resize(len(g), -1);
+    rg.resize(len(g));
+    for (int i = 0; i < len(g); i++) {
       for (auto e : g[i]) {
         rg[e].emplace_back(i);
       }
@@ -41,7 +41,7 @@ struct SCC {
     rg.clear(), rg.shrink_to_fit();
     ord.clear(), ord.shrink_to_fit();
     dag.resize(ptr), blng.resize(ptr);
-    for (int i = 0; i < (int) sz(g); i++) {
+    for (int i = 0; i < (int) len(g); i++) {
       blng[comp[i]].eb(i);
       for (auto& to : g[i]) {
         int x = comp[i], y = comp[to];

@@ -1,7 +1,7 @@
 template <class Fp>
 vector<Fp> BerlekampMassey(const vector<Fp>& s) {
   if (s.empty()) return {};
-  int n = sz(s), L = 0, m = 0;
+  int n = len(s), L = 0, m = 0;
   vector<Fp> C(n), B(n), T;
   C[0] = B[0] = 1;
   Fp b = 1;

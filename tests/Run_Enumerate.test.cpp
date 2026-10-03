@@ -22,7 +22,7 @@ struct Run {
 
 template <class R>
 int get_lcp(const SuffixArray& sa, R& rmq, int i, int j) {
-  if (i == j) return sz(sa.sa) - 1 - i;
+  if (i == j) return len(sa.sa) - 1 - i;
   int l = sa.rank[i], r = sa.rank[j];
   if (l > r) swap(l, r);
   return rmq.query(l + 1, r + 1);
@@ -32,7 +32,7 @@ int main() {
   cin.tie(0)->sync_with_stdio(0);
   string s;
   cin >> s;
-  int n = sz(s);
+  int n = len(s);
 
   auto min_func = [](int a, int b) { return min(a, b); };
 
@@ -76,7 +76,7 @@ int main() {
   // BƯỚC 3: Sort kết quả theo (t, l, r) để in ra
   sort(all(result), Run::compareOutput);
 
-  cout << sz(result) << "\n";
+  cout << len(result) << "\n";
   for (auto& run : result) {
     cout << run.t << " " << run.l << " " << run.r << "\n";
   }

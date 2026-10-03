@@ -8,12 +8,12 @@ struct Dinic {
   vector<vector<Edge>> adj;
   Dinic(int n) : lvl(n), ptr(n), q(n), adj(n) {}
   void addEdge(int a, int b, i64 c, i64 rcap = 0) {
-    adj[a].pb({b, sz(adj[b]), c, c});
-    adj[b].pb({a, sz(adj[a]) - 1, rcap, rcap});
+    adj[a].pb({b, len(adj[b]), c, c});
+    adj[b].pb({a, len(adj[a]) - 1, rcap, rcap});
   }
   i64 dfs(int v, int t, i64 f) {
     if (v == t || !f) return f;
-    for (int& i = ptr[v]; i < sz(adj[v]); i++) {
+    for (int& i = ptr[v]; i < len(adj[v]); i++) {
       Edge& e = adj[v][i];
       if (lvl[e.to] == lvl[v] + 1)
         if (i64 p = dfs(e.to, t, min(f, e.c))) {
@@ -29,7 +29,7 @@ struct Dinic {
     // 'int L=30' maybe faster for random data
     for (int L = 0; L < 31; ++L) {
       do {
-        lvl = ptr = vi(sz(q));
+        lvl = ptr = vi(len(q));
         int qi = 0, qe = lvl[s] = 1;
         while (qi < qe && !lvl[t]) {
           int v = q[qi++];

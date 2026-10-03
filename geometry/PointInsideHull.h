@@ -5,8 +5,8 @@
 typedef Point<ll> P;
 
 bool inHull(const vector<P>& l, P p, bool strict = true) {
-  int a = 1, b = sz(l) - 1, r = !strict;
-  if (sz(l) < 3) return r && onSegment(l[0], l.back(), p);
+  int a = 1, b = len(l) - 1, r = !strict;
+  if (len(l) < 3) return r && onSegment(l[0], l.back(), p);
   if (sideOf(l[0], l[a], l[b]) > 0) swap(a, b);
   if (sideOf(l[0], l[a], p) >= r || sideOf(l[0], l[b], p) <= -r) return false;
   while (abs(a - b) > 1) {

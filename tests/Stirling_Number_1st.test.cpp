@@ -23,7 +23,7 @@ void solve() {
   // Dùng chia để trị O(N log^2 N) vì N nhỏ
   int n;
   cin >> n;
-  if(n == 0) {
+  if (n == 0) {
     cout << 1;
     return;
   }
@@ -33,7 +33,7 @@ void solve() {
     dq.push_back(Poly({-i, 1}));
   }
 
-  while(sz(dq) > 1) {
+  while (len(dq) > 1) {
     auto f = dq.front();
     dq.pop_front();
     auto g = dq.front();

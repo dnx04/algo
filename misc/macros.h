@@ -3,7 +3,6 @@
 // #pragma GCC target("lzcnt,popcnt,abm,bmi,bmi2")  // for fast bitset operation
 
 #include <bits/extc++.h>
-#include <tr2/dynamic_bitset>
 
 using namespace std;
 using namespace __gnu_pbds;  // ordered_set, gp_hash_table
@@ -11,7 +10,7 @@ using namespace __gnu_pbds;  // ordered_set, gp_hash_table
 
 // for templates to work
 #define all(x) (x).begin(), (x).end()
-#define sz(x) (int) (x).size()
+#define len(x) (int) (x).size()
 #define pb push_back
 #define eb emplace_back
 using i32 = int32_t;

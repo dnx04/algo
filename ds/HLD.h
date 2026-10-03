@@ -3,7 +3,7 @@ struct HLD {
   const G& g;
   int n, t = 0;
   vi sub, dep, par, head, pos, heavy;
-  HLD(const G& g, int root = 0) : g(g), n(sz(g)), sub(n), dep(n), par(n), head(n), pos(n), heavy(n, -1) {
+  HLD(const G& g, int root = 0) : g(g), n(len(g)), sub(n), dep(n), par(n), head(n), pos(n), heavy(n, -1) {
     par[root] = -1;
     dfs_sub(root);
     dfs_hld(root, root);
@@ -37,8 +37,10 @@ struct HLD {
         v = par[head[v]];
       }
     }
-    if (dep[u] > dep[v]) l.pb({pos[u], pos[v]});
-    else r.pb({pos[u], pos[v]});
+    if (dep[u] > dep[v])
+      l.pb({pos[u], pos[v]});
+    else
+      r.pb({pos[u], pos[v]});
     reverse(all(r));
     l.insert(l.end(), all(r));
     return l;

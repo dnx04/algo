@@ -13,9 +13,9 @@ void solve() {
     g[u].eb(v);
   }
   SCC scc(g);
-  cout << sz(scc.dag) << '\n';
-  for (int i = 0; i < sz(scc.dag); ++i) {
-    cout << sz(scc.belong(i)) << ' ';
+  cout << len(scc.dag) << '\n';
+  for (int i = 0; i < len(scc.dag); ++i) {
+    cout << len(scc.belong(i)) << ' ';
     for (auto v : scc.belong(i)) cout << v << ' ';
     cout << '\n';
   }

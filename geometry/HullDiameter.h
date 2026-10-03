@@ -1,9 +1,9 @@
 #include "Point.h"
 
 // S must already be a convex hull
-template<class P>
+template <class P>
 array<P, 2> hullDiameter(vector<P> S) {
-  int n = sz(S), j = n < 2 ? 0 : 1;
+  int n = len(S), j = n < 2 ? 0 : 1;
   pair<i64, array<P, 2>> res({0, {S[0], S[0]}});
   for (int i = 0; i < j; ++i) {
     for (;; j = (j + 1) % n) {

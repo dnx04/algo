@@ -15,6 +15,6 @@ ld circlePoly(P c, ld r, vector<P> ps) {
     return arg(p, u) * r2 + u.cross(v) / 2 + arg(v, q) * r2;
   };
   auto sum = 0.0;
-  for (int i = 0; i < n; ++i)i, 0, sz(ps)) sum += tri(ps[i] - c, ps[(i + 1) % sz(ps)] - c);
+  for (int i = 0; i < n; ++i)i, 0, len(ps)) sum += tri(ps[i] - c, ps[(i + 1) % len(ps)] - c);
   return sum;
 }

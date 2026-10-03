@@ -1,11 +1,14 @@
-const int sz = 850; // should be sqrt(3/2 * N)
+const int len = 850;  // should be sqrt(3/2 * N)
 struct Query {
   int l, r, idx;
   bool operator<(const Query& o) {
-    if (l / sz != o.l / sz) return l / sz < o.l / sz;
+    if (l / len != o.l / len)
+      return l / len < o.l / len;
     else {
-      if ((l / sz) & 1) return r / sz < o.r / sz;
-      else return r / sz > o.r / sz;
+      if ((l / len) & 1)
+        return r / len < o.r / len;
+      else
+        return r / len > o.r / len;
     }
   };
 };

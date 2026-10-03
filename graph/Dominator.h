@@ -1,5 +1,5 @@
 vector<int> DomTree(const vector<vi>& g, int s) {
-  int n = sz(g), t = 0;
+  int n = len(g), t = 0;
   vector<int> arr(n, -1), rev(n), par(n), sdom(n), dom(n), dsu(n), lab(n), res(n, -1);
   vector<vi> rg(n), buck(n);
   auto dfs = [&](auto&& self, int u) -> void {
@@ -19,7 +19,8 @@ vector<int> DomTree(const vector<vi>& g, int s) {
   for (int i = t - 1; i; --i) {
     for (int v : rg[i]) find(find, v), sdom[i] = min(sdom[i], sdom[lab[v]]);
     buck[sdom[i]].pb(i);
-    int p = par[i]; dsu[i] = p;
+    int p = par[i];
+    dsu[i] = p;
     for (int v : buck[p]) find(find, v), dom[v] = (sdom[lab[v]] == sdom[v] ? p : lab[v]);
     buck[p].clear();
   }

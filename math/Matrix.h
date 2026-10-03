@@ -4,7 +4,7 @@ struct Matrix {
   vector<vector<T>> a;
   Matrix(int n) : Matrix(n, n) {}
   Matrix(int r, int c) : r(r), c(c), a(r, vector<T>(c, T(0))) {}
-  Matrix(const vector<vector<T>>& v) : r(sz(v)), c(v.empty() ? 0 : sz(v[0])), a(v) {}
+  Matrix(const vector<vector<T>>& v) : r(len(v)), c(v.empty() ? 0 : len(v[0])), a(v) {}
   vector<T>& operator[](int i) { return a[i]; }
   const vector<T>& operator[](int i) const { return a[i]; }
   static Matrix eye(int n) {
@@ -79,7 +79,7 @@ struct Matrix {
       if (is_free[j]) {
         vector<T> v(c, T(0));
         v[j] = T(1);
-        for (int i = 0; i < sz(piv); ++i) v[piv[i]] = T(0) - mat[i][j];
+        for (int i = 0; i < len(piv); ++i) v[piv[i]] = T(0) - mat[i][j];
         ker.push_back(v);
       }
     }

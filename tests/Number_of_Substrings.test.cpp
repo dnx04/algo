@@ -6,7 +6,7 @@
 void solve() {
   string s;
   cin >> s;
-  i64 n = sz(s);
+  i64 n = len(s);
   auto sa = SuffixArray(s);
   i64 ans = n * (n + 1) / 2;
   cout << ans - accumulate(all(sa.lcp), 0ll);

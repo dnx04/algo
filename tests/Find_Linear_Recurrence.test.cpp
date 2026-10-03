@@ -12,7 +12,7 @@ void solve() {
   vector<Fp> a(d);
   for (int i = 0; i < d; ++i) cin >> a[i];
   auto cs = BerlekampMassey(a);
-  cout << sz(cs) << '\n';
+  cout << len(cs) << '\n';
   for (auto c : cs) cout << c << ' ';
 }
 

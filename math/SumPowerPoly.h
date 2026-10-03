@@ -14,7 +14,7 @@ void prepareFac(int n) {
 
 // Lagrange interpolation [0,...,n-1] in O(n)
 Fp interpolate(const vector<Fp>& y, i64 n) {
-  int k = sz(y) - 1;
+  int k = len(y) - 1;
   if (n <= k) return y[n];
   vector<Fp> pre(k + 1), suf(k + 1);
   pre[0] = suf[k] = 1;
@@ -23,8 +23,10 @@ Fp interpolate(const vector<Fp>& y, i64 n) {
   Fp ans = 0;
   for (int i = 0; i <= k; ++i) {
     Fp val = pre[i] * suf[i] * y[i] * invFac[i] * invFac[k - i];
-    if ((k - i) & 1) ans -= val;
-    else ans += val;
+    if ((k - i) & 1)
+      ans -= val;
+    else
+      ans += val;
   }
   return ans;
 }
@@ -40,8 +42,10 @@ Fp sumPolyLimit(Fp r, const vector<Fp>& fs) {
   for (int i = 0; i <= d; ++i) {
     S += rr[i] * fs[i];
     Fp term = invFac[d - i] * invFac[i + 1] * rr[d - i] * S;
-    if ((d - i) & 1) ans -= term;
-    else ans += term;
+    if ((d - i) & 1)
+      ans -= term;
+    else
+      ans += term;
   }
   return ans * fac[d + 1] / (Fp(1) - r).pow(d + 1);
 }
@@ -50,7 +54,7 @@ Fp sumPolyLimit(Fp r, const vector<Fp>& fs) {
 Fp sumPoly(Fp r, const vector<Fp>& fs, u64 n) {
   if (n == 0) return 0;
   if (r == 0) return fs[0];
-  int d = sz(fs) - 1;
+  int d = len(fs) - 1;
   if (r == 1) {
     vector<Fp> S(d + 2);
     S[0] = 0;

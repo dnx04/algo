@@ -7,7 +7,7 @@ void solve() {
   i64 n;
   cin >> n;
   auto q = EnumerateQuotients(n);
-  cout << sz(q) << '\n';
+  cout << len(q) << '\n';
   for (auto d : q) cout << d << ' ';
 }
 

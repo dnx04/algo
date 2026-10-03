@@ -2,9 +2,9 @@
 
 template <class P>
 vector<P> convexHull(vector<P> pts) {
-  if (sz(pts) <= 1) return pts;
+  if (len(pts) <= 1) return pts;
   sort(all(pts));
-  vector<P> h(2 * sz(pts) + 2);
+  vector<P> h(2 * len(pts) + 2);
   int s = 0, t = 0;
   for (int it = 2; it--; s = --t, reverse(all(pts))) {
     for (P p : pts) {

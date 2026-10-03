@@ -3,11 +3,13 @@ pair<vi, vi> EulerWalk(int n, vector<vector<pii>>& adj, int m, bool dir, bool cy
   vector<pii> st;
   int src = 0, bad = 0;
   for (int i = 0; i < n; ++i) {
-    if (dir) for (auto& p : adj[i]) D[i]++, D[p.first]--;
-    else D[i] = sz(adj[i]) & 1;
+    if (dir)
+      for (auto& p : adj[i]) D[i]++, D[p.first]--;
+    else
+      D[i] = len(adj[i]) & 1;
   }
   for (int i = 0; i < n; ++i) {
-    if (sz(adj[i]) && adj[src].empty()) src = i;
+    if (len(adj[i]) && adj[src].empty()) src = i;
     if (D[i]) {
       bad++;
       if ((dir && D[i] > 0) || (!dir)) src = i;
@@ -17,7 +19,7 @@ pair<vi, vi> EulerWalk(int n, vector<vector<pii>>& adj, int m, bool dir, bool cy
   st.pb({src, -1});
   while (!st.empty()) {
     int u = st.back().first;
-    if (ptr[u] < sz(adj[u])) {
+    if (ptr[u] < len(adj[u])) {
       auto [v, id] = adj[u][ptr[u]++];
       if (!used[id]) used[id] = 1, st.pb({v, id});
     } else {
@@ -27,7 +29,7 @@ pair<vi, vi> EulerWalk(int n, vector<vector<pii>>& adj, int m, bool dir, bool cy
       if (id != -1) edges.pb(id);
     }
   }
-  if (sz(edges) != m) return {};
+  if (len(edges) != m) return {};
   reverse(all(nodes)), reverse(all(edges));
   return {nodes, edges};
 }

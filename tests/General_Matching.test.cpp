@@ -19,6 +19,6 @@ signed main() {
   for (int i = 0; i < n; ++i) {
     if (i < match[i]) mate.pb({i, match[i]});
   }
-  cout << sz(mate) << '\n';
+  cout << len(mate) << '\n';
   for (auto [u, v] : mate) cout << u << ' ' << v << '\n';
 }

@@ -5,7 +5,7 @@
 
 template <class P>
 int extrVertex(vector<P>& poly, P dir) {
-  int n = sz(poly), lo = 0, hi = n;
+  int n = len(poly), lo = 0, hi = n;
   if (extr(0)) return 0;
   while (lo + 1 < hi) {
     int m = (lo + hi) / 2;
@@ -23,8 +23,8 @@ array<int, 2> lineHull(P a, P b, vector<P>& poly) {
   int endB = extrVertex(poly, (b - a).perp());
   if (cmpL(endA) < 0 || cmpL(endB) > 0) return {-1, -1};
   array<int, 2> res;
-  for(int i = 0; i < 2; ++i) {
-    int lo = endB, hi = endA, n = sz(poly);
+  for (int i = 0; i < 2; ++i) {
+    int lo = endB, hi = endA, n = len(poly);
     while ((lo + 1) % n != hi) {
       int m = ((lo + hi + (lo < hi ? 0 : n)) / 2) % n;
       (cmpL(m) == cmpL(endB) ? lo : hi) = m;
@@ -34,9 +34,11 @@ array<int, 2> lineHull(P a, P b, vector<P>& poly) {
   }
   if (res[0] == res[1]) return {res[0], -1};
   if (!cmpL(res[0]) && !cmpL(res[1]))
-    switch ((res[0] - res[1] + sz(poly) + 1) % sz(poly)) {
-      case 0: return {res[0], res[0]};
-      case 2: return {res[1], res[1]};
+    switch ((res[0] - res[1] + len(poly) + 1) % len(poly)) {
+      case 0:
+        return {res[0], res[0]};
+      case 2:
+        return {res[1], res[1]};
     }
   return res;
 }

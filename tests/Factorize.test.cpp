@@ -14,7 +14,7 @@ int main() {
     i64 n;
     cin >> n;
     auto f = factor(n);
-    cout << sz(f) << ' ';
+    cout << len(f) << ' ';
     sort(all(f));
     for (auto fac : f) cout << fac << ' ';
     cout << '\n';

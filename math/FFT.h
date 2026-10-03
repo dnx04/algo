@@ -26,15 +26,15 @@ void fft(vector<C>& a) {
 }
 vd convolution(const vd& a, const vd& b) {
   if (a.empty() || b.empty()) return {};
-  vd res(sz(a) + sz(b) - 1);
-  int L = 32 - __builtin_clz(sz(res)), n = 1 << L;
+  vd res(len(a) + len(b) - 1);
+  int L = 32 - __builtin_clz(len(res)), n = 1 << L;
   vector<C> in(n), out(n);
   copy(all(a), begin(in));
-  for (int i = 0; i < sz(b); ++i) in[i].imag(b[i]);
+  for (int i = 0; i < len(b); ++i) in[i].imag(b[i]);
   fft(in);
   for (C& x : in) x *= x;
   for (int i = 0; i < n; ++i) out[i] = in[-i & (n - 1)] - conj(in[i]);
   fft(out);
-  for (int i = 0; i < sz(res); ++i) res[i] = imag(out[i]) / (4 * n);
+  for (int i = 0; i < len(res); ++i) res[i] = imag(out[i]) / (4 * n);
   return res;
 }

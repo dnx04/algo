@@ -21,12 +21,14 @@ struct Min25 {
       i64 v = n / l;
       r = n / v;
       vals.pb(v);
-      if (v <= sq) id1[v] = sz(vals) - 1;
-      else id2[n / v] = sz(vals) - 1;
+      if (v <= sq)
+        id1[v] = len(vals) - 1;
+      else
+        id2[n / v] = len(vals) - 1;
     }
-    g0.resize(sz(vals)), g1.resize(sz(vals));
+    g0.resize(len(vals)), g1.resize(len(vals));
     T inv2 = T(1) / T(2);
-    for (int i = 0; i < sz(vals); ++i) {
+    for (int i = 0; i < len(vals); ++i) {
       T v = T(vals[i]);
       g0[i] = v - 1;
       g1[i] = v * (v + 1) * inv2 - 1;
@@ -35,7 +37,7 @@ struct Min25 {
       T sp0 = g0[id(p - 1)], sp1 = g1[id(p - 1)];
       i64 p2 = (i64) p * p;
       T tp = T(p);
-      for (int i = 0; i < sz(vals); ++i) {
+      for (int i = 0; i < len(vals); ++i) {
         if (vals[i] < p2) break;
         int k = id(vals[i] / p);
         g0[i] -= g0[k] - sp0;
@@ -47,16 +49,16 @@ struct Min25 {
   // func: (p, e) -> f(p^e) trả về T
   template <class Func>
   T solve(T A, T B, Func f_pe) {
-    vector<T> s_fp(sz(primes) + 1);
-    for (int i = 0; i < sz(primes); ++i)
+    vector<T> s_fp(len(primes) + 1);
+    for (int i = 0; i < len(primes); ++i)
       s_fp[i + 1] = s_fp[i] + A + B * T(primes[i]);
 
     auto S = [&](auto&& self, i64 x, int j) -> T {
-      if (x <= 1 || (j < sz(primes) && primes[j] > x)) return 0;
+      if (x <= 1 || (j < len(primes) && primes[j] > x)) return 0;
       int k = id(x);
       T ans = A * g0[k] + B * g1[k];
       ans -= s_fp[j];
-      for (int i = j; i < sz(primes); ++i) {
+      for (int i = j; i < len(primes); ++i) {
         i64 p = primes[i];
         if (p * p > x) break;
         i64 pe = p;

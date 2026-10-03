@@ -8,13 +8,13 @@ struct TrianglePointCount {
   // Constructor: Thực hiện Precomputation O(N^2 * M)
   TrianglePointCount(const vector<P>& A, const vector<P>& B)
       : A(A) {
-    int n = sz(A), m = sz(B);
+    int n = len(A), m = len(B);
     for (int i = 0; i < n; ++i) {
       for (int j = 0; j < n; ++j) {
         if (i == j) continue;
-        P vecIJ = A[j] - A[i]; // Vector A[i] -> A[j]
+        P vecIJ = A[j] - A[i];  // Vector A[i] -> A[j]
         for (int k = 0; k < m; ++k) {
-          P vecIK = B[k] - A[i]; // Vector A[i] -> B[k]
+          P vecIK = B[k] - A[i];  // Vector A[i] -> B[k]
           // Nếu B[k] nằm thực sự bên trái A[i]->A[j] (cross product > 0)
           if (vecIJ.cross(vecIK) > 0) side[i][j][k] = 1;
         }
